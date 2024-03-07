@@ -1,0 +1,14 @@
+body {
+	background-color: #f5f5f5;
+}
+
+.form-sign-in {
+	width: 100%;
+	max-width: 500px;
+	margin: 100px auto 0;
+}
+
+.form-sign-in h1,
+.form-sign-in h4 {
+	margin-bottom: 25px;
+}
