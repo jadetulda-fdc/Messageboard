@@ -2,21 +2,33 @@
 $this->assign('title', 'Register | MessageBoard');
 $inputOptions = array(
     'div' => array('class' => 'form-group d-flex'),
-    'label' => array('class' => 'col-sm-3 col-form-label text-right'),
-    'class' => 'col-sm-9 form-control'
+    'label' => array('class' => 'col-sm-4 col-form-label text-right'),
+    'class' => 'col-sm-8 form-control',
+    'error' => false
 );
-$flashMessage = $this->Flash->render();
 ?>
 <div class="text-center">
     <div class="form-sign-in">
         <h1>MESSAGE BOARD</h1>
         <h4>Register</h4>
-        <?php if ($flashMessage) : ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo $flashMessage; ?>
-                <?php echo $this->Flash->render('auth'); ?>
-            </div>
-        <?php endif; ?>
+        <div class="form-sign-in-error">
+            <?php if ($this->validationErrors) { ?>
+                <div class="alert text-left" role="alert">
+
+                    <ul class="list-group">
+                        <?php
+                        foreach ($this->validationErrors['User'] as $error => $msg) {
+                        ?>
+                            <li class="list-group-item list-group-item-danger"><?php echo $msg[0]; ?></li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+    <div class="form-sign-in-body">
         <?php
         echo $this->Form->create('User');
         echo $this->Form->input('name', $inputOptions);
@@ -35,5 +47,7 @@ $flashMessage = $this->Flash->render();
         ));
         echo $this->Form->end();
         ?>
+
     </div>
+</div>
 </div>

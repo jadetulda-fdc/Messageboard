@@ -43,6 +43,12 @@ class AppController extends Controller {
                 'controller' => 'users',
                 'action' => 'index'
             ),
+            'authenticate' => array(
+                'Form' => array(
+                    'fields' => array('username' => 'email'),
+                    'passwordHasher' => 'Blowfish'
+                )
+            ),
             'authorize' => array('Controller')
         )
     );
@@ -54,6 +60,6 @@ class AppController extends Controller {
 
     // What pages to allow for non-logged in users
     public function beforeFilter() {
-        $this->Auth->allow('index', 'view');
+        $this->set('current_user',  $this->Auth->user());
     }
 }
