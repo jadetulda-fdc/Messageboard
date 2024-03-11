@@ -1,5 +1,10 @@
 body {
 	background-color: #f1f1f1;
+	font-size: 0.875rem;
+}
+
+textarea {
+	resize: none;
 }
 
 #content {
@@ -34,15 +39,7 @@ body {
 	gap: 50px;
 }
 
-.navbar span.nav-link a:hover {
-	color: #007bff;
-	text-decoration: none;
-}
-
 /* Dashboard.css */
-body {
-	font-size: 0.875rem;
-}
 
 .feather {
 	width: 16px;
@@ -50,9 +47,7 @@ body {
 	vertical-align: text-bottom;
 }
 
-/*
-   * Sidebar
-   */
+/* Sidebar */
 
 .sidebar {
 	position: fixed;
@@ -110,9 +105,7 @@ body {
 	text-transform: uppercase;
 }
 
-/*
-   * Navbar
-   */
+/* Navbar */
 
 .navbar-brand {
 	padding-top: 0.75rem;
@@ -142,4 +135,76 @@ body {
 .form-control-dark:focus {
 	border-color: transparent;
 	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.navbar span.nav-link a:hover {
+	color: #007bff;
+	text-decoration: none;
+}
+
+/* profile */
+#profile img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Compose Message */
+#form-compose-message .form-group label {
+	text-align: right;
+}
+
+/* Message List */
+#message-list .message-list-container {
+	border: 1px solid #e7e3e3;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+#message-list .last-message-info {
+	flex: 1 1 auto;
+}
+
+#message-list .message-list-footer {
+	border-top: 1px solid #ececec;
+}
+
+#message-list .message-list-footer .message-list-action a {
+	font-size: 16px;
+	cursor: pointer;
+}
+
+#message-list .see-more {
+	color: #007bff;
+	cursor: pointer;
+}
+
+/* Message Detail */
+#message-list .message-detail-container {
+	border: 1px solid #e7e3e3;
+	border-radius: 5px;
+	background-color: #fff;
+	max-width: 70%;
+}
+
+/* Gap */
+.gap,
+.gap-1 {
+	gap: 0.25rem !important;
+}
+
+.gap-2 {
+	gap: 0.5rem !important;
+}
+
+.gap-3 {
+	gap: 1rem !important;
+}
+
+.gap-4 {
+	gap: 1.5rem !important;
+}
+
+/* skeleton */
+.box {
+	border: 1px dashed gray;
 }

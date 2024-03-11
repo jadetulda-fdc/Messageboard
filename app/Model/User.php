@@ -47,6 +47,9 @@ class User extends AppModel {
         )
     );
 
+    // Relationship
+    public $hasOne = 'Profile';
+
     public function matchPassword($data) {
 
         if ($data['password'] === $this->data['User']['password_confirm']) {

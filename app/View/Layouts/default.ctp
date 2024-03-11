@@ -11,9 +11,15 @@
 
 	// echo $this->Html->css('cake.generic');
 	echo $this->Html->css('bootstrap.min.css');
+	echo $this->Html->css('fontawesome/css/all.min.css');
+	echo $this->Html->css('/js/plugins/select2/select2.min.css');
+	echo $this->Html->css('/js/plugins/jquery/ui/jquery-ui.min.css');
 	echo $this->Html->css('style.css');
-	echo $this->Html->script('jquery-3.7.1.js');
+	echo $this->Html->script('plugins/jquery/jquery-3.7.1.js');
 	echo $this->Html->script('bootstrap.min.js');
+	echo $this->Html->script('plugins/jquery/ui/jquery-ui.min.js');
+	echo $this->Html->script('plugins/select2/select2.min.js');
+	echo $this->Html->script('plugins/autosize/textAreaAutoSize.js');
 
 	echo $this->fetch('meta');
 	echo $this->fetch('css');

@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\map;
+
 $this->assign('title', 'Login | MessageBoard');
 $inputOptions = array(
     'div' => array('class' => 'form-group d-flex'),
@@ -23,11 +26,23 @@ $flashMessage = $this->Flash->render();
             echo $this->Form->create('User');
             echo $this->Form->input('email', $inputOptions);
             echo $this->Form->input('password', $inputOptions);
-            echo $this->Form->button('Login', array(
-                'type' => 'submit',
-                'class' => 'btn btn-primary',
-                'style' => "float: right;"
-            ));
+            ?>
+            <div class="d-flex justify-content-end align-items-center gap-3">
+                <?php
+                echo $this->Html->link(
+                    'No account yet?',
+                    array(
+                        'controller' => 'users',
+                        'action' => 'register'
+                    )
+                );
+                echo $this->Form->button('Login', array(
+                    'type' => 'submit',
+                    'class' => 'btn btn-primary'
+                ));
+                ?>
+            </div>
+            <?php
             echo $this->Form->end();
             ?>
         </div>

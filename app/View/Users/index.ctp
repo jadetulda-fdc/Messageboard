@@ -1,8 +1,6 @@
 <?php
-
-use function PHPSTORM_META\map;
-
 $this->assign('title', 'MessageBoard');
+$this->assign('page_header', 'Dashboard');
 ?>
 
 <div class="table-responsive">
@@ -31,41 +29,4 @@ $this->assign('title', 'MessageBoard');
             ?>
         </tbody>
     </table>
-    <div class="d-flex">
-        <?php
-        echo $this->Html->link(
-            'Register',
-            array(
-                'controller' => 'users',
-                'action' => 'add'
-            ),
-            array('class' => 'btn btn-primary mr-2')
-        );
-        ?>
-        <?php
-        if (!$current_user) {
-            echo $this->Html->link(
-                'Login',
-                array(
-                    'controller' => 'users',
-                    'action' => 'login'
-                ),
-                array('class' => 'btn btn-primary')
-            );
-        } else {
-            echo $this->Html->link(
-                'Logout',
-                array(
-                    'controller' => 'users',
-                    'action' => 'logout'
-                ),
-                array('class' => 'btn btn-danger')
-            );
-        }
-        ?>
-    </div>
-
-    <div>
-        Logged user: <?php print_r($current_user); ?>
-    </div>
 </div>

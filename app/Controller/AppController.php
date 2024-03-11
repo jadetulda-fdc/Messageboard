@@ -41,7 +41,7 @@ class AppController extends Controller {
             ),
             'logoutRedirect' => array(
                 'controller' => 'users',
-                'action' => 'index'
+                'action' => 'login'
             ),
             'authenticate' => array(
                 'Form' => array(
@@ -55,7 +55,7 @@ class AppController extends Controller {
 
     // if the logged in user is authorized to perform such action
     public function isAuthorized() {
-        return true;
+        return $this->Auth->user();
     }
 
     // What pages to allow for non-logged in users
