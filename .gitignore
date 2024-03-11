@@ -1,8 +1,12 @@
 # User specific & automatically generated files #
 #################################################
 /app/Config/database.php
+/app/Controller/MessageBoardController.php
 /app/tmp
+/app/webroot/img/profile
 /lib/Cake/Console/Templates/skel/tmp/
+/lib/Cake/Utility/ObjectCollection.php
+/lib/Cake/View/Helper/FormHelper.php
 /plugins
 /vendors
 /build
@@ -28,3 +32,5 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+/lib/Cake/Utility
+/lib/Cake/View/Helper

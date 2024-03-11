@@ -49,7 +49,8 @@ class UsersController extends AppController {
                 $this->Profile->create();
                 $this->Profile->set(array(
                     'user_id' => $id,
-                    'name' => $this->request->data['User']['name']
+                    'name' => $this->request->data['User']['name'],
+                    'profile_picture' => 'profile/profile-pic.png'
                 ));
                 $this->Profile->save();
 

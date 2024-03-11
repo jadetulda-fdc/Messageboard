@@ -16,7 +16,7 @@ class Profile extends AppModel {
         'gender' => array(
             'required' => array(
                 'rule' => 'isGenderSelected',
-                'message' => 'Please select gender.'
+                'message' => 'Selected gender is unidentified.'
             )
         ),
         'birthdate' => array(
@@ -27,23 +27,6 @@ class Profile extends AppModel {
             'date' => array(
                 'rule' => 'date',
                 'message' => 'Birthdate should be a valid date format'
-            )
-        ),
-        'file_picture' => array(
-            'required' => array(
-                'rule' => 'profilePictureRequired',
-                'message' => 'Please upload something for your profile picture'
-            ),
-            'acceptedFileType' => array(
-                'rule' => array(
-                    'extension', array(
-                        'gif',
-                        'jpeg',
-                        'jpg',
-                        'png'
-                    )
-                ),
-                'message' => 'Invalid image type, only accepts .jpg/.jpeg, .gif or .png'
             )
         ),
         'hubby' => array(
@@ -57,16 +40,8 @@ class Profile extends AppModel {
     // Relationship
     public $belongsTo = 'User';
 
-    public function profilePictureRequired($data) {
-
-        if (strlen($data['file_picture']['name']) <= 0)
-            return false;
-
-        return true;
-    }
-
     public function isGenderSelected($data) {
-        if (in_array($data['Profile']['gender'], array('Male', 'Female'))) {
+        if (in_array($data['gender'], array('Male', 'Female'))) {
             return true;
         }
 

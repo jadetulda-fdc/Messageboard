@@ -28,7 +28,7 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 		<div class="w-100 d-flex pt-3 justify-content-center mb-4">
 			<?php
 			echo $this->Html->image(
-				isset($profileData['profile_picture']) ? $profileData['profile_picture'] : 'profile/test-image.png',
+				isset($profileData['profile_picture']) ? $profileData['profile_picture'] : 'profile/profile-pic.png',
 				array(
 					'width' => 220,
 					'height' => 220,
@@ -41,7 +41,7 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 			<input type="file" id="ProfileProfilePicture" name="data[Profile][file_picture]" value="<?php echo $profileData['profile_picture']; ?>" />
 		</div>
 	</div>
-	<div class="w-75 p-3">
+	<div class="w-75 p-3 align-self-stretch" style="border: 1px solid #d5d2d2; border-radius: 5px;">
 		<div class="p-1">
 			<div class="d-flex justify-content-between">
 				<label for="profile-name" class="col-form-label">Name</label>
@@ -63,8 +63,9 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 				<legend class="col-form-label">
 					Gender
 				</legend>
-				<div class="col-sm-8">
+				<div class="col-sm-8  form-control">
 					<div class="form-check form-check-inline">
+						<input type="hidden" name="data[Profile][gender]" value="<?php echo $profileData['gender']; ?>">
 						<input class="form-check-input" type="radio" name="data[Profile][gender]" id="ProfileGenderMale" value="Male" <?php echo $profileData['gender'] == 'Male' ? 'checked' : ''; ?> />
 						<label class="form-check-label mr-3" for="ProfileGenderMale">
 							Male
@@ -94,7 +95,7 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 			array(
 				'class' => 'form-control textarea-autosize',
 				'placeholder' => 'Write something as your hubby.',
-				'value' => $profileData['hubby'],
+				'value' => html_entity_decode($profileData['hubby']),
 				'style' => array('height: 62px;')
 			)
 		);
@@ -142,12 +143,24 @@ echo $this->Form->end();
 
 		$("#ProfileProfilePicture").on("change", function(e) {
 			const [file] = $(this)[0].files;
+			const allowedTypes = [
+				'image/png',
+				'image/jpeg',
+				'image/jpg',
+				'image/gif',
+			];
 
 			if (file) {
 				console.log(URL.createObjectURL(file));
-				$("#profile-img-placeholder").prop({
-					src: URL.createObjectURL(file),
-				});
+				if (allowedTypes.includes(file.type)) {
+					$("#profile-img-placeholder").prop({
+						src: URL.createObjectURL(file),
+					});
+				} else {
+					$("#profile-img-placeholder").prop({
+						src: '../img/file-error.png'
+					});
+				}
 			}
 		});
 	});
