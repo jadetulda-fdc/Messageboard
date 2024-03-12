@@ -38,24 +38,6 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
 
-            $this->User->validator()
-                ->add('password', array(
-                    'required' => array(
-                        'rule' => 'notBlank',
-                        'message' => 'Password field is required.'
-                    ),
-                    'confirm' => array(
-                        'rule' => 'matchPassword',
-                        'message' => "Password doesn't match.",
-                    ),
-                ))
-                ->add('password_confirm', array(
-                    'required' => array(
-                        'rule' => 'notBlank',
-                        'message' => 'Password confirm field is required.',
-                    )
-                ));
-
             // Create profile
             $this->loadModel('Profile');
             $this->Profile->create();

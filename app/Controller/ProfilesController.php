@@ -46,17 +46,42 @@ class ProfilesController extends AppController {
                 $isValidAll = false;
             }
 
-            // Validate user details on profile update
-            $this->User->set($this->request->data);
-            if (!$this->User->validates()) {
+            $this->User->validator()
+                ->add('current_password', array(
+                    'required' => array(
+                        'rule' => 'notBlank',
+                        'message' => 'Current password is required'
+                    ),
+                    'currentPasswordMatch' => array(
+                        'rule' => 'ifCurrentPasswordMatch',
+                        'message' => 'Current password entered doesn\'t match our records.'
+                    )
+                ));
+
+            // Validate current password first
+            $this->User->set('current_password', $this->request->data['User']['current_password']);
+
+            if (!$this->User->validates(array('fieldList' => array('current_password')))) {
                 $this->Flash->error($this->User->validationErrors);
                 $isValidAll = false;
+            } else {
+                // Sanitize New Password for validation
+                $this->request->data['User']['password'] = $this->request->data['User']['new_password'];
+                $this->request->data['User']['password_confirm'] = $this->request->data['User']['confirm_new_password'];
+
+                // Validate user details on profile update
+                $this->User->set($this->request->data);
+                if (!$this->User->validates(array(
+                    'fieldList' => array('password', 'password_confirm')
+                ))) {
+                    $this->Flash->error($this->User->validationErrors);
+                    $isValidAll = false;
+                }
             }
 
             // checks if all data has been validated
             if (!$isValidAll) {
                 $this->set('old_inputs', $this->request->data['Profile']);
-                $this->Flash->error('Something went wrong.');
                 return false;
             }
 

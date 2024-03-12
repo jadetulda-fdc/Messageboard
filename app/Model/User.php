@@ -19,6 +19,22 @@ class User extends AppModel {
                 'message' => 'Email has already been taken.'
             ),
         ),
+        'password' => array(
+            'required' => array(
+                'rule' => 'notBlank',
+                'message' => 'Password field is required.'
+            ),
+            'confirm' => array(
+                'rule' => 'matchPassword',
+                'message' => "Password doesn't match.",
+            ),
+        ),
+        'password_confirm' => array(
+            'required' => array(
+                'rule' => 'notBlank',
+                'message' => 'Password confirm field is required.',
+            )
+        )
     );
 
     // Relationship
@@ -30,6 +46,11 @@ class User extends AppModel {
         }
 
         return false;
+    }
+
+    public function ifCurrentPasswordMatch($data) {
+        $passwordHasher = new BlowfishPasswordHasher();
+        return $passwordHasher->check($data['current_password'], $this->data['User']['password']);
     }
 
     public function beforeSave($options = array()) {

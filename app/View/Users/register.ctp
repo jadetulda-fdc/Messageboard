@@ -14,7 +14,6 @@ $inputOptions = array(
         <div class="form-sign-in-error">
             <?php if ($this->validationErrors) { ?>
                 <div class="alert text-left" role="alert">
-
                     <ul class="list-group">
                         <?php
                         foreach ($this->validationErrors as $modelError => $model) {

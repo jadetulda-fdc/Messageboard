@@ -32,9 +32,8 @@ if ($checkedMale) {
 echo $this->Form->create('Profile', array('type' => 'file'));
 ?>
 
-<?php if ($this->validationErrors && count($this->validationErrors['Profile']) > 0) { ?>
+<?php if ($this->validationErrors && (count($this->validationErrors['Profile']) > 0 || count($this->validationErrors['User']) > 0)) { ?>
 	<div class="alert alert-danger text-left" role="alert">
-		<span class="text-uppercase"> <?php echo $this->Flash->render(); ?> </span>
 		<ul class="list-group pl-4">
 			<?php
 			foreach ($this->validationErrors as $modelError => $model) {
@@ -75,7 +74,7 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 					'name',
 					array(
 						'value' => isset($old_inputs['name']) ? $old_inputs['name'] : $profileData['name'],
-						'class' => 'form-control col-sm-8',
+						'class' => 'form-control col-sm-8 ' . (isset($this->validationErrors['Profile']['name']) ? 'is-invalid' : ''),
 						'label' => false,
 						'div' => false,
 						'error' => false
@@ -89,7 +88,7 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 				<legend class="col-form-label">
 					Gender
 				</legend>
-				<div class="col-sm-8  form-control">
+				<div class="col-sm-8 form-control <?php echo (isset($this->validationErrors['Profile']['gender']) ? 'is-invalid' : ''); ?>">
 					<div class="form-check form-check-inline">
 						<input type="hidden" name="data[Profile][gender]" value="<?php echo $gender ? $gender : ''; ?>">
 						<input class="form-check-input" type="radio" name="data[Profile][gender]" id="ProfileGenderMale" value="Male" <?php echo ($gender && $gender == 'Male') ? 'checked' : ''; ?> />
@@ -107,21 +106,22 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 		<div class="p-1">
 			<div class="d-flex justify-content-between">
 				<label for="ProfileBirthdate" class="col-form-label">Birthdate</label>
-				<input type="text" class="form-control col-sm-8" name="data[Profile][birthdate]" id="ProfileBirthdate" />
+				<input type="text" class="form-control col-sm-8 <?php echo (isset($this->validationErrors['Profile']['birthdate']) ? 'is-invalid' : ''); ?>" name="data[Profile][birthdate]" id="ProfileBirthdate" />
 			</div>
 		</div>
-		<!-- <div class="p-1">
+		<div class="p-1">
 			<div class="d-flex justify-content-between">
-				<label for="ProfileCurrentPassword" class="col-form-label">Current Password</label>
+				<label for="UserCurrentPassword" class="col-form-label">Current Password</label>
 				<?php
 				echo $this->Form->input(
-					'current_password',
+					'User.current_password',
 					array(
-						'class' => 'form-control col-sm-8',
+						'class' => 'form-control col-sm-8 ' . (isset($this->validationErrors['User']['current_password']) ? 'is-invalid' : ''),
 						'placeholder' => 'Enter current password',
 						'label' => false,
 						'div' => false,
-						'error' => false
+						'error' => false,
+						'type' => 'password'
 					)
 				);
 				?>
@@ -129,16 +129,17 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 		</div>
 		<div class="p-1">
 			<div class="d-flex justify-content-between">
-				<label for="ProfileNewPassword" class="col-form-label">New Password</label>
+				<label for="UserNewPassword" class="col-form-label">New Password</label>
 				<?php
 				echo $this->Form->input(
-					'new_password',
+					'User.new_password',
 					array(
 						'class' => 'form-control col-sm-8',
 						'placeholder' => 'Enter new password',
 						'label' => false,
 						'div' => false,
-						'error' => false
+						'error' => false,
+						'type' => 'password'
 					)
 				);
 				?>
@@ -146,21 +147,22 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 		</div>
 		<div class="p-1">
 			<div class="d-flex justify-content-between">
-				<label for="ProfileConfirmNewPassword" class="col-form-label">Confirm new password</label>
+				<label for="UserConfirmNewPassword" class="col-form-label">Confirm new password</label>
 				<?php
 				echo $this->Form->input(
-					'confirm_new_password',
+					'User.confirm_new_password',
 					array(
 						'class' => 'form-control col-sm-8',
 						'placeholder' => 'Re-enter new password',
 						'label' => false,
 						'div' => false,
-						'error' => false
+						'error' => false,
+						'type' => 'password'
 					)
 				);
 				?>
 			</div>
-		</div> -->
+		</div>
 	</div>
 </div>
 <div class="d-flex flex-column">
@@ -170,7 +172,7 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 		echo $this->Form->textarea(
 			'hubby',
 			array(
-				'class' => 'form-control textarea-autosize',
+				'class' => 'form-control textarea-autosize ' . (isset($this->validationErrors['Profile']['hubby']) ? 'is-invalid' : ''),
 				'placeholder' => 'Write something as your hubby.',
 				'value' => html_entity_decode(isset($old_inputs['hubby']) ? $old_inputs['hubby'] : $profileData['hubby']),
 				'style' => array('height: 62px;')
