@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 07, 2024 at 10:55 AM
+-- Generation Time: Mar 12, 2024 at 09:40 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.29
 
@@ -24,6 +24,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `recipient_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `modified_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message_details`
+--
+
+CREATE TABLE `message_details` (
+  `id` int(11) NOT NULL,
+  `message_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `modified_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `profiles`
 --
 
@@ -31,11 +59,21 @@ CREATE TABLE `profiles` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
-  `profile_picture` text NOT NULL,
-  `gender` enum('Male','Female') NOT NULL,
-  `birthdate` date NOT NULL,
-  `hubby` text NOT NULL
+  `profile_picture` text DEFAULT NULL,
+  `gender` enum('Male','Female') DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
+  `hubby` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `modified_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `profiles`
+--
+
+INSERT INTO `profiles` (`id`, `user_id`, `name`, `profile_picture`, `gender`, `birthdate`, `hubby`, `created_at`, `modified_at`) VALUES
+(1, 1, 'Jade Test First', 'profile/profile-1-jade-test-first.png', 'Male', '2000-03-12', 'asdf ', '2024-03-12 08:07:41', '2024-03-12 08:07:41'),
+(2, 2, 'jade test update', 'profile/profile-2-jade-test-z.png', 'Male', '2000-03-12', 'My H', '2024-03-12 08:07:41', '2024-03-12 08:08:21');
 
 -- --------------------------------------------------------
 
@@ -48,8 +86,8 @@ CREATE TABLE `users` (
   `email` varchar(30) NOT NULL,
   `password` text NOT NULL,
   `last_login_time` datetime DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `modified_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `modified_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -57,13 +95,24 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `last_login_time`, `created_at`, `modified_at`) VALUES
-(1, 'user@user.com', 'user', '2024-03-07 14:29:40', '2024-03-07 09:30:00', '2024-03-07 09:29:57'),
-(2, 'asdf@dfda.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, '2024-03-07 09:48:14', '2024-03-07 09:48:14'),
-(3, 'test@test.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', NULL, '2024-03-07 09:48:43', '2024-03-07 09:48:43');
+(1, 'jadetest@test.com', '$2a$10$S4qqxo2GuNpHDqqIXvS.Ge5D2EawIDflHCQuxYB1JS22KmApF0F/G', NULL, '2024-03-12 05:06:44', '2024-03-12 05:06:44'),
+(2, 'jadetest2@test.com', '$2a$10$lEWP0jlxaQESI6zdl8PCxuo6zAMhOtO9xsFgMkL8Csnuqv0jpWjDy', '2024-03-12 15:50:38', '2024-03-12 05:56:27', '2024-03-12 07:50:38');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `message_details`
+--
+ALTER TABLE `message_details`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `profiles`
@@ -84,16 +133,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `message_details`
+--
+ALTER TABLE `message_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
