@@ -1,7 +1,7 @@
 <div class="thank-you d-flex flex-column justify-content-center align-items-center">
     <h1>
         <?php
-        echo $this->Flash->render();
+        echo $this->Flash->render('register');
         ?>
     </h1>
     <?php

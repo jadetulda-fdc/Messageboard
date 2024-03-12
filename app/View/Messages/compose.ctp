@@ -10,12 +10,6 @@ $this->assign('title', 'Compose | MessageBoard');
         <div class="col-sm-10">
             <select id="message-recipient" class="js-example-basic-single w-50" name="recipient">
                 <option></option>
-                <option value="AL" data-img="test-image.png">
-                    Alabama
-                </option>
-                <option value="WY" data-img="test-image.png">
-                    Wyoming
-                </option>
             </select>
         </div>
     </div>
@@ -39,19 +33,20 @@ $this->assign('title', 'Compose | MessageBoard');
         $(".textarea-autosize").textareaAutoSize();
 
         function formatState(state) {
-            if (!state.id) {
-                return state.text;
-            }
-            var baseUrl = "/img";
+            // if (!state.id) {
+            //     return state.text;
+            // }
+            // var baseUrl = "/img";
 
-            var $state = $(
-                '<span><img src="' +
-                state.owner.avatar_url +
-                '" class="img-fluid img-thumbnail" width="50" /> ' +
-                state.full_name +
-                "</span>"
-            );
-            return $state;
+            // var $state = $(
+            //     '<span><img src="' +
+            //     state.owner.avatar_url +
+            //     '" class="img-fluid img-thumbnail" width="50" /> ' +
+            //     state.full_name +
+            //     "</span>"
+            // );
+            // return $state;
+            console.log(state);
         }
 
         $("#message-recipient").select2({
@@ -59,7 +54,8 @@ $this->assign('title', 'Compose | MessageBoard');
             minimumInputLength: 3,
             templateResult: formatState,
             ajax: {
-                url: "https://api.github.com/search/repositories",
+                // url: "https://api.github.com/search/repositories",
+                url: "../recipients/index.json",
                 dataType: "json",
                 delay: 250,
                 data: function(params) {

@@ -42,4 +42,9 @@ CakePlugin::routes();
  * Load the CakePHP default routes. Only remove this if you do not want to use
  * the built-in default routes.
  */
+
+//  API routes
+Router::mapResources('users');
+Router::parseExtensions('json');
+
 require CAKE . 'Config' . DS . 'routes.php';
