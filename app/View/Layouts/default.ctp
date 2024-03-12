@@ -31,20 +31,20 @@
 <body>
 	<div id="container">
 		<?php
-		if (AuthComponent::user()) {
+		if ($logged_user) {
 			echo $this->element('header');
 		}
 		?>
 		<div class="container-fluid">
 			<div class="row" style="height: 100vh;">
 				<?php
-				if (AuthComponent::user()) {
+				if ($logged_user) {
 					echo $this->element('sidebar');
 				}
 				?>
 
 				<?php
-				if (!AuthComponent::user()) {
+				if (!$logged_user) {
 				?>
 					<div id="content" class="m-auto">
 						<?php echo $this->fetch('content'); ?>

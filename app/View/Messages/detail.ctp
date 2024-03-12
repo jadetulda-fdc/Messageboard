@@ -1,3 +1,7 @@
+<?php
+$this->assign('page_header', 'Message Thread');
+$this->assign('title', 'Thread | Messageboard');
+?>
 <div class="d-flex mb-3 gap-2">
     <textarea name="reply-message" placeholder="Write a message" class="form-control textarea-autosize" style="height: 62px"></textarea>
     <button class="btn btn-info align-self-start" id="send-reply">

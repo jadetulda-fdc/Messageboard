@@ -38,7 +38,24 @@ class User extends AppModel {
     );
 
     // Relationship
-    public $hasOne = 'Profile';
+    public $hasOne = array(
+        'Profile' => array(
+            'className' => 'Profile',
+            'foreignKey' => 'user_id',
+            'dependent' => true
+        )
+    );
+
+    public $hasMany = array(
+        'MessageSent' => array(
+            'className' => 'Message',
+            'foreignKey' => 'first_user_id_in_thread',
+        ),
+        'MessageReceived' => array(
+            'className' => 'Message',
+            'foreignKey' => 'second_user_id_in_thread'
+        )
+    );
 
     public function matchPassword($data) {
         if ($data['password'] === $this->data['User']['password_confirm']) {

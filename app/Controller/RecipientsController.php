@@ -6,47 +6,36 @@ class RecipientsController extends AppController {
     public function index() {
         $this->loadModel('User');
 
-        $q = $this->request->query['q'];
+        $q = isset($this->request->query['q']) ? $this->request->query['q'] : '';
 
         $options['fields'] = array(
             'User.id', 'Profile.name', 'Profile.profile_picture'
         );
 
         $options['conditions'] = array(
+            'User.id != ' => $this->Auth->user('id'),
             'Profile.name LIKE' => "%$q%"
         );
 
         $recipients = $this->User->find('all', $options);
 
-        $results = [];
-        foreach ($recipients as $recipient) {
-            $results[] = [
-                'id' => $recipient['User']['id'],
-                'text' => $recipient['Profile']['name'],
-                'img' => $recipient['Profile']['profile_picture']
-            ];
+        if (count($recipients)) {
+            foreach ($recipients as $recipient) {
+                $results['data'][] = [
+                    'id' => $recipient['User']['id'],
+                    'text' => $recipient['Profile']['name'],
+                    'img' => $recipient['Profile']['profile_picture']
+                ];
+            }
+        } else {
+            $results['data'] = [];
         }
+
+        $results['total_count'] = count($recipients);
 
         $this->set(array(
             'results' => $results,
             '_serialize' => array('results')
         ));
-
-        // Sample data
-        // {
-        //     "results": [
-        //       {
-        //         "id": 1,
-        //         "text": "Option 1"
-        //       },
-        //       {
-        //         "id": 2,
-        //         "text": "Option 2"
-        //       }
-        //     ],
-        //     "pagination": {
-        //       "more": true
-        //     }
-        //   }
     }
 }
