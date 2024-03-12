@@ -7,10 +7,10 @@ $checkedMale = false;
 $checkedFemale = false;
 $gender = null;
 
-if (isset($old_inputs['gender'])) {
-	if ($old_inputs['gender'] == 'Male') {
+if (isset($this->data['Profile']['gender'])) {
+	if ($this->data['Profile']['gender'] == 'Male') {
 		$checkedMale = true;
-	} elseif ($old_inputs['gender'] == 'Female') {
+	} elseif ($this->data['Profile']['gender'] == 'Female') {
 		$checkedFemale = true;
 	}
 } else {
@@ -73,7 +73,7 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 				echo $this->Form->input(
 					'name',
 					array(
-						'value' => isset($old_inputs['name']) ? $old_inputs['name'] : $profileData['name'],
+						'value' => isset($this->data['Profile']['name']) ? $this->data['Profile']['name'] : $profileData['name'],
 						'class' => 'form-control col-sm-8 ' . (isset($this->validationErrors['Profile']['name']) ? 'is-invalid' : ''),
 						'label' => false,
 						'div' => false,
@@ -163,6 +163,24 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 				?>
 			</div>
 		</div>
+		<div class="p-1">
+			<div class="d-flex justify-content-between">
+				<label for="UserEmail" class="col-form-label">Email</label>
+				<?php
+				echo $this->Form->input(
+					'User.email',
+					array(
+						'value' => isset($this->data['User']['email']) ? $this->data['User']['email'] : $userData['email'],
+						'class' => 'form-control col-sm-8 ' . (isset($this->validationErrors['User']['email']) ? 'is-invalid' : ''),
+						'placeholder' => 'Enter your email',
+						'label' => false,
+						'div' => false,
+						'error' => false,
+					)
+				);
+				?>
+			</div>
+		</div>
 	</div>
 </div>
 <div class="d-flex flex-column">
@@ -174,7 +192,7 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 			array(
 				'class' => 'form-control textarea-autosize ' . (isset($this->validationErrors['Profile']['hubby']) ? 'is-invalid' : ''),
 				'placeholder' => 'Write something as your hubby.',
-				'value' => html_entity_decode(isset($old_inputs['hubby']) ? $old_inputs['hubby'] : $profileData['hubby']),
+				'value' => html_entity_decode(isset($this->data['Profile']['hubby']) ? $this->data['Profile']['hubby'] : $profileData['hubby']),
 				'style' => array('height: 62px;')
 			)
 		);

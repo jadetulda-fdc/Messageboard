@@ -8,7 +8,7 @@ $inputOptions = array(
     'label' => array('class' => 'col-sm-3 col-form-label text-right'),
     'class' => array('col-sm-9 form-control')
 );
-$flashMessage = $this->Flash->render();
+$flashMessage = $this->Flash->render('loginError');
 ?>
 <div class="text-center">
     <div class="form-sign-in">

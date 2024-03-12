@@ -39,7 +39,8 @@ $inputOptions = array(
             'div' => $inputOptions['div'],
             'label' => $inputOptions['label'],
             'class' => $inputOptions['class'],
-            'type' => 'password'
+            'type' => 'password',
+            'error' => false
         ));
         ?>
         <div class="d-flex justify-content-end align-items-center gap-3">

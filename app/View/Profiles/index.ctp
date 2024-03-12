@@ -3,7 +3,7 @@ $this->assign('page_header', 'User Profile');
 $this->assign('title', 'Profile | MessageBoard');
 $profileData = $profile['Profile'];
 $userData = $profile['User'];
-$flashMessage = $this->Flash->render();
+$flashMessage = $this->Flash->render('positive');
 ?>
 
 <?php if (isset($flashMessage)) { ?>

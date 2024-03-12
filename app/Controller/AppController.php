@@ -34,6 +34,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
     public $components = array(
         'Flash',
+        'Session',
         'Auth' => array(
             'loginRedirect' => array(
                 'controller' => 'users',
@@ -56,10 +57,5 @@ class AppController extends Controller {
     // if the logged in user is authorized to perform such action
     public function isAuthorized() {
         return $this->Auth->user();
-    }
-
-    // What pages to allow for non-logged in users
-    public function beforeFilter() {
-        $this->set('current_user',  $this->Auth->user());
     }
 }

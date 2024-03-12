@@ -72,7 +72,7 @@ class ProfilesController extends AppController {
                 // Validate user details on profile update
                 $this->User->set($this->request->data);
                 if (!$this->User->validates(array(
-                    'fieldList' => array('password', 'password_confirm')
+                    'fieldList' => array('email', 'password', 'password_confirm')
                 ))) {
                     $this->Flash->error($this->User->validationErrors);
                     $isValidAll = false;
@@ -81,13 +81,14 @@ class ProfilesController extends AppController {
 
             // checks if all data has been validated
             if (!$isValidAll) {
-                $this->set('old_inputs', $this->request->data['Profile']);
                 return false;
             }
 
             // save to DB
             $this->Profile->save($this->request->data, array('validate' => false));
             $this->User->save($this->request->data, array('validate' => false));
+
+            $this->Session->write('Auth', $this->User->read(null, $this->Auth->user()['id']));
 
             // upload file if there's an attachment of form submit
             if (isset($newFileName)) {
@@ -97,7 +98,9 @@ class ProfilesController extends AppController {
                 );
             }
 
-            $this->Flash->success('Your profile has been updated successfully!');
+            $this->Flash->success('Your profile has been updated successfully!', array(
+                'key' => 'positive'
+            ));
             return $this->redirect(array('action' => 'index'));
         }
     }

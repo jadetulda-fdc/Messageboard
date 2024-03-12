@@ -25,7 +25,9 @@ class UsersController extends AppController {
 
                 return $this->redirect($this->Auth->redirectUrl());
             } else {
-                $this->Flash->error('Your username/password entered was incorrect.');
+                $this->Flash->error('Your username/password entered was incorrect.', array(
+                    'key' => 'loginError'
+                ));
             }
         }
     }

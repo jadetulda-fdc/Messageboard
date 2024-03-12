@@ -11,7 +11,7 @@
         <li class="nav-item text-nowrap">
             <span class="nav-link" href="#">
                 <?php
-                echo $current_user['email'];
+                echo AuthComponent::user('email');
                 ?> |
                 <?php
                 echo $this->Html->link(
