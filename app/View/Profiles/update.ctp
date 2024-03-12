@@ -3,6 +3,29 @@ $this->assign('page_header', 'Update | User Profile');
 $this->assign('title', 'Update | MessageBoard');
 $profileData = $profile['Profile'];
 $userData = $profile['User'];
+$checkedMale = false;
+$checkedFemale = false;
+$gender = null;
+
+if (isset($old_inputs['gender'])) {
+	if ($old_inputs['gender'] == 'Male') {
+		$checkedMale = true;
+	} elseif ($old_inputs['gender'] == 'Female') {
+		$checkedFemale = true;
+	}
+} else {
+	if ($profileData['gender'] == 'Male') {
+		$checkedMale = true;
+	} elseif ($profileData['gender'] == 'Female') {
+		$checkedFemale = true;
+	}
+}
+
+if ($checkedMale) {
+	$gender = 'Male';
+} elseif ($checkedFemale) {
+	$gender = 'Female';
+}
 ?>
 
 <?php
@@ -14,10 +37,12 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 		<span class="text-uppercase"> <?php echo $this->Flash->render(); ?> </span>
 		<ul class="list-group pl-4">
 			<?php
-			foreach ($this->validationErrors['Profile'] as $error => $msg) {
+			foreach ($this->validationErrors as $modelError => $model) {
+				foreach ($model as $error => $msg) {
 			?>
-				<li><?php echo $msg[0]; ?></li>
+					<li><?php echo $msg[0]; ?></li>
 			<?php
+				}
 			}
 			?>
 		</ul>
@@ -38,21 +63,22 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 			?>
 		</div>
 		<div>
-			<input type="file" id="ProfileProfilePicture" name="data[Profile][file_picture]" value="<?php echo $profileData['profile_picture']; ?>" />
+			<input type="file" id="ProfileProfilePicture" name="data[Profile][file_picture]" />
 		</div>
 	</div>
 	<div class="w-75 p-3 align-self-stretch" style="border: 1px solid #d5d2d2; border-radius: 5px;">
 		<div class="p-1">
 			<div class="d-flex justify-content-between">
-				<label for="profile-name" class="col-form-label">Name</label>
+				<label for="ProfileName" class="col-form-label">Name</label>
 				<?php
 				echo $this->Form->input(
 					'name',
 					array(
-						'value' => $profileData['name'],
+						'value' => isset($old_inputs['name']) ? $old_inputs['name'] : $profileData['name'],
 						'class' => 'form-control col-sm-8',
 						'label' => false,
-						'div' => false
+						'div' => false,
+						'error' => false
 					)
 				);
 				?>
@@ -65,12 +91,12 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 				</legend>
 				<div class="col-sm-8  form-control">
 					<div class="form-check form-check-inline">
-						<input type="hidden" name="data[Profile][gender]" value="<?php echo $profileData['gender']; ?>">
-						<input class="form-check-input" type="radio" name="data[Profile][gender]" id="ProfileGenderMale" value="Male" <?php echo $profileData['gender'] == 'Male' ? 'checked' : ''; ?> />
+						<input type="hidden" name="data[Profile][gender]" value="<?php echo $gender ? $gender : ''; ?>">
+						<input class="form-check-input" type="radio" name="data[Profile][gender]" id="ProfileGenderMale" value="Male" <?php echo ($gender && $gender == 'Male') ? 'checked' : ''; ?> />
 						<label class="form-check-label mr-3" for="ProfileGenderMale">
 							Male
 						</label>
-						<input class="form-check-input" type="radio" name="data[Profile][gender]" id="ProfileGenderFemale" value="Female" <?php echo $profileData['gender'] == 'Female' ? 'checked' : ''; ?> />
+						<input class="form-check-input" type="radio" name="data[Profile][gender]" id="ProfileGenderFemale" value="Female" <?php echo ($gender && $gender == 'Female') ? 'checked' : ''; ?> />
 						<label class="form-check-label" for="ProfileGenderFemale">
 							Female
 						</label>
@@ -84,6 +110,57 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 				<input type="text" class="form-control col-sm-8" name="data[Profile][birthdate]" id="ProfileBirthdate" />
 			</div>
 		</div>
+		<!-- <div class="p-1">
+			<div class="d-flex justify-content-between">
+				<label for="ProfileCurrentPassword" class="col-form-label">Current Password</label>
+				<?php
+				echo $this->Form->input(
+					'current_password',
+					array(
+						'class' => 'form-control col-sm-8',
+						'placeholder' => 'Enter current password',
+						'label' => false,
+						'div' => false,
+						'error' => false
+					)
+				);
+				?>
+			</div>
+		</div>
+		<div class="p-1">
+			<div class="d-flex justify-content-between">
+				<label for="ProfileNewPassword" class="col-form-label">New Password</label>
+				<?php
+				echo $this->Form->input(
+					'new_password',
+					array(
+						'class' => 'form-control col-sm-8',
+						'placeholder' => 'Enter new password',
+						'label' => false,
+						'div' => false,
+						'error' => false
+					)
+				);
+				?>
+			</div>
+		</div>
+		<div class="p-1">
+			<div class="d-flex justify-content-between">
+				<label for="ProfileConfirmNewPassword" class="col-form-label">Confirm new password</label>
+				<?php
+				echo $this->Form->input(
+					'confirm_new_password',
+					array(
+						'class' => 'form-control col-sm-8',
+						'placeholder' => 'Re-enter new password',
+						'label' => false,
+						'div' => false,
+						'error' => false
+					)
+				);
+				?>
+			</div>
+		</div> -->
 	</div>
 </div>
 <div class="d-flex flex-column">
@@ -95,7 +172,7 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 			array(
 				'class' => 'form-control textarea-autosize',
 				'placeholder' => 'Write something as your hubby.',
-				'value' => html_entity_decode($profileData['hubby']),
+				'value' => html_entity_decode(isset($old_inputs['hubby']) ? $old_inputs['hubby'] : $profileData['hubby']),
 				'style' => array('height: 62px;')
 			)
 		);
@@ -133,7 +210,7 @@ echo $this->Form->end();
 			changeYear: true,
 			maxDate: new Date(),
 			showButtonPanel: true,
-			dateFormat: 'yy-mm-dd'
+			// dateFormat: 'yy-mm-dd'
 		});
 
 		$("#ProfileBirthdate").datepicker(

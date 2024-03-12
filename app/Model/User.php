@@ -5,16 +5,6 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 class User extends AppModel {
 
     public $validate = array(
-        'name' => array(
-            'required' => array(
-                'rule' => 'notBlank',
-                'message' => 'Name field is required.'
-            ),
-            'Name Length' => array(
-                'rule' => array('lengthBetween', 5, 20),
-                'message' => 'Name field length must be between 5 and 20 charaters only.'
-            )
-        ),
         'email' => array(
             'required' => array(
                 'rule' => 'notBlank',
@@ -29,29 +19,12 @@ class User extends AppModel {
                 'message' => 'Email has already been taken.'
             ),
         ),
-        'password' => array(
-            'required' => array(
-                'rule' => 'notBlank',
-                'message' => 'Password field is required.'
-            ),
-            'confirm' => array(
-                'rule' => 'matchPassword',
-                'message' => "Password doesn't match."
-            )
-        ),
-        'password_confirm' => array(
-            'required' => array(
-                'rule' => 'notBlank',
-                'message' => 'Password confirm field is required.'
-            )
-        )
     );
 
     // Relationship
     public $hasOne = 'Profile';
 
     public function matchPassword($data) {
-
         if ($data['password'] === $this->data['User']['password_confirm']) {
             return true;
         }

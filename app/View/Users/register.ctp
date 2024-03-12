@@ -17,10 +17,12 @@ $inputOptions = array(
 
                     <ul class="list-group">
                         <?php
-                        foreach ($this->validationErrors['User'] as $error => $msg) {
+                        foreach ($this->validationErrors as $modelError => $model) {
+                            foreach ($model as $error_msg => $msg) {
                         ?>
-                            <li class="list-group-item list-group-item-danger"><?php echo $msg[0]; ?></li>
+                                <li class="list-group-item list-group-item-danger"><?php echo $msg[0]; ?></li>
                         <?php
+                            }
                         }
                         ?>
                     </ul>
