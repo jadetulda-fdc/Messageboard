@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2024 at 09:40 AM
+-- Generation Time: Mar 12, 2024 at 11:04 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.29
 
@@ -73,7 +73,8 @@ CREATE TABLE `profiles` (
 
 INSERT INTO `profiles` (`id`, `user_id`, `name`, `profile_picture`, `gender`, `birthdate`, `hubby`, `created_at`, `modified_at`) VALUES
 (1, 1, 'Jade Test First', 'profile/profile-1-jade-test-first.png', 'Male', '2000-03-12', 'asdf ', '2024-03-12 08:07:41', '2024-03-12 08:07:41'),
-(2, 2, 'jade test update', 'profile/profile-2-jade-test-z.png', 'Male', '2000-03-12', 'My H', '2024-03-12 08:07:41', '2024-03-12 08:08:21');
+(2, 2, 'jade test update', 'profile/profile-2-jade-test-z.png', 'Male', '2000-03-12', 'My H', '2024-03-12 08:07:41', '2024-03-12 08:08:21'),
+(3, 3, 'Jade Test Three', 'profile/profile-pic.png', NULL, NULL, NULL, '2024-03-12 09:02:42', '2024-03-12 09:02:42');
 
 -- --------------------------------------------------------
 
@@ -96,7 +97,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `last_login_time`, `created_at`, `modified_at`) VALUES
 (1, 'jadetest@test.com', '$2a$10$S4qqxo2GuNpHDqqIXvS.Ge5D2EawIDflHCQuxYB1JS22KmApF0F/G', NULL, '2024-03-12 05:06:44', '2024-03-12 05:06:44'),
-(2, 'jadetest2@test.com', '$2a$10$lEWP0jlxaQESI6zdl8PCxuo6zAMhOtO9xsFgMkL8Csnuqv0jpWjDy', '2024-03-12 15:50:38', '2024-03-12 05:56:27', '2024-03-12 07:50:38');
+(2, 'jadetest2@test.com', '$2a$10$lEWP0jlxaQESI6zdl8PCxuo6zAMhOtO9xsFgMkL8Csnuqv0jpWjDy', '2024-03-12 18:01:06', '2024-03-12 05:56:27', '2024-03-12 10:01:06'),
+(3, 'jadetest3@test.com', '$2a$10$Vfti7otH4pFxlUV1dnRxyO/sRNdaHPsk614Gqv9l9PPNa8OxjoCqq', '2024-03-12 17:04:12', '2024-03-12 09:02:42', '2024-03-12 09:04:12');
 
 --
 -- Indexes for dumped tables
@@ -148,13 +150,13 @@ ALTER TABLE `message_details`
 -- AUTO_INCREMENT for table `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
