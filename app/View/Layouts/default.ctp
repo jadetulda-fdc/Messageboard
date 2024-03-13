@@ -53,8 +53,12 @@
 				} else {
 				?>
 					<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-						<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-							<h1 class="h2"><?php echo $this->fetch('page_header'); ?></h1>
+						<div class="d-flex flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom gap-3">
+							<div class="align-self-center">
+								<!-- <a href="#" class="text-dark"><i class="fa-solid fa-circle-left fa-2x"></i></a> -->
+								<?php echo $this->fetch('back_link'); ?>
+							</div>
+							<div class="h2"><?php echo $this->fetch('page_header'); ?></div>
 						</div>
 						<div id="content" class="m-auto">
 							<?php echo $this->fetch('content'); ?>

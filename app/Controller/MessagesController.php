@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\map;
+
 class MessagesController extends AppController {
 
     public function index() {
@@ -77,18 +79,18 @@ class MessagesController extends AppController {
                 $this->request->data['Message']['first_user_id_in_thread'] = $sender_id;
 
                 if ($this->Message->save($this->request->data)) {
-                    $this->saveMessage([$this->Message->id, $this->request->data['Message']['message']]);
+                    $this->saveMessage([$this->Message->id, $this->request->data['Message']['message'], $recipient_id]);
                     $this->Flash->success('Message Sent!', array('key' => 'message_sent'));
                     return $this->redirect(array('action' => 'index'));
                 }
             } else {
                 // else -> append to the existing thread (get thread ID)
-                $this->saveMessage([$messageId, $this->request->data['Message']['message']]);
+                $this->saveMessage([$messageId, $this->request->data['Message']['message'], $recipient_id]);
 
                 // update timestamp of existing message
-                $this->Message->id = $messageId;
-                $this->Message->set('modified_at', (new DateTime())->format('Y-m-d H:i:s'));
-                $this->Message->save();
+                // $this->Message->id = $messageId;
+                // $this->Message->set('modified_at', (new DateTime())->format('Y-m-d H:i:s'));
+                // $this->Message->save();
 
                 $this->Flash->success('Message Sent!', array('key' => 'message_sent'));
                 return $this->redirect(array('action' => 'index'));
@@ -98,7 +100,49 @@ class MessagesController extends AppController {
         }
     }
 
-    public function detail() {
+    public function detail($id = null) {
+        if (!$id) {
+            throw new InvalidArgumentException('Invalid Request');
+        }
+        $error = $this->validationErrors;
+
+        $message = $this->Message->findById($id);
+        if (!$message) {
+            throw new NotFoundException('Data not found');
+        }
+
+        $options['fields'] = array(
+            'Profile1.user_id, Profile1.name, Profile1.profile_picture',
+            'Profile2.user_id, Profile2.name, Profile2.profile_picture',
+        );
+
+        $options['conditions'] = array(
+            'Message.id' => $id
+        );
+
+        $options['joins'] = array(
+            array(
+                'table' => 'profiles',
+                'alias' => 'Profile1',
+                'type' => 'LEFT',
+                'conditions' => array(
+                    'ThreadOwner1.id = Profile1.user_id'
+                )
+            ),
+            array(
+                'table' => 'profiles',
+                'alias' => 'Profile2',
+                'type' => 'LEFT',
+                'conditions' => array(
+                    'ThreadOwner2.id = Profile2.user_id'
+                )
+            )
+        );
+
+
+        $thread = $this->Message->find('first', $options);
+
+        $this->set('thread', $thread);
     }
 
     /**
@@ -132,17 +176,19 @@ class MessagesController extends AppController {
     }
 
     /**
-     * @param array $data: [0] -> message_id, [1] -> message
+     * @param array $data: [0] -> message_id, [1] -> message, [2] -> recipient_id
      * @return Message.id|null
      */
     private function saveMessage($data) {
-        [$message_id, $message] = $data;
+        [$message_id, $message, $recipient_id] = $data;
         $this->loadModel('MessageDetail');
 
         // insert message to message detail
         $this->MessageDetail->create();
         $this->MessageDetail->set(array(
             'message_id' => $message_id,
+            'sender_id' => $this->Auth->user('id'),
+            'recipient_id' => $recipient_id,
             'message' => h($message)
         ));
         $this->MessageDetail->save();

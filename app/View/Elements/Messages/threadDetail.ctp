@@ -25,7 +25,7 @@ $threadInfo = $thread['ThreadDetail'][0];
                 <?php echo $personToDisplay['name']; ?>
             </div>
             <div class="d-flex gap-2">
-                <div class="border-right pr-2 text-muted">
+                <div class="border-right pr-2 align-self-center text-muted" style="font-size: 11px;">
                     <?php
                     if ($threadInfo['sender_id'] == AuthComponent::user('id')) {
                         echo "You replied on, ";
@@ -34,7 +34,7 @@ $threadInfo = $thread['ThreadDetail'][0];
                     }
                     ?>
                     <?php
-                    echo (new DateTime($thread['Message']['modified_at']))->format('M d, Y h:iA');
+                    echo (new DateTime($threadInfo['modified_at']))->format('M d, Y h:iA');
                     ?>
                 </div>
                 <div class="d-flex justify-content-end gap-2 message-list-action">
@@ -43,7 +43,8 @@ $threadInfo = $thread['ThreadDetail'][0];
                         '<i class="fa-solid fa-reply"></i>',
                         array(
                             'controller' => 'messages',
-                            'action' => 'detail'
+                            'action' => 'detail',
+                            $thread['Message']['id']
                         ),
                         array(
                             'class' => 'text-primary',

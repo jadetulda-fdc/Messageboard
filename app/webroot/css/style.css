@@ -153,6 +153,27 @@ textarea {
 	text-align: right;
 }
 
+/* Both */
+
+/* #message-list .message-list-footer .message-list-action a,
+#message-detail .message-list-footer .message-list-action a {
+	font-size: 16px;
+	cursor: pointer;
+} */
+
+.see-more {
+	color: #007bff;
+	cursor: pointer;
+}
+
+.last-message-info {
+	flex: 1 1 auto;
+}
+
+.message-list-footer {
+	border-top: 1px solid #ececec;
+}
+
 /* Message List */
 #message-list .message-list-container {
 	border: 1px solid #e7e3e3;
@@ -160,30 +181,17 @@ textarea {
 	background-color: #fff;
 }
 
-#message-list .last-message-info {
-	flex: 1 1 auto;
-}
-
-#message-list .message-list-footer {
-	border-top: 1px solid #ececec;
-}
-
-#message-list .message-list-footer .message-list-action a {
+.message-list-footer .message-list-action a {
 	font-size: 16px;
-	cursor: pointer;
-}
-
-#message-list .see-more {
-	color: #007bff;
-	cursor: pointer;
+	/* cursor: pointer; */
 }
 
 /* Message Detail */
-#message-list .message-detail-container {
+#message-detail .message-detail-container {
 	border: 1px solid #e7e3e3;
 	border-radius: 5px;
 	background-color: #fff;
-	max-width: 70%;
+	max-width: 60%;
 }
 
 /* Gap */

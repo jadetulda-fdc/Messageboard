@@ -1,111 +1,78 @@
 <?php
 $this->assign('page_header', 'Message Thread');
 $this->assign('title', 'Thread | Messageboard');
+$this->assign('back_link', $this->Html->link(
+    '<i class="fa-solid fa-circle-left fa-2x"></i>',
+    array(
+        'controller' => 'messages',
+        'action' => 'index',
+    ),
+    array(
+        'class' => 'text-dark',
+        'escape' => false
+    )
+));
 ?>
-<div class="d-flex mb-3 gap-2">
-    <textarea name="reply-message" placeholder="Write a message" class="form-control textarea-autosize" style="height: 62px"></textarea>
-    <button class="btn btn-info align-self-start" id="send-reply">
-        Send
-    </button>
-</div>
+
+<!-- Form -->
+<?php
+echo $this->Form->create('MessageDetail', array(
+    'url' => array(
+        'controller' => 'message_details',
+        'action' => 'send_message'
+    ),
+    'class' => 'd-flex mb-3 gap-2'
+));
+echo $this->Form->textarea('message', array(
+    'placeholder' => 'Write a message',
+    'class' => 'form-control textarea-autosize',
+    'style' => 'height: 62px;',
+));
+echo $this->Form->hidden('sender_id', array(
+    'value' => AuthComponent::user('id')
+));
+echo $this->Form->hidden('recipient_id', array(
+    'value' => AuthComponent::user('id') != $thread['Profile1']['user_id'] ? $thread['Profile1']['user_id'] : $thread['Profile2']['user_id']
+));
+echo $this->Form->hidden('message_id', array(
+    'value' => $thread['Message']['id']
+));
+?>
+<button class="btn btn-info align-self-center" id="send-reply">
+    <i class="fa-solid fa-paper-plane"></i>
+</button>
+<?php echo $this->Form->end(); ?>
 <hr />
-<div class="d-flex flex-column gap-3 mb-3" id="message-list">
+<div class="d-flex flex-column gap-3 mb-3" id="message-detail">
     <!-- Note: Each list is generated via component -->
-    <!-- class "flex-row-reverse should be removed if message is from someone" -->
-    <div class="d-flex flex-row-reverse align-self-end p-2 gap message-detail-container">
-        <div class="col-sm-1 p-0">
-            <?php
-            echo $this->Html->image(
-                'profile/test-image.png',
-                array(
-                    'class' => 'img-thumbnail'
-                )
-            );
-            ?>
-        </div>
-        <div class="d-flex flex-column justify-content-between col-sm-11 p-0 px-2">
-            <div class="last-message-info p-1">
-                <div class="msg-context">
-                    Last Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message here
-                </div>
-            </div>
-            <div class="d-flex flex-row-reverse justify-content-between align-items-center p-1 message-list-footer">
-                <div class="text-uppercase font-weight-bold">
-                    You
-                </div>
-                <div class="d-flex flex-row-reverse gap-2">
-                    <div>
-                        Tuesday, March 8, 2024 3:40pm
-                    </div>
-                    <div class="d-flex justify-content-end gap-2 message-list-action border-right pr-2">
-                        <a href="#" class="text-danger" alt="Delete" title="Delete">
-                            <i class="fa-solid fa-trash"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex p-2 gap message-detail-container">
-        <div class="col-sm-1 p-0">
-            <?php
-            echo $this->Html->image(
-                'profile/test-image.png',
-                array(
-                    'class' => 'img-thumbnail'
-                )
-            );
-            ?>
-        </div>
-        <div class="d-flex flex-column justify-content-between col-sm-11 p-0 px-2">
-            <div class="last-message-info p-1">
-                <div class="msg-context">
-                    Last Message hereLast Message
-                    hereLast Message hereLast Message
-                    hereLast Message hereLast Messa
-                </div>
-            </div>
-            <div class="d-flex justify-content-between align-items-center p-1 message-list-footer">
-                <div class="text-uppercase font-weight-bold">
-                    You
-                </div>
-                <div class="d-flex gap-2">
-                    <div class="border-right pr-2">
-                        Tuesday, March 8, 2024 3:40pm
-                    </div>
-                    <div class="d-flex justify-content-end gap-2 message-list-action">
-                        <a href="#" class="text-danger" alt="Delete" title="Delete">
-                            <i class="fa-solid fa-trash"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php
+    if (count($thread) > 0) {
+        $messages = $thread['MessageDetail'];
+
+        foreach ($messages as $message) {
+            $is_from_sender = $message['sender_id'] == AuthComponent::user('id');
+
+            if (!$is_from_sender) {
+                $name = $message['sender_id'] == $thread['Profile1']['user_id'] ? $thread['Profile1']['name'] : $thread['Profile2']['name'];
+            } else {
+                $name = 'You';
+            }
+
+            $img = $message['sender_id'] == $thread['Profile1']['user_id'] ? $thread['Profile1']['profile_picture'] : $thread['Profile2']['profile_picture'];
+
+            echo $this->element('Messages/threadMessage', compact(['is_from_sender', 'message', 'img', 'name']));
+        }
+    }
+    ?>
+    <?php
+    ?>
 </div>
-<hr />
-<div class="text-center font-italic toAdd">
-    Load more messages
-</div>
+<?php if (count($thread)) { ?>
+    <hr />
+    <div class="text-center font-italic toAdd">
+        Load more messages
+    </div>
+<?php } ?>
 <script>
     $(function() {
 
@@ -113,7 +80,7 @@ $this->assign('title', 'Thread | Messageboard');
 
         const MESSAGE_LENGTH_LIMIT = 100;
 
-        $("body #message-list .last-message-info").on(
+        $("body #message-detail .last-message-info").on(
             "click",
             ".see-more",
             function() {
@@ -122,8 +89,8 @@ $this->assign('title', 'Thread | Messageboard');
         );
 
         $messageListContainer = getParentElement(
-            $("#message-list .last-message-info")[0],
-            "message-list"
+            $("#message-detail .last-message-info")[0],
+            "message-detail"
         );
 
         $firstElement = "";
@@ -142,10 +109,7 @@ $this->assign('title', 'Thread | Messageboard');
             }
         }
 
-        $("#message-list .last-message-info").each(function(
-            index,
-            el
-        ) {
+        $("#message-detail .last-message-info").each(function(index, el) {
             if (index == 0) {
                 $firstElement = $(this).parent().parent();
             }
@@ -232,27 +196,88 @@ $this->assign('title', 'Thread | Messageboard');
             );
         });
 
-        $("#send-reply").on("click", function() {
-            const isSender = Math.random() < 0.5;
-            let clonedEl = $firstElement.clone(true);
-            const replyMessage = $(
-                'textarea[name="reply-message"]'
-            ).val();
+        // Form Submit (Send Message)
+        $('#MessageDetailSendMessageForm').on('submit', function(e) {
+            e.preventDefault();
 
-            console.log(replyMessage);
+            const form = $(this);
+            var actionUrl = form.prop('action');
+            $.ajax({
+                url: actionUrl,
+                method: 'POST',
+                data: $(this).serialize(),
+                success: function(result, textStatus, request) {
 
-            if (isSender) clonedEl = removeFlexReverse(clonedEl);
+                    var response_content_type = request.getResponseHeader('content-type');
+                    var reponse_thread_message = request.getResponseHeader('response-content');
 
-            clonedEl = clonedEl.each(function() {
-                $(this)
-                    .find(".last-message-info")
-                    .find(".msg-context")
-                    .text(replyMessage);
+                    if (response_content_type.includes('application/json')) {
+                        const errList = [];
+                        const messages = result.errors.MessageDetail.message;
+
+                        messages.forEach(element => {
+                            errList.push(`<li>${element}</li>`);
+                        });
+
+                        if ($('#err-msg').length == 0) {
+                            form.before(`<div class="alert alert-danger" role="danger" id="err-msg"><ul class="m-0 p-0">${ [...errList] }</ul></div>`);
+                        }
+                    } else {
+                        $('#err-msg').remove();
+
+                        if (reponse_thread_message.includes('thread-message')) {
+                            $('#message-detail').prepend(result);
+                        } else {
+                            if ($('#err-msg').length == 0) {
+                                form.before(`<div class="alert alert-danger" role="danger" id="err-msg"><ul class="m-0 p-0"><li>Uncaught response error.</li></ul></div>`);
+                            }
+                        }
+                    }
+
+                    form[0].reset();
+                },
+                error: function(error) {
+                    console.log(error);
+                }
             });
+        });
 
-            truncateMessage(clonedEl.find(".last-message-info"));
+        // Delete Message
+        $('body #message-detail').on('click', '.delete-msg', function() {
+            var btn_delete = $(this);
+            var message_id = 0;
+            message_id = btn_delete.data('message-id');
+            var container = $('body #message-container-' + message_id);
 
-            clonedEl.prependTo($messageListContainer);
+            if (confirm("Are you sure to delete message?")) {
+                $.ajax({
+                    url: '/messageboard/message_details/delete',
+                    method: 'POST',
+                    data: {
+                        'message_id': message_id,
+                    },
+                    success: function(result) {
+                        let data = [];
+                        try {
+                            data = JSON.parse(result);
+                            console.log(data);
+                            if (data.error) {
+                                alert(data.error);
+                            } else {
+                                alert(data.success);
+                                container.remove();
+                            }
+                        } catch (error) {
+                            alert("Uncaught error!");
+                        }
+                    },
+                    error: function(err) {
+                        console.log(['err', err]);
+                    }
+                });
+            } else {
+                console.log('cancelled');
+            }
         });
     });
 </script>
