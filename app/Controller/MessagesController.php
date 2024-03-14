@@ -119,9 +119,21 @@ class MessagesController extends AppController {
         }
 
         $this->Message->recursive = -1;
-        $message = $this->Message->findById($id);
+        $message = $this->Message->find('first', array(
+            'conditions' => array(
+                'Message.id' => $id,
+                'Message.deleted_at IS NULL',
+            )
+        ));
+
         if (!$message) {
             throw new NotFoundException('Data not found');
+        }
+
+        $users_in_thread = array($message['Message']['first_user_id_in_thread'], $message['Message']['second_user_id_in_thread']);
+
+        if (!in_array(AuthComponent::user('id'), $users_in_thread)) {
+            throw new UnauthorizedException('Unauthorized Access.');
         }
 
         $this->loadModel('MessageDetail');
@@ -158,6 +170,31 @@ class MessagesController extends AppController {
         }
     }
 
+    public function delete() {
+        if ($this->request->is('ajax')) {
+            $id = $this->request->data['message_id'];
+
+            $message = $this->Message->findById($id)['Message'];
+
+            if (!$message) {
+                echo json_encode(['error' => 'Model not found.']);
+                die();
+            }
+
+            if ($this->Message->deleteThread($id)) {
+
+                $this->loadModel('MessageDetail');
+
+                if ($this->MessageDetail->deleteAllRelated($id)) {
+                    echo json_encode(['success' => 'Deleted']);
+                    die();
+                }
+            }
+
+            echo json_encode(['error' => 'Action failed.']);
+        }
+    }
+
     /**
      * @param array $data: [0] -> sender_id, [1] -> recipient_id
      * @return Message.id|null
@@ -171,6 +208,7 @@ class MessagesController extends AppController {
 
         // query options
         $options['conditions'] = array(
+            'Message.deleted_at IS NULL',
             'OR' => array(
                 array(
                     'first_user_id_in_thread' => $sender_id,

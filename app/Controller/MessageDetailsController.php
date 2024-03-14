@@ -9,10 +9,6 @@ class MessageDetailsController extends AppController {
         if ($this->request->is('ajax')) {
             $this->request->data['MessageDetail']['message'] = h($this->request->data['MessageDetail']['message']);
 
-            $this->MessageDetail->unbindModel(
-                array('hasOne' => array('Recipient'))
-            );
-
             if ($this->MessageDetail->save($this->request->data)) {
                 $this->loadModel('Message');
                 $this->Message->touch($this->request->data['MessageDetail']['message_id']);

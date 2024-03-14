@@ -143,7 +143,7 @@ echo $this->Form->hidden('message_id', array(
 
             if (confirm("Are you sure to delete message?")) {
                 $.ajax({
-                    url: '/messageboard/message_details/delete',
+                    url: '/Messageboard/message_details/delete',
                     method: 'POST',
                     data: {
                         'message_id': message_id,

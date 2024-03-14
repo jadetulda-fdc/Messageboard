@@ -9,8 +9,8 @@ if (count($this->validationErrors['MessageDetail'])) {
     echo $this->element('Messages/message-box', array(
         'is_from_sender' => true,
         'msgDetail' => $newMessage['MessageDetail'],
-        'img' => $newMessage['Sender']['profile_picture'],
-        'name' => "You"
+        'sender' => $newMessage['Sender'],
+        'recipient' => $newMessage['Recipient']
     ));
     die();
 }

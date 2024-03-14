@@ -104,5 +104,42 @@ $flashMessage = $this->Flash->render('message_sent');
             })
 
         });
+
+        // Delete
+        $('body #message-list').on('click', '.delete-msg', function() {
+            var btn_delete = $(this);
+            var message_id = 0;
+            message_id = btn_delete.data('message-id');
+            var container = $('body #message-container-' + message_id);
+
+            if (confirm("Are you sure to delete this thread?")) {
+                $.ajax({
+                    url: '/Messageboard/messages/delete',
+                    method: 'POST',
+                    data: {
+                        'message_id': message_id,
+                    },
+                    success: function(result) {
+                        let data = [];
+                        try {
+                            data = JSON.parse(result);
+                            console.log(data);
+                            if (data.error) {
+                                alert(data.error);
+                            } else {
+                                container.fadeOut(500, () => container.remove());
+                            }
+                        } catch (error) {
+                            alert("Uncaught error!");
+                        }
+                    },
+                    error: function(err) {
+                        console.log(['err', err]);
+                    }
+                });
+            } else {
+                console.log('cancelled');
+            }
+        });
     });
 </script>

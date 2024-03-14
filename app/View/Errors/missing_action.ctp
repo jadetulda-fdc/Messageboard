@@ -10,10 +10,11 @@
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  * @link          https://cakephp.org CakePHP(tm) Project
- * @package       app.View.Errors
+ * @package       Cake.View.Errors
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
+
 ?>
-<h2><?php echo $message; ?></h2>
+<h2><?php echo __d('cake_dev', 'Fatal Error: Unidentified action'); ?></h2>
 <a href="/Messageboard">Return to Home</a>

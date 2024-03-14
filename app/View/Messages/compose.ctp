@@ -79,7 +79,7 @@ $this->assign('title', 'Compose | MessageBoard');
             minimumInputLength: 3,
             templateResult: formatState,
             ajax: {
-                url: "../recipients/index.json",
+                url: "/Messageboard/recipients/index.json",
                 dataType: "json",
                 delay: 250,
                 data: function(params) {

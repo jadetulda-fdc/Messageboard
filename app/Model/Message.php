@@ -38,4 +38,14 @@ class Message extends AppModel {
         $this->set(array('modified_at' => date_format(new DateTime(), 'Y-m-d H:i:s')));
         $this->save();
     }
+
+    public function deleteThread($id) {
+        $this->id = $id;
+        $this->set(array('deleted_at' => date_format(new DateTime(), 'Y-m-d H:i:s')));
+
+        if ($this->save())
+            return true;
+
+        return false;
+    }
 }

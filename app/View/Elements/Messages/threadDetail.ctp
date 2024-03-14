@@ -3,7 +3,7 @@ foreach ($messageThreads as $thread) {
     $personToDisplay = $thread['Profile1']['user_id'] == AuthComponent::user('id') ? $thread['Profile2'] : $thread['Profile1'];
     $threadInfo = count($thread['ThreadDetail']) > 0 ? $thread['ThreadDetail'][0] : false;
 ?>
-    <div class="d-flex p-2 gap message-list-container">
+    <div class="d-flex p-2 gap message-list-container" id="message-container-<?php echo $thread['Message']['id']; ?>">
         <div class="col-sm-1 p-0">
             <?php
             echo $this->Html->image(
@@ -67,7 +67,8 @@ foreach ($messageThreads as $thread) {
                             )
                         );
                         ?>
-                        <a href="#" class="text-danger" alt="Delete" title="Delete">
+
+                        <a href="javascript:void(0);" data-message-id="<?php echo $thread['Message']['id']; ?>" class="text-danger delete-msg" alt="Delete" title="Delete">
                             <i class="fa-solid fa-trash"></i>
                         </a>
                     </div>

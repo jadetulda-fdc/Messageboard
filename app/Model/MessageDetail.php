@@ -41,4 +41,18 @@ class MessageDetail extends AppModel {
         $this->set(array('modified_at' => date_format(new DateTime(), 'Y-m-d H:i:s')));
         $this->save();
     }
+
+    public function deleteAllRelated($id) {
+        $this->unbindModel(array(
+            'hasOne' => array('Recipient', 'Sender')
+        ));
+        $timestamp = date_format(new DateTime(), 'Y-m-d H:i:s');
+        return $this->updateAll(
+            array('deleted_at' => "'$timestamp'"),
+            array(
+                'message_id = ' => $id,
+                '`deleted_at` IS NULL'
+            )
+        );
+    }
 }
