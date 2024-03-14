@@ -8,7 +8,14 @@ class MessageDetailsController extends AppController {
 
         if ($this->request->is('ajax')) {
             $this->request->data['MessageDetail']['message'] = h($this->request->data['MessageDetail']['message']);
+
+            $this->MessageDetail->unbindModel(
+                array('hasOne' => array('Recipient'))
+            );
+
             if ($this->MessageDetail->save($this->request->data)) {
+                $this->loadModel('Message');
+                $this->Message->touch($this->request->data['MessageDetail']['message_id']);
 
                 $options['conditions'] = array(
                     'MessageDetail.id' => $this->MessageDetail->id
@@ -24,19 +31,23 @@ class MessageDetailsController extends AppController {
         if ($this->request->is('ajax')) {
             $id = $this->request->data['message_id'];
 
-            $message_detail = $this->MessageDetail->findById($id);
+            $message_detail = $this->MessageDetail->findById($id)['MessageDetail'];
 
             if (!$message_detail) {
                 echo json_encode(['error' => 'Model not found.']);
                 die();
             }
 
-            if (!($message_detail['MessageDetail']['sender_id'] == AuthComponent::user('id'))) {
+            if (!($message_detail['sender_id'] == AuthComponent::user('id'))) {
                 echo json_encode(['error' => 'Unable to delete messages not owned by you.']);
                 die();
             }
 
-            if ($this->MessageDetail->delete($id)) {
+            if ($this->MessageDetail->deleteMessage($id)) {
+                $this->loadModel('Message');
+
+                $this->Message->touch($message_detail['message_id']);
+
                 echo json_encode(['success' => 'Deleted']);
                 die();
             }

@@ -156,8 +156,7 @@ echo $this->Form->hidden('message_id', array(
                             if (data.error) {
                                 alert(data.error);
                             } else {
-                                alert(data.success);
-                                container.remove();
+                                container.fadeOut(500, () => container.remove());
                             }
                         } catch (error) {
                             alert("Uncaught error!");

@@ -56,13 +56,14 @@ echo $this->Form->create('Profile', array('type' => 'file'));
 				array(
 					'width' => 220,
 					'height' => 220,
-					'id' => 'profile-img-placeholder'
+					'id' => 'profile-img-placeholder',
+					'onerror' => "this.onerror=null; this.src='/messageboard/img/profile/profile-pic.png'",
 				)
 			);
 			?>
 		</div>
-		<div>
-			<input type="file" id="ProfileProfilePicture" name="data[Profile][file_picture]" />
+		<div class="pr-4">
+			<input type="file" id="ProfileProfilePicture" name="data[Profile][file_picture]" class="form-control" />
 		</div>
 	</div>
 	<div class="w-75 p-3 align-self-stretch" style="border: 1px solid #d5d2d2; border-radius: 5px;">

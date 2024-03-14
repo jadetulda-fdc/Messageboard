@@ -17,13 +17,28 @@ class MessageDetail extends AppModel {
             'className' => 'Profile',
             'foreignKey' => false,
             'conditions' => array('`MessageDetail`.`recipient_id` = `Recipient`.`user_id`'),
-            'fields' => array('id', 'name', 'profile_picture')
+            'fields' => array('id', 'name', 'profile_picture', 'user_id')
+        ),
+        'Sender' => array(
+            'className' => 'Profile',
+            'foreignKey' => false,
+            'conditions' => array('`MessageDetail`.`sender_id` = `Sender`.`user_id`'),
+            'fields' => array('id', 'name', 'profile_picture', 'user_id')
         )
     );
-    // public $belongsTo = array(
-    //     'MessageThread' => array(
-    //         'className' => 'Message',
-    //         'foreignKey' => 'message_id'
-    //     )
-    // );
+
+    public function deleteMessage($id) {
+        $this->id = $id;
+        $this->set(array('deleted_at' => date_format(new DateTime(), 'Y-m-d H:i:s')));
+        if ($this->save()) {
+            $this->touch($id);
+            return true;
+        }
+    }
+
+    public function touch($id) {
+        $this->id = $id;
+        $this->set(array('modified_at' => date_format(new DateTime(), 'Y-m-d H:i:s')));
+        $this->save();
+    }
 }

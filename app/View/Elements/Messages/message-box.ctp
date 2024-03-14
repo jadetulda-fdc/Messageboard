@@ -1,11 +1,15 @@
-<!-- class "flex-row-reverse should be removed if message is from someone" -->
+<?php
+$owner = $msgDetail['sender_id'] == $sender['user_id'] ? $sender : $recipient;
+?>
 <div class="d-flex p-1 pt-2 px-2 gap message-detail-container <?php echo $is_from_sender ? 'flex-row-reverse align-self-end' : '' ?>" id="message-container-<?php echo $msgDetail['id']; ?>">
     <div class="col-sm-1 p-0">
         <?php
         echo $this->Html->image(
-            $img,
+            $owner['profile_picture'],
             array(
-                'class' => 'img-thumbnail'
+                'class' => 'img-thumbnail',
+                'onerror' => "this.onerror=null; this.src='/messageboard/img/profile/profile-pic.png'",
+                'width' => '500'
             )
         );
         ?>
@@ -21,7 +25,7 @@
         </div>
         <div class="d-flex justify-content-between align-items-center p-1 message-list-footer <?php echo $is_from_sender ? 'flex-row-reverse' : ''; ?>">
             <div class="font-weight-bold text-muted" style="font-size: 11px;">
-                <?php echo $name; ?>
+                <?php echo $owner['name']; ?>
             </div>
             <div class="d-flex gap-2 align-items-center <?php echo $is_from_sender ? 'flex-row-reverse' : ''; ?>">
                 <div class=" text-muted" style="font-size: 11px;">

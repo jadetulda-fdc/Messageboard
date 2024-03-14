@@ -2,6 +2,15 @@
 
 class Message extends AppModel {
 
+    public $validate = array(
+        'recipient' => array(
+            'required' => array(
+                'rule' => 'notBlank',
+                'message' => 'Please select a recipient.'
+            )
+        )
+    );
+
     // Relationship
     public $hasMany = array(
         'MessageDetail' => array(
@@ -23,4 +32,10 @@ class Message extends AppModel {
             'conditions' => array('`Message`.`second_user_id_in_thread` = `Profile2`.`user_id`')
         )
     );
+
+    public function touch($id) {
+        $this->id = $id;
+        $this->set(array('modified_at' => date_format(new DateTime(), 'Y-m-d H:i:s')));
+        $this->save();
+    }
 }

@@ -11,6 +11,7 @@ class MessagesController extends AppController {
                 'ThreadDetail' => array(
                     'className' => 'MessageDetail',
                     'foreignKey' => 'message_id',
+                    'conditions' => array('ThreadDetail.deleted_at IS NULL'),
                     'order' => array('ThreadDetail.created_at' => 'DESC'),
                     'limit' => 1
                 ),
@@ -24,9 +25,10 @@ class MessagesController extends AppController {
         $options = array();
 
         $this->paginate = array(
-            'limit' => 1,
+            'limit' => 2,
             'order' => array('Message.modified_at' => 'DESC'),
             'conditions' => array(
+                'Message.deleted_at IS NULL',
                 'OR' => array(
                     "first_user_id_in_thread = " . $this->Auth->user('id'),
                     "second_user_id_in_thread = " . $this->Auth->user('id'),
@@ -58,9 +60,26 @@ class MessagesController extends AppController {
     public function compose() {
 
         if ($this->request->is('post')) {
+            $this->loadModel('MessageDetail');
 
             $recipient_id = $this->request->data['Message']['recipient'];
             $sender_id = $this->Auth->user('id');
+            $isValidAll = true;
+
+            $this->Message->set($this->request->data);
+            if (!$this->Message->validates()) {
+                $isValidAll = false;
+            }
+
+            $this->MessageDetail->set('message', $this->request->data['Message']['message']);
+            if (!$this->MessageDetail->validates(array('fieldList' => array('message')))) {
+                $isValidAll = false;
+            }
+
+            if (!$isValidAll) {
+                $this->Flash->error($this->validationErrors);
+                return false;
+            }
 
             // Check if sender/recipient combo exists
             $messageId = $this->isThreadExists([$sender_id, $recipient_id]);
@@ -77,6 +96,8 @@ class MessagesController extends AppController {
                     $this->Flash->success('Message Sent!', array('key' => 'message_sent'));
                     return $this->redirect(array('action' => 'index'));
                 }
+
+                $this->Flash->error($this->validationErrors);
             } else {
                 // else -> append to the existing thread (get thread ID)
                 $this->saveMessage([$messageId, $this->request->data['Message']['message'], $recipient_id]);
@@ -89,8 +110,6 @@ class MessagesController extends AppController {
                 $this->Flash->success('Message Sent!', array('key' => 'message_sent'));
                 return $this->redirect(array('action' => 'index'));
             }
-
-            $this->Flash->error('Some error occured.', array('key' => 'compose_error'));
         }
     }
 
@@ -113,7 +132,8 @@ class MessagesController extends AppController {
             'limit' => 10,
             'order' => array('MessageDetail.modified_at' => 'DESC'),
             'conditions' => array(
-                'MessageDetail.message_id' => $id
+                'MessageDetail.message_id' => $id,
+                'MessageDetail.deleted_at IS NULL'
             ),
         );
 
@@ -174,7 +194,6 @@ class MessagesController extends AppController {
      */
     private function saveMessage($data) {
         [$message_id, $message, $recipient_id] = $data;
-        $this->loadModel('MessageDetail');
 
         // insert message to message detail
         $this->MessageDetail->create();

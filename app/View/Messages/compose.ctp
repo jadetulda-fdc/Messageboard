@@ -2,7 +2,23 @@
 $this->assign('page_header', 'Compose Message');
 $this->assign('title', 'Compose | MessageBoard');
 ?>
-<!-- <form id="form-compose-message"> -->
+
+<?php if (count($this->validationErrors) > 0) { ?>
+    <div class="alert alert-danger text-left" role="alert">
+        <ul class="list-group pl-4">
+            <?php
+            foreach ($this->validationErrors as $modelError => $model) {
+                foreach ($model as $error => $msg) {
+            ?>
+                    <li><?php echo $msg[0]; ?></li>
+            <?php
+                }
+            }
+            ?>
+        </ul>
+    </div>
+<?php } ?>
+
 <?php echo $this->Form->create('Message'); ?>
 <div class="form-group row">
     <label for="message-recipient" class="col-sm-2 col-form-label">
@@ -25,7 +41,6 @@ $this->assign('title', 'Compose | MessageBoard');
             array(
                 'class' => 'w-50 form-control textarea-autosize ',
                 'placeholder' => 'Write a message ...',
-                // 'value' => html_entity_decode(),
                 'style' => array('height: 62px;')
             )
         );
@@ -37,7 +52,6 @@ $this->assign('title', 'Compose | MessageBoard');
         <input type="submit" class="btn btn-primary" value="Send" />
     </div>
 </div>
-<!-- </form> -->
 <?php echo $this->Form->end(); ?>
 
 <script>

@@ -19,6 +19,7 @@ $flashMessage = $this->Flash->render('positive');
             array(
                 'width' => 220,
                 'height' => 220,
+                'onerror' => "this.onerror=null; this.src='/messageboard/img/profile/profile-pic.png'"
             )
         );
         ?>
