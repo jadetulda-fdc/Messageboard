@@ -32,7 +32,7 @@ echo $this->Form->hidden('sender_id', array(
     'value' => AuthComponent::user('id')
 ));
 echo $this->Form->hidden('recipient_id', array(
-    'value' => AuthComponent::user('id') != $thread['Profile1']['user_id'] ? $thread['Profile1']['user_id'] : $thread['Profile2']['user_id']
+    'value' => AuthComponent::user('id') != $thread['Message']['first_user_id_in_thread'] ? $thread['Message']['first_user_id_in_thread']  : $thread['Message']['second_user_id_in_thread']
 ));
 echo $this->Form->hidden('message_id', array(
     'value' => $thread['Message']['id']
@@ -46,28 +46,29 @@ echo $this->Form->hidden('message_id', array(
 <div class="d-flex flex-column gap-3 mb-3" id="message-detail">
     <!-- Note: Each list is generated via component -->
     <?php
-    if (count($thread) > 0) {
-        $messages = $thread['MessageDetail'];
+    if (count($thread['MessageDetail']) > 0) {
+        foreach ($thread['MessageDetail'] as $message) {
+            $msgDetail = $message['MessageDetail'];
+            $profile = $message['Profile'];
 
-        foreach ($messages as $message) {
-            $is_from_sender = $message['sender_id'] == AuthComponent::user('id');
+            $is_from_sender = $msgDetail['sender_id'] == AuthComponent::user('id');
 
             if (!$is_from_sender) {
-                $name = $message['sender_id'] == $thread['Profile1']['user_id'] ? $thread['Profile1']['name'] : $thread['Profile2']['name'];
+                $name = $profile['name'];
+                $img = $profile['profile_picture'];
             } else {
                 $name = 'You';
+                $img = AuthComponent::user('Profile.profile_picture');
             }
 
-            $img = $message['sender_id'] == $thread['Profile1']['user_id'] ? $thread['Profile1']['profile_picture'] : $thread['Profile2']['profile_picture'];
-
-            echo $this->element('Messages/threadMessage', compact(['is_from_sender', 'message', 'img', 'name']));
+            echo $this->element('Messages/threadMessage', compact(['is_from_sender', 'msgDetail', 'img', 'name']));
         }
     }
     ?>
     <?php
     ?>
 </div>
-<?php if (count($thread)) { ?>
+<?php if (count($thread['MessageDetail'])) { ?>
     <hr />
     <div class="text-center font-italic toAdd">
         Load more messages

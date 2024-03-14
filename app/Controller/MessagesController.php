@@ -87,11 +87,6 @@ class MessagesController extends AppController {
                 // else -> append to the existing thread (get thread ID)
                 $this->saveMessage([$messageId, $this->request->data['Message']['message'], $recipient_id]);
 
-                // update timestamp of existing message
-                // $this->Message->id = $messageId;
-                // $this->Message->set('modified_at', (new DateTime())->format('Y-m-d H:i:s'));
-                // $this->Message->save();
-
                 $this->Flash->success('Message Sent!', array('key' => 'message_sent'));
                 return $this->redirect(array('action' => 'index'));
             }
@@ -104,43 +99,40 @@ class MessagesController extends AppController {
         if (!$id) {
             throw new InvalidArgumentException('Invalid Request');
         }
-        $error = $this->validationErrors;
 
+        $this->Message->recursive = -1;
         $message = $this->Message->findById($id);
         if (!$message) {
             throw new NotFoundException('Data not found');
         }
 
+        $this->loadModel('MessageDetail');
+
         $options['fields'] = array(
-            'Profile1.user_id, Profile1.name, Profile1.profile_picture',
-            'Profile2.user_id, Profile2.name, Profile2.profile_picture',
+            'MessageDetail.*',
+            'Profile.id, Profile.name, Profile.profile_picture'
         );
 
         $options['conditions'] = array(
-            'Message.id' => $id
+            'MessageDetail.message_id' => $id
         );
 
         $options['joins'] = array(
             array(
                 'table' => 'profiles',
-                'alias' => 'Profile1',
+                'alias' => 'Profile',
                 'type' => 'LEFT',
-                'conditions' => array(
-                    'ThreadOwner1.id = Profile1.user_id'
-                )
-            ),
-            array(
-                'table' => 'profiles',
-                'alias' => 'Profile2',
-                'type' => 'LEFT',
-                'conditions' => array(
-                    'ThreadOwner2.id = Profile2.user_id'
-                )
+                'conditions' => array('MessageDetail.recipient_id = Profile.user_id')
             )
         );
 
-
-        $thread = $this->Message->find('first', $options);
+        $options['order'] = array(
+            array(
+                'MessageDetail.created_at DESC'
+            )
+        );
+        $thread['MessageDetail'] = $this->MessageDetail->find('all', $options);
+        $thread['Message'] = $message['Message'];
 
         $this->set('thread', $thread);
     }

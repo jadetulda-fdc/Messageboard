@@ -8,7 +8,7 @@ if (count($this->validationErrors['MessageDetail'])) {
     header('response-content: thread-message');
     echo $this->element('Messages/threadMessage', array(
         'is_from_sender' => true,
-        'message' => $newMessage['MessageDetail'],
+        'msgDetail' => $newMessage['MessageDetail'],
         'img' => $newMessage['Profile']['profile_picture'],
         'name' => "You"
     ));

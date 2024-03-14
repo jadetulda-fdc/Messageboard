@@ -15,6 +15,7 @@ class Message extends AppModel {
         'ThreadOwner1' => array(
             'className' => 'User',
             'foreignKey' => 'first_user_id_in_thread',
+
         ),
         'ThreadOwner2' => array(
             'className' => 'User',
