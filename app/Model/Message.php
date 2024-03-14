@@ -11,15 +11,16 @@ class Message extends AppModel {
         )
     );
 
-    public $belongsTo = array(
-        'ThreadOwner1' => array(
-            'className' => 'User',
-            'foreignKey' => 'first_user_id_in_thread',
-
+    public $hasOne = array(
+        'Profile1' => array(
+            'className' => 'Profile',
+            'foreignKey' => false,
+            'conditions' => array('`Message`.`first_user_id_in_thread` = `Profile1`.`user_id`')
         ),
-        'ThreadOwner2' => array(
-            'className' => 'User',
-            'foreignKey' => 'second_user_id_in_thread'
+        'Profile2' => array(
+            'className' => 'Profile',
+            'foreignKey' => false,
+            'conditions' => array('`Message`.`second_user_id_in_thread` = `Profile2`.`user_id`')
         )
     );
 }

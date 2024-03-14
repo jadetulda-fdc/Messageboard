@@ -1,8 +1,9 @@
 <?php
 
-use function PHPSTORM_META\map;
-
 class MessagesController extends AppController {
+
+    public $components = array('RequestHandler');
+    public $helpers = array('Js');
 
     public function index() {
         $this->Message->bindModel(
@@ -10,55 +11,48 @@ class MessagesController extends AppController {
                 'ThreadDetail' => array(
                     'className' => 'MessageDetail',
                     'foreignKey' => 'message_id',
-                    'order' => 'ThreadDetail.created_at DESC',
+                    'order' => array('ThreadDetail.created_at' => 'DESC'),
                     'limit' => 1
                 ),
-            ))
+            )),
         );
 
         $this->Message->unbindModel(
             array('hasMany' => array('MessageDetail'))
         );
 
-        $options['fields'] = array(
-            'Message.*',
-            'Profile1.user_id, Profile1.name, Profile1.profile_picture',
-            'Profile2.user_id, Profile2.name, Profile2.profile_picture',
-        );
+        $options = array();
 
-        $options['joins'] = array(
-            array(
-                'table' => 'profiles',
-                'alias' => 'Profile1',
-                'type' => 'LEFT',
-                'conditions' => array(
-                    'ThreadOwner1.id = Profile1.user_id'
+        $this->paginate = array(
+            'limit' => 1,
+            'order' => array('Message.modified_at' => 'DESC'),
+            'conditions' => array(
+                'OR' => array(
+                    "first_user_id_in_thread = " . $this->Auth->user('id'),
+                    "second_user_id_in_thread = " . $this->Auth->user('id'),
                 )
             ),
-            array(
-                'table' => 'profiles',
-                'alias' => 'Profile2',
-                'type' => 'LEFT',
-                'conditions' => array(
-                    'ThreadOwner2.id = Profile2.user_id'
+            'group' => array('Message.id')
+        );
+
+        $this->Paginator->settings = $this->paginate;
+
+        $messageThreads = $this->Paginator->paginate('Message', $options);
+        $paginate = $this->params['paging']['Message'];
+
+        $this->set(compact('messageThreads', 'paginate'));
+
+        if ($this->request->is('ajax')) {
+            $view = new View($this, false);
+            $content = $view->element('Messages/threadDetail');
+            echo json_encode(
+                array(
+                    'html' => $content,
+                    'paginator' => $paginate
                 )
-            )
-        );
-
-        $options['conditions'] = array(
-            'OR' => array(
-                'first_user_id_in_thread' => $this->Auth->user('id'),
-                'second_user_id_in_thread' => $this->Auth->user('id'),
-            )
-        );
-
-        $options['order'] = array(
-            'Message.modified_at' => 'DESC',
-        );
-
-        $messageThreads = $this->Message->find('all', $options);
-
-        $this->set('messageThreads', $messageThreads);
+            );
+            die();
+        }
     }
 
     public function compose() {
@@ -87,6 +81,11 @@ class MessagesController extends AppController {
                 // else -> append to the existing thread (get thread ID)
                 $this->saveMessage([$messageId, $this->request->data['Message']['message'], $recipient_id]);
 
+                // Update Message: modified_at column
+                $this->Message->id = $messageId;
+                $this->Message->set(array('modified_at' => date_format(new DateTime(), 'Y-m-d H-i:s')));
+                $this->Message->save();
+
                 $this->Flash->success('Message Sent!', array('key' => 'message_sent'));
                 return $this->redirect(array('action' => 'index'));
             }
@@ -108,33 +107,35 @@ class MessagesController extends AppController {
 
         $this->loadModel('MessageDetail');
 
-        $options['fields'] = array(
-            'MessageDetail.*',
-            'Profile.id, Profile.name, Profile.profile_picture'
+        $options = array();
+
+        $this->paginate = array(
+            'limit' => 10,
+            'order' => array('MessageDetail.modified_at' => 'DESC'),
+            'conditions' => array(
+                'MessageDetail.message_id' => $id
+            ),
         );
 
-        $options['conditions'] = array(
-            'MessageDetail.message_id' => $id
-        );
+        $this->Paginator->settings = $this->paginate;
 
-        $options['joins'] = array(
-            array(
-                'table' => 'profiles',
-                'alias' => 'Profile',
-                'type' => 'LEFT',
-                'conditions' => array('MessageDetail.recipient_id = Profile.user_id')
-            )
-        );
-
-        $options['order'] = array(
-            array(
-                'MessageDetail.created_at DESC'
-            )
-        );
-        $thread['MessageDetail'] = $this->MessageDetail->find('all', $options);
+        $thread['MessageDetail'] = $this->Paginator->paginate('MessageDetail', $options);
         $thread['Message'] = $message['Message'];
+        $paginate = $this->params['paging']['MessageDetail'];
 
-        $this->set('thread', $thread);
+        $this->set(compact('thread', 'paginate'));
+
+        if ($this->request->is('ajax')) {
+            $view = new View($this, false);
+            $content = $view->element('Messages/threadMessage');
+            echo json_encode(
+                array(
+                    'html' => $content,
+                    'paginator' => $paginate
+                )
+            );
+            die();
+        }
     }
 
     /**

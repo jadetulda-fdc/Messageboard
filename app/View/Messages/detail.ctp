@@ -44,36 +44,16 @@ echo $this->Form->hidden('message_id', array(
 <?php echo $this->Form->end(); ?>
 <hr />
 <div class="d-flex flex-column gap-3 mb-3" id="message-detail">
-    <!-- Note: Each list is generated via component -->
     <?php
     if (count($thread['MessageDetail']) > 0) {
-        foreach ($thread['MessageDetail'] as $message) {
-            $msgDetail = $message['MessageDetail'];
-            $profile = $message['Profile'];
-
-            $is_from_sender = $msgDetail['sender_id'] == AuthComponent::user('id');
-
-            if (!$is_from_sender) {
-                $name = $profile['name'];
-                $img = $profile['profile_picture'];
-            } else {
-                $name = 'You';
-                $img = AuthComponent::user('Profile.profile_picture');
-            }
-
-            echo $this->element('Messages/threadMessage', compact(['is_from_sender', 'msgDetail', 'img', 'name']));
-        }
+        echo $this->element('Messages/threadMessage', array(compact('thread')));
     }
     ?>
     <?php
     ?>
 </div>
-<?php if (count($thread['MessageDetail'])) { ?>
-    <hr />
-    <div class="text-center font-italic toAdd">
-        Load more messages
-    </div>
-<?php } ?>
+<?php echo $this->element('paginator'); ?>
+
 <script>
     $(function() {
 
@@ -81,6 +61,7 @@ echo $this->Form->hidden('message_id', array(
 
         const MESSAGE_LENGTH_LIMIT = 100;
 
+        // on click truncate
         $("body #message-detail .last-message-info").on(
             "click",
             ".see-more",
@@ -88,13 +69,6 @@ echo $this->Form->hidden('message_id', array(
                 toggleMessage($(this));
             }
         );
-
-        $messageListContainer = getParentElement(
-            $("#message-detail .last-message-info")[0],
-            "message-detail"
-        );
-
-        $firstElement = "";
 
         function toggleMessage(targetEl) {
             const messageContext = targetEl
@@ -109,93 +83,7 @@ echo $this->Form->hidden('message_id', array(
                 targetEl.text("[Show more]");
             }
         }
-
-        $("#message-detail .last-message-info").each(function(index, el) {
-            if (index == 0) {
-                $firstElement = $(this).parent().parent();
-            }
-
-            truncateMessage($(this));
-        });
-
-        function truncateMessage(element) {
-            $messageEl = element;
-            $messageContextEl = $messageEl.children("div.msg-context");
-
-            // create element
-            $seeMoreEl = document.createElement("span");
-            $seeMoreEl.className = "see-more";
-            $seeMoreEl.innerText = "[Show more]";
-
-            const isLong =
-                $messageContextEl.text().replace(/\n\s+/g, "").trim()
-                .length > MESSAGE_LENGTH_LIMIT;
-
-            if (isLong) {
-                $messageContextEl.addClass("text-truncate");
-                $messageEl.append($seeMoreEl);
-            } else {
-                $messageContextEl.removeClass("text-truncate");
-                if ($messageEl.children().length > 1)
-                    console.log($messageEl.children()[1].remove());
-            }
-        }
-
-        function getParentElement(element, parentID) {
-            if (element && element.id == parentID) {
-                return element;
-            } else {
-                return getParentElement(element.parentNode, parentID);
-            }
-        }
-
-        function removeFlexReverse(element) {
-            element.each(function() {
-                const targetEl = $(this);
-
-                if (targetEl.hasClass("flex-row-reverse")) {
-                    targetEl.removeClass("flex-row-reverse");
-                    targetEl.removeClass("align-self-end");
-                }
-
-                if (targetEl.children().length > 0) {
-                    targetEl.children().each(function() {
-                        const childEl = $(this);
-
-                        childEl.each(function() {
-                            const el = $(this);
-
-                            if (el.hasClass("flex-row-reverse")) {
-                                el.removeClass("flex-row-reverse");
-                            }
-
-                            if (el.hasClass("message-list-action")) {
-                                el.removeClass(
-                                    "border-right"
-                                ).removeClass("pr-2");
-                                el.addClass("border-left").addClass(
-                                    "pl-2"
-                                );
-                            }
-                        });
-                        return removeFlexReverse(childEl);
-                    });
-                } else {
-                    return;
-                }
-            });
-
-            return element;
-        }
-
-        $(".toAdd").on("click", function() {
-            $firstElement.clone(true).appendTo($messageListContainer);
-            $("html, body").animate({
-                    scrollTop: $(document).height() - 200
-                },
-                500
-            );
-        });
+        // end truncate
 
         // Form Submit (Send Message)
         $('#MessageDetailSendMessageForm').on('submit', function(e) {
@@ -236,6 +124,9 @@ echo $this->Form->hidden('message_id', array(
                     }
 
                     form[0].reset();
+                    $('.textarea-autosize').css({
+                        'height': '62px'
+                    });
                 },
                 error: function(error) {
                     console.log(error);
@@ -279,6 +170,54 @@ echo $this->Form->hidden('message_id', array(
             } else {
                 console.log('cancelled');
             }
+        });
+
+        // Load More
+        $('body #pagination').on('click', '#load-more a', function(e) {
+            e.preventDefault();
+            $('#please-wait').removeClass('d-none');
+            $('#load-more').addClass('d-none');
+
+            var linkTag = $(this);
+            var urlLink = linkTag.prop('href');
+
+            $.ajax({
+                url: urlLink,
+                method: 'GET',
+                success: function(result) {
+
+                    $('#please-wait').addClass('d-none');
+
+                    const data = JSON.parse(result);
+                    const htmlEntity = data['html'];
+                    const paginator = data['paginator']
+                    $('#message-detail').append(htmlEntity);
+
+                    if (paginator['nextPage']) {
+                        let page = parseInt(paginator['page']);
+                        const splitLink = urlLink.split('/');
+                        let pageLink = splitLink.length - 1;
+
+                        const newLink = $('#load-more a').prop('href').replace(/page:\d/, 'page:' + (++page));
+
+                        $('#load-more a').prop('href', newLink);
+
+                        $('#load-more').removeClass('d-none');
+
+                    } else {
+                        $('#pagination').html(
+                            `<hr />
+                            <div class="text-center font-italic toAdd">
+                                End of conversation.
+                            </div>`
+                        );
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            })
+
         });
     });
 </script>

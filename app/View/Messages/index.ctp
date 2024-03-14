@@ -3,7 +3,6 @@ $this->assign('page_header', 'Message List');
 $this->assign('title', 'Messages | MessageBoard');
 $flashMessage = $this->Flash->render('message_sent');
 ?>
-
 <?php if (isset($flashMessage)) { ?>
     <div class="alert alert-success text-left" role="alert">
         <?php echo $flashMessage; ?>
@@ -24,29 +23,17 @@ $flashMessage = $this->Flash->render('message_sent');
     ?>
 </div>
 <div class="d-flex flex-column gap-3 mb-3" id="message-list">
-    <!-- Note: Each list is generated via element -->
     <?php
-    foreach ($messageThreads as $thread) {
-        $personToDisplay = $thread['Profile1']['user_id'] == AuthComponent::user('id') ? $thread['Profile2'] : $thread['Profile1'];
-    ?>
-        <?php
-        echo $this->element('Messages/threadDetail', compact(['personToDisplay', 'thread']));
-        ?>
-    <?php
-    }
+    echo $this->element('Messages/threadDetail');
     ?>
 </div>
-<?php if (count($messageThreads)) { ?>
-    <hr />
-    <div class="text-center font-italic toAdd">
-        Load more messages
-    </div>
-<?php } ?>
+<?php echo $this->element('paginator'); ?>
 <script>
     $(function() {
 
         const MESSAGE_LENGTH_LIMIT = 100;
 
+        // Truncate message
         $("body #message-list .last-message-info").on(
             "click",
             ".see-more",
@@ -54,13 +41,6 @@ $flashMessage = $this->Flash->render('message_sent');
                 toggleMessage($(this));
             }
         );
-
-        $messageListContainer = getParentElement(
-            $("#message-list .last-message-info")[0],
-            "message-list"
-        );
-
-        $firstElement = "";
 
         function toggleMessage(targetEl) {
             const messageContext = targetEl
@@ -75,47 +55,54 @@ $flashMessage = $this->Flash->render('message_sent');
                 targetEl.text("[Show more]");
             }
         }
+        // End Truncate message
 
-        $("#message-list .last-message-info").each(function(
-            index,
-            el
-        ) {
-            if (index == 0) {
-                $firstElement = $(this).parent().parent();
-            }
-            $messageEl = $(this);
-            $messageContextEl = $messageEl.children("div.msg-context");
+        // Load More
+        $('body #pagination').on('click', '#load-more a', function(e) {
+            e.preventDefault();
+            $('#please-wait').removeClass('d-none');
+            $('#load-more').addClass('d-none');
 
-            // create element
-            $seeMoreEl = document.createElement("span");
-            $seeMoreEl.className = "see-more";
-            $seeMoreEl.innerText = "[Show more]";
+            var linkTag = $(this);
+            var urlLink = linkTag.prop('href');
 
-            const isLong =
-                $messageContextEl.text().replace(/\n\s+/g, "").trim()
-                .length > MESSAGE_LENGTH_LIMIT;
+            $.ajax({
+                url: urlLink,
+                method: 'GET',
+                success: function(result) {
 
-            if (isLong) {
-                $messageContextEl.addClass("text-truncate");
-                $messageEl.append($seeMoreEl);
-            }
-        });
+                    $('#please-wait').addClass('d-none');
 
-        function getParentElement(element, parentID) {
-            if (element && element.id == parentID) {
-                return element;
-            } else {
-                return getParentElement(element.parentNode, parentID);
-            }
-        }
+                    const data = JSON.parse(result);
+                    const htmlEntity = data['html'];
+                    const paginator = data['paginator']
+                    $('#message-list').append(htmlEntity);
 
-        $(".toAdd").on("click", function() {
-            $firstElement.clone(true).appendTo($messageListContainer);
-            $("html, body").animate({
-                    scrollTop: $(document).height() - 200
+                    if (paginator['nextPage']) {
+                        let page = parseInt(paginator['page']);
+                        const splitLink = urlLink.split('/');
+                        let pageLink = splitLink.length - 1;
+
+                        const newLink = $('#load-more a').prop('href').replace(/page:\d/, 'page:' + (++page));
+
+                        $('#load-more a').prop('href', newLink);
+
+                        $('#load-more').removeClass('d-none');
+
+                    } else {
+                        $('#pagination').html(
+                            `<hr />
+                            <div class="text-center font-italic toAdd">
+                                No more messages to load.
+                            </div>`
+                        );
+                    }
                 },
-                500
-            );
+                error: function(error) {
+                    console.log(error);
+                }
+            })
+
         });
     });
 </script>

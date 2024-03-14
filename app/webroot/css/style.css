@@ -194,6 +194,12 @@ textarea {
 	max-width: 60%;
 }
 
+/* Paginator */
+#pagination a {
+	cursor: pointer;
+	text-decoration: none;
+}
+
 /* Gap */
 .gap,
 .gap-1 {

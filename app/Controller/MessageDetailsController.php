@@ -9,26 +9,11 @@ class MessageDetailsController extends AppController {
         if ($this->request->is('ajax')) {
             $this->request->data['MessageDetail']['message'] = h($this->request->data['MessageDetail']['message']);
             if ($this->MessageDetail->save($this->request->data)) {
-                $this->MessageDetail->unbindModel(array(
-                    'belongsTo' => array('MessageThread')
-                ));
-                $options['joins'] = array(
-                    array(
-                        'table' => 'profiles',
-                        'alias' => 'Profile',
-                        'type' => 'LEFT',
-                        'conditions' => array(
-                            'MessageDetail.sender_id = Profile.user_id'
-                        )
-                    ),
-                );
+
                 $options['conditions'] = array(
                     'MessageDetail.id' => $this->MessageDetail->id
                 );
-                $options['fields'] = array(
-                    'MessageDetail.*',
-                    'Profile.name, Profile.profile_picture'
-                );
+
                 $this->set('newMessage', $this->MessageDetail->find('all', $options)[0]);
             }
         }

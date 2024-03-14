@@ -6,10 +6,10 @@ if (count($this->validationErrors['MessageDetail'])) {
     die();
 } else {
     header('response-content: thread-message');
-    echo $this->element('Messages/threadMessage', array(
+    echo $this->element('Messages/message-box', array(
         'is_from_sender' => true,
         'msgDetail' => $newMessage['MessageDetail'],
-        'img' => $newMessage['Profile']['profile_picture'],
+        'img' => $newMessage['Recipient']['profile_picture'],
         'name' => "You"
     ));
     die();
