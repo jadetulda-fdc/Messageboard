@@ -89,27 +89,4 @@ class UsersController extends AppController {
 	public function logout() {
 		return $this->redirect($this->Auth->logout());
 	}
-
-	// API methods
-	public function recipient_list() {
-		// $this->layout = false;
-		// $response = array(
-		//	 'status' => 'failed',
-		//	 'message' => 'Failed to process request.'
-		// );
-
-		// $result = $this->User->find('list', array(
-		//	 'conditions' => array('User.id != ' => $this->Auth->user('id'))
-		// ));
-
-		// if (!empty($result)) {
-		//	 $response = array('status' => 'sucess', 'data' => $result);
-		// } else {
-		//	 $response['message'] = 'Found no matching data.';
-		// }
-
-		// $this->response->type('application/json');
-		// $this->response->body(json_encode($response));
-		// return $this->response->send();
-	}
 }
