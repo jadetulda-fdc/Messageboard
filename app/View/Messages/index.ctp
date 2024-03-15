@@ -53,13 +53,9 @@ $flashMessage = $this->Flash->render('message_sent');
         const MESSAGE_LENGTH_LIMIT = 100;
 
         // Truncate message
-        $("body #message-list .last-message-info").on(
-            "click",
-            ".see-more",
-            function() {
-                toggleMessage($(this));
-            }
-        );
+        $("body").on("click", "#message-list .last-message-info .see-more", function() {
+            toggleMessage($(this));
+        });
 
         function toggleMessage(targetEl) {
             const messageContext = targetEl
@@ -87,7 +83,10 @@ $flashMessage = $this->Flash->render('message_sent');
 
             $.ajax({
                 url: urlLink,
-                method: 'GET',
+                method: 'POST',
+                data: {
+                    'search_string': $('#MessageSearch-item').val()
+                },
                 success: function(result) {
 
                     $('#please-wait').addClass('d-none');
@@ -125,7 +124,7 @@ $flashMessage = $this->Flash->render('message_sent');
         });
 
         // Delete
-        $('body #message-list').on('click', '.delete-msg', function() {
+        $('body').on('click', '#message-list .delete-msg', function() {
             var btn_delete = $(this);
             var message_id = 0;
             message_id = btn_delete.data('message-id');
@@ -172,7 +171,6 @@ $flashMessage = $this->Flash->render('message_sent');
                 data: form.serialize(),
                 success: function(result) {
                     $('#thread').html(result);
-                    form[0].reset();
                 },
                 error: function(error) {
                     console.log(error);

@@ -24,14 +24,24 @@ class MessagesController extends AppController {
 
         $options = array();
 
+        $search_string = isset($this->request->data['search_string']) ? $this->request->data['search_string'] : null;
+
         $this->paginate = array(
-            'limit' => 1,
+            'limit' => 2,
             'order' => array('Message.modified_at' => 'DESC'),
             'conditions' => array(
                 'Message.deleted_at IS NULL',
-                'OR' => array(
-                    "first_user_id_in_thread = " . $this->Auth->user('id'),
-                    "second_user_id_in_thread = " . $this->Auth->user('id'),
+                'AND' => array(
+                    array(
+                        'OR' => array(
+                            "first_user_id_in_thread = " . $this->Auth->user('id'),
+                            "second_user_id_in_thread = " . $this->Auth->user('id')
+                        )
+                    ),
+                    'OR' => array(
+                        'Profile1.name LIKE ' => "%$search_string%",
+                        'Profile2.name LIKE ' => "%$search_string%"
+                    )
                 )
             ),
             'group' => array('Message.id')
@@ -41,6 +51,7 @@ class MessagesController extends AppController {
 
         $messageThreads = $this->Paginator->paginate('Message', $options);
         $paginate = $this->params['paging']['Message'];
+        $paginate['controller'] = 'messages/index';
 
         $this->set(compact('messageThreads', 'paginate'));
 
@@ -135,17 +146,21 @@ class MessagesController extends AppController {
             $search_string = $this->request->data['Message']['search-item'];
 
             $this->paginate = array(
-                'limit' => 1,
+                'limit' => 2,
                 'order' => array('Message.modified_at' => 'DESC'),
                 'conditions' => array(
                     'Message.deleted_at IS NULL',
-                    'OR' => array(
-                        "first_user_id_in_thread = " . $this->Auth->user('id'),
-                        "second_user_id_in_thread = " . $this->Auth->user('id'),
-                    ),
-                    'OR' => array(
-                        'Profile1.name LIKE ' => "%$search_string%",
-                        'Profile2.name LIKE ' => "%$search_string%"
+                    'AND' => array(
+                        array(
+                            'OR' => array(
+                                "first_user_id_in_thread = " . $this->Auth->user('id'),
+                                "second_user_id_in_thread = " . $this->Auth->user('id')
+                            )
+                        ),
+                        'OR' => array(
+                            'Profile1.name LIKE ' => "%$search_string%",
+                            'Profile2.name LIKE ' => "%$search_string%"
+                        )
                     )
                 ),
                 'group' => array('Message.id')
@@ -155,7 +170,7 @@ class MessagesController extends AppController {
 
             $messageThreads = $this->Paginator->paginate('Message', $options);
             $paginate = $this->params['paging']['Message'];
-
+            $paginate['controller'] = 'messages/index';
             $this->set(compact('messageThreads', 'paginate'));
         }
     }
@@ -201,6 +216,7 @@ class MessagesController extends AppController {
         $thread['MessageDetail'] = $this->Paginator->paginate('MessageDetail', $options);
         $thread['Message'] = $message['Message'];
         $paginate = $this->params['paging']['MessageDetail'];
+        $paginate['controller'] = 'messages/detail/' . $id;
 
         $this->set(compact('thread', 'paginate'));
 

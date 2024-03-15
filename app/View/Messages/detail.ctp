@@ -14,6 +14,32 @@ $this->assign('back_link', $this->Html->link(
 ));
 ?>
 
+<!-- Search -->
+<div id="search-thread">
+    <?php
+    echo $this->Form->create('MessageDetail', array(
+        'url' => array(
+            'controller' => 'message_details',
+            'action' => 'search',
+            $thread['Message']['id']
+        ),
+        'class' => 'd-flex mb-3 gap-2'
+    ));
+    echo $this->Form->input('search-item', array(
+        'placeholder' => 'Search in conversation',
+        'class' => 'form-control',
+        'label' => false,
+        'div' => false,
+        'error' => false
+    ));
+    ?>
+    <button type="submit" class="btn btn-primary" style="border-radius: 50%;"><i class="fa-solid fa-search"></i></button>
+    <?php
+    echo $this->Form->end()
+    ?>
+</div>
+<hr />
+
 <!-- Form -->
 <?php
 echo $this->Form->create('MessageDetail', array(
@@ -43,17 +69,9 @@ echo $this->Form->hidden('message_id', array(
 </button>
 <?php echo $this->Form->end(); ?>
 <hr />
-<div class="d-flex flex-column gap-3 mb-3" id="message-detail">
-    <?php
-    if (count($thread['MessageDetail']) > 0) {
-        echo $this->element('Messages/threadMessage', array(compact('thread')));
-    }
-    ?>
-    <?php
-    ?>
+<div id="thread">
+    <?php echo $this->element('Messages/thread') ?>
 </div>
-<?php echo $this->element('paginator'); ?>
-
 <script>
     $(function() {
 
@@ -62,9 +80,9 @@ echo $this->Form->hidden('message_id', array(
         const MESSAGE_LENGTH_LIMIT = 100;
 
         // on click truncate
-        $("body #message-detail .last-message-info").on(
+        $("body").on(
             "click",
-            ".see-more",
+            "#message-detail .last-message-info .see-more",
             function() {
                 toggleMessage($(this));
             }
@@ -135,7 +153,7 @@ echo $this->Form->hidden('message_id', array(
         });
 
         // Delete Message
-        $('body #message-detail').on('click', '.delete-msg', function() {
+        $('body').on('click', '#message-detail .delete-msg', function() {
             var btn_delete = $(this);
             var message_id = 0;
             message_id = btn_delete.data('message-id');
@@ -172,7 +190,7 @@ echo $this->Form->hidden('message_id', array(
         });
 
         // Load More
-        $('body #pagination').on('click', '#load-more a', function(e) {
+        $('body').on('click', '#pagination #load-more a', function(e) {
             e.preventDefault();
             $('#please-wait').removeClass('d-none');
             $('#load-more').addClass('d-none');
@@ -206,7 +224,7 @@ echo $this->Form->hidden('message_id', array(
                     } else {
                         $('#pagination').html(
                             `<hr />
-                            <div class="text-center font-italic toAdd">
+                            <div class="text-center font-italic text-muted">
                                 End of conversation.
                             </div>`
                         );
@@ -218,5 +236,24 @@ echo $this->Form->hidden('message_id', array(
             })
 
         });
+
+        // Search Message
+        $('#MessageDetailSearchForm').on('submit', function(e) {
+            e.preventDefault();
+            const form = $(this)
+
+            $.ajax({
+                url: form.prop('action'),
+                method: form.prop('method'),
+                data: form.serialize(),
+                success: function(result) {
+                    $('#thread').html(result);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+
     });
 </script>

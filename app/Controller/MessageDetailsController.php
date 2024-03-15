@@ -22,6 +22,42 @@ class MessageDetailsController extends AppController {
         }
     }
 
+    public function search($id = null) {
+        if ($this->request->is('ajax')) {
+            $search_string = $this->request->data['MessageDetail']['search-item'];
+            $this->loadModel('Message');
+
+            $this->Message->recursive = -1;
+            $message = $this->Message->find('first', array(
+                'conditions' => array(
+                    'Message.id' => $id,
+                    'Message.deleted_at IS NULL',
+                )
+            ));
+
+            $options = array();
+
+            $this->paginate = array(
+                'limit' => 10,
+                'order' => array('MessageDetail.modified_at' => 'DESC'),
+                'conditions' => array(
+                    'MessageDetail.message_id' => $id,
+                    'MessageDetail.deleted_at IS NULL',
+                    'MessageDetail.message LIKE ' => "%$search_string%"
+                ),
+            );
+
+            $this->Paginator->settings = $this->paginate;
+
+            $thread['MessageDetail'] = $this->Paginator->paginate('MessageDetail', $options);
+            $thread['Message'] = $message['Message'];
+            $paginate = $this->params['paging']['MessageDetail'];
+            $paginate['controller'] = 'messages/detail/' . $id;
+
+            $this->set(compact('thread', 'paginate'));
+        }
+    }
+
     public function delete() {
 
         if ($this->request->is('ajax')) {
