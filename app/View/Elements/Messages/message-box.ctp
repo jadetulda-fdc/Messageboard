@@ -25,7 +25,16 @@ $owner = $msgDetail['sender_id'] == $sender['user_id'] ? $sender : $recipient;
         </div>
         <div class="d-flex justify-content-between align-items-center p-1 message-list-footer <?php echo $is_from_sender ? 'flex-row-reverse' : ''; ?>">
             <div class="font-weight-bold text-muted" style="font-size: 11px;">
-                <?php echo $owner['name']; ?>
+                <?php
+                echo $this->Html->link(
+                    $is_from_sender ? 'You' : $owner['name'],
+                    array(
+                        'controller' => 'profiles',
+                        'action' => $is_from_sender ? '/' : 'view',
+                        $is_from_sender ? null : $owner['user_id'],
+                    )
+                );
+                ?>
             </div>
             <div class="d-flex gap-2 align-items-center <?php echo $is_from_sender ? 'flex-row-reverse' : ''; ?>">
                 <div class=" text-muted" style="font-size: 11px;">

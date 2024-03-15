@@ -105,6 +105,20 @@ class ProfilesController extends AppController {
         }
     }
 
+    public function view($user_id = null) {
+        if (!$user_id) {
+            throw new InvalidArgumentException('Invalid Request.');
+        }
+
+        $profile = $this->Profile->findByUserId($user_id);
+
+        if (!$profile) {
+            throw new MissingModelException('Data not found.');
+        }
+
+        $this->set(compact('profile'));
+    }
+
     private function addDefaultImageValidator() {
         // Profile picture is required if using default profile
         $this->Profile->validator()

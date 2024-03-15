@@ -32,7 +32,17 @@ foreach ($messageThreads as $thread) {
             </div>
             <div class="d-flex justify-content-between align-items-center p-1 message-list-footer">
                 <div class="text-uppercase font-weight-bold">
-                    <?php echo $personToDisplay['name']; ?>
+                    <?php
+
+                    echo $this->Html->link(
+                        $personToDisplay['name'],
+                        array(
+                            'controller' => 'profiles',
+                            'action' => 'view',
+                            $personToDisplay['user_id']
+                        )
+                    );
+                    ?>
                 </div>
                 <div class="d-flex gap-2">
                     <div class="border-right pr-2 align-self-center text-muted" style="font-size: 11px;">
