@@ -1,4 +1,5 @@
 <?php
+
 /**
  * built-in Server Shell
  *
@@ -9,10 +10,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         CakePHP(tm) v 2.3.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @since		 CakePHP(tm) v 2.3.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('AppShell', 'Console/Command');
@@ -20,66 +21,66 @@ App::uses('AppShell', 'Console/Command');
 /**
  * built-in Server Shell
  *
- * @package       Cake.Console.Command
+ * @package	   Cake.Console.Command
  */
 class ServerShell extends AppShell {
 
-/**
- * Default ServerHost
- *
- * @var string
- */
+	/**
+	 * Default ServerHost
+	 *
+	 * @var string
+	 */
 	const DEFAULT_HOST = 'localhost';
 
-/**
- * Default ListenPort
- *
- * @var int
- */
+	/**
+	 * Default ListenPort
+	 *
+	 * @var int
+	 */
 	const DEFAULT_PORT = 80;
 
-/**
- * server host
- *
- * @var string
- */
+	/**
+	 * server host
+	 *
+	 * @var string
+	 */
 	protected $_host = null;
 
-/**
- * listen port
- *
- * @var string
- */
+	/**
+	 * listen port
+	 *
+	 * @var string
+	 */
 	protected $_port = null;
 
-/**
- * document root
- *
- * @var string
- */
+	/**
+	 * document root
+	 *
+	 * @var string
+	 */
 	protected $_documentRoot = null;
 
-/**
- * Override initialize of the Shell
- *
- * @return void
- */
+	/**
+	 * Override initialize of the Shell
+	 *
+	 * @return void
+	 */
 	public function initialize() {
 		$this->_host = static::DEFAULT_HOST;
 		$this->_port = static::DEFAULT_PORT;
 		$this->_documentRoot = WWW_ROOT;
 	}
 
-/**
- * Starts up the Shell and displays the welcome message.
- * Allows for checking and configuring prior to command or main execution
- *
- * Override this method if you want to remove the welcome information,
- * or otherwise modify the pre-command flow.
- *
- * @return void
- * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::startup
- */
+	/**
+	 * Starts up the Shell and displays the welcome message.
+	 * Allows for checking and configuring prior to command or main execution
+	 *
+	 * Override this method if you want to remove the welcome information,
+	 * or otherwise modify the pre-command flow.
+	 *
+	 * @return void
+	 * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::startup
+	 */
 	public function startup() {
 		if (!empty($this->params['host'])) {
 			$this->_host = $this->params['host'];
@@ -102,11 +103,11 @@ class ServerShell extends AppShell {
 		parent::startup();
 	}
 
-/**
- * Displays a header for the shell
- *
- * @return void
- */
+	/**
+	 * Displays a header for the shell
+	 *
+	 * @return void
+	 */
 	protected function _welcome() {
 		$this->out();
 		$this->out(__d('cake_console', '<info>Welcome to CakePHP %s Console</info>', 'v' . Configure::version()));
@@ -117,18 +118,19 @@ class ServerShell extends AppShell {
 		$this->hr();
 	}
 
-/**
- * Override main() to handle action
- *
- * @return void
- */
+	/**
+	 * Override main() to handle action
+	 *
+	 * @return void
+	 */
 	public function main() {
 		if (version_compare(PHP_VERSION, '5.4.0') < 0) {
 			$this->out(__d('cake_console', '<warning>This command is available on %s or above</warning>', 'PHP5.4'));
 			return;
 		}
 
-		$command = sprintf("php -S %s:%d -t %s %s",
+		$command = sprintf(
+			"php -S %s:%d -t %s %s",
 			$this->_host,
 			$this->_port,
 			escapeshellarg($this->_documentRoot),
@@ -140,11 +142,11 @@ class ServerShell extends AppShell {
 		system($command);
 	}
 
-/**
- * Gets the option parser instance and configures it.
- *
- * @return ConsoleOptionParser
- */
+	/**
+	 * Gets the option parser instance and configures it.
+	 *
+	 * @return ConsoleOptionParser
+	 */
 	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 

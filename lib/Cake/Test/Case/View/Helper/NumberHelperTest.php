@@ -1,4 +1,5 @@
 <?php
+
 /**
  * NumberHelperTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.View.Helper
- * @since         CakePHP(tm) v 1.2.0.4206
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.View.Helper
+ * @since		 CakePHP(tm) v 1.2.0.4206
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('View', 'View');
@@ -31,7 +32,6 @@ class NumberHelperTestObject extends NumberHelper {
 	public function engine() {
 		return $this->_engine;
 	}
-
 }
 
 /**
@@ -43,40 +43,40 @@ class CakeNumberMock {
 /**
  * NumberHelperTest class
  *
- * @package       Cake.Test.Case.View.Helper
+ * @package	   Cake.Test.Case.View.Helper
  */
 class NumberHelperTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->View = new View(null);
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->View);
 	}
 
-/**
- * test CakeNumber class methods are called correctly
- *
- * @return void
- */
+	/**
+	 * test CakeNumber class methods are called correctly
+	 *
+	 * @return void
+	 */
 	public function testNumberHelperProxyMethodCalls() {
 		$methods = array(
 			'precision', 'toReadableSize', 'toPercentage', 'format',
 			'currency', 'addFormat',
-			);
+		);
 		$CakeNumber = $this->getMock('CakeNumberMock', $methods);
 		$Number = new NumberHelperTestObject($this->View, array('engine' => 'CakeNumberMock'));
 		$Number->attach($CakeNumber);
@@ -86,11 +86,11 @@ class NumberHelperTest extends CakeTestCase {
 		}
 	}
 
-/**
- * test engine override
- *
- * @return void
- */
+	/**
+	 * test engine override
+	 *
+	 * @return void
+	 */
 	public function testEngineOverride() {
 		App::build(array(
 			'Utility' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Utility' . DS)
@@ -106,5 +106,4 @@ class NumberHelperTest extends CakeTestCase {
 		$this->assertInstanceOf('TestPluginEngine', $Number->engine());
 		CakePlugin::unload('TestPlugin');
 	}
-
 }

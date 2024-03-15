@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakeRequest Test case file.
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Network
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Network
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Dispatcher', 'Routing');
@@ -23,17 +24,17 @@ App::uses('CakeRequest', 'Network');
 /**
  * TestCakeRequest
  *
- * @package       Cake.Test.Case.Network
+ * @package	   Cake.Test.Case.Network
  */
 class TestCakeRequest extends CakeRequest {
 
-/**
- * reConstruct method
- *
- * @param string $url
- * @param bool $parseEnvironment
- * @return void
- */
+	/**
+	 * reConstruct method
+	 *
+	 * @param string $url
+	 * @param bool $parseEnvironment
+	 * @return void
+	 */
 	public function reConstruct($url = 'some/path', $parseEnvironment = true) {
 		$this->_base();
 		if (empty($url)) {
@@ -51,7 +52,6 @@ class TestCakeRequest extends CakeRequest {
 		}
 		$this->here = $this->base . '/' . $this->url;
 	}
-
 }
 
 /**
@@ -59,11 +59,11 @@ class TestCakeRequest extends CakeRequest {
  */
 class CakeRequestTest extends CakeTestCase {
 
-/**
- * Setup callback
- *
- * @return void
- */
+	/**
+	 * Setup callback
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->_app = Configure::read('App');
@@ -76,11 +76,11 @@ class CakeRequestTest extends CakeTestCase {
 		Configure::write('App.baseUrl', false);
 	}
 
-/**
- * TearDown
- *
- * @return void
- */
+	/**
+	 * TearDown
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		if (!empty($this->_case)) {
@@ -89,11 +89,11 @@ class CakeRequestTest extends CakeTestCase {
 		Configure::write('App', $this->_app);
 	}
 
-/**
- * Test the header detector.
- *
- * @return void
- */
+	/**
+	 * Test the header detector.
+	 *
+	 * @return void
+	 */
 	public function testHeaderDetector() {
 		$request = new CakeRequest('some/path');
 		$request->addDetector('host', array('header' => array('host' => 'cakephp.org')));
@@ -105,11 +105,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse($request->is('host'));
 	}
 
-/**
- * Test the accept header detector.
- *
- * @return void
- */
+	/**
+	 * Test the accept header detector.
+	 *
+	 * @return void
+	 */
 	public function testExtensionDetector() {
 		$request = new CakeRequest('some/path');
 		$request->params['ext'] = 'json';
@@ -119,11 +119,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse($request->is('json'));
 	}
 
-/**
- * Test the accept header detector.
- *
- * @return void
- */
+	/**
+	 * Test the accept header detector.
+	 *
+	 * @return void
+	 */
 	public function testAcceptHeaderDetector() {
 		$request = new CakeRequest('some/path');
 		$_SERVER['HTTP_ACCEPT'] = 'application/json, text/plain, */*';
@@ -133,11 +133,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse($request->is('json'));
 	}
 
-/**
- * Test that the autoparse = false constructor works.
- *
- * @return void
- */
+	/**
+	 * Test that the autoparse = false constructor works.
+	 *
+	 * @return void
+	 */
 	public function testNoAutoParseConstruction() {
 		$_GET = array(
 			'one' => 'param'
@@ -146,11 +146,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse(isset($request->query['one']));
 	}
 
-/**
- * Test the content type method.
- *
- * @return void
- */
+	/**
+	 * Test the content type method.
+	 *
+	 * @return void
+	 */
 	public function testContentType() {
 		$_SERVER['HTTP_CONTENT_TYPE'] = 'application/json';
 		$request = new CakeRequest('/', false);
@@ -161,11 +161,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('application/xml', $request->contentType(), 'prefer non http header.');
 	}
 
-/**
- * Test construction
- *
- * @return void
- */
+	/**
+	 * Test construction
+	 *
+	 * @return void
+	 */
 	public function testConstructionGetParsing() {
 		$_GET = array(
 			'one' => 'param',
@@ -183,11 +183,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('some/path', $request->url);
 	}
 
-/**
- * Test that querystring args provided in the URL string are parsed.
- *
- * @return void
- */
+	/**
+	 * Test that querystring args provided in the URL string are parsed.
+	 *
+	 * @return void
+	 */
 	public function testQueryStringParsingFromInputUrl() {
 		$_GET = array();
 		$request = new CakeRequest('some/path?one=something&two=else');
@@ -197,11 +197,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertStringEndsWith('/some/path?one=something&two=else', $request->here());
 	}
 
-/**
- * Test that named arguments + querystrings are handled correctly.
- *
- * @return void
- */
+	/**
+	 * Test that named arguments + querystrings are handled correctly.
+	 *
+	 * @return void
+	 */
 	public function testQueryStringAndNamedParams() {
 		$_SERVER['REQUEST_URI'] = '/tasks/index/page:1?ts=123456';
 		$request = new CakeRequest();
@@ -220,11 +220,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('other/path', $request->url);
 	}
 
-/**
- * Test addParams() method
- *
- * @return void
- */
+	/**
+	 * Test addParams() method
+	 *
+	 * @return void
+	 */
 	public function testAddParams() {
 		$request = new CakeRequest('some/path');
 		$request->params = array('controller' => 'posts', 'action' => 'view');
@@ -237,11 +237,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals(null, $request->plugin);
 	}
 
-/**
- * Test splicing in paths.
- *
- * @return void
- */
+	/**
+	 * Test splicing in paths.
+	 *
+	 * @return void
+	 */
 	public function testAddPaths() {
 		$request = new CakeRequest('some/path');
 		$request->webroot = '/some/path/going/here/';
@@ -257,11 +257,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse(isset($request->random));
 	}
 
-/**
- * Test parsing POST data into the object.
- *
- * @return void
- */
+	/**
+	 * Test parsing POST data into the object.
+	 *
+	 * @return void
+	 */
 	public function testPostParsing() {
 		$_POST = array('data' => array(
 			'Article' => array('title')
@@ -308,11 +308,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals($_POST, $request->data);
 	}
 
-/**
- * Test parsing PUT data into the object.
- *
- * @return void
- */
+	/**
+	 * Test parsing PUT data into the object.
+	 *
+	 * @return void
+	 */
 	public function testPutParsing() {
 		$_SERVER['REQUEST_METHOD'] = 'PUT';
 		$_SERVER['CONTENT_TYPE'] = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -376,11 +376,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals($data, $request->data);
 	}
 
-/**
- * Test parsing json PUT data into the object.
- *
- * @return void
- */
+	/**
+	 * Test parsing json PUT data into the object.
+	 *
+	 * @return void
+	 */
 	public function testPutParsingJSON() {
 		$_SERVER['REQUEST_METHOD'] = 'PUT';
 		$_SERVER['CONTENT_TYPE'] = 'application/json';
@@ -393,23 +393,23 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals(array('title'), $result['Article']);
 	}
 
-/**
- * Test parsing of FILES array
- *
- * @return void
- */
+	/**
+	 * Test parsing of FILES array
+	 *
+	 * @return void
+	 */
 	public function testFilesParsing() {
 		$_FILES = array(
 			'data' => array(
 				'name' => array(
 					'File' => array(
-							array('data' => 'cake_sqlserver_patch.patch'),
-							array('data' => 'controller.diff'),
-							array('data' => ''),
-							array('data' => ''),
-						),
-						'Post' => array('attachment' => 'jquery-1.2.1.js'),
+						array('data' => 'cake_sqlserver_patch.patch'),
+						array('data' => 'controller.diff'),
+						array('data' => ''),
+						array('data' => ''),
 					),
+					'Post' => array('attachment' => 'jquery-1.2.1.js'),
+				),
 				'type' => array(
 					'File' => array(
 						array('data' => ''),
@@ -664,11 +664,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals($request->params['form'], $_FILES);
 	}
 
-/**
- * Test that files in the 0th index work.
- *
- * @return void
- */
+	/**
+	 * Test that files in the 0th index work.
+	 *
+	 * @return void
+	 */
 	public function testFilesZeroithIndex() {
 		$_FILES = array(
 			0 => array(
@@ -684,11 +684,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals($_FILES, $request->params['form']);
 	}
 
-/**
- * Test method overrides coming in from POST data.
- *
- * @return void
- */
+	/**
+	 * Test method overrides coming in from POST data.
+	 *
+	 * @return void
+	 */
 	public function testMethodOverrides() {
 		$_POST = array('_method' => 'POST');
 		$request = new CakeRequest('some/path');
@@ -703,11 +703,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals(env('REQUEST_METHOD'), 'PUT');
 	}
 
-/**
- * Test the clientIp method.
- *
- * @return void
- */
+	/**
+	 * Test the clientIp method.
+	 *
+	 * @return void
+	 */
 	public function testclientIp() {
 		$_SERVER['HTTP_X_FORWARDED_FOR'] = '192.168.1.5, 10.0.1.1, proxy.com';
 		$_SERVER['HTTP_CLIENT_IP'] = '192.168.1.2';
@@ -726,11 +726,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('192.168.1.3', $request->clientIp(false), 'use remote_addr');
 	}
 
-/**
- * Test the referrer function.
- *
- * @return void
- */
+	/**
+	 * Test the referrer function.
+	 *
+	 * @return void
+	 */
 	public function testReferer() {
 		$request = new CakeRequest('some/path');
 		$request->webroot = '/';
@@ -775,12 +775,12 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertSame($result, '/recipes/add');
 	}
 
-/**
- * Test referer() with a base path that duplicates the
- * first segment.
- *
- * @return void
- */
+	/**
+	 * Test referer() with a base path that duplicates the
+	 * first segment.
+	 *
+	 * @return void
+	 */
 	public function testRefererBasePath() {
 		$request = new CakeRequest('some/path');
 		$request->url = 'users/login';
@@ -794,11 +794,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertSame($result, '/waves/add');
 	}
 
-/**
- * test the simple uses of is()
- *
- * @return void
- */
+	/**
+	 * test the simple uses of is()
+	 *
+	 * @return void
+	 */
 	public function testIsHttpMethods() {
 		$request = new CakeRequest('some/path');
 
@@ -822,11 +822,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse($request->is('delete'));
 	}
 
-/**
- * Test is() with json and xml.
- *
- * @return void
- */
+	/**
+	 * Test is() with json and xml.
+	 *
+	 * @return void
+	 */
 	public function testIsJsonAndXml() {
 		$request = new CakeRequest('some/path');
 
@@ -840,11 +840,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertTrue($request->is(array('xml')));
 	}
 
-/**
- * Test is() with multiple types.
- *
- * @return void
- */
+	/**
+	 * Test is() with multiple types.
+	 *
+	 * @return void
+	 */
 	public function testIsMultiple() {
 		$request = new CakeRequest('some/path');
 
@@ -858,11 +858,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse($request->is(array('get', 'post')));
 	}
 
-/**
- * Test isAll()
- *
- * @return void
- */
+	/**
+	 * Test isAll()
+	 *
+	 * @return void
+	 */
 	public function testIsAll() {
 		$request = new CakeRequest('some/path');
 
@@ -874,11 +874,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse($request->isAll(array('ajax', 'post')));
 	}
 
-/**
- * Test the method() method.
- *
- * @return void
- */
+	/**
+	 * Test the method() method.
+	 *
+	 * @return void
+	 */
 	public function testMethod() {
 		$_SERVER['REQUEST_METHOD'] = 'delete';
 		$request = new CakeRequest('some/path');
@@ -886,11 +886,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('delete', $request->method());
 	}
 
-/**
- * Test host retrieval.
- *
- * @return void
- */
+	/**
+	 * Test host retrieval.
+	 *
+	 * @return void
+	 */
 	public function testHost() {
 		$_SERVER['HTTP_HOST'] = 'localhost';
 		$_SERVER['HTTP_X_FORWARDED_HOST'] = 'cakephp.org';
@@ -900,11 +900,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('cakephp.org', $request->host(true));
 	}
 
-/**
- * Test domain retrieval.
- *
- * @return void
- */
+	/**
+	 * Test domain retrieval.
+	 *
+	 * @return void
+	 */
 	public function testDomain() {
 		$_SERVER['HTTP_HOST'] = 'something.example.com';
 		$request = new CakeRequest('some/path');
@@ -915,11 +915,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('example.co.uk', $request->domain(2));
 	}
 
-/**
- * Test getting subdomains for a host.
- *
- * @return void
- */
+	/**
+	 * Test getting subdomains for a host.
+	 *
+	 * @return void
+	 */
 	public function testSubdomain() {
 		$_SERVER['HTTP_HOST'] = 'something.example.com';
 		$request = new CakeRequest('some/path');
@@ -936,11 +936,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals(array(), $request->subdomains(2));
 	}
 
-/**
- * Test ajax, flash and friends
- *
- * @return void
- */
+	/**
+	 * Test ajax, flash and friends
+	 *
+	 * @return void
+	 */
 	public function testisAjaxFlashAndFriends() {
 		$request = new CakeRequest('some/path');
 
@@ -970,22 +970,22 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertTrue($request->isMobile());
 	}
 
-/**
- * Test __call exceptions
- *
- * @expectedException CakeException
- * @return void
- */
+	/**
+	 * Test __call exceptions
+	 *
+	 * @expectedException CakeException
+	 * @return void
+	 */
 	public function testMagicCallExceptionOnUnknownMethod() {
 		$request = new CakeRequest('some/path');
 		$request->IamABanana();
 	}
 
-/**
- * Test is(ssl)
- *
- * @return void
- */
+	/**
+	 * Test is(ssl)
+	 *
+	 * @return void
+	 */
 	public function testIsSsl() {
 		$request = new CakeRequest('some/path');
 
@@ -1014,11 +1014,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse($request->is('ssl'));
 	}
 
-/**
- * Test getting request params with object properties.
- *
- * @return void
- */
+	/**
+	 * Test getting request params with object properties.
+	 *
+	 * @return void
+	 */
 	public function testMagicget() {
 		$request = new CakeRequest('some/path');
 		$request->params = array('controller' => 'posts', 'action' => 'view', 'plugin' => 'blogs');
@@ -1029,11 +1029,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertNull($request->banana);
 	}
 
-/**
- * Test isset()/empty() with overloaded properties.
- *
- * @return void
- */
+	/**
+	 * Test isset()/empty() with overloaded properties.
+	 *
+	 * @return void
+	 */
 	public function testMagicisset() {
 		$request = new CakeRequest('some/path');
 		$request->params = array(
@@ -1049,11 +1049,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertTrue(empty($request->named));
 	}
 
-/**
- * Test the array access implementation
- *
- * @return void
- */
+	/**
+	 * Test the array access implementation
+	 *
+	 * @return void
+	 */
 	public function testArrayAccess() {
 		$request = new CakeRequest('some/path');
 		$request->params = array('controller' => 'posts', 'action' => 'view', 'plugin' => 'blogs');
@@ -1080,11 +1080,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('something', $request['data']['Post']['title']);
 	}
 
-/**
- * Test adding detectors and having them work.
- *
- * @return void
- */
+	/**
+	 * Test adding detectors and having them work.
+	 *
+	 * @return void
+	 */
 	public function testAddDetector() {
 		$request = new CakeRequest('some/path');
 		$request->addDetector('compare', array('env' => 'TEST_VAR', 'value' => 'something'));
@@ -1144,21 +1144,21 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse($request->isExtension());
 	}
 
-/**
- * Helper function for testing callbacks.
- *
- * @param $request
- * @return bool
- */
+	/**
+	 * Helper function for testing callbacks.
+	 *
+	 * @param $request
+	 * @return bool
+	 */
 	public function detectCallback($request) {
 		return (bool)$request->return;
 	}
 
-/**
- * Test getting headers
- *
- * @return void
- */
+	/**
+	 * Test getting headers
+	 *
+	 * @return void
+	 */
 	public function testHeader() {
 		$_SERVER['HTTP_X_THING'] = '';
 		$_SERVER['HTTP_HOST'] = 'localhost';
@@ -1173,11 +1173,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse($request->header('authorization'));
 	}
 
-/**
- * Test accepts() with and without parameters
- *
- * @return void
- */
+	/**
+	 * Test accepts() with and without parameters
+	 *
+	 * @return void
+	 */
 	public function testAccepts() {
 		$_SERVER['HTTP_ACCEPT'] = 'text/xml,application/xml;q=0.9,application/xhtml+xml,text/html,text/plain,image/png';
 		$request = new CakeRequest('/', false);
@@ -1195,11 +1195,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse($result);
 	}
 
-/**
- * Test that accept header types are trimmed for comparisons.
- *
- * @return void
- */
+	/**
+	 * Test that accept header types are trimmed for comparisons.
+	 *
+	 * @return void
+	 */
 	public function testAcceptWithWhitespace() {
 		$_SERVER['HTTP_ACCEPT'] = 'text/xml  ,  text/html ,  text/plain,image/png';
 		$request = new CakeRequest('/', false);
@@ -1212,11 +1212,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertTrue($request->accepts('text/html'));
 	}
 
-/**
- * Content types from accepts() should respect the client's q preference values.
- *
- * @return void
- */
+	/**
+	 * Content types from accepts() should respect the client's q preference values.
+	 *
+	 * @return void
+	 */
 	public function testAcceptWithQvalueSorting() {
 		$_SERVER['HTTP_ACCEPT'] = 'text/html;q=0.8,application/json;q=0.7,application/xml;q=1.0';
 		$request = new CakeRequest('/', false);
@@ -1225,11 +1225,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test the raw parsing of accept headers into the q value formatting.
- *
- * @return void
- */
+	/**
+	 * Test the raw parsing of accept headers into the q value formatting.
+	 *
+	 * @return void
+	 */
 	public function testParseAcceptWithQValue() {
 		$_SERVER['HTTP_ACCEPT'] = 'text/html;q=0.8,application/json;q=0.7,application/xml;q=1.0,image/png';
 		$request = new CakeRequest('/', false);
@@ -1242,11 +1242,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test parsing accept with a confusing accept value.
- *
- * @return void
- */
+	/**
+	 * Test parsing accept with a confusing accept value.
+	 *
+	 * @return void
+	 */
 	public function testParseAcceptNoQValues() {
 		$_SERVER['HTTP_ACCEPT'] = 'application/json, text/plain, */*';
 
@@ -1258,11 +1258,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test parsing accept ignores index param
- *
- * @return void
- */
+	/**
+	 * Test parsing accept ignores index param
+	 *
+	 * @return void
+	 */
 	public function testParseAcceptIgnoreAcceptExtensions() {
 		$_SERVER['HTTP_ACCEPT'] = 'application/json;level=1, text/plain, */*';
 
@@ -1274,13 +1274,13 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test that parsing accept headers with invalid syntax works.
- *
- * The header used is missing a q value for application/xml.
- *
- * @return void
- */
+	/**
+	 * Test that parsing accept headers with invalid syntax works.
+	 *
+	 * The header used is missing a q value for application/xml.
+	 *
+	 * @return void
+	 */
 	public function testParseAcceptInvalidSyntax() {
 		$_SERVER['HTTP_ACCEPT'] = 'text/html,application/xhtml+xml,application/xml;image/png,image/jpeg,image/*;q=0.9,*/*;q=0.8';
 		$request = new CakeRequest('/', false);
@@ -1293,11 +1293,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test baseUrl and webroot with ModRewrite
- *
- * @return void
- */
+	/**
+	 * Test baseUrl and webroot with ModRewrite
+	 *
+	 * @return void
+	 */
 	public function testBaseUrlAndWebrootWithModRewrite() {
 		Configure::write('App.baseUrl', false);
 
@@ -1362,11 +1362,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('/clients/PewterReport/code/', $request->webroot);
 	}
 
-/**
- * Test baseUrl with ModRewrite alias
- *
- * @return void
- */
+	/**
+	 * Test baseUrl with ModRewrite alias
+	 *
+	 * @return void
+	 */
 	public function testBaseUrlwithModRewriteAlias() {
 		$_SERVER['DOCUMENT_ROOT'] = '/home/aplusnur/public_html';
 		$_SERVER['PHP_SELF'] = '/control/index.php';
@@ -1390,18 +1390,18 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('/newaffiliate/', $request->webroot);
 	}
 
-/**
- * Test base, webroot, URL and here parsing when there is URL rewriting but
- * CakePHP gets called with index.php in URL nonetheless.
- *
- * Tests uri with
- * - index.php/
- * - index.php/
- * - index.php/apples/
- * - index.php/bananas/eat/tasty_banana
- *
- * @return void
- */
+	/**
+	 * Test base, webroot, URL and here parsing when there is URL rewriting but
+	 * CakePHP gets called with index.php in URL nonetheless.
+	 *
+	 * Tests uri with
+	 * - index.php/
+	 * - index.php/
+	 * - index.php/apples/
+	 * - index.php/bananas/eat/tasty_banana
+	 *
+	 * @return void
+	 */
 	public function testBaseUrlWithModRewriteAndIndexPhp() {
 		$_SERVER['REQUEST_URI'] = '/cakephp/app/webroot/index.php';
 		$_SERVER['PHP_SELF'] = '/cakephp/app/webroot/index.php';
@@ -1454,12 +1454,12 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('/cakephp/bananas/eat/tasty_banana', $request->here);
 	}
 
-/**
- * Test that even if mod_rewrite is on, and the url contains index.php
- * and there are numerous //s that the base/webroot is calculated correctly.
- *
- * @return void
- */
+	/**
+	 * Test that even if mod_rewrite is on, and the url contains index.php
+	 * and there are numerous //s that the base/webroot is calculated correctly.
+	 *
+	 * @return void
+	 */
 	public function testBaseUrlWithModRewriteAndExtraSlashes() {
 		$_SERVER['REQUEST_URI'] = '/cakephp/webroot///index.php/bananas/eat';
 		$_SERVER['PHP_SELF'] = '/cakephp/webroot///index.php/bananas/eat';
@@ -1472,11 +1472,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('/cakephp/bananas/eat', $request->here);
 	}
 
-/**
- * Test base, webroot, and URL parsing when there is no URL rewriting
- *
- * @return void
- */
+	/**
+	 * Test base, webroot, and URL parsing when there is no URL rewriting
+	 *
+	 * @return void
+	 */
 	public function testBaseUrlWithNoModRewrite() {
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites';
 		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/cake/index.php';
@@ -1496,11 +1496,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('posts/index', $request->url);
 	}
 
-/**
- * Test baseUrl and webroot with baseUrl
- *
- * @return void
- */
+	/**
+	 * Test baseUrl and webroot with baseUrl
+	 *
+	 * @return void
+	 */
 	public function testBaseUrlAndWebrootWithBaseUrl() {
 		Configure::write('App.dir', 'app');
 		Configure::write('App.baseUrl', '/app/webroot/index.php');
@@ -1545,11 +1545,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('/dbhauser/app/webroot/', $request->webroot);
 	}
 
-/**
- * Test baseUrl with no rewrite and using the top level index.php.
- *
- * @return void
- */
+	/**
+	 * Test baseUrl with no rewrite and using the top level index.php.
+	 *
+	 * @return void
+	 */
 	public function testBaseUrlNoRewriteTopLevelIndex() {
 		Configure::write('App.baseUrl', '/index.php');
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites/cake_dev';
@@ -1560,11 +1560,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('/app/webroot/', $request->webroot);
 	}
 
-/**
- * Check that a sub-directory containing app|webroot doesn't get mishandled when re-writing is off.
- *
- * @return void
- */
+	/**
+	 * Check that a sub-directory containing app|webroot doesn't get mishandled when re-writing is off.
+	 *
+	 * @return void
+	 */
 	public function testBaseUrlWithAppAndWebrootInDirname() {
 		Configure::write('App.baseUrl', '/approval/index.php');
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites/';
@@ -1583,11 +1583,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('/webrootable/app/webroot/', $request->webroot);
 	}
 
-/**
- * Test baseUrl with no rewrite, and using the app/webroot/index.php file as is normal with virtual hosts.
- *
- * @return void
- */
+	/**
+	 * Test baseUrl with no rewrite, and using the app/webroot/index.php file as is normal with virtual hosts.
+	 *
+	 * @return void
+	 */
 	public function testBaseUrlNoRewriteWebrootIndex() {
 		Configure::write('App.baseUrl', '/index.php');
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites/cake_dev/app/webroot';
@@ -1598,12 +1598,12 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('/', $request->webroot);
 	}
 
-/**
- * Test that a request with a . in the main GET parameter is filtered out.
- * PHP changes GET parameter keys containing dots to _.
- *
- * @return void
- */
+	/**
+	 * Test that a request with a . in the main GET parameter is filtered out.
+	 * PHP changes GET parameter keys containing dots to _.
+	 *
+	 * @return void
+	 */
 	public function testGetParamsWithDot() {
 		$_GET = array();
 		$_GET['/posts/index/add_add'] = '';
@@ -1622,11 +1622,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals(array(), $request->query);
 	}
 
-/**
- * Test that a request with urlencoded bits in the main GET parameter are filtered out.
- *
- * @return void
- */
+	/**
+	 * Test that a request with urlencoded bits in the main GET parameter are filtered out.
+	 *
+	 * @return void
+	 */
 	public function testGetParamWithUrlencodedElement() {
 		$_GET = array();
 		$_GET['/posts/add/∂∂'] = '';
@@ -1645,11 +1645,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals(array(), $request->query);
 	}
 
-/**
- * Generator for environment configurations
- *
- * @return array Environment array
- */
+	/**
+	 * Generator for environment configurations
+	 *
+	 * @return array Environment array
+	 */
 	public static function environmentGenerator() {
 		return array(
 			array(
@@ -2047,15 +2047,15 @@ class CakeRequestTest extends CakeTestCase {
 		);
 	}
 
-/**
- * Test environment detection
- *
- * @dataProvider environmentGenerator
- * @param $name
- * @param $env
- * @param $expected
- * @return void
- */
+	/**
+	 * Test environment detection
+	 *
+	 * @dataProvider environmentGenerator
+	 * @param $name
+	 * @param $env
+	 * @param $expected
+	 * @return void
+	 */
 	public function testEnvironmentDetection($name, $env, $expected) {
 		$_GET = array();
 		$this->_loadEnvironment($env);
@@ -2069,11 +2069,11 @@ class CakeRequestTest extends CakeTestCase {
 		}
 	}
 
-/**
- * Test the query() method
- *
- * @return void
- */
+	/**
+	 * Test the query() method
+	 *
+	 * @return void
+	 */
 	public function testQuery() {
 		$_GET = array();
 		$_GET['foo'] = 'bar';
@@ -2087,11 +2087,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertNull($result);
 	}
 
-/**
- * Test the query() method with arrays passed via $_GET
- *
- * @return void
- */
+	/**
+	 * Test the query() method with arrays passed via $_GET
+	 *
+	 * @return void
+	 */
 	public function testQueryWithArray() {
 		$_GET = array();
 		$_GET['test'] = array('foo', 'bar');
@@ -2108,11 +2108,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertNull($result);
 	}
 
-/**
- * Test the data() method reading
- *
- * @return void
- */
+	/**
+	 * Test the data() method reading
+	 *
+	 * @return void
+	 */
 	public function testDataReading() {
 		$_POST['data'] = array(
 			'Model' => array(
@@ -2127,11 +2127,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertNull($result);
 	}
 
-/**
- * Test writing with data()
- *
- * @return void
- */
+	/**
+	 * Test writing with data()
+	 *
+	 * @return void
+	 */
 	public function testDataWriting() {
 		$_POST['data'] = array(
 			'Model' => array(
@@ -2149,11 +2149,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('Mark', $request->data['Comment']['1']['author']);
 	}
 
-/**
- * Test writing falsey values.
- *
- * @return void
- */
+	/**
+	 * Test writing falsey values.
+	 *
+	 * @return void
+	 */
 	public function testDataWritingFalsey() {
 		$request = new CakeRequest('posts/index');
 
@@ -2170,11 +2170,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertSame('', $request->data['Post']['empty']);
 	}
 
-/**
- * Test reading params
- *
- * @dataProvider paramReadingDataProvider
- */
+	/**
+	 * Test reading params
+	 *
+	 * @dataProvider paramReadingDataProvider
+	 */
 	public function testParamReading($toRead, $expected) {
 		$request = new CakeRequest('/');
 		$request->addParams(array(
@@ -2192,11 +2192,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals($expected, $request->param($toRead));
 	}
 
-/**
- * Data provider for testing reading values with CakeRequest::param()
- *
- * @return array
- */
+	/**
+	 * Data provider for testing reading values with CakeRequest::param()
+	 *
+	 * @return array
+	 */
 	public function paramReadingDataProvider() {
 		return array(
 			array(
@@ -2234,11 +2234,11 @@ class CakeRequestTest extends CakeTestCase {
 		);
 	}
 
-/**
- * test writing request params with param()
- *
- * @return void
- */
+	/**
+	 * test writing request params with param()
+	 *
+	 * @return void
+	 */
 	public function testParamWriting() {
 		$request = new CakeRequest('/');
 		$request->addParams(array(
@@ -2264,11 +2264,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertSame('edit', $request->action);
 	}
 
-/**
- * Test accept language
- *
- * @return void
- */
+	/**
+	 * Test accept language
+	 *
+	 * @return void
+	 */
 	public function testAcceptLanguage() {
 		// Weird language
 		$_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'inexistent,en-ca';
@@ -2307,11 +2307,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertFalse($result);
 	}
 
-/**
- * Test the here() method
- *
- * @return void
- */
+	/**
+	 * Test the here() method
+	 *
+	 * @return void
+	 */
 	public function testHere() {
 		Configure::write('App.base', '/base_path');
 		$_GET = array('test' => 'value');
@@ -2331,11 +2331,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('/posts/base_path/1/name:value?test=value', $result);
 	}
 
-/**
- * Test the here() with space in URL
- *
- * @return void
- */
+	/**
+	 * Test the here() with space in URL
+	 *
+	 * @return void
+	 */
 	public function testHereWithSpaceInUrl() {
 		Configure::write('App.base', '');
 		$_GET = array('/admin/settings/settings/prefix/Access_Control' => '');
@@ -2345,11 +2345,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('/admin/settings/settings/prefix/Access%20Control', $result);
 	}
 
-/**
- * Test the input() method.
- *
- * @return void
- */
+	/**
+	 * Test the input() method.
+	 *
+	 * @return void
+	 */
 	public function testSetInput() {
 		$request = new CakeRequest('/');
 
@@ -2361,11 +2361,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('I came from setInput', $result);
 	}
 
-/**
- * Test the input() method.
- *
- * @return void
- */
+	/**
+	 * Test the input() method.
+	 *
+	 * @return void
+	 */
 	public function testInput() {
 		$request = $this->getMock('CakeRequest', array('_readInput'));
 		$request->expects($this->once())->method('_readInput')
@@ -2375,11 +2375,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('I came from stdin', $result);
 	}
 
-/**
- * Test input() decoding.
- *
- * @return void
- */
+	/**
+	 * Test input() decoding.
+	 *
+	 * @return void
+	 */
 	public function testInputDecode() {
 		$request = $this->getMock('CakeRequest', array('_readInput'));
 		$request->expects($this->once())->method('_readInput')
@@ -2389,11 +2389,11 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals(array('name' => 'value'), (array)$result);
 	}
 
-/**
- * Test input() decoding with additional arguments.
- *
- * @return void
- */
+	/**
+	 * Test input() decoding with additional arguments.
+	 *
+	 * @return void
+	 */
 	public function testInputDecodeExtraParams() {
 		$xml = <<<XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -2414,11 +2414,11 @@ XML;
 		);
 	}
 
-/**
- * Test is('requested') and isRequested()
- *
- * @return void
- */
+	/**
+	 * Test is('requested') and isRequested()
+	 *
+	 * @return void
+	 */
 	public function testIsRequested() {
 		$request = new CakeRequest('/posts/index');
 		$request->addParams(array(
@@ -2440,11 +2440,11 @@ XML;
 		$this->assertFalse($request->isRequested());
 	}
 
-/**
- * Test allowMethod method
- *
- * @return void
- */
+	/**
+	 * Test allowMethod method
+	 *
+	 * @return void
+	 */
 	public function testAllowMethod() {
 		$_SERVER['REQUEST_METHOD'] = 'PUT';
 		$request = new CakeRequest('/posts/edit/1');
@@ -2461,11 +2461,11 @@ XML;
 		$this->assertTrue($request->onlyAllow('post', 'delete'));
 	}
 
-/**
- * Test allowMethod throwing exception
- *
- * @return void
- */
+	/**
+	 * Test allowMethod throwing exception
+	 *
+	 * @return void
+	 */
 	public function testAllowMethodException() {
 		$_SERVER['REQUEST_METHOD'] = 'PUT';
 		$request = new CakeRequest('/posts/edit/1');
@@ -2481,12 +2481,12 @@ XML;
 		$request->allowMethod('POST');
 	}
 
-/**
- * Tests that overriding the method to GET will clean all request
- * data, to better simulate a GET request.
- *
- * @return void
- */
+	/**
+	 * Tests that overriding the method to GET will clean all request
+	 * data, to better simulate a GET request.
+	 *
+	 * @return void
+	 */
 	public function testMethodOverrideEmptyData() {
 		$_POST = array('_method' => 'GET', 'foo' => 'bar');
 		$_SERVER['REQUEST_METHOD'] = 'PUT';
@@ -2499,12 +2499,12 @@ XML;
 		$this->assertEmpty($request->data);
 	}
 
-/**
- * loadEnvironment method
- *
- * @param array $env
- * @return void
- */
+	/**
+	 * loadEnvironment method
+	 *
+	 * @param array $env
+	 * @return void
+	 */
 	protected function _loadEnvironment($env) {
 		if (isset($env['App'])) {
 			Configure::write('App', $env['App']);
@@ -2528,5 +2528,4 @@ XML;
 			}
 		}
 	}
-
 }

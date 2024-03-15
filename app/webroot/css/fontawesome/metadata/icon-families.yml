@@ -1,4493 +1,4493 @@
 '0':
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: '0'
   search:
-    terms:
-      - Digit Zero
-      - nada
-      - none
-      - zero
-      - zilch
+	terms:
+	  - Digit Zero
+	  - nada
+	  - none
+	  - zero
+	  - zilch
   unicode: '30'
   voted: false
 '1':
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: '1'
   search:
-    terms:
-      - Digit One
-      - one
+	terms:
+	  - Digit One
+	  - one
   unicode: '31'
   voted: false
 '2':
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: '2'
   search:
-    terms:
-      - Digit Two
-      - two
+	terms:
+	  - Digit Two
+	  - two
   unicode: '32'
   voted: false
 '3':
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: '3'
   search:
-    terms:
-      - Digit Three
-      - three
+	terms:
+	  - Digit Three
+	  - three
   unicode: '33'
   voted: false
 '4':
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: '4'
   search:
-    terms:
-      - Digit Four
-      - four
+	terms:
+	  - Digit Four
+	  - four
   unicode: '34'
   voted: false
 '5':
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: '5'
   search:
-    terms:
-      - Digit Five
-      - five
+	terms:
+	  - Digit Five
+	  - five
   unicode: '35'
   voted: false
 '6':
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: '6'
   search:
-    terms:
-      - Digit Six
-      - six
+	terms:
+	  - Digit Six
+	  - six
   unicode: '36'
   voted: false
 '7':
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: '7'
   search:
-    terms:
-      - Digit Seven
-      - seven
+	terms:
+	  - Digit Seven
+	  - seven
   unicode: '37'
   voted: false
 '8':
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: '8'
   search:
-    terms:
-      - Digit Eight
-      - eight
+	terms:
+	  - Digit Eight
+	  - eight
   unicode: '38'
   voted: false
 '9':
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: '9'
   search:
-    terms:
-      - Digit Nine
-      - nine
+	terms:
+	  - Digit Nine
+	  - nine
   unicode: '39'
   voted: false
 42-group:
   aliases:
-    names:
-      - innosoft
+	names:
+	  - innosoft
   changes:
-    - 5.15.0
-    - 6.0.0-beta2
+	- 5.15.0
+	- 6.0.0-beta2
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: 42.group
   search:
-    terms: []
+	terms: []
   unicode: e080
   voted: false
 500px:
   changes:
-    - 4.4.0
-    - 5.0.0
+	- 4.4.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: 500px
   search:
-    terms: []
+	terms: []
   unicode: f26e
   voted: false
 a:
   aliases:
-    unicodes:
-      composite:
-        - '61'
+	unicodes:
+	  composite:
+		- '61'
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: A
   search:
-    terms:
-      - Latin Capital Letter A
-      - Latin Small Letter A
-      - letter
+	terms:
+	  - Latin Capital Letter A
+	  - Latin Small Letter A
+	  - letter
   unicode: '41'
   voted: false
 accessible-icon:
   aliases:
-    unicodes:
-      composite:
-        - f29b
+	unicodes:
+	  composite:
+		- f29b
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Accessible Icon
   search:
-    terms:
-      - accessibility
-      - disabled
-      - handicap
-      - person
-      - uer
-      - wheelchair
-      - wheelchair-alt
+	terms:
+	  - accessibility
+	  - disabled
+	  - handicap
+	  - person
+	  - uer
+	  - wheelchair
+	  - wheelchair-alt
   unicode: f368
   voted: false
 accusoft:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Accusoft
   search:
-    terms: []
+	terms: []
   unicode: f369
   voted: false
 address-book:
   aliases:
-    names:
-      - contact-book
-    unicodes:
-      composite:
-        - f2ba
-      secondary:
-        - 10f2b9
+	names:
+	  - contact-book
+	unicodes:
+	  composite:
+		- f2ba
+	  secondary:
+		- 10f2b9
   changes:
-    - 4.7.0
-    - 5.0.0
-    - 5.0.3
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.7.0
+	- 5.0.0
+	- 5.0.3
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: regular
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
-      - family: classic
-        style: regular
+	free:
+	  - family: classic
+		style: regular
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
+	  - family: classic
+		style: regular
   label: Address Book
   search:
-    terms:
-      - contact
-      - directory
-      - employee
-      - index
-      - little black book
-      - portfolio
-      - rolodex
-      - uer
-      - username
+	terms:
+	  - contact
+	  - directory
+	  - employee
+	  - index
+	  - little black book
+	  - portfolio
+	  - rolodex
+	  - uer
+	  - username
   unicode: f2b9
   voted: false
 address-card:
   aliases:
-    names:
-      - contact-card
-      - vcard
-    unicodes:
-      composite:
-        - f2bc
-      secondary:
-        - 10f2bb
+	names:
+	  - contact-card
+	  - vcard
+	unicodes:
+	  composite:
+		- f2bc
+	  secondary:
+		- 10f2bb
   changes:
-    - 4.7.0
-    - 5.0.0
-    - 5.0.3
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.7.0
+	- 5.0.0
+	- 5.0.3
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: regular
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
-      - family: classic
-        style: regular
+	free:
+	  - family: classic
+		style: regular
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
+	  - family: classic
+		style: regular
   label: Address Card
   search:
-    terms:
-      - about
-      - contact
-      - employee
-      - id
-      - identification
-      - portfolio
-      - postcard
-      - profile
-      - registration
-      - uer
-      - username
+	terms:
+	  - about
+	  - contact
+	  - employee
+	  - id
+	  - identification
+	  - portfolio
+	  - postcard
+	  - profile
+	  - registration
+	  - uer
+	  - username
   unicode: f2bb
   voted: false
 adn:
   changes:
-    - 3.2.0
-    - 5.0.0
+	- 3.2.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: App.net
   search:
-    terms: []
+	terms: []
   unicode: f170
   voted: false
 adversal:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Adversal
   search:
-    terms: []
+	terms: []
   unicode: f36a
   voted: false
 affiliatetheme:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: affiliatetheme
   search:
-    terms: []
+	terms: []
   unicode: f36b
   voted: false
 airbnb:
   changes:
-    - 5.8.0
+	- 5.8.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Airbnb
   search:
-    terms: []
+	terms: []
   unicode: f834
   voted: false
 algolia:
   changes:
-    - 5.0.0
-    - 6.3.0
+	- 5.0.0
+	- 6.3.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Algolia
   search:
-    terms: []
+	terms: []
   unicode: f36c
   voted: false
 align-center:
   aliases:
-    unicodes:
-      secondary:
-        - 10f037
+	unicodes:
+	  secondary:
+		- 10f037
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Align Center
   search:
-    terms:
-      - format
-      - middle
-      - paragraph
-      - text
+	terms:
+	  - format
+	  - middle
+	  - paragraph
+	  - text
   unicode: f037
   voted: false
 align-justify:
   aliases:
-    unicodes:
-      secondary:
-        - 10f039
+	unicodes:
+	  secondary:
+		- 10f039
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Align Justify
   search:
-    terms:
-      - format
-      - paragraph
-      - text
+	terms:
+	  - format
+	  - paragraph
+	  - text
   unicode: f039
   voted: false
 align-left:
   aliases:
-    unicodes:
-      secondary:
-        - 10f036
+	unicodes:
+	  secondary:
+		- 10f036
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Align Left
   search:
-    terms:
-      - format
-      - paragraph
-      - text
+	terms:
+	  - format
+	  - paragraph
+	  - text
   unicode: f036
   voted: false
 align-right:
   aliases:
-    unicodes:
-      secondary:
-        - 10f038
+	unicodes:
+	  secondary:
+		- 10f038
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Align Right
   search:
-    terms:
-      - format
-      - paragraph
-      - text
+	terms:
+	  - format
+	  - paragraph
+	  - text
   unicode: f038
   voted: false
 alipay:
   changes:
-    - 5.3.0
+	- 5.3.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Alipay
   search:
-    terms: []
+	terms: []
   unicode: f642
   voted: false
 amazon:
   changes:
-    - 4.4.0
-    - 5.0.0
+	- 4.4.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Amazon
   search:
-    terms: []
+	terms: []
   unicode: f270
   voted: false
 amazon-pay:
   changes:
-    - 5.0.2
-    - 5.8.0
+	- 5.0.2
+	- 5.8.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Amazon Pay
   search:
-    terms: []
+	terms: []
   unicode: f42c
   voted: false
 amilia:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Amilia
   search:
-    terms: []
+	terms: []
   unicode: f36d
   voted: false
 anchor:
   aliases:
-    unicodes:
-      composite:
-        - '2693'
-      secondary:
-        - 10f13d
+	unicodes:
+	  composite:
+		- '2693'
+	  secondary:
+		- 10f13d
   changes:
-    - 3.1.0
-    - 5.0.0
-    - 5.11.0
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.1.0
+	- 5.0.0
+	- 5.11.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Anchor
   search:
-    terms:
-      - anchor
-      - berth
-      - boat
-      - dock
-      - embed
-      - link
-      - maritime
-      - moor
-      - port
-      - secure
-      - ship
-      - tool
+	terms:
+	  - anchor
+	  - berth
+	  - boat
+	  - dock
+	  - embed
+	  - link
+	  - maritime
+	  - moor
+	  - port
+	  - secure
+	  - ship
+	  - tool
   unicode: f13d
   voted: false
 anchor-circle-check:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Anchor Circle Check
   search:
-    terms:
-      - enable
-      - marina
-      - not affected
-      - ok
-      - okay
-      - port
-      - validate
-      - working
+	terms:
+	  - enable
+	  - marina
+	  - not affected
+	  - ok
+	  - okay
+	  - port
+	  - validate
+	  - working
   unicode: e4aa
   voted: false
 anchor-circle-exclamation:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Anchor Circle Exclamation
   search:
-    terms:
-      - affected
-      - failed
-      - marina
-      - port
+	terms:
+	  - affected
+	  - failed
+	  - marina
+	  - port
   unicode: e4ab
   voted: false
 anchor-circle-xmark:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Anchor Circle Xmark
   search:
-    terms:
-      - destroy
-      - marina
-      - port
-      - uncheck
+	terms:
+	  - destroy
+	  - marina
+	  - port
+	  - uncheck
   unicode: e4ac
   voted: false
 anchor-lock:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Anchor Lock
   search:
-    terms:
-      - closed
-      - lockdown
-      - marina
-      - padlock
-      - port
-      - privacy
-      - quarantine
+	terms:
+	  - closed
+	  - lockdown
+	  - marina
+	  - padlock
+	  - port
+	  - privacy
+	  - quarantine
   unicode: e4ad
   voted: false
 android:
   changes:
-    - 3.2.0
-    - 5.0.0
-    - 5.12.0
+	- 3.2.0
+	- 5.0.0
+	- 5.12.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Android
   search:
-    terms:
-      - robot
+	terms:
+	  - robot
   unicode: f17b
   voted: false
 angellist:
   changes:
-    - 4.2.0
-    - 5.0.0
+	- 4.2.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: AngelList
   search:
-    terms: []
+	terms: []
   unicode: f209
   voted: false
 angle-down:
   aliases:
-    unicodes:
-      composite:
-        - '2304'
-      secondary:
-        - 10f107
+	unicodes:
+	  composite:
+		- '2304'
+	  secondary:
+		- 10f107
   changes:
-    - 3.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Angle Down
   search:
-    terms:
-      - Down Arrowhead
-      - arrow
-      - caret
-      - download
-      - expand
-      - insert
+	terms:
+	  - Down Arrowhead
+	  - arrow
+	  - caret
+	  - download
+	  - expand
+	  - insert
   unicode: f107
   voted: false
 angle-left:
   aliases:
-    unicodes:
-      composite:
-        - '2039'
-      secondary:
-        - 10f104
+	unicodes:
+	  composite:
+		- '2039'
+	  secondary:
+		- 10f104
   changes:
-    - 3.0.0
-    - 5.0.0
-    - 5.11.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.0.0
+	- 5.0.0
+	- 5.11.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Angle Left
   search:
-    terms:
-      - Single Left-Pointing Angle Quotation Mark
-      - arrow
-      - back
-      - caret
-      - less
-      - previous
+	terms:
+	  - Single Left-Pointing Angle Quotation Mark
+	  - arrow
+	  - back
+	  - caret
+	  - less
+	  - previous
   unicode: f104
   voted: false
 angle-right:
   aliases:
-    unicodes:
-      composite:
-        - 203a
-      secondary:
-        - 10f105
+	unicodes:
+	  composite:
+		- 203a
+	  secondary:
+		- 10f105
   changes:
-    - 3.0.0
-    - 5.0.0
-    - 5.11.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.0.0
+	- 5.0.0
+	- 5.11.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Angle Right
   search:
-    terms:
-      - Single Right-Pointing Angle Quotation Mark
-      - arrow
-      - care
-      - forward
-      - more
-      - next
+	terms:
+	  - Single Right-Pointing Angle Quotation Mark
+	  - arrow
+	  - care
+	  - forward
+	  - more
+	  - next
   unicode: f105
   voted: false
 angle-up:
   aliases:
-    unicodes:
-      composite:
-        - '2303'
-      secondary:
-        - 10f106
+	unicodes:
+	  composite:
+		- '2303'
+	  secondary:
+		- 10f106
   changes:
-    - 3.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Angle Up
   search:
-    terms:
-      - Up Arrowhead
-      - arrow
-      - caret
-      - collapse
-      - upgrade
-      - upload
+	terms:
+	  - Up Arrowhead
+	  - arrow
+	  - caret
+	  - collapse
+	  - upgrade
+	  - upload
   unicode: f106
   voted: false
 angles-down:
   aliases:
-    names:
-      - angle-double-down
-    unicodes:
-      secondary:
-        - 10f103
+	names:
+	  - angle-double-down
+	unicodes:
+	  secondary:
+		- 10f103
   changes:
-    - 3.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Angles Down
   search:
-    terms:
-      - arrows
-      - caret
-      - download
-      - expand
+	terms:
+	  - arrows
+	  - caret
+	  - download
+	  - expand
   unicode: f103
   voted: false
 angles-left:
   aliases:
-    names:
-      - angle-double-left
-    unicodes:
-      composite:
-        - ab
-      secondary:
-        - 10f100
+	names:
+	  - angle-double-left
+	unicodes:
+	  composite:
+		- ab
+	  secondary:
+		- 10f100
   changes:
-    - 3.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Angles Left
   search:
-    terms:
-      - Left-Pointing Double Angle Quotation Mark
-      - arrows
-      - back
-      - caret
-      - laquo
-      - previous
-      - quote
+	terms:
+	  - Left-Pointing Double Angle Quotation Mark
+	  - arrows
+	  - back
+	  - caret
+	  - laquo
+	  - previous
+	  - quote
   unicode: f100
   voted: false
 angles-right:
   aliases:
-    names:
-      - angle-double-right
-    unicodes:
-      composite:
-        - bb
-      secondary:
-        - 10f101
+	names:
+	  - angle-double-right
+	unicodes:
+	  composite:
+		- bb
+	  secondary:
+		- 10f101
   changes:
-    - 3.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Angles Right
   search:
-    terms:
-      - Right-Pointing Double Angle Quotation Mark
-      - arrows
-      - caret
-      - forward
-      - more
-      - next
-      - quote
-      - raquo
+	terms:
+	  - Right-Pointing Double Angle Quotation Mark
+	  - arrows
+	  - caret
+	  - forward
+	  - more
+	  - next
+	  - quote
+	  - raquo
   unicode: f101
   voted: false
 angles-up:
   aliases:
-    names:
-      - angle-double-up
-    unicodes:
-      secondary:
-        - 10f102
+	names:
+	  - angle-double-up
+	unicodes:
+	  secondary:
+		- 10f102
   changes:
-    - 3.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Angles Up
   search:
-    terms:
-      - arrows
-      - caret
-      - collapse
-      - upload
+	terms:
+	  - arrows
+	  - caret
+	  - collapse
+	  - upload
   unicode: f102
   voted: false
 angrycreative:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Angry Creative
   search:
-    terms: []
+	terms: []
   unicode: f36e
   voted: false
 angular:
   changes:
-    - 5.0.0
-    - 5.8.0
+	- 5.0.0
+	- 5.8.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Angular
   search:
-    terms: []
+	terms: []
   unicode: f420
   voted: false
 ankh:
   aliases:
-    unicodes:
-      composite:
-        - '2625'
-      secondary:
-        - 10f644
+	unicodes:
+	  composite:
+		- '2625'
+	  secondary:
+		- 10f644
   changes:
-    - 5.3.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.3.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Ankh
   search:
-    terms:
-      - Ankh
-      - amulet
-      - copper
-      - coptic christianity
-      - copts
-      - crux ansata
-      - egypt
-      - venus
+	terms:
+	  - Ankh
+	  - amulet
+	  - copper
+	  - coptic christianity
+	  - copts
+	  - crux ansata
+	  - egypt
+	  - venus
   unicode: f644
   voted: false
 app-store:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: App Store
   search:
-    terms: []
+	terms: []
   unicode: f36f
   voted: false
 app-store-ios:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: iOS App Store
   search:
-    terms: []
+	terms: []
   unicode: f370
   voted: false
 apper:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Apper Systems AB
   search:
-    terms: []
+	terms: []
   unicode: f371
   voted: false
 apple:
   changes:
-    - 3.2.0
-    - 5.0.0
-    - 5.0.7
-    - 5.8.0
+	- 3.2.0
+	- 5.0.0
+	- 5.0.7
+	- 5.8.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Apple
   search:
-    terms:
-      - fruit
-      - ios
-      - mac
-      - operating system
-      - os
-      - osx
+	terms:
+	  - fruit
+	  - ios
+	  - mac
+	  - operating system
+	  - os
+	  - osx
   unicode: f179
   voted: false
 apple-pay:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Apple Pay
   search:
-    terms: []
+	terms: []
   unicode: f415
   voted: true
 apple-whole:
   aliases:
-    names:
-      - apple-alt
-    unicodes:
-      composite:
-        - 1f34e
-        - 1f34f
-      secondary:
-        - 10f5d1
+	names:
+	  - apple-alt
+	unicodes:
+	  composite:
+		- 1f34e
+		- 1f34f
+	  secondary:
+		- 10f5d1
   changes:
-    - 5.2.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.2.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Apple Whole
   search:
-    terms:
-      - apple
-      - fall
-      - fruit
-      - fuji
-      - green
-      - green apple
-      - macintosh
-      - orchard
-      - red
-      - red apple
-      - seasonal
-      - vegan
+	terms:
+	  - apple
+	  - fall
+	  - fruit
+	  - fuji
+	  - green
+	  - green apple
+	  - macintosh
+	  - orchard
+	  - red
+	  - red apple
+	  - seasonal
+	  - vegan
   unicode: f5d1
   voted: false
 archway:
   aliases:
-    unicodes:
-      secondary:
-        - 10f557
+	unicodes:
+	  secondary:
+		- 10f557
   changes:
-    - 5.1.0
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.1.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Archway
   search:
-    terms:
-      - arc
-      - monument
-      - road
-      - street
-      - tunnel
+	terms:
+	  - arc
+	  - monument
+	  - road
+	  - street
+	  - tunnel
   unicode: f557
   voted: false
 arrow-down:
   aliases:
-    unicodes:
-      composite:
-        - '2193'
-      secondary:
-        - 10f063
+	unicodes:
+	  composite:
+		- '2193'
+	  secondary:
+		- 10f063
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0-beta2
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0-beta2
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Down
   search:
-    terms:
-      - Downwards Arrow
-      - download
+	terms:
+	  - Downwards Arrow
+	  - download
   unicode: f063
   voted: false
 arrow-down-1-9:
   aliases:
-    names:
-      - sort-numeric-asc
-      - sort-numeric-down
-    unicodes:
-      secondary:
-        - 10f162
+	names:
+	  - sort-numeric-asc
+	  - sort-numeric-down
+	unicodes:
+	  secondary:
+		- 10f162
   changes:
-    - 3.2.0
-    - 5.0.0
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.2.0
+	- 5.0.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Down 1 9
   search:
-    terms:
-      - arrange
-      - filter
-      - numbers
-      - order
-      - sort-numeric-asc
+	terms:
+	  - arrange
+	  - filter
+	  - numbers
+	  - order
+	  - sort-numeric-asc
   unicode: f162
   voted: false
 arrow-down-9-1:
   aliases:
-    names:
-      - sort-numeric-desc
-      - sort-numeric-down-alt
-    unicodes:
-      secondary:
-        - 10f886
+	names:
+	  - sort-numeric-desc
+	  - sort-numeric-down-alt
+	unicodes:
+	  secondary:
+		- 10f886
   changes:
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Down 9 1
   search:
-    terms:
-      - arrange
-      - filter
-      - numbers
-      - order
-      - sort-numeric-asc
+	terms:
+	  - arrange
+	  - filter
+	  - numbers
+	  - order
+	  - sort-numeric-asc
   unicode: f886
   voted: false
 arrow-down-a-z:
   aliases:
-    names:
-      - sort-alpha-asc
-      - sort-alpha-down
-    unicodes:
-      secondary:
-        - 10f15d
+	names:
+	  - sort-alpha-asc
+	  - sort-alpha-down
+	unicodes:
+	  secondary:
+		- 10f15d
   changes:
-    - 3.2.0
-    - 5.0.0
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.2.0
+	- 5.0.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Down A Z
   search:
-    terms:
-      - alphabetical
-      - arrange
-      - filter
-      - order
-      - sort-alpha-asc
+	terms:
+	  - alphabetical
+	  - arrange
+	  - filter
+	  - order
+	  - sort-alpha-asc
   unicode: f15d
   voted: false
 arrow-down-long:
   aliases:
-    names:
-      - long-arrow-down
-    unicodes:
-      secondary:
-        - 10f175
+	names:
+	  - long-arrow-down
+	unicodes:
+	  secondary:
+		- 10f175
   changes:
-    - 3.2.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.2.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Down Long
   search:
-    terms:
-      - download
-      - long-arrow-down
+	terms:
+	  - download
+	  - long-arrow-down
   unicode: f175
   voted: false
 arrow-down-short-wide:
   aliases:
-    names:
-      - sort-amount-desc
-      - sort-amount-down-alt
-    unicodes:
-      secondary:
-        - 10f884
+	names:
+	  - sort-amount-desc
+	  - sort-amount-down-alt
+	unicodes:
+	  secondary:
+		- 10f884
   changes:
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Down Short Wide
   search:
-    terms:
-      - arrange
-      - filter
-      - order
-      - sort-amount-asc
+	terms:
+	  - arrange
+	  - filter
+	  - order
+	  - sort-amount-asc
   unicode: f884
   voted: false
 arrow-down-up-across-line:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Down Up Across Line
   search:
-    terms:
-      - border
-      - crossing
-      - transfer
+	terms:
+	  - border
+	  - crossing
+	  - transfer
   unicode: e4af
   voted: false
 arrow-down-up-lock:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Down Up Lock
   search:
-    terms:
-      - border
-      - closed
-      - crossing
-      - lockdown
-      - padlock
-      - privacy
-      - quarantine
-      - transfer
+	terms:
+	  - border
+	  - closed
+	  - crossing
+	  - lockdown
+	  - padlock
+	  - privacy
+	  - quarantine
+	  - transfer
   unicode: e4b0
   voted: false
 arrow-down-wide-short:
   aliases:
-    names:
-      - sort-amount-asc
-      - sort-amount-down
-    unicodes:
-      secondary:
-        - 10f160
+	names:
+	  - sort-amount-asc
+	  - sort-amount-down
+	unicodes:
+	  secondary:
+		- 10f160
   changes:
-    - 3.2.0
-    - 5.0.0
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.2.0
+	- 5.0.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Down Wide Short
   search:
-    terms:
-      - arrange
-      - filter
-      - number
-      - order
-      - sort-amount-asc
+	terms:
+	  - arrange
+	  - filter
+	  - number
+	  - order
+	  - sort-amount-asc
   unicode: f160
   voted: false
 arrow-down-z-a:
   aliases:
-    names:
-      - sort-alpha-desc
-      - sort-alpha-down-alt
-    unicodes:
-      secondary:
-        - 10f881
+	names:
+	  - sort-alpha-desc
+	  - sort-alpha-down-alt
+	unicodes:
+	  secondary:
+		- 10f881
   changes:
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Down Z A
   search:
-    terms:
-      - alphabetical
-      - arrange
-      - filter
-      - order
-      - sort-alpha-asc
+	terms:
+	  - alphabetical
+	  - arrange
+	  - filter
+	  - order
+	  - sort-alpha-asc
   unicode: f881
   voted: false
 arrow-left:
   aliases:
-    unicodes:
-      composite:
-        - '2190'
-      secondary:
-        - 10f060
+	unicodes:
+	  composite:
+		- '2190'
+	  secondary:
+		- 10f060
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0-beta2
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0-beta2
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Left
   search:
-    terms:
-      - Leftwards Arrow
-      - back
-      - previous
+	terms:
+	  - Leftwards Arrow
+	  - back
+	  - previous
   unicode: f060
   voted: false
 arrow-left-long:
   aliases:
-    names:
-      - long-arrow-left
-    unicodes:
-      secondary:
-        - 10f177
+	names:
+	  - long-arrow-left
+	unicodes:
+	  secondary:
+		- 10f177
   changes:
-    - 3.2.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.2.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Left Long
   search:
-    terms:
-      - back
-      - long-arrow-left
-      - previous
+	terms:
+	  - back
+	  - long-arrow-left
+	  - previous
   unicode: f177
   voted: false
 arrow-pointer:
   aliases:
-    names:
-      - mouse-pointer
-    unicodes:
-      secondary:
-        - 10f245
+	names:
+	  - mouse-pointer
+	unicodes:
+	  secondary:
+		- 10f245
   changes:
-    - 4.4.0
-    - 5.0.0
-    - 5.0.3
-    - 6.0.0-beta1
-    - 6.1.2
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.4.0
+	- 5.0.0
+	- 5.0.3
+	- 6.0.0-beta1
+	- 6.1.2
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Pointer
   search:
-    terms:
-      - arrow
-      - cursor
-      - select
+	terms:
+	  - arrow
+	  - cursor
+	  - select
   unicode: f245
   voted: false
 arrow-right:
   aliases:
-    unicodes:
-      composite:
-        - '2192'
-      secondary:
-        - 10f061
+	unicodes:
+	  composite:
+		- '2192'
+	  secondary:
+		- 10f061
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0-beta2
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0-beta2
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Right
   search:
-    terms:
-      - Rightwards Arrow
-      - forward
-      - next
+	terms:
+	  - Rightwards Arrow
+	  - forward
+	  - next
   unicode: f061
   voted: false
 arrow-right-arrow-left:
   aliases:
-    names:
-      - exchange
-    unicodes:
-      composite:
-        - 21c4
-      secondary:
-        - 10f0ec
+	names:
+	  - exchange
+	unicodes:
+	  composite:
+		- 21c4
+	  secondary:
+		- 10f0ec
   changes:
-    - 3.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.2.1
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.2.1
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Right Arrow Left
   search:
-    terms:
-      - Rightwards Arrow Over Leftwards Arrow
-      - arrow
-      - arrows
-      - reciprocate
-      - return
-      - swap
-      - transfer
+	terms:
+	  - Rightwards Arrow Over Leftwards Arrow
+	  - arrow
+	  - arrows
+	  - reciprocate
+	  - return
+	  - swap
+	  - transfer
   unicode: f0ec
   voted: false
 arrow-right-from-bracket:
   aliases:
-    names:
-      - sign-out
-    unicodes:
-      secondary:
-        - 10f08b
+	names:
+	  - sign-out
+	unicodes:
+	  secondary:
+		- 10f08b
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Right From Bracket
   search:
-    terms:
-      - arrow
-      - exit
-      - leave
-      - log out
-      - logout
+	terms:
+	  - arrow
+	  - exit
+	  - leave
+	  - log out
+	  - logout
   unicode: f08b
   voted: false
 arrow-right-long:
   aliases:
-    names:
-      - long-arrow-right
-    unicodes:
-      secondary:
-        - 10f178
+	names:
+	  - long-arrow-right
+	unicodes:
+	  secondary:
+		- 10f178
   changes:
-    - 3.2.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.2.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Right Long
   search:
-    terms:
-      - forward
-      - long-arrow-right
-      - next
+	terms:
+	  - forward
+	  - long-arrow-right
+	  - next
   unicode: f178
   voted: false
 arrow-right-to-bracket:
   aliases:
-    names:
-      - sign-in
-    unicodes:
-      secondary:
-        - 10f090
+	names:
+	  - sign-in
+	unicodes:
+	  secondary:
+		- 10f090
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Right To Bracket
   search:
-    terms:
-      - arrow
-      - enter
-      - insert
-      - join
-      - log in
-      - login
-      - sign in
-      - sign up
-      - sign-in
-      - signin
-      - signup
+	terms:
+	  - arrow
+	  - enter
+	  - insert
+	  - join
+	  - log in
+	  - login
+	  - sign in
+	  - sign up
+	  - sign-in
+	  - signin
+	  - signup
   unicode: f090
   voted: false
 arrow-right-to-city:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Right To City
   search:
-    terms:
-      - building
-      - city
-      - exodus
-      - insert
-      - rural
-      - urban
+	terms:
+	  - building
+	  - city
+	  - exodus
+	  - insert
+	  - rural
+	  - urban
   unicode: e4b3
   voted: false
 arrow-rotate-left:
   aliases:
-    names:
-      - arrow-left-rotate
-      - arrow-rotate-back
-      - arrow-rotate-backward
-      - undo
-    unicodes:
-      composite:
-        - 21ba
-      secondary:
-        - 10f0e2
+	names:
+	  - arrow-left-rotate
+	  - arrow-rotate-back
+	  - arrow-rotate-backward
+	  - undo
+	unicodes:
+	  composite:
+		- 21ba
+	  secondary:
+		- 10f0e2
   changes:
-    - 2.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 2.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Rotate Left
   search:
-    terms:
-      - Anticlockwise Open Circle Arrow
-      - back
-      - control z
-      - exchange
-      - oops
-      - return
-      - rotate
-      - swap
+	terms:
+	  - Anticlockwise Open Circle Arrow
+	  - back
+	  - control z
+	  - exchange
+	  - oops
+	  - return
+	  - rotate
+	  - swap
   unicode: f0e2
   voted: false
 arrow-rotate-right:
   aliases:
-    names:
-      - arrow-right-rotate
-      - arrow-rotate-forward
-      - redo
-    unicodes:
-      composite:
-        - 21bb
-      secondary:
-        - 10f01e
+	names:
+	  - arrow-right-rotate
+	  - arrow-rotate-forward
+	  - redo
+	unicodes:
+	  composite:
+		- 21bb
+	  secondary:
+		- 10f01e
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 5.8.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 5.8.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Rotate Right
   search:
-    terms:
-      - Clockwise Open Circle Arrow
-      - forward
-      - refresh
-      - reload
-      - renew
-      - repeat
-      - retry
+	terms:
+	  - Clockwise Open Circle Arrow
+	  - forward
+	  - refresh
+	  - reload
+	  - renew
+	  - repeat
+	  - retry
   unicode: f01e
   voted: false
 arrow-trend-down:
   changes:
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Trend Down
   search:
-    terms:
-      - line
-      - stocks
-      - trend
+	terms:
+	  - line
+	  - stocks
+	  - trend
   unicode: e097
   voted: false
 arrow-trend-up:
   changes:
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Trend Up
   search:
-    terms:
-      - line
-      - stocks
-      - trend
+	terms:
+	  - line
+	  - stocks
+	  - trend
   unicode: e098
   voted: false
 arrow-turn-down:
   aliases:
-    names:
-      - level-down
-    unicodes:
-      secondary:
-        - 10f149
+	names:
+	  - level-down
+	unicodes:
+	  secondary:
+		- 10f149
   changes:
-    - 3.1.0
-    - 5.0.0
-    - 5.11.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.1.0
+	- 5.0.0
+	- 5.11.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Turn Down
   search:
-    terms:
-      - arrow
+	terms:
+	  - arrow
   unicode: f149
   voted: false
 arrow-turn-up:
   aliases:
-    names:
-      - level-up
-    unicodes:
-      secondary:
-        - 10f148
+	names:
+	  - level-up
+	unicodes:
+	  secondary:
+		- 10f148
   changes:
-    - 3.1.0
-    - 5.0.0
-    - 5.11.0
-    - 5.11.1
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.1.0
+	- 5.0.0
+	- 5.11.0
+	- 5.11.1
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Turn Up
   search:
-    terms:
-      - arrow
+	terms:
+	  - arrow
   unicode: f148
   voted: false
 arrow-up:
   aliases:
-    unicodes:
-      composite:
-        - '2191'
-      secondary:
-        - 10f062
+	unicodes:
+	  composite:
+		- '2191'
+	  secondary:
+		- 10f062
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0-beta2
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0-beta2
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up
   search:
-    terms:
-      - Upwards Arrow
-      - forward
-      - upgrade
-      - upload
+	terms:
+	  - Upwards Arrow
+	  - forward
+	  - upgrade
+	  - upload
   unicode: f062
   voted: false
 arrow-up-1-9:
   aliases:
-    names:
-      - sort-numeric-up
-    unicodes:
-      secondary:
-        - 10f163
+	names:
+	  - sort-numeric-up
+	unicodes:
+	  secondary:
+		- 10f163
   changes:
-    - 3.2.0
-    - 5.0.0
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.2.0
+	- 5.0.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up 1 9
   search:
-    terms:
-      - arrange
-      - filter
-      - numbers
-      - order
-      - sort-numeric-desc
+	terms:
+	  - arrange
+	  - filter
+	  - numbers
+	  - order
+	  - sort-numeric-desc
   unicode: f163
   voted: false
 arrow-up-9-1:
   aliases:
-    names:
-      - sort-numeric-up-alt
-    unicodes:
-      secondary:
-        - 10f887
+	names:
+	  - sort-numeric-up-alt
+	unicodes:
+	  secondary:
+		- 10f887
   changes:
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up 9 1
   search:
-    terms:
-      - arrange
-      - filter
-      - numbers
-      - order
-      - sort-numeric-desc
+	terms:
+	  - arrange
+	  - filter
+	  - numbers
+	  - order
+	  - sort-numeric-desc
   unicode: f887
   voted: false
 arrow-up-a-z:
   aliases:
-    names:
-      - sort-alpha-up
-    unicodes:
-      secondary:
-        - 10f15e
+	names:
+	  - sort-alpha-up
+	unicodes:
+	  secondary:
+		- 10f15e
   changes:
-    - 3.2.0
-    - 5.0.0
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.2.0
+	- 5.0.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up A Z
   search:
-    terms:
-      - alphabetical
-      - arrange
-      - filter
-      - order
-      - sort-alpha-desc
+	terms:
+	  - alphabetical
+	  - arrange
+	  - filter
+	  - order
+	  - sort-alpha-desc
   unicode: f15e
   voted: false
 arrow-up-from-bracket:
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up From Bracket
   search:
-    terms:
-      - share
-      - transfer
-      - upgrade
-      - upload
+	terms:
+	  - share
+	  - transfer
+	  - upgrade
+	  - upload
   unicode: e09a
   voted: false
 arrow-up-from-ground-water:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up From Ground Water
   search:
-    terms:
-      - groundwater
-      - spring
-      - upgrade
-      - water supply
-      - water table
+	terms:
+	  - groundwater
+	  - spring
+	  - upgrade
+	  - water supply
+	  - water table
   unicode: e4b5
   voted: false
 arrow-up-from-water-pump:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up From Water Pump
   search:
-    terms:
-      - flood
-      - groundwater
-      - pump
-      - submersible
-      - sump pump
-      - upgrade
+	terms:
+	  - flood
+	  - groundwater
+	  - pump
+	  - submersible
+	  - sump pump
+	  - upgrade
   unicode: e4b6
   voted: false
 arrow-up-long:
   aliases:
-    names:
-      - long-arrow-up
-    unicodes:
-      secondary:
-        - 10f176
+	names:
+	  - long-arrow-up
+	unicodes:
+	  secondary:
+		- 10f176
   changes:
-    - 3.2.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.2.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up Long
   search:
-    terms:
-      - long-arrow-up
-      - upload
+	terms:
+	  - long-arrow-up
+	  - upload
   unicode: f176
   voted: false
 arrow-up-right-dots:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up Right Dots
   search:
-    terms:
-      - growth
-      - increase
-      - population
-      - upgrade
+	terms:
+	  - growth
+	  - increase
+	  - population
+	  - upgrade
   unicode: e4b7
   voted: false
 arrow-up-right-from-square:
   aliases:
-    names:
-      - external-link
-    unicodes:
-      secondary:
-        - 10f08e
+	names:
+	  - external-link
+	unicodes:
+	  secondary:
+		- 10f08e
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 5.11.0
-    - 6.0.0-beta1
-    - 6.1.0
-    - 6.2.0
-    - 6.2.1
-    - 6.3.0
-    - 6.4.0
-    - 6.4.1
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 5.11.0
+	- 6.0.0-beta1
+	- 6.1.0
+	- 6.2.0
+	- 6.2.1
+	- 6.3.0
+	- 6.4.0
+	- 6.4.1
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up Right From Square
   search:
-    terms:
-      - new
-      - open
-      - send
-      - share
-      - upgrade
+	terms:
+	  - new
+	  - open
+	  - send
+	  - share
+	  - upgrade
   unicode: f08e
   voted: false
 arrow-up-short-wide:
   aliases:
-    names:
-      - sort-amount-up-alt
-    unicodes:
-      secondary:
-        - 10f885
+	names:
+	  - sort-amount-up-alt
+	unicodes:
+	  secondary:
+		- 10f885
   changes:
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up Short Wide
   search:
-    terms:
-      - arrange
-      - filter
-      - order
-      - sort-amount-desc
+	terms:
+	  - arrange
+	  - filter
+	  - order
+	  - sort-amount-desc
   unicode: f885
   voted: false
 arrow-up-wide-short:
   aliases:
-    names:
-      - sort-amount-up
-    unicodes:
-      secondary:
-        - 10f161
+	names:
+	  - sort-amount-up
+	unicodes:
+	  secondary:
+		- 10f161
   changes:
-    - 3.2.0
-    - 5.0.0
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.2.0
+	- 5.0.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up Wide Short
   search:
-    terms:
-      - arrange
-      - filter
-      - order
-      - sort-amount-desc
-      - upgrade
+	terms:
+	  - arrange
+	  - filter
+	  - order
+	  - sort-amount-desc
+	  - upgrade
   unicode: f161
   voted: false
 arrow-up-z-a:
   aliases:
-    names:
-      - sort-alpha-up-alt
-    unicodes:
-      secondary:
-        - 10f882
+	names:
+	  - sort-alpha-up-alt
+	unicodes:
+	  secondary:
+		- 10f882
   changes:
-    - 5.9.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.9.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrow Up Z A
   search:
-    terms:
-      - alphabetical
-      - arrange
-      - filter
-      - order
-      - sort-alpha-desc
+	terms:
+	  - alphabetical
+	  - arrange
+	  - filter
+	  - order
+	  - sort-alpha-desc
   unicode: f882
   voted: false
 arrows-down-to-line:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows Down To Line
   search:
-    terms:
-      - insert
-      - scale down
-      - sink
+	terms:
+	  - insert
+	  - scale down
+	  - sink
   unicode: e4b8
   voted: false
 arrows-down-to-people:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows Down To People
   search:
-    terms:
-      - affected
-      - focus
-      - insert
-      - targeted
-      - together
-      - uer
+	terms:
+	  - affected
+	  - focus
+	  - insert
+	  - targeted
+	  - together
+	  - uer
   unicode: e4b9
   voted: false
 arrows-left-right:
   aliases:
-    names:
-      - arrows-h
-    unicodes:
-      secondary:
-        - 10f07e
+	names:
+	  - arrows-h
+	unicodes:
+	  secondary:
+		- 10f07e
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows Left Right
   search:
-    terms:
-      - expand
-      - horizontal
-      - landscape
-      - resize
-      - wide
+	terms:
+	  - expand
+	  - horizontal
+	  - landscape
+	  - resize
+	  - wide
   unicode: f07e
   voted: false
 arrows-left-right-to-line:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows Left Right To Line
   search:
-    terms:
-      - analysis
-      - expand
-      - gap
+	terms:
+	  - analysis
+	  - expand
+	  - gap
   unicode: e4ba
   voted: false
 arrows-rotate:
   aliases:
-    names:
-      - refresh
-      - sync
-    unicodes:
-      composite:
-        - 1f5d8
-      secondary:
-        - 10f021
+	names:
+	  - refresh
+	  - sync
+	unicodes:
+	  composite:
+		- 1f5d8
+	  secondary:
+		- 10f021
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 5.8.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 5.8.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows Rotate
   search:
-    terms:
-      - Clockwise Right and Left Semicircle Arrows
-      - clockwise
-      - exchange
-      - modify
-      - refresh
-      - reload
-      - renew
-      - retry
-      - rotate
-      - swap
+	terms:
+	  - Clockwise Right and Left Semicircle Arrows
+	  - clockwise
+	  - exchange
+	  - modify
+	  - refresh
+	  - reload
+	  - renew
+	  - retry
+	  - rotate
+	  - swap
   unicode: f021
   voted: false
 arrows-spin:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows Spin
   search:
-    terms:
-      - cycle
-      - rotate
-      - spin
-      - whirl
+	terms:
+	  - cycle
+	  - rotate
+	  - spin
+	  - whirl
   unicode: e4bb
   voted: false
 arrows-split-up-and-left:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows Split Up And Left
   search:
-    terms:
-      - agile
-      - split
+	terms:
+	  - agile
+	  - split
   unicode: e4bc
   voted: false
 arrows-to-circle:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows To Circle
   search:
-    terms:
-      - center
-      - concentrate
-      - coordinate
-      - coordination
-      - focal point
-      - focus
-      - insert
+	terms:
+	  - center
+	  - concentrate
+	  - coordinate
+	  - coordination
+	  - focal point
+	  - focus
+	  - insert
   unicode: e4bd
   voted: false
 arrows-to-dot:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows To Dot
   search:
-    terms:
-      - assembly point
-      - center
-      - condense
-      - focus
-      - insert
-      - minimize
+	terms:
+	  - assembly point
+	  - center
+	  - condense
+	  - focus
+	  - insert
+	  - minimize
   unicode: e4be
   voted: false
 arrows-to-eye:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows To Eye
   search:
-    terms:
-      - center
-      - coordinated assessment
-      - focus
+	terms:
+	  - center
+	  - coordinated assessment
+	  - focus
   unicode: e4bf
   voted: false
 arrows-turn-right:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows Turn Right
   search:
-    terms:
-      - arrows
+	terms:
+	  - arrows
   unicode: e4c0
   voted: false
 arrows-turn-to-dots:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows Turn To Dots
   search:
-    terms:
-      - destination
-      - insert
-      - nexus
+	terms:
+	  - destination
+	  - insert
+	  - nexus
   unicode: e4c1
   voted: false
 arrows-up-down:
   aliases:
-    names:
-      - arrows-v
-    unicodes:
-      secondary:
-        - 10f07d
+	names:
+	  - arrows-v
+	unicodes:
+	  secondary:
+		- 10f07d
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows Up Down
   search:
-    terms:
-      - expand
-      - portrait
-      - resize
-      - tall
-      - vertical
+	terms:
+	  - expand
+	  - portrait
+	  - resize
+	  - tall
+	  - vertical
   unicode: f07d
   voted: false
 arrows-up-down-left-right:
   aliases:
-    names:
-      - arrows
-    unicodes:
-      secondary:
-        - 10f047
+	names:
+	  - arrows
+	unicodes:
+	  secondary:
+		- 10f047
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows Up Down Left Right
   search:
-    terms:
-      - arrow
-      - arrows
-      - bigger
-      - enlarge
-      - expand
-      - fullscreen
-      - move
-      - position
-      - reorder
-      - resize
+	terms:
+	  - arrow
+	  - arrows
+	  - bigger
+	  - enlarge
+	  - expand
+	  - fullscreen
+	  - move
+	  - position
+	  - reorder
+	  - resize
   unicode: f047
   voted: false
 arrows-up-to-line:
   changes:
-    - 6.1.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.1.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Arrows Up To Line
   search:
-    terms:
-      - rise
-      - scale up
-      - upgrade
+	terms:
+	  - rise
+	  - scale up
+	  - upgrade
   unicode: e4c2
   voted: false
 artstation:
   changes:
-    - 5.6.0
-    - 5.8.0
+	- 5.6.0
+	- 5.8.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Artstation
   search:
-    terms: []
+	terms: []
   unicode: f77a
   voted: true
 asterisk:
   aliases:
-    unicodes:
-      composite:
-        - '2731'
-        - f069
-      primary:
-        - f069
-      secondary:
-        - 102a
-        - 10f069
+	unicodes:
+	  composite:
+		- '2731'
+		- f069
+	  primary:
+		- f069
+	  secondary:
+		- 102a
+		- 10f069
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Asterisk
   search:
-    terms:
-      - Asterisk
-      - Heavy Asterisk
-      - annotation
-      - details
-      - reference
-      - required
-      - star
+	terms:
+	  - Asterisk
+	  - Heavy Asterisk
+	  - annotation
+	  - details
+	  - reference
+	  - required
+	  - star
   unicode: 2a
   voted: false
 asymmetrik:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: 'Asymmetrik, Ltd.'
   search:
-    terms: []
+	terms: []
   unicode: f372
   voted: false
 at:
   aliases:
-    unicodes:
-      composite:
-        - f1fa
-      primary:
-        - f1fa
-      secondary:
-        - 10f1fa
+	unicodes:
+	  composite:
+		- f1fa
+	  primary:
+		- f1fa
+	  secondary:
+		- 10f1fa
   changes:
-    - 4.2.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.2.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: At
   search:
-    terms:
-      - Commercial At
-      - address
-      - author
-      - e-mail
-      - email
-      - fluctuate
-      - handle
+	terms:
+	  - Commercial At
+	  - address
+	  - author
+	  - e-mail
+	  - email
+	  - fluctuate
+	  - handle
   unicode: '40'
   voted: false
 atlassian:
   changes:
-    - 5.6.0
+	- 5.6.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Atlassian
   search:
-    terms: []
+	terms: []
   unicode: f77b
   voted: true
 atom:
   aliases:
-    unicodes:
-      composite:
-        - 269b
-      secondary:
-        - 10f5d2
+	unicodes:
+	  composite:
+		- 269b
+	  secondary:
+		- 10f5d2
   changes:
-    - 5.2.0
-    - 5.12.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.2.0
+	- 5.12.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Atom
   search:
-    terms:
-      - atheism
-      - atheist
-      - atom
-      - atom symbol
-      - chemistry
-      - electron
-      - ion
-      - isotope
-      - knowledge
-      - neutron
-      - nuclear
-      - proton
-      - science
+	terms:
+	  - atheism
+	  - atheist
+	  - atom
+	  - atom symbol
+	  - chemistry
+	  - electron
+	  - ion
+	  - isotope
+	  - knowledge
+	  - neutron
+	  - nuclear
+	  - proton
+	  - science
   unicode: f5d2
   voted: false
 audible:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Audible
   search:
-    terms: []
+	terms: []
   unicode: f373
   voted: false
 audio-description:
   aliases:
-    unicodes:
-      secondary:
-        - 10f29e
+	unicodes:
+	  secondary:
+		- 10f29e
   changes:
-    - 4.6.0
-    - 5.0.0
-    - 5.10.2
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.6.0
+	- 5.0.0
+	- 5.10.2
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Audio Description
   search:
-    terms:
-      - blind
-      - narration
-      - video
-      - visual
+	terms:
+	  - blind
+	  - narration
+	  - video
+	  - visual
   unicode: f29e
   voted: false
 austral-sign:
   changes:
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Austral Sign
   search:
-    terms:
-      - Austral Sign
-      - currency
+	terms:
+	  - Austral Sign
+	  - currency
   unicode: e0a9
   voted: false
 autoprefixer:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Autoprefixer
   search:
-    terms: []
+	terms: []
   unicode: f41c
   voted: false
 avianex:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: avianex
   search:
-    terms: []
+	terms: []
   unicode: f374
   voted: false
 aviato:
   changes:
-    - 5.0.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Aviato
   search:
-    terms: []
+	terms: []
   unicode: f421
   voted: false
 award:
   aliases:
-    unicodes:
-      secondary:
-        - 10f559
+	unicodes:
+	  secondary:
+		- 10f559
   changes:
-    - 5.1.0
-    - 5.2.0
-    - 5.10.2
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.1.0
+	- 5.2.0
+	- 5.10.2
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Award
   search:
-    terms:
-      - guarantee
-      - honor
-      - praise
-      - prize
-      - recognition
-      - ribbon
-      - trophy
-      - warranty
+	terms:
+	  - guarantee
+	  - honor
+	  - praise
+	  - prize
+	  - recognition
+	  - ribbon
+	  - trophy
+	  - warranty
   unicode: f559
   voted: true
 aws:
   changes:
-    - 5.0.0
-    - 5.1.0
+	- 5.0.0
+	- 5.1.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Amazon Web Services (AWS)
   search:
-    terms: []
+	terms: []
   unicode: f375
   voted: false
 b:
   aliases:
-    unicodes:
-      composite:
-        - '62'
+	unicodes:
+	  composite:
+		- '62'
   changes:
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: B
   search:
-    terms:
-      - Latin Capital Letter B
-      - Latin Small Letter B
-      - letter
+	terms:
+	  - Latin Capital Letter B
+	  - Latin Small Letter B
+	  - letter
   unicode: '42'
   voted: false
 baby:
   aliases:
-    unicodes:
-      secondary:
-        - 10f77c
+	unicodes:
+	  secondary:
+		- 10f77c
   changes:
-    - 5.6.0
-    - 5.10.1
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.6.0
+	- 5.10.1
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Baby
   search:
-    terms:
-      - uer
-      - users-people
+	terms:
+	  - uer
+	  - users-people
   unicode: f77c
   voted: true
 baby-carriage:
   aliases:
-    names:
-      - carriage-baby
-    unicodes:
-      secondary:
-        - 10f77d
+	names:
+	  - carriage-baby
+	unicodes:
+	  secondary:
+		- 10f77d
   changes:
-    - 5.6.0
-    - 6.0.0-beta1
-    - 6.0.0-beta2
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.6.0
+	- 6.0.0-beta1
+	- 6.0.0-beta2
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Baby Carriage
   search:
-    terms:
-      - buggy
-      - carrier
-      - infant
-      - push
-      - stroller
-      - transportation
-      - walk
-      - wheels
+	terms:
+	  - buggy
+	  - carrier
+	  - infant
+	  - push
+	  - stroller
+	  - transportation
+	  - walk
+	  - wheels
   unicode: f77d
   voted: true
 backward:
   aliases:
-    unicodes:
-      composite:
-        - 23ea
-      secondary:
-        - 10f04a
+	unicodes:
+	  composite:
+		- 23ea
+	  secondary:
+		- 10f04a
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Backward
   search:
-    terms:
-      - arrow
-      - double
-      - fast reverse button
-      - previous
-      - rewind
+	terms:
+	  - arrow
+	  - double
+	  - fast reverse button
+	  - previous
+	  - rewind
   unicode: f04a
   voted: false
 backward-fast:
   aliases:
-    names:
-      - fast-backward
-    unicodes:
-      composite:
-        - 23ee
-      secondary:
-        - 10f049
+	names:
+	  - fast-backward
+	unicodes:
+	  composite:
+		- 23ee
+	  secondary:
+		- 10f049
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Backward Fast
   search:
-    terms:
-      - arrow
-      - beginning
-      - first
-      - last track button
-      - previous
-      - previous scene
-      - previous track
-      - quick
-      - rewind
-      - start
-      - triangle
+	terms:
+	  - arrow
+	  - beginning
+	  - first
+	  - last track button
+	  - previous
+	  - previous scene
+	  - previous track
+	  - quick
+	  - rewind
+	  - start
+	  - triangle
   unicode: f049
   voted: false
 backward-step:
   aliases:
-    names:
-      - step-backward
-    unicodes:
-      secondary:
-        - 10f048
+	names:
+	  - step-backward
+	unicodes:
+	  secondary:
+		- 10f048
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 5.10.2
-    - 5.11.0
-    - 5.11.1
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 5.10.2
+	- 5.11.0
+	- 5.11.1
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Backward Step
   search:
-    terms:
-      - beginning
-      - first
-      - previous
-      - rewind
-      - start
+	terms:
+	  - beginning
+	  - first
+	  - previous
+	  - rewind
+	  - start
   unicode: f048
   voted: false
 bacon:
   aliases:
-    unicodes:
-      composite:
-        - 1f953
-      secondary:
-        - 10f7e5
+	unicodes:
+	  composite:
+		- 1f953
+	  secondary:
+		- 10f7e5
   changes:
-    - 5.7.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.7.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bacon
   search:
-    terms:
-      - bacon
-      - blt
-      - breakfast
-      - food
-      - ham
-      - lard
-      - meat
-      - pancetta
-      - pork
-      - rasher
+	terms:
+	  - bacon
+	  - blt
+	  - breakfast
+	  - food
+	  - ham
+	  - lard
+	  - meat
+	  - pancetta
+	  - pork
+	  - rasher
   unicode: f7e5
   voted: false
 bacteria:
   aliases:
-    unicodes:
-      secondary:
-        - '10e059'
+	unicodes:
+	  secondary:
+		- '10e059'
   changes:
-    - 5.13.0
-    - 5.13.1
-    - 5.14.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.13.0
+	- 5.13.1
+	- 5.14.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bacteria
   search:
-    terms:
-      - antibiotic
-      - antibody
-      - covid-19
-      - health
-      - organism
-      - sick
+	terms:
+	  - antibiotic
+	  - antibody
+	  - covid-19
+	  - health
+	  - organism
+	  - sick
   unicode: e059
   voted: false
 bacterium:
   aliases:
-    unicodes:
-      secondary:
-        - 10e05a
+	unicodes:
+	  secondary:
+		- 10e05a
   changes:
-    - 5.13.0
-    - 5.13.1
-    - 5.14.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.13.0
+	- 5.13.1
+	- 5.14.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bacterium
   search:
-    terms:
-      - antibiotic
-      - antibody
-      - covid-19
-      - health
-      - organism
-      - sick
+	terms:
+	  - antibiotic
+	  - antibody
+	  - covid-19
+	  - health
+	  - organism
+	  - sick
   unicode: e05a
   voted: false
 bag-shopping:
   aliases:
-    names:
-      - shopping-bag
-    unicodes:
-      secondary:
-        - 10f290
+	names:
+	  - shopping-bag
+	unicodes:
+	  secondary:
+		- 10f290
   changes:
-    - 4.5.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.5.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bag Shopping
   search:
-    terms:
-      - buy
-      - checkout
-      - grocery
-      - payment
-      - purchase
+	terms:
+	  - buy
+	  - checkout
+	  - grocery
+	  - payment
+	  - purchase
   unicode: f290
   voted: false
 bahai:
   aliases:
-    names:
-      - haykal
-    unicodes:
-      secondary:
-        - 10f666
+	names:
+	  - haykal
+	unicodes:
+	  secondary:
+		- 10f666
   changes:
-    - 5.3.0
-    - 5.12.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.3.0
+	- 5.12.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bahai
   search:
-    terms:
-      - bahai
-      - bahá'í
-      - star
+	terms:
+	  - bahai
+	  - bahá'í
+	  - star
   unicode: f666
   voted: false
 baht-sign:
   changes:
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Baht Sign
   search:
-    terms:
-      - currency
+	terms:
+	  - currency
   unicode: e0ac
   voted: false
 ban:
   aliases:
-    names:
-      - cancel
-    unicodes:
-      composite:
-        - 1f6ab
-      secondary:
-        - 10f05e
+	names:
+	  - cancel
+	unicodes:
+	  composite:
+		- 1f6ab
+	  secondary:
+		- 10f05e
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Ban
   search:
-    terms:
-      - '404'
-      - abort
-      - ban
-      - block
-      - cancel
-      - delete
-      - deny
-      - disabled
-      - entry
-      - failed
-      - forbidden
-      - hide
-      - 'no'
-      - not
-      - not found
-      - prohibit
-      - prohibited
-      - remove
-      - stop
-      - trash
+	terms:
+	  - '404'
+	  - abort
+	  - ban
+	  - block
+	  - cancel
+	  - delete
+	  - deny
+	  - disabled
+	  - entry
+	  - failed
+	  - forbidden
+	  - hide
+	  - 'no'
+	  - not
+	  - not found
+	  - prohibit
+	  - prohibited
+	  - remove
+	  - stop
+	  - trash
   unicode: f05e
   voted: false
 ban-smoking:
   aliases:
-    names:
-      - smoking-ban
-    unicodes:
-      composite:
-        - 1f6ad
-      secondary:
-        - 10f54d
+	names:
+	  - smoking-ban
+	unicodes:
+	  composite:
+		- 1f6ad
+	  secondary:
+		- 10f54d
   changes:
-    - 5.0.13
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.0.13
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Ban Smoking
   search:
-    terms:
-      - ban
-      - cancel
-      - deny
-      - disabled
-      - forbidden
-      - 'no'
-      - no smoking
-      - non-smoking
-      - not
-      - prohibited
-      - smoking
+	terms:
+	  - ban
+	  - cancel
+	  - deny
+	  - disabled
+	  - forbidden
+	  - 'no'
+	  - no smoking
+	  - non-smoking
+	  - not
+	  - prohibited
+	  - smoking
   unicode: f54d
   voted: true
 bandage:
   aliases:
-    names:
-      - band-aid
-    unicodes:
-      composite:
-        - 1fa79
-      secondary:
-        - 10f462
+	names:
+	  - band-aid
+	unicodes:
+	  composite:
+		- 1fa79
+	  secondary:
+		- 10f462
   changes:
-    - 5.0.7
-    - 5.10.2
-    - 6.0.0-beta1
-    - 6.0.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.0.7
+	- 5.10.2
+	- 6.0.0-beta1
+	- 6.0.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bandage
   search:
-    terms:
-      - adhesive bandage
-      - bandage
-      - boo boo
-      - first aid
-      - modify
-      - ouch
+	terms:
+	  - adhesive bandage
+	  - bandage
+	  - boo boo
+	  - first aid
+	  - modify
+	  - ouch
   unicode: f462
   voted: false
 bandcamp:
   changes:
-    - 4.7.0
-    - 5.0.0
-    - 5.13.1
+	- 4.7.0
+	- 5.0.0
+	- 5.13.1
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Bandcamp
   search:
-    terms: []
+	terms: []
   unicode: f2d5
   voted: false
 bangladeshi-taka-sign:
   changes:
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.2.1
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.2.1
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bangladeshi Taka Sign
   search:
-    terms:
-      - bdt
-      - currency
-      - tk
+	terms:
+	  - bdt
+	  - currency
+	  - tk
   unicode: e2e6
   voted: false
 barcode:
   aliases:
-    unicodes:
-      secondary:
-        - 10f02a
+	unicodes:
+	  secondary:
+		- 10f02a
   changes:
-    - 1.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 1.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Barcode
   search:
-    terms:
-      - info
-      - laser
-      - price
-      - scan
-      - upc
+	terms:
+	  - info
+	  - laser
+	  - price
+	  - scan
+	  - upc
   unicode: f02a
   voted: false
 bars:
   aliases:
-    names:
-      - navicon
-    unicodes:
-      secondary:
-        - 10f0c9
+	names:
+	  - navicon
+	unicodes:
+	  secondary:
+		- 10f0c9
   changes:
-    - 2.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 2.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bars
   search:
-    terms:
-      - checklist
-      - drag
-      - hamburger
-      - list
-      - menu
-      - nav
-      - navigation
-      - ol
-      - reorder
-      - settings
-      - todo
-      - ul
+	terms:
+	  - checklist
+	  - drag
+	  - hamburger
+	  - list
+	  - menu
+	  - nav
+	  - navigation
+	  - ol
+	  - reorder
+	  - settings
+	  - todo
+	  - ul
   unicode: f0c9
   voted: false
 bars-progress:
   aliases:
-    names:
-      - tasks-alt
-    unicodes:
-      secondary:
-        - 10f828
+	names:
+	  - tasks-alt
+	unicodes:
+	  secondary:
+		- 10f828
   changes:
-    - 5.7.0
-    - 5.10.2
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.7.0
+	- 5.10.2
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bars Progress
   search:
-    terms:
-      - checklist
-      - downloading
-      - downloads
-      - loading
-      - poll
-      - progress
-      - project management
-      - settings
-      - to do
+	terms:
+	  - checklist
+	  - downloading
+	  - downloads
+	  - loading
+	  - poll
+	  - progress
+	  - project management
+	  - settings
+	  - to do
   unicode: f828
   voted: false
 bars-staggered:
   aliases:
-    names:
-      - reorder
-      - stream
-    unicodes:
-      secondary:
-        - 10f550
+	names:
+	  - reorder
+	  - stream
+	unicodes:
+	  secondary:
+		- 10f550
   changes:
-    - 5.0.13
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.0.13
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bars Staggered
   search:
-    terms:
-      - flow
-      - list
-      - timeline
+	terms:
+	  - flow
+	  - list
+	  - timeline
   unicode: f550
   voted: false
 baseball:
   aliases:
-    names:
-      - baseball-ball
-    unicodes:
-      composite:
-        - 1f94e
-        - 26be
-      secondary:
-        - 10f433
+	names:
+	  - baseball-ball
+	unicodes:
+	  composite:
+		- 1f94e
+		- 26be
+	  secondary:
+		- 10f433
   changes:
-    - 5.0.5
-    - 5.11.0
-    - 5.11.1
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.0.5
+	- 5.11.0
+	- 5.11.1
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Baseball
   search:
-    terms:
-      - ball
-      - baseball
-      - foul
-      - glove
-      - hardball
-      - league
-      - leather
-      - mlb
-      - softball
-      - sport
-      - underarm
+	terms:
+	  - ball
+	  - baseball
+	  - foul
+	  - glove
+	  - hardball
+	  - league
+	  - leather
+	  - mlb
+	  - softball
+	  - sport
+	  - underarm
   unicode: f433
   voted: false
 baseball-bat-ball:
   aliases:
-    unicodes:
-      secondary:
-        - 10f432
+	unicodes:
+	  secondary:
+		- 10f432
   changes:
-    - 5.0.5
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.0.5
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Baseball Bat Ball
   search:
-    terms:
-      - bat
-      - league
-      - mlb
-      - slugger
-      - softball
-      - sport
+	terms:
+	  - bat
+	  - league
+	  - mlb
+	  - slugger
+	  - softball
+	  - sport
   unicode: f432
   voted: false
 basket-shopping:
   aliases:
-    names:
-      - shopping-basket
-    unicodes:
-      secondary:
-        - 10f291
+	names:
+	  - shopping-basket
+	unicodes:
+	  secondary:
+		- 10f291
   changes:
-    - 4.5.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.5.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Basket Shopping
   search:
-    terms:
-      - buy
-      - checkout
-      - grocery
-      - payment
-      - purchase
+	terms:
+	  - buy
+	  - checkout
+	  - grocery
+	  - payment
+	  - purchase
   unicode: f291
   voted: false
 basketball:
   aliases:
-    names:
-      - basketball-ball
-    unicodes:
-      composite:
-        - 1f3c0
-      secondary:
-        - 10f434
+	names:
+	  - basketball-ball
+	unicodes:
+	  composite:
+		- 1f3c0
+	  secondary:
+		- 10f434
   changes:
-    - 5.0.5
-    - 5.11.0
-    - 5.11.1
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.0.5
+	- 5.11.0
+	- 5.11.1
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Basketball
   search:
-    terms:
-      - ball
-      - basketball
-      - dribble
-      - dunk
-      - hoop
-      - nba
+	terms:
+	  - ball
+	  - basketball
+	  - dribble
+	  - dunk
+	  - hoop
+	  - nba
   unicode: f434
   voted: false
 bath:
   aliases:
-    names:
-      - bathtub
-    unicodes:
-      composite:
-        - 1f6c1
-      secondary:
-        - 10f2cd
+	names:
+	  - bathtub
+	unicodes:
+	  composite:
+		- 1f6c1
+	  secondary:
+		- 10f2cd
   changes:
-    - 4.7.0
-    - 5.0.0
-    - 5.12.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.7.0
+	- 5.0.0
+	- 5.12.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bath
   search:
-    terms:
-      - bath
-      - bathtub
-      - clean
-      - shower
-      - tub
-      - wash
+	terms:
+	  - bath
+	  - bathtub
+	  - clean
+	  - shower
+	  - tub
+	  - wash
   unicode: f2cd
   voted: false
 battery-empty:
   aliases:
-    names:
-      - battery-0
-    unicodes:
-      secondary:
-        - 10f244
+	names:
+	  - battery-0
+	unicodes:
+	  secondary:
+		- 10f244
   changes:
-    - 4.4.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.4.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Battery Empty
   search:
-    terms:
-      - charge
-      - dead
-      - power
-      - status
+	terms:
+	  - charge
+	  - dead
+	  - power
+	  - status
   unicode: f244
   voted: false
 battery-full:
   aliases:
-    names:
-      - battery
-      - battery-5
-    unicodes:
-      composite:
-        - 1f50b
-      secondary:
-        - 10f240
+	names:
+	  - battery
+	  - battery-5
+	unicodes:
+	  composite:
+		- 1f50b
+	  secondary:
+		- 10f240
   changes:
-    - 4.4.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.4.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Battery Full
   search:
-    terms:
-      - batter
-      - battery
-      - charge
-      - power
-      - status
+	terms:
+	  - batter
+	  - battery
+	  - charge
+	  - power
+	  - status
   unicode: f240
   voted: false
 battery-half:
   aliases:
-    names:
-      - battery-3
-    unicodes:
-      secondary:
-        - 10f242
+	names:
+	  - battery-3
+	unicodes:
+	  secondary:
+		- 10f242
   changes:
-    - 4.4.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.4.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Battery Half
   search:
-    terms:
-      - charge
-      - power
-      - status
+	terms:
+	  - charge
+	  - power
+	  - status
   unicode: f242
   voted: false
 battery-quarter:
   aliases:
-    names:
-      - battery-2
-    unicodes:
-      secondary:
-        - 10f243
+	names:
+	  - battery-2
+	unicodes:
+	  secondary:
+		- 10f243
   changes:
-    - 4.4.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.4.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Battery Quarter
   search:
-    terms:
-      - charge
-      - low
-      - power
-      - status
+	terms:
+	  - charge
+	  - low
+	  - power
+	  - status
   unicode: f243
   voted: false
 battery-three-quarters:
   aliases:
-    names:
-      - battery-4
-    unicodes:
-      secondary:
-        - 10f241
+	names:
+	  - battery-4
+	unicodes:
+	  secondary:
+		- 10f241
   changes:
-    - 4.4.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.0.0
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.4.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.0.0
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Battery Three Quarters
   search:
-    terms:
-      - charge
-      - power
-      - status
+	terms:
+	  - charge
+	  - power
+	  - status
   unicode: f241
   voted: false
 battle-net:
   changes:
-    - 5.8.0
+	- 5.8.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Battle.net
   search:
-    terms: []
+	terms: []
   unicode: f835
   voted: false
 bed:
   aliases:
-    unicodes:
-      composite:
-        - 1f6cc
-      secondary:
-        - 10f236
+	unicodes:
+	  composite:
+		- 1f6cc
+	  secondary:
+		- 10f236
   changes:
-    - 4.3.0
-    - 5.0.0
-    - 5.1.0
-    - 6.0.0-beta1
-    - 6.1.2
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.3.0
+	- 5.0.0
+	- 5.1.0
+	- 6.0.0-beta1
+	- 6.1.2
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bed
   search:
-    terms:
-      - hospital
-      - hotel
-      - lodging
-      - mattress
-      - patient
-      - person in bed
-      - rest
-      - sleep
-      - travel
-      - uer
+	terms:
+	  - hospital
+	  - hotel
+	  - lodging
+	  - mattress
+	  - patient
+	  - person in bed
+	  - rest
+	  - sleep
+	  - travel
+	  - uer
   unicode: f236
   voted: false
 bed-pulse:
   aliases:
-    names:
-      - procedures
-    unicodes:
-      secondary:
-        - 10f487
+	names:
+	  - procedures
+	unicodes:
+	  secondary:
+		- 10f487
   changes:
-    - 5.0.7
-    - 6.0.0-beta1
-    - 6.1.2
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.0.7
+	- 6.0.0-beta1
+	- 6.1.2
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bed Pulse
   search:
-    terms:
-      - EKG
-      - bed
-      - electrocardiogram
-      - health
-      - hospital
-      - life
-      - patient
-      - vital
+	terms:
+	  - EKG
+	  - bed
+	  - electrocardiogram
+	  - health
+	  - hospital
+	  - life
+	  - patient
+	  - vital
   unicode: f487
   voted: false
 beer-mug-empty:
   aliases:
-    names:
-      - beer
-    unicodes:
-      secondary:
-        - 10f0fc
+	names:
+	  - beer
+	unicodes:
+	  secondary:
+		- 10f0fc
   changes:
-    - 3.0.0
-    - 5.0.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 3.0.0
+	- 5.0.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Beer Mug Empty
   search:
-    terms:
-      - alcohol
-      - ale
-      - bar
-      - beverage
-      - brew
-      - brewery
-      - drink
-      - foam
-      - lager
-      - liquor
-      - mug
-      - stein
+	terms:
+	  - alcohol
+	  - ale
+	  - bar
+	  - beverage
+	  - brew
+	  - brewery
+	  - drink
+	  - foam
+	  - lager
+	  - liquor
+	  - mug
+	  - stein
   unicode: f0fc
   voted: false
 behance:
   changes:
-    - 4.1.0
-    - 5.0.0
+	- 4.1.0
+	- 5.0.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: brands
-    pro:
-      - family: classic
-        style: brands
+	free:
+	  - family: classic
+		style: brands
+	pro:
+	  - family: classic
+		style: brands
   label: Behance
   search:
-    terms: []
+	terms: []
   unicode: f1b4
   voted: false
 bell:
   aliases:
-    unicodes:
-      composite:
-        - 1f514
-        - f0a2
-      secondary:
-        - 10f0f3
+	unicodes:
+	  composite:
+		- 1f514
+		- f0a2
+	  secondary:
+		- 10f0f3
   changes:
-    - 2.0.0
-    - 5.0.0
-    - 5.2.0
-    - 5.11.0
-    - 6.0.0-beta1
-    - 6.0.0-beta2
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 2.0.0
+	- 5.0.0
+	- 5.2.0
+	- 5.11.0
+	- 6.0.0-beta1
+	- 6.0.0-beta2
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: regular
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
-      - family: classic
-        style: regular
+	free:
+	  - family: classic
+		style: regular
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
+	  - family: classic
+		style: regular
   label: Bell
   search:
-    terms:
-      - alarm
-      - alert
-      - bel
-      - bell
-      - chime
-      - notification
-      - reminder
-      - request
+	terms:
+	  - alarm
+	  - alert
+	  - bel
+	  - bell
+	  - chime
+	  - notification
+	  - reminder
+	  - request
   unicode: f0f3
   voted: false
 bell-concierge:
   aliases:
-    names:
-      - concierge-bell
-    unicodes:
-      composite:
-        - 1f6ce
-      secondary:
-        - 10f562
+	names:
+	  - concierge-bell
+	unicodes:
+	  composite:
+		- 1f6ce
+	  secondary:
+		- 10f562
   changes:
-    - 5.1.0
-    - 6.0.0-beta1
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 5.1.0
+	- 6.0.0-beta1
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
+	free:
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
   label: Bell Concierge
   search:
-    terms:
-      - attention
-      - bell
-      - bellhop
-      - bellhop bell
-      - hotel
-      - receptionist
-      - request
-      - service
-      - support
+	terms:
+	  - attention
+	  - bell
+	  - bellhop
+	  - bellhop bell
+	  - hotel
+	  - receptionist
+	  - request
+	  - service
+	  - support
   unicode: f562
   voted: false
 bell-slash:
   aliases:
-    unicodes:
-      composite:
-        - 1f515
-        - f1f7
-      secondary:
-        - 10f1f6
+	unicodes:
+	  composite:
+		- 1f515
+		- f1f7
+	  secondary:
+		- 10f1f6
   changes:
-    - 4.2.0
-    - 5.0.0
-    - 5.2.0
-    - 6.0.0-beta1
-    - 6.0.0-beta2
-    - 6.0.0-beta3
-    - 6.2.0
-    - 6.3.0
-    - 6.4.0
-    - 6.5.0
+	- 4.2.0
+	- 5.0.0
+	- 5.2.0
+	- 6.0.0-beta1
+	- 6.0.0-beta2
+	- 6.0.0-beta3
+	- 6.2.0
+	- 6.3.0
+	- 6.4.0
+	- 6.5.0
   familyStylesByLicense:
-    free:
-      - family: classic
-        style: regular
-      - family: classic
-        style: solid
-    pro:
-      - family: classic
-        style: solid
-      - family: classic
-        style: regular
+	free:
+	  - family: classic
+		style: regular
+	  - family: classic
+		style: solid
+	pro:
+	  - family: classic
+		style: solid
+	  - family: classic
+		style: regular
   label: Bell Slash
   search:
-    terms:
-      - alert
-      - bell
-      - bell with slash
-      - cancel
-      - disabled
-      - forbidden
-      - mute
-      - notification
+	terms:
+	  - alert
+	  - bell
+	  - bell with slash
+	  - cancel
+	  - disabled
+	  - forbidden
+	  - mute
+	  - notification
       - 'off'
       - quiet
       - reminder

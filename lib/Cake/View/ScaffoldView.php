@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scaffold.
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.View
- * @since         Cake v 0.10.0.1076
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.View
+ * @since		 Cake v 0.10.0.1076
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('View', 'View');
@@ -28,13 +29,13 @@ App::uses('View', 'View');
  */
 class ScaffoldView extends View {
 
-/**
- * Override _getViewFileName Appends special scaffolding views in.
- *
- * @param string $name name of the view file to get.
- * @return string action
- * @throws MissingViewException
- */
+	/**
+	 * Override _getViewFileName Appends special scaffolding views in.
+	 *
+	 * @param string $name name of the view file to get.
+	 * @return string action
+	 * @throws MissingViewException
+	 */
 	protected function _getViewFileName($name = null) {
 		if ($name === null) {
 			$name = $this->action;
@@ -87,5 +88,4 @@ class ScaffoldView extends View {
 
 		throw new MissingViewException($paths[0] . $name . $this->ext);
 	}
-
 }

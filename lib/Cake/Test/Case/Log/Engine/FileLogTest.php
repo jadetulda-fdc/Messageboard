@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FileLogTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Log.Engine
- * @since         CakePHP(tm) v 1.3
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Log.Engine
+ * @since		 CakePHP(tm) v 1.3
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('FileLog', 'Log/Engine');
@@ -21,15 +22,15 @@ App::uses('FileLog', 'Log/Engine');
 /**
  * CakeLogTest class
  *
- * @package       Cake.Test.Case.Log.Engine
+ * @package	   Cake.Test.Case.Log.Engine
  */
 class FileLogTest extends CakeTestCase {
 
-/**
- * testLogFileWriting method
- *
- * @return void
- */
+	/**
+	 * testLogFileWriting method
+	 *
+	 * @return void
+	 */
 	public function testLogFileWriting() {
 		$this->_deleteLogs(LOGS);
 
@@ -53,11 +54,11 @@ class FileLogTest extends CakeTestCase {
 		$this->assertRegExp('/^2[0-9]{3}-[0-9]+-[0-9]+ [0-9]+:[0-9]+:[0-9]+ Random: Test warning/', $result);
 	}
 
-/**
- * test using the path setting to write logs in other places.
- *
- * @return void
- */
+	/**
+	 * test using the path setting to write logs in other places.
+	 *
+	 * @return void
+	 */
 	public function testPathSetting() {
 		$path = TMP . 'tests' . DS;
 		$this->_deleteLogs($path);
@@ -67,11 +68,11 @@ class FileLogTest extends CakeTestCase {
 		$this->assertTrue(file_exists($path . 'error.log'));
 	}
 
-/**
- * test log rotation
- *
- * @return void
- */
+	/**
+	 * test log rotation
+	 *
+	 * @return void
+	 */
 	public function testRotation() {
 		$path = TMP . 'tests' . DS;
 		$this->_deleteLogs($path);
@@ -180,11 +181,11 @@ class FileLogTest extends CakeTestCase {
 		unlink($path . 'error.log');
 	}
 
-/**
- * helper function to clears all log files in specified directory
- *
- * @return void
- */
+	/**
+	 * helper function to clears all log files in specified directory
+	 *
+	 * @return void
+	 */
 	protected function _deleteLogs($dir) {
 		$files = array_merge(glob($dir . '*.log'), glob($dir . '*.log.*'));
 		foreach ($files as $file) {

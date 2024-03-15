@@ -224,9 +224,9 @@ echo $this->Form->hidden('message_id', array(
                     } else {
                         $('#pagination').html(
                             `<hr />
-                            <div class="text-center font-italic text-muted">
-                                End of conversation.
-                            </div>`
+							<div class="text-center font-italic text-muted">
+								End of conversation.
+							</div>`
                         );
                     }
                 },

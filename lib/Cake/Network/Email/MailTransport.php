@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Send mail using mail() function
  *
@@ -9,28 +10,28 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Network.Email
- * @since         CakePHP(tm) v 2.0.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Network.Email
+ * @since		 CakePHP(tm) v 2.0.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AbstractTransport', 'Network/Email');
 
 /**
  * Send mail using mail() function
  *
- * @package       Cake.Network.Email
+ * @package	   Cake.Network.Email
  */
 class MailTransport extends AbstractTransport {
 
-/**
- * Send mail
- *
- * @param CakeEmail $email CakeEmail
- * @return array
- * @throws SocketException When mail cannot be sent.
- */
+	/**
+	 * Send mail
+	 *
+	 * @param CakeEmail $email CakeEmail
+	 * @return array
+	 * @throws SocketException When mail cannot be sent.
+	 */
 	public function send(CakeEmail $email) {
 		$eol = PHP_EOL;
 		if (isset($this->_config['eol'])) {
@@ -56,17 +57,17 @@ class MailTransport extends AbstractTransport {
 		return array('headers' => $headers, 'message' => $message);
 	}
 
-/**
- * Wraps internal function mail() and throws exception instead of errors if anything goes wrong
- *
- * @param string $to email's recipient
- * @param string $subject email's subject
- * @param string $message email's body
- * @param string $headers email's custom headers
- * @param string $params additional params for sending email, will be ignored when in safe_mode
- * @throws SocketException if mail could not be sent
- * @return void
- */
+	/**
+	 * Wraps internal function mail() and throws exception instead of errors if anything goes wrong
+	 *
+	 * @param string $to email's recipient
+	 * @param string $subject email's subject
+	 * @param string $message email's body
+	 * @param string $headers email's custom headers
+	 * @param string $params additional params for sending email, will be ignored when in safe_mode
+	 * @throws SocketException if mail could not be sent
+	 * @return void
+	 */
 	protected function _mail($to, $subject, $message, $headers, $params = null) {
 		if (ini_get('safe_mode')) {
 			//@codingStandardsIgnoreStart
@@ -82,5 +83,4 @@ class MailTransport extends AbstractTransport {
 			throw new SocketException($msg);
 		}
 	}
-
 }

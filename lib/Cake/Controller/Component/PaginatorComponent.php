@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Paginator Component
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Controller.Component
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Controller.Component
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Component', 'Controller');
@@ -65,39 +66,39 @@ App::uses('Hash', 'Utility');
  *
  * Would paginate using the `find('popular')` method.
  *
- * @package       Cake.Controller.Component
+ * @package	   Cake.Controller.Component
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/pagination.html
  */
 class PaginatorComponent extends Component {
 
-/**
- * Pagination settings. These settings control pagination at a general level.
- * You can also define sub arrays for pagination settings for specific models.
- *
- * - `maxLimit` The maximum limit users can choose to view. Defaults to 100
- * - `limit` The initial number of items per page. Defaults to 20.
- * - `page` The starting page, defaults to 1.
- * - `paramType` What type of parameters you want pagination to use?
- *      - `named` Use named parameters / routed parameters.
- *      - `querystring` Use query string parameters.
- * - `queryScope` By using request parameter scopes you can paginate multiple queries in the same controller action.
- *
- * ```
- * $paginator->paginate = array(
- *	'Article' => array('queryScope' => 'articles'),
- *	'Tag' => array('queryScope' => 'tags'),
- * );
- * ```
- *
- * Each of the above queries will use different query string parameter sets
- * for pagination data. An example URL paginating both results would be:
- *
- * ```
- * /dashboard/articles[page]:1/tags[page]:2
- * ```
- *
- * @var array
- */
+	/**
+	 * Pagination settings. These settings control pagination at a general level.
+	 * You can also define sub arrays for pagination settings for specific models.
+	 *
+	 * - `maxLimit` The maximum limit users can choose to view. Defaults to 100
+	 * - `limit` The initial number of items per page. Defaults to 20.
+	 * - `page` The starting page, defaults to 1.
+	 * - `paramType` What type of parameters you want pagination to use?
+	 *	  - `named` Use named parameters / routed parameters.
+	 *	  - `querystring` Use query string parameters.
+	 * - `queryScope` By using request parameter scopes you can paginate multiple queries in the same controller action.
+	 *
+	 * ```
+	 * $paginator->paginate = array(
+	 *	'Article' => array('queryScope' => 'articles'),
+	 *	'Tag' => array('queryScope' => 'tags'),
+	 * );
+	 * ```
+	 *
+	 * Each of the above queries will use different query string parameter sets
+	 * for pagination data. An example URL paginating both results would be:
+	 *
+	 * ```
+	 * /dashboard/articles[page]:1/tags[page]:2
+	 * ```
+	 *
+	 * @var array
+	 */
 	public $settings = array(
 		'page' => 1,
 		'limit' => 20,
@@ -106,41 +107,41 @@ class PaginatorComponent extends Component {
 		'queryScope' => null
 	);
 
-/**
- * A list of parameters users are allowed to set using request parameters. Modifying
- * this list will allow users to have more influence over pagination,
- * be careful with what you permit.
- *
- * @var array
- */
+	/**
+	 * A list of parameters users are allowed to set using request parameters. Modifying
+	 * this list will allow users to have more influence over pagination,
+	 * be careful with what you permit.
+	 *
+	 * @var array
+	 */
 	public $whitelist = array(
 		'limit', 'sort', 'page', 'direction'
 	);
 
-/**
- * Constructor
- *
- * @param ComponentCollection $collection A ComponentCollection this component can use to lazy load its components
- * @param array $settings Array of configuration settings.
- */
+	/**
+	 * Constructor
+	 *
+	 * @param ComponentCollection $collection A ComponentCollection this component can use to lazy load its components
+	 * @param array $settings Array of configuration settings.
+	 */
 	public function __construct(ComponentCollection $collection, $settings = array()) {
 		$settings = array_merge($this->settings, (array)$settings);
 		$this->Controller = $collection->getController();
 		parent::__construct($collection, $settings);
 	}
 
-/**
- * Handles automatic pagination of model records.
- *
- * @param Model|string $object Model to paginate (e.g: model instance, or 'Model', or 'Model.InnerModel')
- * @param string|array $scope Additional find conditions to use while paginating
- * @param array $whitelist List of allowed fields for ordering. This allows you to prevent ordering
- *   on non-indexed, or undesirable columns. See PaginatorComponent::validateSort() for additional details
- *   on how the whitelisting and sort field validation works.
- * @return array Model query results
- * @throws MissingModelException
- * @throws NotFoundException
- */
+	/**
+	 * Handles automatic pagination of model records.
+	 *
+	 * @param Model|string $object Model to paginate (e.g: model instance, or 'Model', or 'Model.InnerModel')
+	 * @param string|array $scope Additional find conditions to use while paginating
+	 * @param array $whitelist List of allowed fields for ordering. This allows you to prevent ordering
+	 *   on non-indexed, or undesirable columns. See PaginatorComponent::validateSort() for additional details
+	 *   on how the whitelisting and sort field validation works.
+	 * @return array Model query results
+	 * @throws MissingModelException
+	 * @throws NotFoundException
+	 */
 	public function paginate($object = null, $scope = array(), $whitelist = array()) {
 		if (is_array($object)) {
 			$whitelist = $scope;
@@ -183,7 +184,12 @@ class PaginatorComponent extends Component {
 		}
 
 		$extra = array_diff_key($options, compact(
-			'conditions', 'fields', 'order', 'limit', 'page', 'recursive'
+			'conditions',
+			'fields',
+			'order',
+			'limit',
+			'page',
+			'recursive'
 		));
 
 		if (!empty($extra['findType'])) {
@@ -202,7 +208,13 @@ class PaginatorComponent extends Component {
 
 		if ($object->hasMethod('paginate')) {
 			$results = $object->paginate(
-				$conditions, $fields, $order, $limit, $page, $recursive, $extra
+				$conditions,
+				$fields,
+				$order,
+				$limit,
+				$page,
+				$recursive,
+				$extra
 			);
 		} else {
 			$parameters = compact('conditions', 'fields', 'order', 'limit', 'page');
@@ -257,7 +269,8 @@ class PaginatorComponent extends Component {
 			throw new NotFoundException();
 		}
 
-		if (!in_array('Paginator', $this->Controller->helpers) &&
+		if (
+			!in_array('Paginator', $this->Controller->helpers) &&
 			!array_key_exists('Paginator', $this->Controller->helpers)
 		) {
 			$this->Controller->helpers[] = 'Paginator';
@@ -265,12 +278,12 @@ class PaginatorComponent extends Component {
 		return $results;
 	}
 
-/**
- * Get the object pagination will occur on.
- *
- * @param string|Model $object The object you are looking for.
- * @return mixed The model object to paginate on.
- */
+	/**
+	 * Get the object pagination will occur on.
+	 *
+	 * @param string|Model $object The object you are looking for.
+	 * @return mixed The model object to paginate on.
+	 */
 	protected function _getObject($object) {
 		if (is_string($object)) {
 			$assoc = null;
@@ -309,21 +322,21 @@ class PaginatorComponent extends Component {
 		return $object;
 	}
 
-/**
- * Merges the various options that Pagination uses.
- * Pulls settings together from the following places:
- *
- * - General pagination settings
- * - Model specific settings.
- * - Request parameters
- *
- * The result of this method is the aggregate of all the option sets combined together. You can change
- * PaginatorComponent::$whitelist to modify which options/values can be set using request parameters.
- *
- * @param string $alias Model alias being paginated, if the general settings has a key with this value
- *   that key's settings will be used for pagination instead of the general ones.
- * @return array Array of merged options.
- */
+	/**
+	 * Merges the various options that Pagination uses.
+	 * Pulls settings together from the following places:
+	 *
+	 * - General pagination settings
+	 * - Model specific settings.
+	 * - Request parameters
+	 *
+	 * The result of this method is the aggregate of all the option sets combined together. You can change
+	 * PaginatorComponent::$whitelist to modify which options/values can be set using request parameters.
+	 *
+	 * @param string $alias Model alias being paginated, if the general settings has a key with this value
+	 *   that key's settings will be used for pagination instead of the general ones.
+	 * @return array Array of merged options.
+	 */
 	public function mergeOptions($alias) {
 		$defaults = $this->getDefaults($alias);
 		switch ($defaults['paramType']) {
@@ -341,13 +354,13 @@ class PaginatorComponent extends Component {
 		return array_merge($defaults, $request);
 	}
 
-/**
- * Get the default settings for a $model. If there are no settings for a specific model, the general settings
- * will be used.
- *
- * @param string $alias Model name to get default settings for.
- * @return array An array of pagination defaults for a model, or the general settings.
- */
+	/**
+	 * Get the default settings for a $model. If there are no settings for a specific model, the general settings
+	 * will be used.
+	 *
+	 * @param string $alias Model name to get default settings for.
+	 * @return array An array of pagination defaults for a model, or the general settings.
+	 */
 	public function getDefaults($alias) {
 		$defaults = $this->settings;
 		if (isset($this->settings[$alias])) {
@@ -363,22 +376,22 @@ class PaginatorComponent extends Component {
 		return $defaults;
 	}
 
-/**
- * Validate that the desired sorting can be performed on the $object. Only fields or
- * virtualFields can be sorted on. The direction param will also be sanitized. Lastly
- * sort + direction keys will be converted into the model friendly order key.
- *
- * You can use the whitelist parameter to control which columns/fields are available for sorting.
- * This helps prevent users from ordering large result sets on un-indexed values.
- *
- * Any columns listed in the sort whitelist will be implicitly trusted. You can use this to sort
- * on synthetic columns, or columns added in custom find operations that may not exist in the schema.
- *
- * @param Model $object The model being paginated.
- * @param array $options The pagination options being used for this request.
- * @param array $whitelist The list of columns that can be used for sorting. If empty all keys are allowed.
- * @return array An array of options with sort + direction removed and replaced with order if possible.
- */
+	/**
+	 * Validate that the desired sorting can be performed on the $object. Only fields or
+	 * virtualFields can be sorted on. The direction param will also be sanitized. Lastly
+	 * sort + direction keys will be converted into the model friendly order key.
+	 *
+	 * You can use the whitelist parameter to control which columns/fields are available for sorting.
+	 * This helps prevent users from ordering large result sets on un-indexed values.
+	 *
+	 * Any columns listed in the sort whitelist will be implicitly trusted. You can use this to sort
+	 * on synthetic columns, or columns added in custom find operations that may not exist in the schema.
+	 *
+	 * @param Model $object The model being paginated.
+	 * @param array $options The pagination options being used for this request.
+	 * @param array $whitelist The list of columns that can be used for sorting. If empty all keys are allowed.
+	 * @return array An array of options with sort + direction removed and replaced with order if possible.
+	 */
 	public function validateSort(Model $object, array $options, array $whitelist = array()) {
 		if (empty($options['order']) && is_array($object->order)) {
 			$options['order'] = $object->order;
@@ -432,12 +445,12 @@ class PaginatorComponent extends Component {
 		return $options;
 	}
 
-/**
- * Check the limit parameter and ensure its within the maxLimit bounds.
- *
- * @param array $options An array of options with a limit key to be checked.
- * @return array An array of options for pagination
- */
+	/**
+	 * Check the limit parameter and ensure its within the maxLimit bounds.
+	 *
+	 * @param array $options An array of options with a limit key to be checked.
+	 * @return array An array of options for pagination
+	 */
 	public function checkLimit(array $options) {
 		$options['limit'] = (int)$options['limit'];
 		if (empty($options['limit']) || $options['limit'] < 1) {
@@ -446,5 +459,4 @@ class PaginatorComponent extends Component {
 		$options['limit'] = min($options['limit'], $options['maxLimit']);
 		return $options;
 	}
-
 }

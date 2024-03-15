@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SanitizeTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Utility
- * @since         CakePHP(tm) v 1.2.0.5428
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Utility
+ * @since		 CakePHP(tm) v 1.2.0.5428
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Sanitize', 'Utility');
@@ -21,59 +22,59 @@ App::uses('Sanitize', 'Utility');
 /**
  * DataTest class
  *
- * @package       Cake.Test.Case.Utility
+ * @package	   Cake.Test.Case.Utility
  */
 class SanitizeDataTest extends CakeTestModel {
 
-/**
- * useTable property
- *
- * @var string
- */
+	/**
+	 * useTable property
+	 *
+	 * @var string
+	 */
 	public $useTable = 'data_tests';
 }
 
 /**
  * Article class
  *
- * @package       Cake.Test.Case.Utility
+ * @package	   Cake.Test.Case.Utility
  */
 class SanitizeArticle extends CakeTestModel {
 
-/**
- * useTable property
- *
- * @var string
- */
+	/**
+	 * useTable property
+	 *
+	 * @var string
+	 */
 	public $useTable = 'articles';
 }
 
 /**
  * SanitizeTest class
  *
- * @package       Cake.Test.Case.Utility
+ * @package	   Cake.Test.Case.Utility
  */
 class SanitizeTest extends CakeTestCase {
 
-/**
- * autoFixtures property
- *
- * @var bool
- */
+	/**
+	 * autoFixtures property
+	 *
+	 * @var bool
+	 */
 	public $autoFixtures = false;
 
-/**
- * fixtures property
- *
- * @var array
- */
+	/**
+	 * fixtures property
+	 *
+	 * @var array
+	 */
 	public $fixtures = array('core.data_test', 'core.article');
 
-/**
- * testEscapeAlphaNumeric method
- *
- * @return void
- */
+	/**
+	 * testEscapeAlphaNumeric method
+	 *
+	 * @return void
+	 */
 	public function testEscapeAlphaNumeric() {
 		$resultAlpha = Sanitize::escape('abc', 'test');
 		$this->assertEquals('abc', $resultAlpha);
@@ -100,11 +101,11 @@ class SanitizeTest extends CakeTestCase {
 		$this->assertEquals(true, $resultNull);
 	}
 
-/**
- * testClean method
- *
- * @return void
- */
+	/**
+	 * testClean method
+	 *
+	 * @return void
+	 */
 	public function testClean() {
 		$string = 'test & "quote" \'other\' ;.$ symbol.' . "\r" . 'another line';
 		$expected = 'test &amp; &quot;quote&quot; &#039;other&#039; ;.$ symbol.another line';
@@ -180,11 +181,11 @@ class SanitizeTest extends CakeTestCase {
 		$this->assertEquals($data, $result);
 	}
 
-/**
- * testHtml method
- *
- * @return void
- */
+	/**
+	 * testHtml method
+	 *
+	 * @return void
+	 */
 	public function testHtml() {
 		$string = '<p>This is a <em>test string</em> & so is this</p>';
 		$expected = 'This is a test string &amp; so is this';
@@ -221,40 +222,44 @@ class SanitizeTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testStripWhitespace method
- *
- * @return void
- */
+	/**
+	 * testStripWhitespace method
+	 *
+	 * @return void
+	 */
 	public function testStripWhitespace() {
-		$string = "This     sentence \t\t\t has lots of \n\n white\nspace \rthat \r\n needs to be    \t    \n trimmed.";
+		$string = "This	 sentence \t\t\t has lots of \n\n white\nspace \rthat \r\n needs to be	\t	\n trimmed.";
 		$expected = "This sentence has lots of whitespace that needs to be trimmed.";
 		$result = Sanitize::stripWhitespace($string);
 		$this->assertEquals($expected, $result);
 
-		$text = 'I    love  ßá†ö√    letters.';
+		$text = 'I	love  ßá†ö√	letters.';
 		$result = Sanitize::stripWhitespace($text);
 		$expected = 'I love ßá†ö√ letters.';
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testParanoid method
- *
- * @return void
- */
+	/**
+	 * testParanoid method
+	 *
+	 * @return void
+	 */
 	public function testParanoid() {
 		$string = 'I would like to !%@#% & dance & sing ^$&*()-+';
 		$expected = 'Iwouldliketodancesing';
 		$result = Sanitize::paranoid($string);
 		$this->assertEquals($expected, $result);
 
-		$string = array('This |s th% s0ng that never ends it g*es',
-						'on and on my friends, b^ca#use it is the',
-						'so&g th===t never ends.');
-		$expected = array('This s th% s0ng that never ends it g*es',
-						'on and on my friends bcause it is the',
-						'sog tht never ends.');
+		$string = array(
+			'This |s th% s0ng that never ends it g*es',
+			'on and on my friends, b^ca#use it is the',
+			'so&g th===t never ends.'
+		);
+		$expected = array(
+			'This s th% s0ng that never ends it g*es',
+			'on and on my friends bcause it is the',
+			'sog tht never ends.'
+		);
 		$result = Sanitize::paranoid($string, array('%', '*', '.', ' '));
 		$this->assertEquals($expected, $result);
 
@@ -279,11 +284,11 @@ class SanitizeTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testStripImages method
- *
- * @return void
- */
+	/**
+	 * testStripImages method
+	 *
+	 * @return void
+	 */
 	public function testStripImages() {
 		$string = '<img src="/img/test.jpg" alt="my image" />';
 		$expected = 'my image<br />';
@@ -306,11 +311,11 @@ class SanitizeTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testStripScripts method
- *
- * @return void
- */
+	/**
+	 * testStripScripts method
+	 *
+	 * @return void
+	 */
 	public function testStripScripts() {
 		$string = '<link href="/css/styles.css" media="screen" rel="stylesheet" />';
 		$expected = '';
@@ -374,11 +379,11 @@ HTML;
 		$this->assertTextEquals($expected, $result);
 	}
 
-/**
- * testStripAll method
- *
- * @return void
- */
+	/**
+	 * testStripAll method
+	 *
+	 * @return void
+	 */
 	public function testStripAll() {
 		$string = '<img """><script>alert("xss")</script>"/>';
 		$expected = '"/>';
@@ -396,7 +401,7 @@ HTML;
 		$this->assertEquals($expected, $result);
 
 		$string = '<img src="http://google.com/images/logo.gif" onload="window.location=\'http://sam.com/\'" />' . "\n" .
-			"<p>This is ok      \t\n   text</p>\n" .
+			"<p>This is ok	  \t\n   text</p>\n" .
 			'<link rel="stylesheet" href="/css/master.css" type="text/css" media="screen" title="my sheet" charset="utf-8">' . "\n" .
 			'<script src="xss.js" type="text/javascript" charset="utf-8"></script>';
 		$expected = '<p>This is ok text</p>';
@@ -404,11 +409,11 @@ HTML;
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testStripTags method
- *
- * @return void
- */
+	/**
+	 * testStripTags method
+	 *
+	 * @return void
+	 */
 	public function testStripTags() {
 		$string = '<h2>Headline</h2><p><a href="http://example.com">My Link</a> could go to a bad site</p>';
 		$expected = 'Headline<p>My Link could go to a bad site</p>';

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakeTextTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Utility
- * @since         CakePHP(tm) v 1.2.0.5432
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Utility
+ * @since		 CakePHP(tm) v 1.2.0.5432
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('CakeText', 'Utility');
@@ -26,32 +27,32 @@ App::uses('CakeText', 'Utility');
  */
 class CakeTextTest extends CakeTestCase {
 
-/**
- * Setup object under test
- *
- * @return void
- */
+	/**
+	 * Setup object under test
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->Text = new CakeText();
 	}
 
-/**
- * Tear down object under test
- *
- * @return void
- */
+	/**
+	 * Tear down object under test
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->Text);
 	}
 
-/**
- * testUuidGeneration method
- *
- * @return void
- * @covers ::uuid
- */
+	/**
+	 * testUuidGeneration method
+	 *
+	 * @return void
+	 * @covers ::uuid
+	 */
 	public function testUuidGeneration() {
 		$result = CakeText::uuid();
 		$pattern = "/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/";
@@ -59,12 +60,12 @@ class CakeTextTest extends CakeTestCase {
 		$this->assertTrue($match);
 	}
 
-/**
- * testMultipleUuidGeneration method
- *
- * @return void
- * @covers ::uuid
- */
+	/**
+	 * testMultipleUuidGeneration method
+	 *
+	 * @return void
+	 * @covers ::uuid
+	 */
 	public function testMultipleUuidGeneration() {
 		$check = array();
 		$count = mt_rand(10, 1000);
@@ -79,12 +80,12 @@ class CakeTextTest extends CakeTestCase {
 		}
 	}
 
-/**
- * testInsert method
- *
- * @return void
- * @covers ::insert
- */
+	/**
+	 * testInsert method
+	 *
+	 * @return void
+	 * @covers ::insert
+	 */
 	public function testInsert() {
 		$string = 'some string';
 		$expected = 'some string';
@@ -241,21 +242,24 @@ class CakeTextTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * test Clean Insert
- *
- * @return void
- * @covers ::cleanInsert
- */
+	/**
+	 * test Clean Insert
+	 *
+	 * @return void
+	 * @covers ::cleanInsert
+	 */
 	public function testCleanInsert() {
 		$result = CakeText::cleanInsert(':incomplete', array(
 			'clean' => true, 'before' => ':', 'after' => ''
 		));
 		$this->assertEquals('', $result);
 
-		$result = CakeText::cleanInsert(':incomplete', array(
-			'clean' => array('method' => 'text', 'replacement' => 'complete'),
-			'before' => ':', 'after' => '')
+		$result = CakeText::cleanInsert(
+			':incomplete',
+			array(
+				'clean' => array('method' => 'text', 'replacement' => 'complete'),
+				'before' => ':', 'after' => ''
+			)
 		);
 		$this->assertEquals('complete', $result);
 
@@ -264,8 +268,11 @@ class CakeTextTest extends CakeTestCase {
 		));
 		$this->assertEquals('', $result);
 
-		$result = CakeText::cleanInsert(':in.complete and', array(
-			'clean' => true, 'before' => ':', 'after' => '')
+		$result = CakeText::cleanInsert(
+			':in.complete and',
+			array(
+				'clean' => true, 'before' => ':', 'after' => ''
+			)
 		);
 		$this->assertEquals('', $result);
 
@@ -281,25 +288,25 @@ class CakeTextTest extends CakeTestCase {
 		$this->assertEquals('<p>Text here</p>', $result);
 	}
 
-/**
- * Tests that non-insertable variables (i.e. arrays) are skipped when used as values in
- * CakeText::insert().
- *
- * @return void
- * @covers ::insert
- */
+	/**
+	 * Tests that non-insertable variables (i.e. arrays) are skipped when used as values in
+	 * CakeText::insert().
+	 *
+	 * @return void
+	 * @covers ::insert
+	 */
 	public function testAutoIgnoreBadInsertData() {
 		$data = array('foo' => 'alpha', 'bar' => 'beta', 'fale' => array());
 		$result = CakeText::insert('(:foo > :bar || :fale!)', $data, array('clean' => 'text'));
 		$this->assertEquals('(alpha > beta || !)', $result);
 	}
 
-/**
- * testTokenize method
- *
- * @return void
- * @covers ::tokenize
- */
+	/**
+	 * testTokenize method
+	 *
+	 * @return void
+	 * @covers ::tokenize
+	 */
 	public function testTokenize() {
 		$result = CakeText::tokenize('A,(short,boring test)');
 		$expected = array('A', '(short,boring test)');
@@ -331,12 +338,12 @@ class CakeTextTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testReplaceWithQuestionMarkInString method
- *
- * @return void
- * @covers ::insert
- */
+	/**
+	 * testReplaceWithQuestionMarkInString method
+	 *
+	 * @return void
+	 * @covers ::insert
+	 */
 	public function testReplaceWithQuestionMarkInString() {
 		$string = ':a, :b and :c?';
 		$expected = '2 and 3?';
@@ -344,25 +351,25 @@ class CakeTextTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * test that wordWrap() works the same as built-in wordwrap function
- *
- * @dataProvider wordWrapProvider
- * @return void
- * @covers ::wordWrap
- * @covers ::_wordWrap
- */
+	/**
+	 * test that wordWrap() works the same as built-in wordwrap function
+	 *
+	 * @dataProvider wordWrapProvider
+	 * @return void
+	 * @covers ::wordWrap
+	 * @covers ::_wordWrap
+	 */
 	public function testWordWrap($text, $width, $break = "\n", $cut = false) {
 		$result = CakeText::wordWrap($text, $width, $break, $cut);
 		$expected = wordwrap($text, $width, $break, $cut);
 		$this->assertTextEquals($expected, $result, 'Text not wrapped same as built-in function.');
 	}
 
-/**
- * data provider for testWordWrap method
- *
- * @return array
- */
+	/**
+	 * data provider for testWordWrap method
+	 *
+	 * @return array
+	 */
 	public function wordWrapProvider() {
 		return array(
 			array(
@@ -380,13 +387,13 @@ class CakeTextTest extends CakeTestCase {
 		);
 	}
 
-/**
- * test that wordWrap() properly handle unicode strings.
- *
- * @return void
- * @covers ::wordWrap
- * @covers ::_wordWrap
- */
+	/**
+	 * test that wordWrap() properly handle unicode strings.
+	 *
+	 * @return void
+	 * @covers ::wordWrap
+	 * @covers ::_wordWrap
+	 */
 	public function testWordWrapUnicodeAware() {
 		$text = 'Но вим омниюм факёльиси элыктрам, мюнырэ лэгыры векж ыт. Выльёт квюандо нюмквуам ты кюм. Зыд эю рыбюм.';
 		$result = CakeText::wordWrap($text, 33, "\n", true);
@@ -409,13 +416,13 @@ TEXT;
 		$this->assertTextEquals($expected, $result, 'Text not wrapped.');
 	}
 
-/**
- * test that wordWrap() properly handle newline characters.
- *
- * @return void
- * @covers ::wordWrap
- * @covers ::_wordWrap
- */
+	/**
+	 * test that wordWrap() properly handle newline characters.
+	 *
+	 * @return void
+	 * @covers ::wordWrap
+	 * @covers ::_wordWrap
+	 */
 	public function testWordWrapNewlineAware() {
 		$text = 'This is a line that is almost the 55 chars long.
 This is a new sentence which is manually newlined, but is so long it needs two lines.';
@@ -428,14 +435,14 @@ TEXT;
 		$this->assertTextEquals($expected, $result, 'Text not wrapped.');
 	}
 
-/**
- * test wrap method.
- *
- * @return void
- * @covers ::wrap
- * @covers ::wordWrap
- * @covers ::_wordWrap
- */
+	/**
+	 * test wrap method.
+	 *
+	 * @return void
+	 * @covers ::wrap
+	 * @covers ::wordWrap
+	 * @covers ::_wordWrap
+	 */
 	public function testWrap() {
 		$text = 'This is the song that never ends. This is the song that never ends. This is the song that never ends.';
 		$result = CakeText::wrap($text, 33);
@@ -466,14 +473,14 @@ TEXT;
 		$this->assertTextEquals($expected, $result, 'Text not wrapped.');
 	}
 
-/**
- * test wrap() indenting
- *
- * @return void
- * @covers ::wrap
- * @covers ::wordWrap
- * @covers ::_wordWrap
- */
+	/**
+	 * test wrap() indenting
+	 *
+	 * @return void
+	 * @covers ::wrap
+	 * @covers ::wordWrap
+	 * @covers ::_wordWrap
+	 */
 	public function testWrapIndent() {
 		$text = 'This is the song that never ends. This is the song that never ends. This is the song that never ends.';
 		$result = CakeText::wrap($text, array('width' => 33, 'indent' => "\t", 'indentAt' => 1));
@@ -485,12 +492,12 @@ TEXT;
 		$this->assertTextEquals($expected, $result);
 	}
 
-/**
- * testTruncate method
- *
- * @return void
- * @covers ::truncate
- */
+	/**
+	 * testTruncate method
+	 *
+	 * @return void
+	 * @covers ::truncate
+	 */
 	public function testTruncate() {
 		$text1 = 'The quick brown fox jumps over the lazy dog';
 		$text2 = 'Heiz&ouml;lr&uuml;cksto&szlig;abd&auml;mpfung';
@@ -591,12 +598,12 @@ podeís adquirirla.</span></p>
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testTruncate method with non utf8 sites
- *
- * @return void
- * @covers ::truncate
- */
+	/**
+	 * testTruncate method with non utf8 sites
+	 *
+	 * @return void
+	 * @covers ::truncate
+	 */
 	public function testTruncateLegacy() {
 		Configure::write('App.encoding', 'ISO-8859-1');
 		$text = '<b>&copy; 2005-2007, Cake Software Foundation, Inc.</b><br />written by Alexander Wegener';
@@ -615,12 +622,12 @@ podeís adquirirla.</span></p>
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testTail method
- *
- * @return void
- * @covers ::tail
- */
+	/**
+	 * testTail method
+	 *
+	 * @return void
+	 * @covers ::tail
+	 */
 	public function testTail() {
 		$text1 = 'The quick brown fox jumps over the lazy dog';
 		$text2 = 'Heiz&ouml;lr&uuml;cksto&szlig;abd&auml;mpfung';
@@ -659,12 +666,12 @@ podeís adquirirla.</span></p>
 		$this->assertEquals('чшщъыь', $result);
 	}
 
-/**
- * testHighlight method
- *
- * @return void
- * @covers ::highlight
- */
+	/**
+	 * testHighlight method
+	 *
+	 * @return void
+	 * @covers ::highlight
+	 */
 	public function testHighlight() {
 		$text = 'This is a test text';
 		$phrases = array('This', 'text');
@@ -694,12 +701,12 @@ podeís adquirirla.</span></p>
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testHighlightHtml method
- *
- * @return void
- * @covers ::highlight
- */
+	/**
+	 * testHighlightHtml method
+	 *
+	 * @return void
+	 * @covers ::highlight
+	 */
 	public function testHighlightHtml() {
 		$text1 = '<p>strongbow isn&rsquo;t real cider</p>';
 		$text2 = '<p>strongbow <strong>isn&rsquo;t</strong> real cider</p>';
@@ -721,12 +728,12 @@ podeís adquirirla.</span></p>
 		$this->assertEquals($expected, $this->Text->highlight($text4, array('strong', 'what'), $options));
 	}
 
-/**
- * testHighlightMulti method
- *
- * @return void
- * @covers ::highlight
- */
+	/**
+	 * testHighlightMulti method
+	 *
+	 * @return void
+	 * @covers ::highlight
+	 */
 	public function testHighlightMulti() {
 		$text = 'This is a test text';
 		$phrases = array('This', 'text');
@@ -735,12 +742,12 @@ podeís adquirirla.</span></p>
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testStripLinks method
- *
- * @return void
- * @covers ::stripLinks
- */
+	/**
+	 * testStripLinks method
+	 *
+	 * @return void
+	 * @covers ::stripLinks
+	 */
 	public function testStripLinks() {
 		$text = 'This is a test text';
 		$expected = 'This is a test text';
@@ -763,12 +770,12 @@ podeís adquirirla.</span></p>
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testHighlightCaseInsensitivity method
- *
- * @return void
- * @covers ::highlight
- */
+	/**
+	 * testHighlightCaseInsensitivity method
+	 *
+	 * @return void
+	 * @covers ::highlight
+	 */
 	public function testHighlightCaseInsensitivity() {
 		$text = 'This is a Test text';
 		$expected = 'This is a <b>Test</b> text';
@@ -780,12 +787,12 @@ podeís adquirirla.</span></p>
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testExcerpt method
- *
- * @return void
- * @covers ::excerpt
- */
+	/**
+	 * testExcerpt method
+	 *
+	 * @return void
+	 * @covers ::excerpt
+	 */
 	public function testExcerpt() {
 		$text = 'This is a phrase with test text to play with';
 
@@ -821,12 +828,12 @@ podeís adquirirla.</span></p>
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testExcerptCaseInsensitivity method
- *
- * @return void
- * @covers ::excerpt
- */
+	/**
+	 * testExcerptCaseInsensitivity method
+	 *
+	 * @return void
+	 * @covers ::excerpt
+	 */
 	public function testExcerptCaseInsensitivity() {
 		$text = 'This is a phrase with test text to play with';
 
@@ -839,12 +846,12 @@ podeís adquirirla.</span></p>
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testListGeneration method
- *
- * @return void
- * @covers ::toList
- */
+	/**
+	 * testListGeneration method
+	 *
+	 * @return void
+	 * @covers ::toList
+	 */
 	public function testListGeneration() {
 		$result = $this->Text->toList(array());
 		$this->assertEquals('', $result);
@@ -870,5 +877,4 @@ podeís adquirirla.</span></p>
 		$result = $this->Text->toList(array('test_0' => 'banana', 'test_1' => 'apple', 'test_2' => 'lemon'));
 		$this->assertEquals('banana, apple and lemon', $result);
 	}
-
 }

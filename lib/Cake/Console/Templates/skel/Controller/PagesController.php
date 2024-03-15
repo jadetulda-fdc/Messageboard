@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Static content controller.
  *
  * This file will render views from views/pages/
  *
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       app.Controller
- * @since         CakePHP(tm) v 0.2.9
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   app.Controller
+ * @since		 CakePHP(tm) v 0.2.9
  */
 
 App::uses('AppController', 'Controller');
@@ -16,26 +17,26 @@ App::uses('AppController', 'Controller');
  *
  * Override this controller by placing a copy in controllers directory of an application
  *
- * @package       app.Controller
+ * @package	   app.Controller
  * @link https://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
 class PagesController extends AppController {
 
-/**
- * This controller does not use a model
- *
- * @var array
- */
+	/**
+	 * This controller does not use a model
+	 *
+	 * @var array
+	 */
 	public $uses = array();
 
-/**
- * Displays a view
- *
- * @return void
- * @throws ForbiddenException When a directory traversal attempt.
- * @throws NotFoundException When the view file could not be found
- *   or MissingViewException in debug mode.
- */
+	/**
+	 * Displays a view
+	 *
+	 * @return void
+	 * @throws ForbiddenException When a directory traversal attempt.
+	 * @throws NotFoundException When the view file could not be found
+	 *   or MissingViewException in debug mode.
+	 */
 	public function display() {
 		$path = func_get_args();
 

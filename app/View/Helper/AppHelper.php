@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application level View Helper
  *
@@ -12,11 +13,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       app.View.Helper
- * @since         CakePHP(tm) v 0.2.9
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   app.View.Helper
+ * @since		 CakePHP(tm) v 0.2.9
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Helper', 'View');
@@ -27,7 +28,7 @@ App::uses('Helper', 'View');
  * Add your application-wide methods in the class below, your helpers
  * will inherit them.
  *
- * @package       app.View.Helper
+ * @package	   app.View.Helper
  */
 class AppHelper extends Helper {
 }

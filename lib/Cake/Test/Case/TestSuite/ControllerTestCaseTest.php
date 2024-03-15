@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ControllerTestCaseTest file
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP Project
- * @package       Cake.Test.Case.TestSuite
- * @since         CakePHP v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP Project
+ * @package	   Cake.Test.Case.TestSuite
+ * @since		 CakePHP v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Controller', 'Controller');
@@ -26,34 +27,33 @@ App::uses('CakeHtmlReporter', 'TestSuite/Reporter');
 require_once dirname(dirname(__FILE__)) . DS . 'Model' . DS . 'models.php';
 
 if (!class_exists('AppController', false)) {
-/**
- * AppController class
- *
- * @package       Cake.Test.Case.TestSuite
- */
+	/**
+	 * AppController class
+	 *
+	 * @package	   Cake.Test.Case.TestSuite
+	 */
 	class AppController extends Controller {
 
-	/**
-	 * helpers property
-	 *
-	 * @var array
-	 */
+		/**
+		 * helpers property
+		 *
+		 * @var array
+		 */
 		public $helpers = array('Html');
 
-	/**
-	 * uses property
-	 *
-	 * @var array
-	 */
+		/**
+		 * uses property
+		 *
+		 * @var array
+		 */
 		public $uses = array('ControllerPost');
 
-	/**
-	 * components property
-	 *
-	 * @var array
-	 */
+		/**
+		 * components property
+		 *
+		 * @var array
+		 */
 		public $components = array('Cookie');
-
 	}
 } elseif (!defined('APP_CONTROLLER_EXISTS')) {
 	define('APP_CONTROLLER_EXISTS', true);
@@ -64,18 +64,18 @@ if (!class_exists('AppController', false)) {
  */
 if (!class_exists('PostsController')) {
 
-/**
- * PostsController
- *
- * @package       Cake.Test.Case.TestSuite
- */
+	/**
+	 * PostsController
+	 *
+	 * @package	   Cake.Test.Case.TestSuite
+	 */
 	class PostsController extends AppController {
 
-	/**
-	 * Components array
-	 *
-	 * @var array
-	 */
+		/**
+		 * Components array
+		 *
+		 * @var array
+		 */
 		public $components = array(
 			'RequestHandler',
 			'Email',
@@ -93,38 +93,37 @@ if (!class_exists('PostsController')) {
 /**
  * ControllerTestCaseTest controller
  *
- * @package       Cake.Test.Case.TestSuite
+ * @package	   Cake.Test.Case.TestSuite
  */
 class ControllerTestCaseTestController extends AppController {
 
-/**
- * Uses array
- *
- * @param array
- */
+	/**
+	 * Uses array
+	 *
+	 * @param array
+	 */
 	public $uses = array('TestPlugin.TestPluginComment');
-
 }
 
 /**
  * ControllerTestCaseTest
  *
- * @package       Cake.Test.Case.TestSuite
+ * @package	   Cake.Test.Case.TestSuite
  */
 class ControllerTestCaseTest extends CakeTestCase {
 
-/**
- * fixtures property
- *
- * @var array
- */
+	/**
+	 * fixtures property
+	 *
+	 * @var array
+	 */
 	public $fixtures = array('core.post', 'core.author', 'core.test_plugin_comment');
 
-/**
- * reset environment.
- *
- * @return void
- */
+	/**
+	 * reset environment.
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		App::build(array(
@@ -138,22 +137,22 @@ class ControllerTestCaseTest extends CakeTestCase {
 		Router::reload();
 	}
 
-/**
- * tearDown
- *
- * @return void
- */
+	/**
+	 * tearDown
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		CakePlugin::unload();
 		$this->Case->controller = null;
 	}
 
-/**
- * Test that ControllerTestCase::generate() creates mock objects correctly
- *
- * @return void
- */
+	/**
+	 * Test that ControllerTestCase::generate() creates mock objects correctly
+	 *
+	 * @return void
+	 */
 	public function testGenerate() {
 		if (defined('APP_CONTROLLER_EXISTS')) {
 			$this->markTestSkipped('AppController exists, cannot run.');
@@ -216,14 +215,13 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertEquals('written!', $Posts->Auth->Session->write('something'));
 	}
 
-/**
- * testGenerateWithComponentConfig
- *
- * @return void
- */
+	/**
+	 * testGenerateWithComponentConfig
+	 *
+	 * @return void
+	 */
 	public function testGenerateWithComponentConfig() {
-		$Tests = $this->Case->generate('TestConfigs', array(
-		));
+		$Tests = $this->Case->generate('TestConfigs', array());
 
 		$expected = array('some' => 'config');
 		$settings = array_intersect_key($Tests->RequestHandler->settings, array('some' => 'foo'));
@@ -240,11 +238,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertSame($expected, $settings, 'A mocked component should have the same config as an unmocked component');
 	}
 
-/**
- * Tests ControllerTestCase::generate() using classes from plugins
- *
- * @return void
- */
+	/**
+	 * Tests ControllerTestCase::generate() using classes from plugins
+	 *
+	 * @return void
+	 */
 	public function testGenerateWithPlugin() {
 		$Tests = $this->Case->generate('TestPlugin.Tests', array(
 			'models' => array(
@@ -276,11 +274,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertFalse($Tests->TestPluginComment->save(array()));
 	}
 
-/**
- * Tests ControllerTestCase::generate() using aliased component
- *
- * @return void
- */
+	/**
+	 * Tests ControllerTestCase::generate() using aliased component
+	 *
+	 * @return void
+	 */
 	public function testGenerateWithMockedAliasedComponent() {
 		$Posts = $this->Case->generate('Posts', array(
 			'components' => array(
@@ -295,11 +293,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertTrue($Posts->AliasedEmail->send());
 	}
 
-/**
- * Tests ControllerTestCase::generate() using aliased plugin component
- *
- * @return void
- */
+	/**
+	 * Tests ControllerTestCase::generate() using aliased plugin component
+	 *
+	 * @return void
+	 */
 	public function testGenerateWithMockedAliasedPluginComponent() {
 		$Posts = $this->Case->generate('Posts', array(
 			'components' => array(
@@ -314,11 +312,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertTrue($Posts->AliasedPluginEmail->send());
 	}
 
-/**
- * Tests testAction
- *
- * @return void
- */
+	/**
+	 * Tests testAction
+	 *
+	 * @return void
+	 */
 	public function testTestAction() {
 		$this->Case->generate('TestsApps');
 		$this->Case->testAction('/tests_apps/index');
@@ -344,22 +342,22 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertSame(302, $Controller->response->statusCode());
 	}
 
-/**
- * Test array URLs with testAction()
- *
- * @return void
- */
+	/**
+	 * Test array URLs with testAction()
+	 *
+	 * @return void
+	 */
 	public function testTestActionArrayUrls() {
 		$this->Case->generate('TestsApps');
 		$this->Case->testAction(array('controller' => 'tests_apps', 'action' => 'index'));
 		$this->assertInternalType('array', $this->Case->controller->viewVars);
 	}
 
-/**
- * Test that file responses don't trigger errors.
- *
- * @return void
- */
+	/**
+	 * Test that file responses don't trigger errors.
+	 *
+	 * @return void
+	 */
 	public function testActionWithFile() {
 		$Controller = $this->Case->generate('TestsApps');
 		$this->Case->testAction('/tests_apps/file');
@@ -367,22 +365,22 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertArrayHasKey('Content-Length', $Controller->response->header());
 	}
 
-/**
- * Make sure testAction() can hit plugin controllers.
- *
- * @return void
- */
+	/**
+	 * Make sure testAction() can hit plugin controllers.
+	 *
+	 * @return void
+	 */
 	public function testTestActionWithPlugin() {
 		$this->Case->generate('TestPlugin.Tests');
 		$this->Case->testAction('/test_plugin/tests/index');
 		$this->assertEquals('It is a variable', $this->Case->controller->viewVars['test_value']);
 	}
 
-/**
- * Tests using loaded routes during tests
- *
- * @return void
- */
+	/**
+	 * Tests using loaded routes during tests
+	 *
+	 * @return void
+	 */
 	public function testUseRoutes() {
 		Router::connect('/:controller/:action/*');
 		include CAKE . 'Test' . DS . 'test_app' . DS . 'Config' . DS . 'routes.php';
@@ -399,12 +397,12 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertEquals(5, $result);
 	}
 
-/**
- * Tests not using loaded routes during tests
- *
- * @expectedException MissingActionException
- * @return void
- */
+	/**
+	 * Tests not using loaded routes during tests
+	 *
+	 * @expectedException MissingActionException
+	 * @return void
+	 */
 	public function testSkipRoutes() {
 		Router::connect('/:controller/:action/*');
 		include CAKE . 'Test' . DS . 'test_app' . DS . 'Config' . DS . 'routes.php';
@@ -413,11 +411,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->Case->testAction('/tests_apps/missing_action.json', array('return' => 'view'));
 	}
 
-/**
- * Tests backwards compatibility with setting the return type
- *
- * @return void
- */
+	/**
+	 * Tests backwards compatibility with setting the return type
+	 *
+	 * @return void
+	 */
 	public function testBCSetReturn() {
 		$this->Case->autoMock = true;
 
@@ -444,11 +442,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertRegExp('/<\/html>/', $result);
 	}
 
-/**
- * Tests sending POST data to testAction
- *
- * @return void
- */
+	/**
+	 * Tests sending POST data to testAction
+	 *
+	 * @return void
+	 */
 	public function testTestActionPostData() {
 		$this->Case->autoMock = true;
 
@@ -488,11 +486,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertTrue($this->Case->controller->request->is('post'));
 	}
 
-/**
- * Tests sending GET data to testAction
- *
- * @return void
- */
+	/**
+	 * Tests sending GET data to testAction
+	 *
+	 * @return void
+	 */
 	public function testTestActionGetData() {
 		$this->Case->autoMock = true;
 
@@ -531,11 +529,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertTrue(isset($query['blue']));
 	}
 
-/**
- * Test that REST actions with XML/JSON input work.
- *
- * @return void
- */
+	/**
+	 * Test that REST actions with XML/JSON input work.
+	 *
+	 * @return void
+	 */
 	public function testTestActionJsonData() {
 		$result = $this->Case->testAction('/tests_apps_posts/input_data', array(
 			'return' => 'vars',
@@ -546,11 +544,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertTrue($result['data']['json']);
 	}
 
-/**
- * Tests autoMock ability
- *
- * @return void
- */
+	/**
+	 * Tests autoMock ability
+	 *
+	 * @return void
+	 */
 	public function testAutoMock() {
 		$this->Case->autoMock = true;
 		$this->Case->testAction('/tests_apps/set_action');
@@ -561,11 +559,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertEquals($expected, $results);
 	}
 
-/**
- * Test using testAction and not mocking
- *
- * @return void
- */
+	/**
+	 * Test using testAction and not mocking
+	 *
+	 * @return void
+	 */
 	public function testNoMocking() {
 		$result = $this->Case->testAction('/tests_apps/some_method');
 		$this->Case->assertEquals(5, $result);
@@ -590,11 +588,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertRegExp('/<\/html>/', $result);
 	}
 
-/**
- * Test that controllers don't get reused.
- *
- * @return void
- */
+	/**
+	 * Test that controllers don't get reused.
+	 *
+	 * @return void
+	 */
 	public function testNoControllerReuse() {
 		$this->Case->autoMock = true;
 		$result = $this->Case->testAction('/tests_apps/index', array(
@@ -622,11 +620,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertContains('third call', $result);
 	}
 
-/**
- * Test that multiple calls to redirect in the same test method don't cause issues.
- *
- * @return void
- */
+	/**
+	 * Test that multiple calls to redirect in the same test method don't cause issues.
+	 *
+	 * @return void
+	 */
 	public function testTestActionWithMultipleRedirect() {
 		$this->Case->generate('TestsApps');
 
@@ -635,12 +633,12 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->Case->testAction('/tests_apps/redirect_to', $options);
 	}
 
-/**
- * Tests that Components storing response or request objects internally during construct
- * will always have a fresh reference to those object available
- *
- * @return void
- */
+	/**
+	 * Tests that Components storing response or request objects internally during construct
+	 * will always have a fresh reference to those object available
+	 *
+	 * @return void
+	 */
 	public function testComponentsSameRequestAndResponse() {
 		$this->Case->generate('TestsApps');
 		$options = array('method' => 'get');
@@ -649,11 +647,11 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertSame($this->Case->controller->request, $this->Case->controller->RequestHandler->request);
 	}
 
-/**
- * Test that testAction() doesn't destroy data in GET & POST
- *
- * @return void
- */
+	/**
+	 * Test that testAction() doesn't destroy data in GET & POST
+	 *
+	 * @return void
+	 */
 	public function testRestoreGetPost() {
 		$restored = array('new' => 'value');
 
@@ -668,12 +666,12 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertEquals($restored, $_POST);
 	}
 
-/**
- * Tests that the `App.base` path is properly stripped from the URL generated from the
- * given URL array, and that consequently the correct controller/action is being matched.
- *
- * @return void
- */
+	/**
+	 * Tests that the `App.base` path is properly stripped from the URL generated from the
+	 * given URL array, and that consequently the correct controller/action is being matched.
+	 *
+	 * @return void
+	 */
 	public function testAppBaseConfigCompatibilityWithArrayUrls() {
 		Configure::write('App.base', '/cakephp');
 
@@ -695,12 +693,12 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertEquals($expected, array_intersect_key($this->Case->controller->request->params, $expected));
 	}
 
-/**
- * Tests that query string data from URL arrays properly makes it into the request object
- * on GET requests.
- *
- * @return void
- */
+	/**
+	 * Tests that query string data from URL arrays properly makes it into the request object
+	 * on GET requests.
+	 *
+	 * @return void
+	 */
 	public function testTestActionWithArrayUrlQueryStringDataViaGetRequest() {
 		$query = array('foo' => 'bar');
 
@@ -720,12 +718,12 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertEquals($query, $this->Case->controller->request->query);
 	}
 
-/**
- * Tests that query string data from URL arrays properly makes it into the request object
- * on POST requests.
- *
- * @return void
- */
+	/**
+	 * Tests that query string data from URL arrays properly makes it into the request object
+	 * on POST requests.
+	 *
+	 * @return void
+	 */
 	public function testTestActionWithArrayUrlQueryStringDataViaPostRequest() {
 		$query = array('foo' => 'bar');
 
@@ -745,12 +743,12 @@ class ControllerTestCaseTest extends CakeTestCase {
 		$this->assertEquals($query, $this->Case->controller->request->query);
 	}
 
-/**
- * Tests that query string data from both, URL arrays as well as the `data` option,
- * properly makes it into the request object.
- *
- * @return void
- */
+	/**
+	 * Tests that query string data from both, URL arrays as well as the `data` option,
+	 * properly makes it into the request object.
+	 *
+	 * @return void
+	 */
 	public function testTestActionWithArrayUrlQueryStringDataAndDataOptionViaGetRequest() {
 		$query = array('foo' => 'bar');
 		$data = array('bar' => 'foo');

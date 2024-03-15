@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Short description for file.
  *
@@ -9,27 +10,28 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.TestSuite.templates
- * @since         CakePHP(tm) v 1.2.0.4433
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.TestSuite.templates
+ * @since		 CakePHP(tm) v 1.2.0.4433
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
-?>	</div>
-		</div>
-		<div id="footer">
-			<p>
-			<!--PLEASE USE ONE OF THE POWERED BY CAKEPHP LOGO-->
-			<a href="https://cakephp.org/" target="_blank">
-				<img src="<?php echo $baseDir; ?>img/cake.power.gif" alt="CakePHP(tm) :: Rapid Development Framework" /></a>
-			</p>
-		</div>
-		<?php
-			App::uses('View', 'View');
-			$null = null;
-			$View = new View($null, false);
-			echo $View->element('sql_dump');
-		?>
-	</div>
+?> </div>
+</div>
+<div id="footer">
+	<p>
+		<!--PLEASE USE ONE OF THE POWERED BY CAKEPHP LOGO-->
+		<a href="https://cakephp.org/" target="_blank">
+			<img src="<?php echo $baseDir; ?>img/cake.power.gif" alt="CakePHP(tm) :: Rapid Development Framework" /></a>
+	</p>
+</div>
+<?php
+App::uses('View', 'View');
+$null = null;
+$View = new View($null, false);
+echo $View->element('sql_dump');
+?>
+</div>
 </body>
+
 </html>

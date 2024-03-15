@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ConsoleOutput file.
  *
@@ -9,10 +10,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
@@ -40,65 +41,65 @@
  * See ConsoleOutput::styles() to learn more about defining your own styles. Nested styles are not supported
  * at this time.
  *
- * @package       Cake.Console
+ * @package	   Cake.Console
  */
 class ConsoleOutput {
 
-/**
- * Raw output constant - no modification of output text.
- *
- * @var int
- */
+	/**
+	 * Raw output constant - no modification of output text.
+	 *
+	 * @var int
+	 */
 	const RAW = 0;
 
-/**
- * Plain output - tags will be stripped.
- *
- * @var int
- */
+	/**
+	 * Plain output - tags will be stripped.
+	 *
+	 * @var int
+	 */
 	const PLAIN = 1;
 
-/**
- * Color output - Convert known tags in to ANSI color escape codes.
- *
- * @var int
- */
+	/**
+	 * Color output - Convert known tags in to ANSI color escape codes.
+	 *
+	 * @var int
+	 */
 	const COLOR = 2;
 
-/**
- * Constant for a newline.
- *
- * @var string
- */
+	/**
+	 * Constant for a newline.
+	 *
+	 * @var string
+	 */
 	const LF = PHP_EOL;
 
-/**
- * File handle for output.
- *
- * @var resource
- */
+	/**
+	 * File handle for output.
+	 *
+	 * @var resource
+	 */
 	protected $_output;
 
-/**
- * The number of bytes last written to the output stream
- * used when overwriting the previous message.
- *
- * @var int
- */
+	/**
+	 * The number of bytes last written to the output stream
+	 * used when overwriting the previous message.
+	 *
+	 * @var int
+	 */
 	protected $_lastWritten = 0;
 
-/**
- * The current output type. Manipulated with ConsoleOutput::outputAs();
- *
- * @var int
- */
+	/**
+	 * The current output type. Manipulated with ConsoleOutput::outputAs();
+	 *
+	 * @var int
+	 */
 	protected $_outputAs = self::COLOR;
 
-/**
- * text colors used in colored output.
- *
- * @var array
- */
+	/**
+	 * text colors used in colored output.
+	 *
+	 * @var array
+	 */
 	protected static $_foregroundColors = array(
 		'black' => 30,
 		'red' => 31,
@@ -110,11 +111,11 @@ class ConsoleOutput {
 		'white' => 37
 	);
 
-/**
- * background colors used in colored output.
- *
- * @var array
- */
+	/**
+	 * background colors used in colored output.
+	 *
+	 * @var array
+	 */
 	protected static $_backgroundColors = array(
 		'black' => 40,
 		'red' => 41,
@@ -126,11 +127,11 @@ class ConsoleOutput {
 		'white' => 47
 	);
 
-/**
- * formatting options for colored output
- *
- * @var string
- */
+	/**
+	 * formatting options for colored output
+	 *
+	 * @var string
+	 */
 	protected static $_options = array(
 		'bold' => 1,
 		'underline' => 4,
@@ -138,12 +139,12 @@ class ConsoleOutput {
 		'reverse' => 7,
 	);
 
-/**
- * Styles that are available as tags in console output.
- * You can modify these styles with ConsoleOutput::styles()
- *
- * @var array
- */
+	/**
+	 * Styles that are available as tags in console output.
+	 * You can modify these styles with ConsoleOutput::styles()
+	 *
+	 * @var array
+	 */
 	protected static $_styles = array(
 		'emergency' => array('text' => 'red', 'underline' => true),
 		'alert' => array('text' => 'red', 'underline' => true),
@@ -158,14 +159,14 @@ class ConsoleOutput {
 		'notice' => array('text' => 'cyan')
 	);
 
-/**
- * Construct the output object.
- *
- * Checks for a pretty console environment. Ansicon and ConEmu allows
- * pretty consoles on Windows, and is supported.
- *
- * @param string $stream The identifier of the stream to write output to.
- */
+	/**
+	 * Construct the output object.
+	 *
+	 * Checks for a pretty console environment. Ansicon and ConEmu allows
+	 * pretty consoles on Windows, and is supported.
+	 *
+	 * @param string $stream The identifier of the stream to write output to.
+	 */
 	public function __construct($stream = 'php://stdout') {
 		$this->_output = fopen($stream, 'w');
 
@@ -177,14 +178,14 @@ class ConsoleOutput {
 		}
 	}
 
-/**
- * Outputs a single or multiple messages to stdout. If no parameters
- * are passed, outputs just a newline.
- *
- * @param string|array $message A string or an array of strings to output
- * @param int $newlines Number of newlines to append
- * @return int Returns the number of bytes returned from writing to stdout.
- */
+	/**
+	 * Outputs a single or multiple messages to stdout. If no parameters
+	 * are passed, outputs just a newline.
+	 *
+	 * @param string|array $message A string or an array of strings to output
+	 * @param int $newlines Number of newlines to append
+	 * @return int Returns the number of bytes returned from writing to stdout.
+	 */
 	public function write($message, $newlines = 1) {
 		if (is_array($message)) {
 			$message = implode(static::LF, $message);
@@ -192,20 +193,20 @@ class ConsoleOutput {
 		return $this->_write($this->styleText($message . str_repeat(static::LF, $newlines)));
 	}
 
-/**
- * Overwrite some already output text.
- *
- * Useful for building progress bars, or when you want to replace
- * text already output to the screen with new text.
- *
- * **Warning** You cannot overwrite text that contains newlines.
- *
- * @param array|string $message The message to output.
- * @param int $newlines Number of newlines to append.
- * @param int|null $size The number of bytes to overwrite. Defaults to the
- *    length of the last message output.
- * @return void
- */
+	/**
+	 * Overwrite some already output text.
+	 *
+	 * Useful for building progress bars, or when you want to replace
+	 * text already output to the screen with new text.
+	 *
+	 * **Warning** You cannot overwrite text that contains newlines.
+	 *
+	 * @param array|string $message The message to output.
+	 * @param int $newlines Number of newlines to append.
+	 * @param int|null $size The number of bytes to overwrite. Defaults to the
+	 *	length of the last message output.
+	 * @return void
+	 */
 	public function overwrite($message, $newlines = 1, $size = null) {
 		$size = $size ?: $this->_lastWritten;
 		// Output backspaces.
@@ -221,12 +222,12 @@ class ConsoleOutput {
 		}
 	}
 
-/**
- * Apply styling to text.
- *
- * @param string $text Text with styling tags.
- * @return string String with color codes added.
- */
+	/**
+	 * Apply styling to text.
+	 *
+	 * @param string $text Text with styling tags.
+	 * @return string String with color codes added.
+	 */
 	public function styleText($text) {
 		if ($this->_outputAs == static::RAW) {
 			return $text;
@@ -236,16 +237,18 @@ class ConsoleOutput {
 			return preg_replace('#</?(?:' . $tags . ')>#', '', $text);
 		}
 		return preg_replace_callback(
-			'/<(?P<tag>[a-z0-9-_]+)>(?P<text>.*?)<\/(\1)>/ims', array($this, '_replaceTags'), $text
+			'/<(?P<tag>[a-z0-9-_]+)>(?P<text>.*?)<\/(\1)>/ims',
+			array($this, '_replaceTags'),
+			$text
 		);
 	}
 
-/**
- * Replace tags with color codes.
- *
- * @param array $matches An array of matches to replace.
- * @return string
- */
+	/**
+	 * Replace tags with color codes.
+	 *
+	 * @param array $matches An array of matches to replace.
+	 * @return string
+	 */
 	protected function _replaceTags($matches) {
 		$style = $this->styles($matches['tag']);
 		if (empty($style)) {
@@ -268,42 +271,42 @@ class ConsoleOutput {
 		return "\033[" . implode($styleInfo, ';') . 'm' . $matches['text'] . "\033[0m";
 	}
 
-/**
- * Writes a message to the output stream.
- *
- * @param string $message Message to write.
- * @return bool success
- */
+	/**
+	 * Writes a message to the output stream.
+	 *
+	 * @param string $message Message to write.
+	 * @return bool success
+	 */
 	protected function _write($message) {
 		$this->_lastWritten = fwrite($this->_output, $message);
 		return $this->_lastWritten;
 	}
 
-/**
- * Get the current styles offered, or append new ones in.
- *
- * ### Get a style definition
- *
- * `$this->output->styles('error');`
- *
- * ### Get all the style definitions
- *
- * `$this->output->styles();`
- *
- * ### Create or modify an existing style
- *
- * `$this->output->styles('annoy', array('text' => 'purple', 'background' => 'yellow', 'blink' => true));`
- *
- * ### Remove a style
- *
- * `$this->output->styles('annoy', false);`
- *
- * @param string $style The style to get or create.
- * @param array $definition The array definition of the style to change or create a style
- *   or false to remove a style.
- * @return mixed If you are getting styles, the style or null will be returned. If you are creating/modifying
- *   styles true will be returned.
- */
+	/**
+	 * Get the current styles offered, or append new ones in.
+	 *
+	 * ### Get a style definition
+	 *
+	 * `$this->output->styles('error');`
+	 *
+	 * ### Get all the style definitions
+	 *
+	 * `$this->output->styles();`
+	 *
+	 * ### Create or modify an existing style
+	 *
+	 * `$this->output->styles('annoy', array('text' => 'purple', 'background' => 'yellow', 'blink' => true));`
+	 *
+	 * ### Remove a style
+	 *
+	 * `$this->output->styles('annoy', false);`
+	 *
+	 * @param string $style The style to get or create.
+	 * @param array $definition The array definition of the style to change or create a style
+	 *   or false to remove a style.
+	 * @return mixed If you are getting styles, the style or null will be returned. If you are creating/modifying
+	 *   styles true will be returned.
+	 */
 	public function styles($style = null, $definition = null) {
 		if ($style === null && $definition === null) {
 			return static::$_styles;
@@ -319,12 +322,12 @@ class ConsoleOutput {
 		return true;
 	}
 
-/**
- * Get/Set the output type to use. The output type how formatting tags are treated.
- *
- * @param int $type The output type to use. Should be one of the class constants.
- * @return mixed Either null or the value if getting.
- */
+	/**
+	 * Get/Set the output type to use. The output type how formatting tags are treated.
+	 *
+	 * @param int $type The output type to use. Should be one of the class constants.
+	 * @return mixed Either null or the value if getting.
+	 */
 	public function outputAs($type = null) {
 		if ($type === null) {
 			return $this->_outputAs;
@@ -332,13 +335,12 @@ class ConsoleOutput {
 		$this->_outputAs = $type;
 	}
 
-/**
- * Clean up and close handles
- */
+	/**
+	 * Clean up and close handles
+	 */
 	public function __destruct() {
 		if (is_resource($this->_output)) {
 			fclose($this->_output);
 		}
 	}
-
 }

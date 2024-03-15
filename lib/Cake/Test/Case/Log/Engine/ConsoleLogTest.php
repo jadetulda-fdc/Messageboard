@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ConsoleLogTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Log.Engine
- * @since         CakePHP(tm) v 1.3
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Log.Engine
+ * @since		 CakePHP(tm) v 1.3
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('ConsoleLog', 'Log/Engine');
@@ -21,29 +22,27 @@ App::uses('ConsoleLog', 'Log/Engine');
 /**
  * TestConsoleLog
  *
- * @package       Cake.Test.Case.Log.Engine
+ * @package	   Cake.Test.Case.Log.Engine
  */
 class TestConsoleLog extends ConsoleLog {
-
 }
 
 /**
  * TestCakeLog
  *
- * @package       Cake.Test.Case.Log.Engine
+ * @package	   Cake.Test.Case.Log.Engine
  */
 class TestCakeLog extends CakeLog {
 
 	public static function replace($key, &$engine) {
 		static::$_Collection->{$key} = $engine;
 	}
-
 }
 
 /**
  * ConsoleLogTest class
  *
- * @package       Cake.Test.Case.Log.Engine
+ * @package	   Cake.Test.Case.Log.Engine
  */
 class ConsoleLogTest extends CakeTestCase {
 
@@ -71,19 +70,19 @@ class ConsoleLogTest extends CakeTestCase {
 		}
 	}
 
-/**
- * Test writing to ConsoleOutput
- *
- * @return void
- */
+	/**
+	 * Test writing to ConsoleOutput
+	 *
+	 * @return void
+	 */
 	public function testConsoleOutputWrites() {
 		TestCakeLog::config('test_console_log', array(
 			'engine' => 'TestConsole',
-			));
+		));
 
 		$mock = $this->getMock('TestConsoleLog', array('write'), array(
 			array('types' => 'error'),
-			));
+		));
 		TestCakeLog::replace('test_console_log', $mock);
 
 		$message = 'Test error message';
@@ -92,18 +91,18 @@ class ConsoleLogTest extends CakeTestCase {
 		TestCakeLog::write(LOG_ERR, $message);
 	}
 
-/**
- * Test logging to both ConsoleLog and FileLog
- *
- * @return void
- */
+	/**
+	 * Test logging to both ConsoleLog and FileLog
+	 *
+	 * @return void
+	 */
 	public function testCombinedLogWriting() {
 		TestCakeLog::config('test_console_log', array(
 			'engine' => 'TestConsole',
-			));
+		));
 		$mock = $this->getMock('TestConsoleLog', array('write'), array(
 			array('types' => 'error'),
-			));
+		));
 		TestCakeLog::replace('test_console_log', $mock);
 
 		// log to both file and console
@@ -130,15 +129,15 @@ class ConsoleLogTest extends CakeTestCase {
 		$this->assertContains($message, $logOutput);
 	}
 
-/**
- * test default value of stream 'outputAs'
- *
- * @return void
- */
+	/**
+	 * test default value of stream 'outputAs'
+	 *
+	 * @return void
+	 */
 	public function testDefaultOutputAs() {
 		TestCakeLog::config('test_console_log', array(
 			'engine' => 'TestConsole',
-			));
+		));
 		if ((DS === '\\' && !(bool)env('ANSICON') && env('ConEmuANSI') !== 'ON') ||
 			(function_exists('posix_isatty') && !posix_isatty(null))
 		) {
@@ -150,5 +149,4 @@ class ConsoleLogTest extends CakeTestCase {
 		$config = $stream->config();
 		$this->assertEquals($expected, $config['outputAs']);
 	}
-
 }

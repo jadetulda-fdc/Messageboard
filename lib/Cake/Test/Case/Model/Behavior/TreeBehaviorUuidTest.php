@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TreeBehaviorUuidTest file
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Model.Behavior
- * @since         CakePHP(tm) v 1.2.0.5330
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Model.Behavior
+ * @since		 CakePHP(tm) v 1.2.0.5330
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Model', 'Model');
@@ -27,22 +28,22 @@ require_once dirname(dirname(__FILE__)) . DS . 'models.php';
 /**
  * TreeBehaviorUuidTest class
  *
- * @package       Cake.Test.Case.Model.Behavior
+ * @package	   Cake.Test.Case.Model.Behavior
  */
 class TreeBehaviorUuidTest extends CakeTestCase {
 
-/**
- * Whether backup global state for each test method or not
- *
- * @var bool
- */
+	/**
+	 * Whether backup global state for each test method or not
+	 *
+	 * @var bool
+	 */
 	public $backupGlobals = false;
 
-/**
- * settings property
- *
- * @var array
- */
+	/**
+	 * settings property
+	 *
+	 * @var array
+	 */
 	public $settings = array(
 		'modelClass' => 'UuidTree',
 		'leftField' => 'lft',
@@ -50,18 +51,18 @@ class TreeBehaviorUuidTest extends CakeTestCase {
 		'parentField' => 'parent_id'
 	);
 
-/**
- * fixtures property
- *
- * @var array
- */
+	/**
+	 * fixtures property
+	 *
+	 * @var array
+	 */
 	public $fixtures = array('core.uuid_tree');
 
-/**
- * testAddWithPreSpecifiedId method
- *
- * @return void
- */
+	/**
+	 * testAddWithPreSpecifiedId method
+	 *
+	 * @return void
+	 */
 	public function testAddWithPreSpecifiedId() {
 		extract($this->settings);
 		$this->Tree = new $modelClass();
@@ -75,10 +76,12 @@ class TreeBehaviorUuidTest extends CakeTestCase {
 
 		$id = CakeText::uuid();
 		$this->Tree->create();
-		$result = $this->Tree->save(array($modelClass => array(
-			'id' => $id,
-			'name' => 'testAddMiddle',
-			$parentField => $data[$modelClass]['id'])
+		$result = $this->Tree->save(array(
+			$modelClass => array(
+				'id' => $id,
+				'name' => 'testAddMiddle',
+				$parentField => $data[$modelClass]['id']
+			)
 		));
 		$expected = array_merge(
 			array($modelClass => array('id' => $id, 'name' => 'testAddMiddle', $parentField => '2')),
@@ -89,11 +92,11 @@ class TreeBehaviorUuidTest extends CakeTestCase {
 		$this->assertTrue($this->Tree->verify());
 	}
 
-/**
- * testMovePromote method
- *
- * @return void
- */
+	/**
+	 * testMovePromote method
+	 *
+	 * @return void
+	 */
 	public function testMovePromote() {
 		extract($this->settings);
 		$this->Tree = new $modelClass();
@@ -108,19 +111,21 @@ class TreeBehaviorUuidTest extends CakeTestCase {
 		$this->Tree->id = $data[$modelClass]['id'];
 		$this->Tree->saveField($parentField, $parentId);
 		$direct = $this->Tree->children($parentId, true, array('name', $leftField, $rightField));
-		$expected = array(array($modelClass => array('name' => '1.1', $leftField => 2, $rightField => 5)),
+		$expected = array(
+			array($modelClass => array('name' => '1.1', $leftField => 2, $rightField => 5)),
 			array($modelClass => array('name' => '1.2', $leftField => 6, $rightField => 11)),
-			array($modelClass => array('name' => '1.1.1', $leftField => 12, $rightField => 13)));
+			array($modelClass => array('name' => '1.1.1', $leftField => 12, $rightField => 13))
+		);
 		$this->assertEquals($expected, $direct);
 		$validTree = $this->Tree->verify();
 		$this->assertTrue($validTree);
 	}
 
-/**
- * testMoveWithWhitelist method
- *
- * @return void
- */
+	/**
+	 * testMoveWithWhitelist method
+	 *
+	 * @return void
+	 */
 	public function testMoveWithWhitelist() {
 		extract($this->settings);
 		$this->Tree = new $modelClass();
@@ -137,18 +142,20 @@ class TreeBehaviorUuidTest extends CakeTestCase {
 		$this->Tree->saveField($parentField, $parentId);
 
 		$result = $this->Tree->children($parentId, true, array('name', $leftField, $rightField));
-		$expected = array(array($modelClass => array('name' => '1.1', $leftField => 2, $rightField => 5)),
+		$expected = array(
+			array($modelClass => array('name' => '1.1', $leftField => 2, $rightField => 5)),
 			array($modelClass => array('name' => '1.2', $leftField => 6, $rightField => 11)),
-			array($modelClass => array('name' => '1.1.1', $leftField => 12, $rightField => 13)));
+			array($modelClass => array('name' => '1.1.1', $leftField => 12, $rightField => 13))
+		);
 		$this->assertEquals($expected, $result);
 		$this->assertTrue($this->Tree->verify());
 	}
 
-/**
- * testRemoveNoChildren method
- *
- * @return void
- */
+	/**
+	 * testRemoveNoChildren method
+	 *
+	 * @return void
+	 */
 	public function testRemoveNoChildren() {
 		extract($this->settings);
 		$this->Tree = new $modelClass();
@@ -179,11 +186,11 @@ class TreeBehaviorUuidTest extends CakeTestCase {
 		$this->assertTrue($validTree);
 	}
 
-/**
- * testRemoveAndDeleteNoChildren method
- *
- * @return void
- */
+	/**
+	 * testRemoveAndDeleteNoChildren method
+	 *
+	 * @return void
+	 */
 	public function testRemoveAndDeleteNoChildren() {
 		extract($this->settings);
 		$this->Tree = new $modelClass();
@@ -212,11 +219,11 @@ class TreeBehaviorUuidTest extends CakeTestCase {
 		$this->assertTrue($validTree);
 	}
 
-/**
- * testChildren method
- *
- * @return void
- */
+	/**
+	 * testChildren method
+	 *
+	 * @return void
+	 */
 	public function testChildren() {
 		extract($this->settings);
 		$this->Tree = new $modelClass();
@@ -227,43 +234,10 @@ class TreeBehaviorUuidTest extends CakeTestCase {
 		$this->Tree->id = $data[$modelClass]['id'];
 
 		$direct = $this->Tree->children(null, true, array('name', $leftField, $rightField));
-		$expected = array(array($modelClass => array('name' => '1.1', $leftField => 2, $rightField => 7)),
-			array($modelClass => array('name' => '1.2', $leftField => 8, $rightField => 13)));
-		$this->assertEquals($expected, $direct);
-
-		$total = $this->Tree->children(null, null, array('name', $leftField, $rightField));
-		$expected = array(array($modelClass => array('name' => '1.1', $leftField => 2, $rightField => 7)),
-			array($modelClass => array('name' => '1.1.1', $leftField => 3, $rightField => 4)),
-			array($modelClass => array('name' => '1.1.2', $leftField => 5, $rightField => 6)),
-			array($modelClass => array('name' => '1.2', $leftField => 8, $rightField => 13)),
-			array($modelClass => array('name' => '1.2.1', $leftField => 9, $rightField => 10)),
-			array($modelClass => array('name' => '1.2.2', $leftField => 11, $rightField => 12)));
-		$this->assertEquals($expected, $total);
-	}
-
-/**
- * testNoAmbiguousColumn method
- *
- * @return void
- */
-	public function testNoAmbiguousColumn() {
-		extract($this->settings);
-		$this->Tree = new $modelClass();
-		$this->Tree->order = null;
-		$this->Tree->initialize(2, 2);
-
-		$this->Tree->bindModel(array('belongsTo' => array('Dummy' =>
-			array('className' => $modelClass, 'foreignKey' => $parentField, 'conditions' => array('Dummy.id' => null)))), false);
-
-		$data = $this->Tree->find('first', array(
-			'conditions' => array($modelClass . '.name' => '1. Root'),
-			'recursive' => -1
-		));
-		$this->Tree->id = $data[$modelClass]['id'];
-
-		$direct = $this->Tree->children(null, true, array('name', $leftField, $rightField));
-		$expected = array(array($modelClass => array('name' => '1.1', $leftField => 2, $rightField => 7)),
-			array($modelClass => array('name' => '1.2', $leftField => 8, $rightField => 13)));
+		$expected = array(
+			array($modelClass => array('name' => '1.1', $leftField => 2, $rightField => 7)),
+			array($modelClass => array('name' => '1.2', $leftField => 8, $rightField => 13))
+		);
 		$this->assertEquals($expected, $direct);
 
 		$total = $this->Tree->children(null, null, array('name', $leftField, $rightField));
@@ -278,17 +252,56 @@ class TreeBehaviorUuidTest extends CakeTestCase {
 		$this->assertEquals($expected, $total);
 	}
 
-/**
- * testGenerateTreeListWithSelfJoin method
- *
- * @return void
- */
+	/**
+	 * testNoAmbiguousColumn method
+	 *
+	 * @return void
+	 */
+	public function testNoAmbiguousColumn() {
+		extract($this->settings);
+		$this->Tree = new $modelClass();
+		$this->Tree->order = null;
+		$this->Tree->initialize(2, 2);
+
+		$this->Tree->bindModel(array('belongsTo' => array('Dummy' =>
+		array('className' => $modelClass, 'foreignKey' => $parentField, 'conditions' => array('Dummy.id' => null)))), false);
+
+		$data = $this->Tree->find('first', array(
+			'conditions' => array($modelClass . '.name' => '1. Root'),
+			'recursive' => -1
+		));
+		$this->Tree->id = $data[$modelClass]['id'];
+
+		$direct = $this->Tree->children(null, true, array('name', $leftField, $rightField));
+		$expected = array(
+			array($modelClass => array('name' => '1.1', $leftField => 2, $rightField => 7)),
+			array($modelClass => array('name' => '1.2', $leftField => 8, $rightField => 13))
+		);
+		$this->assertEquals($expected, $direct);
+
+		$total = $this->Tree->children(null, null, array('name', $leftField, $rightField));
+		$expected = array(
+			array($modelClass => array('name' => '1.1', $leftField => 2, $rightField => 7)),
+			array($modelClass => array('name' => '1.1.1', $leftField => 3, $rightField => 4)),
+			array($modelClass => array('name' => '1.1.2', $leftField => 5, $rightField => 6)),
+			array($modelClass => array('name' => '1.2', $leftField => 8, $rightField => 13)),
+			array($modelClass => array('name' => '1.2.1', $leftField => 9, $rightField => 10)),
+			array($modelClass => array('name' => '1.2.2', $leftField => 11, $rightField => 12))
+		);
+		$this->assertEquals($expected, $total);
+	}
+
+	/**
+	 * testGenerateTreeListWithSelfJoin method
+	 *
+	 * @return void
+	 */
 	public function testGenerateTreeListWithSelfJoin() {
 		extract($this->settings);
 		$this->Tree = new $modelClass();
 		$this->Tree->order = null;
 		$this->Tree->bindModel(array('belongsTo' => array('Dummy' =>
-			array('className' => $modelClass, 'foreignKey' => $parentField, 'conditions' => array('Dummy.id' => null)))), false);
+		array('className' => $modelClass, 'foreignKey' => $parentField, 'conditions' => array('Dummy.id' => null)))), false);
 		$this->Tree->initialize(2, 2);
 
 		$result = $this->Tree->generateTreeList();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BasicAuthenticationTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Network.Http
- * @since         CakePHP(tm) v 2.0.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Network.Http
+ * @since		 CakePHP(tm) v 2.0.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('HttpSocket', 'Network/Http');
@@ -22,34 +23,33 @@ App::uses('BasicAuthentication', 'Network/Http');
 /**
  * TestSslHttpSocket
  *
- * @package       Cake.Test.Case.Network.Http
+ * @package	   Cake.Test.Case.Network.Http
  */
 class TestSslHttpSocket extends HttpSocket {
 
-/**
- * testSetProxy method
- *
- * @return void
- */
+	/**
+	 * testSetProxy method
+	 *
+	 * @return void
+	 */
 	public function testSetProxy($proxy = null) {
 		$this->_proxy = $proxy;
 		$this->_setProxy();
 	}
-
 }
 
 /**
  * BasicMethodTest class
  *
- * @package       Cake.Test.Case.Network.Http
+ * @package	   Cake.Test.Case.Network.Http
  */
 class BasicAuthenticationTest extends CakeTestCase {
 
-/**
- * testAuthentication method
- *
- * @return void
- */
+	/**
+	 * testAuthentication method
+	 *
+	 * @return void
+	 */
 	public function testAuthentication() {
 		$http = new HttpSocket();
 		$auth = array(
@@ -62,11 +62,11 @@ class BasicAuthenticationTest extends CakeTestCase {
 		$this->assertEquals('Basic bWFyazpzZWNyZXQ=', $http->request['header']['Authorization']);
 	}
 
-/**
- * testProxyAuthentication method
- *
- * @return void
- */
+	/**
+	 * testProxyAuthentication method
+	 *
+	 * @return void
+	 */
 	public function testProxyAuthentication() {
 		$http = new HttpSocket();
 		$proxy = array(
@@ -79,11 +79,11 @@ class BasicAuthenticationTest extends CakeTestCase {
 		$this->assertEquals('Basic bWFyazpzZWNyZXQ=', $http->request['header']['Proxy-Authorization']);
 	}
 
-/**
- * testProxyAuthenticationSsl method
- *
- * @return void
- */
+	/**
+	 * testProxyAuthenticationSsl method
+	 *
+	 * @return void
+	 */
 	public function testProxyAuthenticationSsl() {
 		$http = new TestSslHttpSocket();
 		$http->request['uri']['scheme'] = 'https';
@@ -100,5 +100,4 @@ class BasicAuthenticationTest extends CakeTestCase {
 		$this->assertEquals('Basic bWFyazpzZWNyZXQ=', $http->config['proxyauth']);
 		$this->assertFalse(isset($http->request['header']['Proxy-Authorization']));
 	}
-
 }

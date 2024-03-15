@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Case Folding Properties.
  *
@@ -15,11 +16,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Config.unicode.casefolding
- * @since         CakePHP(tm) v 1.2.0.6833
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Config.unicode.casefolding
+ * @since		 CakePHP(tm) v 1.2.0.6833
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
@@ -34,7 +35,7 @@
  * T: special case for uppercase I and dotted uppercase I
  *   - For non-Turkic languages, this mapping is normally not used.
  *   - For Turkic languages (tr, az), this mapping can be used instead of the normal mapping for these characters.
- *     Note that the Turkic mappings do not maintain canonical equivalence without additional processing.
- *     See the discussions of case mapping in the Unicode Standard for more information.
+ *	 Note that the Turkic mappings do not maintain canonical equivalence without additional processing.
+ *	 See the discussions of case mapping in the Unicode Standard for more information.
  */
 $config['0250_02af'][] = array('upper' => 422, 'status' => 'C', 'lower' => array(640));

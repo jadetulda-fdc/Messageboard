@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test Shell
  *
@@ -11,10 +12,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html
- * @since         CakePHP(tm) v 1.2.0.4433
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html
+ * @since		 CakePHP(tm) v 1.2.0.4433
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Shell', 'Console');
@@ -26,22 +27,22 @@ App::uses('CakeTestLoader', 'TestSuite');
  * Provides a CakePHP wrapper around PHPUnit.
  * Adds in CakePHP's fixtures and gives access to plugin, app and core test cases
  *
- * @package       Cake.Console.Command
+ * @package	   Cake.Console.Command
  */
 class TestShell extends Shell {
 
-/**
- * Dispatcher object for the run.
- *
- * @var CakeTestDispatcher
- */
+	/**
+	 * Dispatcher object for the run.
+	 *
+	 * @var CakeTestDispatcher
+	 */
 	protected $_dispatcher = null;
 
-/**
- * Gets the option parser instance and configures it.
- *
- * @return ConsoleOptionParser
- */
+	/**
+	 * Gets the option parser instance and configures it.
+	 *
+	 * @return ConsoleOptionParser
+	 */
 	public function getOptionParser() {
 		$parser = new ConsoleOptionParser($this->name);
 
@@ -166,12 +167,12 @@ class TestShell extends Shell {
 		return $parser;
 	}
 
-/**
- * Initialization method installs PHPUnit and loads all plugins
- *
- * @return void
- * @throws Exception
- */
+	/**
+	 * Initialization method installs PHPUnit and loads all plugins
+	 *
+	 * @return void
+	 * @throws Exception
+	 */
 	public function initialize() {
 		$this->_dispatcher = new CakeTestSuiteDispatcher();
 		$success = $this->_dispatcher->loadTestFramework();
@@ -180,11 +181,11 @@ class TestShell extends Shell {
 		}
 	}
 
-/**
- * Parse the CLI options into an array CakeTestDispatcher can use.
- *
- * @return array|null Array of params for CakeTestDispatcher or null.
- */
+	/**
+	 * Parse the CLI options into an array CakeTestDispatcher can use.
+	 *
+	 * @return array|null Array of params for CakeTestDispatcher or null.
+	 */
 	protected function _parseArgs() {
 		if (empty($this->args)) {
 			return null;
@@ -217,11 +218,11 @@ class TestShell extends Shell {
 		return $params;
 	}
 
-/**
- * Converts the options passed to the shell as options for the PHPUnit cli runner
- *
- * @return array Array of params for CakeTestDispatcher
- */
+	/**
+	 * Converts the options passed to the shell as options for the PHPUnit cli runner
+	 *
+	 * @return array Array of params for CakeTestDispatcher
+	 */
 	protected function _runnerOptions() {
 		$options = array();
 		$params = $this->params;
@@ -250,11 +251,11 @@ class TestShell extends Shell {
 		return $options;
 	}
 
-/**
- * Main entry point to this shell
- *
- * @return void
- */
+	/**
+	 * Main entry point to this shell
+	 *
+	 * @return void
+	 */
 	public function main() {
 		$this->out(__d('cake_console', 'CakePHP Test Shell'));
 		$this->hr();
@@ -268,13 +269,13 @@ class TestShell extends Shell {
 		$this->_run($args, $this->_runnerOptions());
 	}
 
-/**
- * Runs the test case from $runnerArgs
- *
- * @param array $runnerArgs list of arguments as obtained from _parseArgs()
- * @param array $options list of options as constructed by _runnerOptions()
- * @return void
- */
+	/**
+	 * Runs the test case from $runnerArgs
+	 *
+	 * @param array $runnerArgs list of arguments as obtained from _parseArgs()
+	 * @param array $options list of options as constructed by _runnerOptions()
+	 * @return void
+	 */
 	protected function _run($runnerArgs, $options = array()) {
 		restore_error_handler();
 		restore_error_handler();
@@ -283,11 +284,11 @@ class TestShell extends Shell {
 		$testCli->run($options);
 	}
 
-/**
- * Shows a list of available test cases and gives the option to run one of them
- *
- * @return void
- */
+	/**
+	 * Shows a list of available test cases and gives the option to run one of them
+	 *
+	 * @return void
+	 */
 	public function available() {
 		$params = $this->_parseArgs();
 		$testCases = CakeTestLoader::generateTestList($params);
@@ -340,15 +341,15 @@ class TestShell extends Shell {
 		}
 	}
 
-/**
- * Find the test case for the passed file. The file could itself be a test.
- *
- * @param string $file The file to map.
- * @param string $category The test file category.
- * @param bool $throwOnMissingFile Whether or not to throw an exception.
- * @return array array(type, case)
- * @throws Exception
- */
+	/**
+	 * Find the test case for the passed file. The file could itself be a test.
+	 *
+	 * @param string $file The file to map.
+	 * @param string $category The test file category.
+	 * @param bool $throwOnMissingFile Whether or not to throw an exception.
+	 * @return array array(type, case)
+	 * @throws Exception
+	 */
 	protected function _mapFileToCase($file, $category, $throwOnMissingFile = true) {
 		if (!$category || (substr($file, -4) !== '.php')) {
 			return false;
@@ -412,12 +413,12 @@ class TestShell extends Shell {
 		return $testCase;
 	}
 
-/**
- * For the given file, what category of test is it? returns app, core or the name of the plugin
- *
- * @param string $file The file to map.
- * @return string
- */
+	/**
+	 * For the given file, what category of test is it? returns app, core or the name of the plugin
+	 *
+	 * @param string $file The file to map.
+	 * @return string
+	 */
 	protected function _mapFileToCategory($file) {
 		$_file = realpath($file);
 		if ($_file) {
@@ -432,5 +433,4 @@ class TestShell extends Shell {
 		}
 		return 'app';
 	}
-
 }

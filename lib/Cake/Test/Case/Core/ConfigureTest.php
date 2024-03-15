@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ConfigureTest file
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Core
- * @since         CakePHP(tm) v 1.2.0.5432
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Core
+ * @since		 CakePHP(tm) v 1.2.0.5432
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('PhpReader', 'Configure');
@@ -23,15 +24,15 @@ App::uses('PhpReader', 'Configure');
 /**
  * ConfigureTest
  *
- * @package       Cake.Test.Case.Core
+ * @package	   Cake.Test.Case.Core
  */
 class ConfigureTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		Configure::write('Cache.disable', true);
@@ -39,11 +40,11 @@ class ConfigureTest extends CakeTestCase {
 		App::objects('plugin', null, true);
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		if (file_exists(TMP . 'cache' . DS . 'persistent' . DS . 'cake_core_core_paths')) {
@@ -67,11 +68,11 @@ class ConfigureTest extends CakeTestCase {
 		Configure::drop('test');
 	}
 
-/**
- * Test to ensure bootrapping doesn't overwrite prior configs set under 'App' key
- *
- * @return void
- */
+	/**
+	 * Test to ensure bootrapping doesn't overwrite prior configs set under 'App' key
+	 *
+	 * @return void
+	 */
 	public function testBootstrap() {
 		$expected = array(
 			'foo' => 'bar'
@@ -85,11 +86,11 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertFalse($result['base']);
 	}
 
-/**
- * testRead method
- *
- * @return void
- */
+	/**
+	 * testRead method
+	 *
+	 * @return void
+	 */
 	public function testRead() {
 		$expected = 'ok';
 		Configure::write('level1.level2.level3_1', $expected);
@@ -112,11 +113,11 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertEquals(null, $result, 'Missing key should return null.');
 	}
 
-/**
- * testWrite method
- *
- * @return void
- */
+	/**
+	 * testWrite method
+	 *
+	 * @return void
+	 */
 	public function testWrite() {
 		$writeResult = Configure::write('SomeName.someKey', 'myvalue');
 		$this->assertTrue($writeResult);
@@ -149,11 +150,11 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertEquals('4', $result);
 	}
 
-/**
- * Test the consume method.
- *
- * @return void
- */
+	/**
+	 * Test the consume method.
+	 *
+	 * @return void
+	 */
 	public function testConsume() {
 		$this->assertNull(Configure::consume('DoesNotExist'), 'Should be null on empty value');
 		Configure::write('Test', array('key' => 'value', 'key2' => 'value2'));
@@ -169,11 +170,11 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testConsumeEmpty
- *
- * @return void
- */
+	/**
+	 * testConsumeEmpty
+	 *
+	 * @return void
+	 */
 	public function testConsumeEmpty() {
 		Configure::write('Test', array('key' => 'value', 'key2' => 'value2'));
 		$result = Configure::consume('');
@@ -182,11 +183,11 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertNull($result);
 	}
 
-/**
- * test setting display_errors with debug.
- *
- * @return void
- */
+	/**
+	 * test setting display_errors with debug.
+	 *
+	 * @return void
+	 */
 	public function testDebugSettingDisplayErrors() {
 		Configure::write('debug', 0);
 		$result = ini_get('display_errors');
@@ -197,11 +198,11 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertEquals(1, $result);
 	}
 
-/**
- * testDelete method
- *
- * @return void
- */
+	/**
+	 * testDelete method
+	 *
+	 * @return void
+	 */
 	public function testDelete() {
 		Configure::write('SomeName.someKey', 'myvalue');
 		$result = Configure::read('SomeName.someKey');
@@ -228,11 +229,11 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertNull($result);
 	}
 
-/**
- * testCheck method
- *
- * @return void
- */
+	/**
+	 * testCheck method
+	 *
+	 * @return void
+	 */
 	public function testCheck() {
 		Configure::write('ConfigureTestCase', 'value');
 		$this->assertTrue(Configure::check('ConfigureTestCase'));
@@ -240,11 +241,11 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertFalse(Configure::check('NotExistingConfigureTestCase'));
 	}
 
-/**
- * testCheckingSavedEmpty method
- *
- * @return void
- */
+	/**
+	 * testCheckingSavedEmpty method
+	 *
+	 * @return void
+	 */
 	public function testCheckingSavedEmpty() {
 		$this->assertTrue(Configure::write('ConfigureTestCase', 0));
 		$this->assertTrue(Configure::check('ConfigureTestCase'));
@@ -259,11 +260,11 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertFalse(Configure::check('ConfigureTestCase'));
 	}
 
-/**
- * testCheckKeyWithSpaces method
- *
- * @return void
- */
+	/**
+	 * testCheckKeyWithSpaces method
+	 *
+	 * @return void
+	 */
 	public function testCheckKeyWithSpaces() {
 		$this->assertTrue(Configure::write('Configure Test', "test"));
 		$this->assertTrue(Configure::check('Configure Test'));
@@ -273,32 +274,32 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertTrue(Configure::check('Configure Test.Test Case'));
 	}
 
-/**
- * testCheckEmpty
- *
- * @return void
- */
+	/**
+	 * testCheckEmpty
+	 *
+	 * @return void
+	 */
 	public function testCheckEmpty() {
 		$this->assertFalse(Configure::check(''));
 		$this->assertFalse(Configure::check(null));
 	}
 
-/**
- * testLoad method
- *
- * @expectedException RuntimeException
- * @return void
- */
+	/**
+	 * testLoad method
+	 *
+	 * @expectedException RuntimeException
+	 * @return void
+	 */
 	public function testLoadExceptionOnNonExistantFile() {
 		Configure::config('test', new PhpReader());
 		Configure::load('non_existing_configuration_file', 'test');
 	}
 
-/**
- * test load method for default config creation
- *
- * @return void
- */
+	/**
+	 * test load method for default config creation
+	 *
+	 * @return void
+	 */
 	public function testLoadDefaultConfig() {
 		try {
 			Configure::load('non_existing_configuration_file');
@@ -308,11 +309,11 @@ class ConfigureTest extends CakeTestCase {
 		}
 	}
 
-/**
- * test load with merging
- *
- * @return void
- */
+	/**
+	 * test load with merging
+	 *
+	 * @return void
+	 */
 	public function testLoadWithMerge() {
 		Configure::config('test', new PhpReader(CAKE . 'Test' . DS . 'test_app' . DS . 'Config' . DS));
 
@@ -331,11 +332,11 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertEquals('one', Configure::read('TestAcl.custom'));
 	}
 
-/**
- * test loading with overwrite
- *
- * @return void
- */
+	/**
+	 * test loading with overwrite
+	 *
+	 * @return void
+	 */
 	public function testLoadNoMerge() {
 		Configure::config('test', new PhpReader(CAKE . 'Test' . DS . 'test_app' . DS . 'Config' . DS));
 
@@ -352,11 +353,11 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertNull(Configure::read('Deep.Deeper.Deepest'));
 	}
 
-/**
- * testLoad method
- *
- * @return void
- */
+	/**
+	 * testLoad method
+	 *
+	 * @return void
+	 */
 	public function testLoadPlugin() {
 		App::build(array(
 			'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
@@ -377,11 +378,11 @@ class ConfigureTest extends CakeTestCase {
 		CakePlugin::unload();
 	}
 
-/**
- * testStore method
- *
- * @return void
- */
+	/**
+	 * testStore method
+	 *
+	 * @return void
+	 */
 	public function testStoreAndRestore() {
 		Configure::write('Cache.disable', false);
 
@@ -397,11 +398,11 @@ class ConfigureTest extends CakeTestCase {
 		Cache::delete('store_test', 'default');
 	}
 
-/**
- * test that store and restore only store/restore the provided data.
- *
- * @return void
- */
+	/**
+	 * test that store and restore only store/restore the provided data.
+	 *
+	 * @return void
+	 */
 	public function testStoreAndRestoreWithData() {
 		Configure::write('Cache.disable', false);
 
@@ -417,21 +418,21 @@ class ConfigureTest extends CakeTestCase {
 		Cache::delete('store_test', 'default');
 	}
 
-/**
- * testVersion method
- *
- * @return void
- */
+	/**
+	 * testVersion method
+	 *
+	 * @return void
+	 */
 	public function testVersion() {
 		$result = Configure::version();
 		$this->assertTrue(version_compare($result, '1.2', '>='));
 	}
 
-/**
- * test adding new readers.
- *
- * @return void
- */
+	/**
+	 * test adding new readers.
+	 *
+	 * @return void
+	 */
 	public function testReaderSetup() {
 		$reader = new PhpReader();
 		Configure::config('test', $reader);
@@ -446,13 +447,13 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertFalse(Configure::drop('test'), 'dropping things that do not exist should return false.');
 	}
 
-/**
- * test reader() throwing exceptions on missing interface.
- *
- * @expectedException PHPUnit_Framework_Error
- * @return void
- * @throws PHPUnit_Framework_Error
- */
+	/**
+	 * test reader() throwing exceptions on missing interface.
+	 *
+	 * @expectedException PHPUnit_Framework_Error
+	 * @return void
+	 * @throws PHPUnit_Framework_Error
+	 */
 	public function testReaderExceptionOnIncorrectClass() {
 		$reader = new StdClass();
 
@@ -463,11 +464,11 @@ class ConfigureTest extends CakeTestCase {
 		}
 	}
 
-/**
- * Test that clear wipes all values.
- *
- * @return void
- */
+	/**
+	 * Test that clear wipes all values.
+	 *
+	 * @return void
+	 */
 	public function testClear() {
 		Configure::write('test', 'value');
 		$this->assertTrue(Configure::clear());
@@ -475,21 +476,21 @@ class ConfigureTest extends CakeTestCase {
 		$this->assertNull(Configure::read('test'));
 	}
 
-/**
- * testDumpNoAdapter
- *
- * @expectedException ConfigureException
- * @return void
- */
+	/**
+	 * testDumpNoAdapter
+	 *
+	 * @expectedException ConfigureException
+	 * @return void
+	 */
 	public function testDumpNoAdapter() {
 		Configure::dump(TMP . 'test.php', 'does_not_exist');
 	}
 
-/**
- * test dump integrated with the PhpReader.
- *
- * @return void
- */
+	/**
+	 * test dump integrated with the PhpReader.
+	 *
+	 * @return void
+	 */
 	public function testDump() {
 		Configure::config('test_reader', new PhpReader(TMP));
 
@@ -503,11 +504,11 @@ class ConfigureTest extends CakeTestCase {
 		}
 	}
 
-/**
- * Test dumping only some of the data.
- *
- * @return void
- */
+	/**
+	 * Test dumping only some of the data.
+	 *
+	 * @return void
+	 */
 	public function testDumpPartial() {
 		Configure::config('test_reader', new PhpReader(TMP));
 
@@ -523,5 +524,4 @@ class ConfigureTest extends CakeTestCase {
 			unlink(TMP . 'config_test.php');
 		}
 	}
-
 }

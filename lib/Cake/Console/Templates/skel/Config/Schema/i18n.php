@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This is i18n Schema file
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       app.Config.Schema
- * @since         CakePHP(tm) v 0.2.9
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   app.Config.Schema
+ * @since		 CakePHP(tm) v 0.2.9
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
@@ -27,37 +28,37 @@
  */
 class I18nSchema extends CakeSchema {
 
-/**
- * The name property
- *
- * @var string
- */
+	/**
+	 * The name property
+	 *
+	 * @var string
+	 */
 	public $name = 'i18n';
 
-/**
- * Before callback.
- *
- * @param array $event Schema object properties
- * @return bool Should process continue
- */
+	/**
+	 * Before callback.
+	 *
+	 * @param array $event Schema object properties
+	 * @return bool Should process continue
+	 */
 	public function before($event = array()) {
 		return true;
 	}
 
-/**
- * After callback.
- *
- * @param array $event Schema object properties
- * @return void
- */
+	/**
+	 * After callback.
+	 *
+	 * @param array $event Schema object properties
+	 * @return void
+	 */
 	public function after($event = array()) {
 	}
 
-/**
- * The i18n table definition
- *
- * @var array
- */
+	/**
+	 * The i18n table definition
+	 *
+	 * @var array
+	 */
 	public $i18n = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'key' => 'primary'),
 		'locale' => array('type' => 'string', 'null' => false, 'length' => 6, 'key' => 'index'),
@@ -67,5 +68,4 @@ class I18nSchema extends CakeSchema {
 		'content' => array('type' => 'text', 'null' => true, 'default' => null),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'locale' => array('column' => 'locale', 'unique' => 0), 'model' => array('column' => 'model', 'unique' => 0), 'row_id' => array('column' => 'foreign_key', 'unique' => 0), 'field' => array('column' => 'field', 'unique' => 0))
 	);
-
 }

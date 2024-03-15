@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Error Handling Controller
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Controller
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Controller
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('AppController', 'Controller');
@@ -25,27 +26,28 @@ App::uses('AppController', 'Controller');
  *
  * Controller used by ErrorHandler to render error views.
  *
- * @package       Cake.Controller
+ * @package	   Cake.Controller
  */
 class CakeErrorController extends AppController {
 
-/**
- * Uses Property
- *
- * @var array
- */
+	/**
+	 * Uses Property
+	 *
+	 * @var array
+	 */
 	public $uses = array();
 
-/**
- * Constructor
- *
- * @param CakeRequest $request Request instance.
- * @param CakeResponse $response Response instance.
- */
+	/**
+	 * Constructor
+	 *
+	 * @param CakeRequest $request Request instance.
+	 * @param CakeResponse $response Response instance.
+	 */
 	public function __construct($request = null, $response = null) {
 		parent::__construct($request, $response);
 		$this->constructClasses();
-		if (count(Router::extensions()) &&
+		if (
+			count(Router::extensions()) &&
 			!$this->Components->attached('RequestHandler')
 		) {
 			$this->RequestHandler = $this->Components->load('RequestHandler');
@@ -58,5 +60,4 @@ class CakeErrorController extends AppController {
 		}
 		$this->_set(array('cacheAction' => false, 'viewPath' => 'Errors'));
 	}
-
 }

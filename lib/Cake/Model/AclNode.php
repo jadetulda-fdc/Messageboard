@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,11 +8,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Model
- * @since         CakePHP(tm) v 0.2.9
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Model
+ * @since		 CakePHP(tm) v 0.2.9
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Model', 'Model');
@@ -19,32 +20,32 @@ App::uses('Model', 'Model');
 /**
  * ACL Node
  *
- * @package       Cake.Model
+ * @package	   Cake.Model
  */
 class AclNode extends Model {
 
-/**
- * Explicitly disable in-memory query caching for ACL models
- *
- * @var bool
- */
+	/**
+	 * Explicitly disable in-memory query caching for ACL models
+	 *
+	 * @var bool
+	 */
 	public $cacheQueries = false;
 
-/**
- * ACL models use the Tree behavior
- *
- * @var array
- */
+	/**
+	 * ACL models use the Tree behavior
+	 *
+	 * @var array
+	 */
 	public $actsAs = array('Tree' => array('type' => 'nested'));
 
-/**
- * Constructor
- *
- * @param bool|int|string|array $id Set this ID for this model on startup,
- *   can also be an array of options, see above.
- * @param string $table Name of database table to use.
- * @param string $ds DataSource connection name.
- */
+	/**
+	 * Constructor
+	 *
+	 * @param bool|int|string|array $id Set this ID for this model on startup,
+	 *   can also be an array of options, see above.
+	 * @param string $table Name of database table to use.
+	 * @param string $ds DataSource connection name.
+	 */
 	public function __construct($id = false, $table = null, $ds = null) {
 		$config = Configure::read('Acl.database');
 		if (isset($config)) {
@@ -53,13 +54,13 @@ class AclNode extends Model {
 		parent::__construct($id, $table, $ds);
 	}
 
-/**
- * Retrieves the Aro/Aco node for this model
- *
- * @param string|array|Model $ref Array with 'model' and 'foreign_key', model object, or string value
- * @return array Node found in database
- * @throws CakeException when binding to a model that doesn't exist.
- */
+	/**
+	 * Retrieves the Aro/Aco node for this model
+	 *
+	 * @param string|array|Model $ref Array with 'model' and 'foreign_key', model object, or string value
+	 * @return array Node found in database
+	 * @throws CakeException when binding to a model that doesn't exist.
+	 */
 	public function node($ref = null) {
 		$db = $this->getDataSource();
 		$type = $this->alias;
@@ -81,7 +82,8 @@ class AclNode extends Model {
 			$queryData = array(
 				'conditions' => array(
 					$db->name("{$type}.lft") . ' <= ' . $db->name("{$type}0.lft"),
-					$db->name("{$type}.rght") . ' >= ' . $db->name("{$type}0.rght")),
+					$db->name("{$type}.rght") . ' >= ' . $db->name("{$type}0.rght")
+				),
 				'fields' => array('id', 'parent_id', 'model', 'foreign_key', 'alias'),
 				'joins' => array(array(
 					'table' => $table,
@@ -111,16 +113,19 @@ class AclNode extends Model {
 				$conditionsAfterJoin[] = $db->name("{$type}{$i}.rght") . ' < ' . $db->name("{$type}{$j}.rght");
 				$conditionsAfterJoin[] = $db->name("{$type}{$i}.lft") . ' > ' . $db->name("{$type}{$j}.lft");
 
-				$queryData['conditions'] = array('or' => array(
-					$db->name("{$type}.lft") . ' <= ' . $db->name("{$type}0.lft") . ' AND ' . $db->name("{$type}.rght") . ' >= ' . $db->name("{$type}0.rght"),
-					$db->name("{$type}.lft") . ' <= ' . $db->name("{$type}{$i}.lft") . ' AND ' . $db->name("{$type}.rght") . ' >= ' . $db->name("{$type}{$i}.rght"))
+				$queryData['conditions'] = array(
+					'or' => array(
+						$db->name("{$type}.lft") . ' <= ' . $db->name("{$type}0.lft") . ' AND ' . $db->name("{$type}.rght") . ' >= ' . $db->name("{$type}0.rght"),
+						$db->name("{$type}.lft") . ' <= ' . $db->name("{$type}{$i}.lft") . ' AND ' . $db->name("{$type}.rght") . ' >= ' . $db->name("{$type}{$i}.rght")
+					)
 				);
 			}
 			$queryData['conditions'] = array_merge($queryData['conditions'], $conditionsAfterJoin);
 			$result = $db->read($this, $queryData, -1);
 			$path = array_values($path);
 
-			if (!isset($result[0][$type]) ||
+			if (
+				!isset($result[0][$type]) ||
 				(!empty($path) && $result[0][$type]['alias'] != $path[count($path) - 1]) ||
 				(empty($path) && $result[0][$type]['alias'] != $start)
 			) {
@@ -184,5 +189,4 @@ class AclNode extends Model {
 		}
 		return $result;
 	}
-
 }

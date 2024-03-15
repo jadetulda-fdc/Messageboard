@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FileTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Utility
- * @since         CakePHP(tm) v 1.2.0.4206
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Utility
+ * @since		 CakePHP(tm) v 1.2.0.4206
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('File', 'Utility');
@@ -22,34 +23,34 @@ App::uses('Folder', 'Utility');
 /**
  * FileTest class
  *
- * @package       Cake.Test.Case.Utility
+ * @package	   Cake.Test.Case.Utility
  * @coversDefaultClass File
  */
 class FileTest extends CakeTestCase {
 
-/**
- * File property
- *
- * @var mixed
- */
+	/**
+	 * File property
+	 *
+	 * @var mixed
+	 */
 	public $File = null;
 
-/**
- * setup the test case
- *
- * @return void
- */
+	/**
+	 * setup the test case
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$file = __FILE__;
 		$this->File = new File($file);
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		$this->File->close();
@@ -59,20 +60,20 @@ class FileTest extends CakeTestCase {
 		$Folder->delete(TMP . 'tests' . DS . 'permissions');
 	}
 
-/**
- * testBasic method
- *
- * @return void
- * @covers ::__construct
- * @covers ::info
- * @covers ::ext
- * @covers ::name
- * @covers ::md5
- * @covers ::size
- * @covers ::owner
- * @covers ::group
- * @covers ::Folder
- */
+	/**
+	 * testBasic method
+	 *
+	 * @return void
+	 * @covers ::__construct
+	 * @covers ::info
+	 * @covers ::ext
+	 * @covers ::name
+	 * @covers ::md5
+	 * @covers ::size
+	 * @covers ::owner
+	 * @covers ::group
+	 * @covers ::Folder
+	 */
 	public function testBasic() {
 		$file = CAKE . DS . 'LICENSE.txt';
 
@@ -91,10 +92,11 @@ class FileTest extends CakeTestCase {
 			'filesize' => filesize($file),
 			'mime' => 'text/plain'
 		);
-		if (!function_exists('finfo_open') &&
+		if (
+			!function_exists('finfo_open') &&
 			(!function_exists('mime_content_type') ||
-			function_exists('mime_content_type') &&
-			mime_content_type($this->File->pwd()) === false)
+				function_exists('mime_content_type') &&
+				mime_content_type($this->File->pwd()) === false)
 		) {
 			$expecting['mime'] = false;
 		}
@@ -132,12 +134,12 @@ class FileTest extends CakeTestCase {
 		$this->assertInstanceOf('Folder', $result);
 	}
 
-/**
- * testPermission method
- *
- * @return void
- * @covers ::perms
- */
+	/**
+	 * testPermission method
+	 *
+	 * @return void
+	 * @covers ::perms
+	 */
 	public function testPermission() {
 		$this->skipIf(DIRECTORY_SEPARATOR === '\\', 'File permissions tests not supported on Windows.');
 
@@ -179,12 +181,12 @@ class FileTest extends CakeTestCase {
 		umask($old);
 	}
 
-/**
- * testRead method
- *
- * @return void
- * @covers ::read
- */
+	/**
+	 * testRead method
+	 *
+	 * @return void
+	 * @covers ::read
+	 */
 	public function testRead() {
 		$file = __FILE__;
 		$this->File = new File($file);
@@ -211,12 +213,12 @@ class FileTest extends CakeTestCase {
 		$this->assertEquals($expecting, $result);
 	}
 
-/**
- * testOffset method
- *
- * @return void
- * @covers ::offset
- */
+	/**
+	 * testOffset method
+	 *
+	 * @return void
+	 * @covers ::offset
+	 */
 	public function testOffset() {
 		$this->File->close();
 
@@ -244,12 +246,12 @@ class FileTest extends CakeTestCase {
 		$this->assertSame($expected, $result);
 	}
 
-/**
- * testOpen method
- *
- * @return void
- * @covers ::open
- */
+	/**
+	 * testOpen method
+	 *
+	 * @return void
+	 * @covers ::open
+	 */
 	public function testOpen() {
 		$this->File->handle = null;
 
@@ -269,12 +271,12 @@ class FileTest extends CakeTestCase {
 		$this->assertTrue(is_resource($this->File->handle));
 	}
 
-/**
- * testClose method
- *
- * @return void
- * @covers ::close
- */
+	/**
+	 * testClose method
+	 *
+	 * @return void
+	 * @covers ::close
+	 */
 	public function testClose() {
 		$this->File->handle = null;
 		$this->assertFalse(is_resource($this->File->handle));
@@ -287,25 +289,25 @@ class FileTest extends CakeTestCase {
 		$this->assertFalse(is_resource($this->File->handle));
 	}
 
-/**
- * testCreate method
- *
- * @return void
- * @covers ::create
- * @covers ::exists
- * @covers ::clearStatCache
- */
+	/**
+	 * testCreate method
+	 *
+	 * @return void
+	 * @covers ::create
+	 * @covers ::exists
+	 * @covers ::clearStatCache
+	 */
 	public function testCreate() {
 		$tmpFile = TMP . 'tests' . DS . 'cakephp.file.test.tmp';
 		$File = new File($tmpFile, true, 0777);
 		$this->assertTrue($File->exists());
 	}
 
-/**
- * Tests the exists() method.
- *
- * @return void
- */
+	/**
+	 * Tests the exists() method.
+	 *
+	 * @return void
+	 */
 	public function testExists() {
 		$tmpFile = TMP . 'tests/cakephp.file.test.tmp';
 		$file = new File($tmpFile, true, 0777);
@@ -318,13 +320,13 @@ class FileTest extends CakeTestCase {
 		$this->assertFalse($file->exists(), 'missing file should not exist.');
 	}
 
-/**
- * testOpeningNonExistentFileCreatesIt method
- *
- * @return void
- * @covers ::open
- * @covers ::create
- */
+	/**
+	 * testOpeningNonExistentFileCreatesIt method
+	 *
+	 * @return void
+	 * @covers ::open
+	 * @covers ::create
+	 */
 	public function testOpeningNonExistentFileCreatesIt() {
 		$someFile = new File(TMP . 'some_file.txt', false);
 		$this->assertTrue($someFile->open());
@@ -333,12 +335,12 @@ class FileTest extends CakeTestCase {
 		$someFile->delete();
 	}
 
-/**
- * testPrepare method
- *
- * @return void
- * @covers ::prepare
- */
+	/**
+	 * testPrepare method
+	 *
+	 * @return void
+	 * @covers ::prepare
+	 */
 	public function testPrepare() {
 		$string = "some\nvery\ncool\r\nteststring here\n\n\nfor\r\r\n\n\r\n\nhere";
 		if (DS === '\\') {
@@ -354,12 +356,12 @@ class FileTest extends CakeTestCase {
 		$this->assertSame($expected, File::prepare($string, true));
 	}
 
-/**
- * testReadable method
- *
- * @return void
- * @covers ::readable
- */
+	/**
+	 * testReadable method
+	 *
+	 * @return void
+	 * @covers ::readable
+	 */
 	public function testReadable() {
 		$someFile = new File(TMP . 'some_file.txt', false);
 		$this->assertTrue($someFile->open());
@@ -368,12 +370,12 @@ class FileTest extends CakeTestCase {
 		$someFile->delete();
 	}
 
-/**
- * testWritable method
- *
- * @return void
- * @covers ::writable
- */
+	/**
+	 * testWritable method
+	 *
+	 * @return void
+	 * @covers ::writable
+	 */
 	public function testWritable() {
 		$someFile = new File(TMP . 'some_file.txt', false);
 		$this->assertTrue($someFile->open());
@@ -382,12 +384,12 @@ class FileTest extends CakeTestCase {
 		$someFile->delete();
 	}
 
-/**
- * testExecutable method
- *
- * @return void
- * @covers ::executable
- */
+	/**
+	 * testExecutable method
+	 *
+	 * @return void
+	 * @covers ::executable
+	 */
 	public function testExecutable() {
 		$someFile = new File(TMP . 'some_file.txt', false);
 		$this->assertTrue($someFile->open());
@@ -396,12 +398,12 @@ class FileTest extends CakeTestCase {
 		$someFile->delete();
 	}
 
-/**
- * testLastAccess method
- *
- * @return void
- * @covers ::lastAccess
- */
+	/**
+	 * testLastAccess method
+	 *
+	 * @return void
+	 * @covers ::lastAccess
+	 */
 	public function testLastAccess() {
 		$someFile = new File(TMP . 'some_file.txt', false);
 		$this->assertFalse($someFile->lastAccess());
@@ -411,12 +413,12 @@ class FileTest extends CakeTestCase {
 		$someFile->delete();
 	}
 
-/**
- * testLastChange method
- *
- * @return void
- * @covers ::lastChange
- */
+	/**
+	 * testLastChange method
+	 *
+	 * @return void
+	 * @covers ::lastChange
+	 */
 	public function testLastChange() {
 		$someFile = new File(TMP . 'some_file.txt', false);
 		$this->assertFalse($someFile->lastChange());
@@ -430,12 +432,12 @@ class FileTest extends CakeTestCase {
 		$someFile->delete();
 	}
 
-/**
- * testWrite method
- *
- * @return void
- * @covers ::write
- */
+	/**
+	 * testWrite method
+	 *
+	 * @return void
+	 * @covers ::write
+	 */
 	public function testWrite() {
 		if (!$tmpFile = $this->_getTmpFile()) {
 			return false;
@@ -456,17 +458,16 @@ class FileTest extends CakeTestCase {
 			$this->assertEquals($data, file_get_contents($tmpFile));
 			$this->assertTrue(is_resource($TmpFile->handle));
 			$TmpFile->close();
-
 		}
 		unlink($tmpFile);
 	}
 
-/**
- * testAppend method
- *
- * @return void
- * @covers ::append
- */
+	/**
+	 * testAppend method
+	 *
+	 * @return void
+	 * @covers ::append
+	 */
 	public function testAppend() {
 		if (!$tmpFile = $this->_getTmpFile()) {
 			return false;
@@ -498,12 +499,12 @@ class FileTest extends CakeTestCase {
 		$TmpFile->close();
 	}
 
-/**
- * testDelete method
- *
- * @return void
- * @covers ::delete
- */
+	/**
+	 * testDelete method
+	 *
+	 * @return void
+	 * @covers ::delete
+	 */
 	public function testDelete() {
 		if (!$tmpFile = $this->_getTmpFile()) {
 			return false;
@@ -523,13 +524,13 @@ class FileTest extends CakeTestCase {
 		$this->assertFalse($result);
 	}
 
-/**
- * Windows has issues unlinking files if there are
- * active filehandles open.
- *
- * @return void
- * @covers ::delete
- */
+	/**
+	 * Windows has issues unlinking files if there are
+	 * active filehandles open.
+	 *
+	 * @return void
+	 * @covers ::delete
+	 */
 	public function testDeleteAfterRead() {
 		if (!$tmpFile = $this->_getTmpFile()) {
 			return false;
@@ -542,12 +543,12 @@ class FileTest extends CakeTestCase {
 		$this->assertTrue($File->delete());
 	}
 
-/**
- * testCopy method
- *
- * @return void
- * @covers ::copy
- */
+	/**
+	 * testCopy method
+	 *
+	 * @return void
+	 * @covers ::copy
+	 */
 	public function testCopy() {
 		$dest = TMP . 'tests' . DS . 'cakephp.file.test.tmp';
 		$file = __FILE__;
@@ -571,12 +572,12 @@ class FileTest extends CakeTestCase {
 		$TmpFile->close();
 	}
 
-/**
- * Test mime()
- *
- * @return void
- * @covers ::mime
- */
+	/**
+	 * Test mime()
+	 *
+	 * @return void
+	 * @covers ::mime
+	 */
 	public function testMime() {
 		$this->skipIf(!function_exists('finfo_open') && !function_exists('mime_content_type'), 'Not able to read mime type');
 		$path = CAKE . 'Test' . DS . 'test_app' . DS . 'webroot' . DS . 'img' . DS . 'cake.power.gif';
@@ -588,12 +589,12 @@ class FileTest extends CakeTestCase {
 		$this->assertEquals($expected, $file->mime());
 	}
 
-/**
- * getTmpFile method
- *
- * @param bool $paintSkip
- * @return void
- */
+	/**
+	 * getTmpFile method
+	 *
+	 * @param bool $paintSkip
+	 * @return void
+	 */
 	protected function _getTmpFile($paintSkip = true) {
 		$tmpFile = TMP . 'tests' . DS . 'cakephp.file.test.tmp';
 		if (is_writable(dirname($tmpFile)) && (!file_exists($tmpFile) || is_writable($tmpFile))) {
@@ -611,12 +612,12 @@ class FileTest extends CakeTestCase {
 		return false;
 	}
 
-/**
- * testReplaceText method
- *
- * @return void
- * @covers ::replaceText
- */
+	/**
+	 * testReplaceText method
+	 *
+	 * @return void
+	 * @covers ::replaceText
+	 */
 	public function testReplaceText() {
 		$TestFile = new File(dirname(__FILE__) . '/../../test_app/Vendor/welcome.php');
 		$TmpFile = new File(TMP . 'tests' . DS . 'cakephp.file.test.tmp');
@@ -648,13 +649,13 @@ class FileTest extends CakeTestCase {
 		$TmpFile->delete();
 	}
 
-/**
- * Tests that no path is being set for passed file paths that
- * do not exist.
- *
- * @return void
- * @covers ::pwd
- */
+	/**
+	 * Tests that no path is being set for passed file paths that
+	 * do not exist.
+	 *
+	 * @return void
+	 * @covers ::pwd
+	 */
 	public function testNoPartialPathBeingSetForNonExistentPath() {
 		$tmpFile = new File('/non/existent/file');
 		$this->assertNull($tmpFile->pwd());

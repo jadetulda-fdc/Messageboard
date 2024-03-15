@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MediaViewTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.View
- * @since         CakePHP(tm) v 1.2.0.4206
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.View
+ * @since		 CakePHP(tm) v 1.2.0.4206
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Controller', 'Controller');
@@ -23,15 +24,15 @@ App::uses('CakeResponse', 'Network');
 /**
  * MediaViewTest class
  *
- * @package       Cake.Test.Case.View
+ * @package	   Cake.Test.Case.View
  */
 class MediaViewTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->MediaView = new MediaView();
@@ -45,21 +46,21 @@ class MediaViewTest extends CakeTestCase {
 		));
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->MediaView);
 	}
 
-/**
- * testRender method
- *
- * @return void
- */
+	/**
+	 * testRender method
+	 *
+	 * @return void
+	 */
 	public function testRender() {
 		$vars = array(
 			'path' => CAKE . 'Test' . DS . 'test_app' . DS . 'Vendor' . DS . 'css' . DS,
@@ -80,11 +81,11 @@ class MediaViewTest extends CakeTestCase {
 		$this->MediaView->render();
 	}
 
-/**
- * Test render() when caching is on.
- *
- * @return void
- */
+	/**
+	 * Test render() when caching is on.
+	 *
+	 * @return void
+	 */
 	public function testRenderCachingAndName() {
 		$vars = array(
 			'path' => CAKE . 'Test' . DS . 'test_app' . DS . 'Vendor' . DS . 'css' . DS,
@@ -115,11 +116,11 @@ class MediaViewTest extends CakeTestCase {
 		$this->MediaView->render();
 	}
 
-/**
- * Test downloading files with UPPERCASE extensions.
- *
- * @return void
- */
+	/**
+	 * Test downloading files with UPPERCASE extensions.
+	 *
+	 * @return void
+	 */
 	public function testRenderUpperExtension() {
 		$this->MediaView->viewVars = array(
 			'path' => CAKE . 'Test' . DS . 'test_app' . DS . 'Vendor' . DS . 'img' . DS,
@@ -133,5 +134,4 @@ class MediaViewTest extends CakeTestCase {
 
 		$this->MediaView->render();
 	}
-
 }

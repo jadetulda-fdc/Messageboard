@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakeValidationRuleTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
- * @package       Cake.Test.Case.Model.Validator
- * @since         CakePHP(tm) v 2.2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Model.Validator
+ * @since		 CakePHP(tm) v 2.2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('CakeValidationRule', 'Model/Validator');
@@ -21,42 +22,42 @@ App::uses('CakeValidationRule', 'Model/Validator');
 /**
  * CakeValidationRuleTest
  *
- * @package       Cake.Test.Case.Model.Validator
+ * @package	   Cake.Test.Case.Model.Validator
  */
 class CakeValidationRuleTest extends CakeTestCase {
 
-/**
- * Auxiliary method to test custom validators
- *
- * @return bool
- */
+	/**
+	 * Auxiliary method to test custom validators
+	 *
+	 * @return bool
+	 */
 	public function myTestRule() {
 		return false;
 	}
 
-/**
- * Auxiliary method to test custom validators
- *
- * @return bool
- */
+	/**
+	 * Auxiliary method to test custom validators
+	 *
+	 * @return bool
+	 */
 	public function myTestRule2() {
 		return true;
 	}
 
-/**
- * Auxiliary method to test custom validators
- *
- * @return string
- */
+	/**
+	 * Auxiliary method to test custom validators
+	 *
+	 * @return string
+	 */
 	public function myTestRule3() {
 		return 'string';
 	}
 
-/**
- * Test isValid method
- *
- * @return void
- */
+	/**
+	 * Test isValid method
+	 *
+	 * @return void
+	 */
 	public function testIsValid() {
 		$def = array('rule' => 'notBlank', 'message' => 'Can not be empty');
 		$data = array(
@@ -73,11 +74,11 @@ class CakeValidationRuleTest extends CakeTestCase {
 		$this->assertTrue($Rule->isValid());
 	}
 
-/**
- * tests that passing custom validation methods work
- *
- * @return void
- */
+	/**
+	 * tests that passing custom validation methods work
+	 *
+	 * @return void
+	 */
 	public function testCustomMethods() {
 		$def = array('rule' => 'myTestRule');
 		$data = array(
@@ -98,13 +99,13 @@ class CakeValidationRuleTest extends CakeTestCase {
 		$this->assertFalse($Rule->isValid());
 	}
 
-/**
- * Make sure errors are triggered when validation is missing.
- *
- * @expectedException PHPUnit_Framework_Error_Warning
- * @expectedExceptionMessage Could not find validation handler totallyMissing for fieldName
- * @return void
- */
+	/**
+	 * Make sure errors are triggered when validation is missing.
+	 *
+	 * @expectedException PHPUnit_Framework_Error_Warning
+	 * @expectedExceptionMessage Could not find validation handler totallyMissing for fieldName
+	 * @return void
+	 */
 	public function testCustomMethodMissingError() {
 		$def = array('rule' => array('totallyMissing'));
 		$data = array(
@@ -116,11 +117,11 @@ class CakeValidationRuleTest extends CakeTestCase {
 		$Rule->process('fieldName', $data, $methods);
 	}
 
-/**
- * Test isRequired method
- *
- * @return void
- */
+	/**
+	 * Test isRequired method
+	 *
+	 * @return void
+	 */
 	public function testIsRequired() {
 		$def = array('rule' => 'notBlank', 'required' => true);
 		$Rule = new CakeValidationRule($def);
@@ -142,11 +143,11 @@ class CakeValidationRuleTest extends CakeTestCase {
 		$this->assertTrue($Rule->isRequired());
 	}
 
-/**
- * Test isEmptyAllowed method
- *
- * @return void
- */
+	/**
+	 * Test isEmptyAllowed method
+	 *
+	 * @return void
+	 */
 	public function testIsEmptyAllowed() {
 		$def = array('rule' => 'aRule', 'allowEmpty' => true);
 		$Rule = new CakeValidationRule($def);
@@ -171,11 +172,11 @@ class CakeValidationRuleTest extends CakeTestCase {
 		$this->assertTrue($Rule->isEmptyAllowed());
 	}
 
-/**
- * Test checkRequired method
- *
- * @return void
- */
+	/**
+	 * Test checkRequired method
+	 *
+	 * @return void
+	 */
 	public function testCheckRequiredWhenRequiredAndAllowEmpty() {
 		$Rule = $this->getMock('CakeValidationRule', array('isRequired'));
 		$Rule->expects($this->any())
@@ -194,5 +195,4 @@ class CakeValidationRuleTest extends CakeTestCase {
 
 		$this->assertTrue($Rule->checkRequired($fieldname, $data), "A null but present field should fail requirement check if allowEmpty is false");
 	}
-
 }

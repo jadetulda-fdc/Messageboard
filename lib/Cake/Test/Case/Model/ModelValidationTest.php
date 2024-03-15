@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ModelValidationTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Model
- * @since         CakePHP(tm) v 1.2.0.4206
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Model
+ * @since		 CakePHP(tm) v 1.2.0.4206
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
@@ -21,25 +22,25 @@ require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
 /**
  * ModelValidationTest
  *
- * @package       Cake.Test.Case.Model
+ * @package	   Cake.Test.Case.Model
  */
 class ModelValidationTest extends BaseModelTest {
 
-/**
- * override locale to the default (eng).
- *
- * @return void
- */
+	/**
+	 * override locale to the default (eng).
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		Configure::write('Config.language', 'eng');
 	}
 
-/**
- * Tests validation parameter order in custom validation methods
- *
- * @return void
- */
+	/**
+	 * Tests validation parameter order in custom validation methods
+	 *
+	 * @return void
+	 */
 	public function testValidationParams() {
 		$TestModel = new ValidationTest1();
 		$TestModel->validate['title'] = array(
@@ -129,11 +130,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected, $TestModel->validatorParams);
 	}
 
-/**
- * Tests validation parameter fieldList in invalidFields
- *
- * @return void
- */
+	/**
+	 * Tests validation parameter fieldList in invalidFields
+	 *
+	 * @return void
+	 */
 	public function testInvalidFieldsWithFieldListParams() {
 		$TestModel = new ValidationTest1();
 		$TestModel->validate = $validate = array(
@@ -144,7 +145,8 @@ class ModelValidationTest extends BaseModelTest {
 			'name' => array(
 				'rule' => 'alphaNumeric',
 				'required' => true
-		));
+			)
+		);
 		$TestModel->set(array('title' => '$$', 'name' => '##'));
 		$TestModel->invalidFields(array('fieldList' => array('title')));
 		$expected = array(
@@ -176,11 +178,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($TestModel->validate, $validate);
 	}
 
-/**
- * Test that invalidFields() integrates well with save(). And that fieldList can be an empty type.
- *
- * @return void
- */
+	/**
+	 * Test that invalidFields() integrates well with save(). And that fieldList can be an empty type.
+	 *
+	 * @return void
+	 */
 	public function testInvalidFieldsWhitelist() {
 		$TestModel = new ValidationTest1();
 		$TestModel->validate = array(
@@ -191,7 +193,8 @@ class ModelValidationTest extends BaseModelTest {
 			'name' => array(
 				'rule' => 'alphaNumeric',
 				'required' => true
-		));
+			)
+		);
 
 		$TestModel->whitelist = array('name');
 		$TestModel->save(array('name' => '#$$#', 'title' => '$$$$'));
@@ -200,11 +203,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected, $TestModel->validationErrors);
 	}
 
-/**
- * testValidates method
- *
- * @return void
- */
+	/**
+	 * testValidates method
+	 *
+	 * @return void
+	 */
 	public function testValidates() {
 		$TestModel = new TestValidate();
 
@@ -381,7 +384,8 @@ class ModelValidationTest extends BaseModelTest {
 			'title' => array(
 				'allowEmpty' => false,
 				'rule' => 'notBlank'
-		));
+			)
+		);
 
 		$data = array('TestValidate' => array(
 			'title' => 'title',
@@ -428,7 +432,8 @@ class ModelValidationTest extends BaseModelTest {
 			'title' => array(
 				'allowEmpty' => false,
 				'rule' => 'notBlank'
-		));
+			)
+		);
 
 		$data = array('TestValidate' => array(
 			'title' => 'title',
@@ -452,7 +457,8 @@ class ModelValidationTest extends BaseModelTest {
 			'title' => array(
 				'allowEmpty' => false,
 				'rule' => 'validateTitle'
-		));
+			)
+		);
 
 		$data = array('TestValidate' => array('title' => ''));
 		$result = $TestModel->create($data);
@@ -487,7 +493,9 @@ class ModelValidationTest extends BaseModelTest {
 				'length' => array(
 					'allowEmpty' => true,
 					'rule' => array('maxLength', 10)
-		)));
+				)
+			)
+		);
 		$data = array('TestValidate' => array('title' => ''));
 		$result = $TestModel->create($data);
 		$this->assertEquals($data, $result);
@@ -497,7 +505,8 @@ class ModelValidationTest extends BaseModelTest {
 		$TestModel->validate = array(
 			'title' => array(
 				'rule' => array('userDefined', 'Article', 'titleDuplicate')
-		));
+			)
+		);
 		$data = array('TestValidate' => array('title' => 'My Article Title'));
 		$result = $TestModel->create($data);
 		$this->assertEquals($data, $result);
@@ -554,11 +563,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * test that validates() still performs correctly when useTable = false on the model.
- *
- * @return void
- */
+	/**
+	 * test that validates() still performs correctly when useTable = false on the model.
+	 *
+	 * @return void
+	 */
 	public function testValidatesWithNoTable() {
 		$TestModel = new TheVoid();
 		$TestModel->validate = array(
@@ -592,12 +601,12 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertTrue($result);
 	}
 
-/**
- * test that validates() checks all the 'with' associations as well for validation
- * as this can cause partial/wrong data insertion.
- *
- * @return void
- */
+	/**
+	 * test that validates() checks all the 'with' associations as well for validation
+	 * as this can cause partial/wrong data insertion.
+	 *
+	 * @return void
+	 */
 	public function testValidatesWithAssociations() {
 		$this->loadFixtures('Something', 'SomethingElse', 'JoinThing');
 		$data = array(
@@ -648,12 +657,12 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals(0, $joinRecords, 'Records were saved on the join table. %s');
 	}
 
-/**
- * Test that if a behavior modifies the model's whitelist validation gets triggered
- * properly for those fields.
- *
- * @return void
- */
+	/**
+	 * Test that if a behavior modifies the model's whitelist validation gets triggered
+	 * properly for those fields.
+	 *
+	 * @return void
+	 */
 	public function testValidateWithFieldListAndBehavior() {
 		$TestModel = new ValidationTest1();
 		$TestModel->validate = array(
@@ -662,7 +671,8 @@ class ModelValidationTest extends BaseModelTest {
 			),
 			'name' => array(
 				'rule' => 'notBlank',
-		));
+			)
+		);
 		$TestModel->Behaviors->attach('ValidationRule', array('fields' => array('name')));
 
 		$data = array(
@@ -676,11 +686,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected, $TestModel->validationErrors);
 	}
 
-/**
- * test that saveAll and with models with validation interact well
- *
- * @return void
- */
+	/**
+	 * test that saveAll and with models with validation interact well
+	 *
+	 * @return void
+	 */
 	public function testValidatesWithModelsAndSaveAll() {
 		$this->loadFixtures('Something', 'SomethingElse', 'JoinThing');
 		$data = array(
@@ -723,12 +733,12 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals(0, $joinRecords, 'Records were saved on the join table. %s');
 	}
 
-/**
- * test that saveAll and with models at initial insert (no id has set yet)
- * with validation interact well
- *
- * @return void
- */
+	/**
+	 * test that saveAll and with models at initial insert (no id has set yet)
+	 * with validation interact well
+	 *
+	 * @return void
+	 */
 	public function testValidatesWithModelsAndSaveAllWithoutId() {
 		$this->loadFixtures('Post', 'Author');
 
@@ -768,13 +778,13 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($count, count($data['Post']));
 	}
 
-/**
- * Test that missing validation methods trigger errors in development mode.
- * Helps to make development easier.
- *
- * @expectedException PHPUnit_Framework_Error
- * @return void
- */
+	/**
+	 * Test that missing validation methods trigger errors in development mode.
+	 * Helps to make development easier.
+	 *
+	 * @expectedException PHPUnit_Framework_Error
+	 * @return void
+	 */
 	public function testMissingValidationErrorTriggering() {
 		Configure::write('debug', 2);
 
@@ -789,11 +799,11 @@ class ModelValidationTest extends BaseModelTest {
 		$TestModel->invalidFields(array('fieldList' => array('title')));
 	}
 
-/**
- * Test placeholder replacement when validation message is an array
- *
- * @return void
- */
+	/**
+	 * Test placeholder replacement when validation message is an array
+	 *
+	 * @return void
+	 */
 	public function testValidationMessageAsArray() {
 		$TestModel = new ValidationTest1();
 		$TestModel->validate = array(
@@ -831,11 +841,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected, $TestModel->validationErrors);
 	}
 
-/**
- * Test validation message translation
- *
- * @return void
- */
+	/**
+	 * Test validation message translation
+	 *
+	 * @return void
+	 */
 	public function testValidationMessageTranslation() {
 		$lang = Configure::read('Config.language');
 		Configure::write('Config.language', 'en');
@@ -869,11 +879,11 @@ class ModelValidationTest extends BaseModelTest {
 		App::build();
 	}
 
-/**
- * Test for 'on' => [create|update] in validation rules.
- *
- * @return void
- */
+	/**
+	 * Test for 'on' => [create|update] in validation rules.
+	 *
+	 * @return void
+	 */
 	public function testStateValidation() {
 		$this->loadFixtures('Article');
 		$Article = new Article();
@@ -922,11 +932,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertFalse($Article->validates());
 	}
 
-/**
- * Test for 'required' => [create|update] in validation rules.
- *
- * @return void
- */
+	/**
+	 * Test for 'required' => [create|update] in validation rules.
+	 *
+	 * @return void
+	 */
 	public function testStateRequiredValidation() {
 		$this->loadFixtures('Article');
 		$Article = new Article();
@@ -975,11 +985,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertFalse($Article->validates());
 	}
 
-/**
- * Test that 'required' and 'on' are not conflicting
- *
- * @return void
- */
+	/**
+	 * Test that 'required' and 'on' are not conflicting
+	 *
+	 * @return void
+	 */
 	public function testOnRequiredConflictValidation() {
 		$this->loadFixtures('Article');
 		$Article = new Article();
@@ -1099,12 +1109,12 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertFalse($Article->validates());
 	}
 
-/**
- * testSaveAllDeepValidateOnly
- * tests the validate methods with deeper recursive data
- *
- * @return void
- */
+	/**
+	 * testSaveAllDeepValidateOnly
+	 * tests the validate methods with deeper recursive data
+	 *
+	 * @return void
+	 */
 	public function testSaveAllDeepValidateOnly() {
 		$this->loadFixtures('Article', 'Comment', 'User', 'Attachment');
 		$TestModel = new Article();
@@ -1409,11 +1419,11 @@ class ModelValidationTest extends BaseModelTest {
 		$expected = array(
 			'comment' => array('This field cannot be left blank'),
 			'Article' => array(
-					'body' => array('This field cannot be left blank'),
-					'User' => array(
-						'user' => array('This field cannot be left blank')
-					)
+				'body' => array('This field cannot be left blank'),
+				'User' => array(
+					'user' => array('This field cannot be left blank')
 				)
+			)
 		);
 		$this->assertSame($expected, $result);
 
@@ -1427,12 +1437,12 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testSaveAllNotDeepValidateOnly
- * tests the validate methods to not validate deeper recursive data
- *
- * @return void
- */
+	/**
+	 * testSaveAllNotDeepValidateOnly
+	 * tests the validate methods to not validate deeper recursive data
+	 *
+	 * @return void
+	 */
 	public function testSaveAllNotDeepValidateOnly() {
 		$this->loadFixtures('Article', 'Comment', 'User', 'Attachment');
 		$TestModel = new Article();
@@ -1580,11 +1590,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testValidateAssociated method
- *
- * @return void
- */
+	/**
+	 * testValidateAssociated method
+	 *
+	 * @return void
+	 */
 	public function testValidateAssociated() {
 		$this->loadFixtures('Comment', 'Attachment', 'Article', 'User');
 		$TestModel = new Comment();
@@ -1668,7 +1678,9 @@ class ModelValidationTest extends BaseModelTest {
 					'comment' => '',
 					'published' => 'Y',
 					'user_id' => 1
-		)));
+				)
+			)
+		);
 		$result = $TestModel->saveAll($data, array('validate' => 'only'));
 		$this->assertFalse($result);
 		$result = $TestModel->validateAssociated($data);
@@ -1713,11 +1725,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected['Attachment'], $model->Attachment->validationErrors);
 	}
 
-/**
- * testValidateMany method
- *
- * @return void
- */
+	/**
+	 * testValidateMany method
+	 *
+	 * @return void
+	 */
 	public function testValidateMany() {
 		$TestModel = new Article();
 		$TestModel->validate = array('title' => 'notBlank');
@@ -1753,11 +1765,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected, $TestModel->validationErrors);
 	}
 
-/**
- * testGetMethods method
- *
- * @return void
- */
+	/**
+	 * testGetMethods method
+	 *
+	 * @return void
+	 */
 	public function testGetMethods() {
 		$this->loadFixtures('Article', 'Comment');
 		$TestModel = new Article();
@@ -1769,11 +1781,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected, array_keys($result));
 	}
 
-/**
- *  Tests that methods are refreshed when the list of behaviors change
- *
- * @return void
- */
+	/**
+	 *  Tests that methods are refreshed when the list of behaviors change
+	 *
+	 * @return void
+	 */
 	public function testGetMethodsRefresh() {
 		$this->loadFixtures('Article', 'Comment');
 		$TestModel = new Article();
@@ -1798,11 +1810,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected, array_keys($Validator->getMethods()));
 	}
 
-/**
- * testSetValidationDomain method
- *
- * @return void
- */
+	/**
+	 * testSetValidationDomain method
+	 *
+	 * @return void
+	 */
 	public function testSetValidationDomain() {
 		$this->loadFixtures('Article', 'Comment');
 		$TestModel = new Article();
@@ -1815,11 +1827,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals('other', $TestModel->validationDomain);
 	}
 
-/**
- * testGetModel method
- *
- * @return void
- */
+	/**
+	 * testGetModel method
+	 *
+	 * @return void
+	 */
 	public function testGetModel() {
 		$TestModel = new Article();
 		$Validator = $TestModel->validator();
@@ -1828,11 +1840,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertInstanceOf('Article', $result);
 	}
 
-/**
- * Tests it is possible to get validation sets for a field using an array inteface
- *
- * @return void
- */
+	/**
+	 * Tests it is possible to get validation sets for a field using an array inteface
+	 *
+	 * @return void
+	 */
 	public function testArrayAccessGet() {
 		$TestModel = new Article();
 		$Validator = $TestModel->validator();
@@ -1856,11 +1868,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals('numeric', $rule->rule);
 	}
 
-/**
- * Tests it is possible to check for validation sets for a field using an array inteface
- *
- * @return void
- */
+	/**
+	 * Tests it is possible to check for validation sets for a field using an array inteface
+	 *
+	 * @return void
+	 */
 	public function testArrayAccessExists() {
 		$TestModel = new Article();
 		$Validator = $TestModel->validator();
@@ -1871,11 +1883,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertFalse(isset($Validator['other']));
 	}
 
-/**
- * Tests it is possible to set validation rules for a field using an array inteface
- *
- * @return void
- */
+	/**
+	 * Tests it is possible to set validation rules for a field using an array inteface
+	 *
+	 * @return void
+	 */
 	public function testArrayAccessSet() {
 		$TestModel = new Article();
 		$Validator = $TestModel->validator();
@@ -1903,11 +1915,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals(array('lengthBetween', 1, 5), $validators['between']->rule);
 	}
 
-/**
- * Tests it is possible to unset validation rules
- *
- * @return void
- */
+	/**
+	 * Tests it is possible to unset validation rules
+	 *
+	 * @return void
+	 */
 	public function testArrayAccessUset() {
 		$TestModel = new Article();
 		$Validator = $TestModel->validator();
@@ -1917,11 +1929,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertFalse(isset($Validator['title']));
 	}
 
-/**
- * Tests it is possible to iterate a validation object
- *
- * @return void
- */
+	/**
+	 * Tests it is possible to iterate a validation object
+	 *
+	 * @return void
+	 */
 	public function testIterator() {
 		$TestModel = new Article();
 		$Validator = $TestModel->validator();
@@ -1943,11 +1955,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals(3, $i);
 	}
 
-/**
- * Tests countable interface in ModelValidator
- *
- * @return void
- */
+	/**
+	 * Tests countable interface in ModelValidator
+	 *
+	 * @return void
+	 */
 	public function testCount() {
 		$TestModel = new Article();
 		$Validator = $TestModel->validator();
@@ -1966,11 +1978,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertCount(2, $Validator);
 	}
 
-/**
- * Tests it is possible to add validation rules
- *
- * @return void
- */
+	/**
+	 * Tests it is possible to add validation rules
+	 *
+	 * @return void
+	 */
 	public function testAddRule() {
 		$TestModel = new Article();
 		$Validator = $TestModel->validator();
@@ -1986,11 +1998,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals(array('lengthBetween', 1, 5), $validators['between']->rule);
 	}
 
-/**
- * Tests it is possible to remove validation rules
- *
- * @return void
- */
+	/**
+	 * Tests it is possible to remove validation rules
+	 *
+	 * @return void
+	 */
 	public function testRemoveRule() {
 		$TestModel = new Article();
 		$Validator = $TestModel->validator();
@@ -2012,11 +2024,11 @@ class ModelValidationTest extends BaseModelTest {
 		$Validator->remove('other', 'between');
 	}
 
-/**
- * Tests validation callbacks are triggered
- *
- * @return void
- */
+	/**
+	 * Tests validation callbacks are triggered
+	 *
+	 * @return void
+	 */
 	public function testValidateCallbacks() {
 		$TestModel = $this->getMock('Article', array('beforeValidate', 'afterValidate'));
 		$TestModel->expects($this->once())->method('beforeValidate');
@@ -2026,12 +2038,12 @@ class ModelValidationTest extends BaseModelTest {
 		$TestModel->validates();
 	}
 
-/**
- * Tests that altering data in a beforeValidate callback will lead to saving those
- * values in database
- *
- * @return void
- */
+	/**
+	 * Tests that altering data in a beforeValidate callback will lead to saving those
+	 * values in database
+	 *
+	 * @return void
+	 */
 	public function testValidateFirstWithBeforeValidate() {
 		$this->loadFixtures('Article', 'User');
 		$model = new CustomArticle();
@@ -2080,12 +2092,12 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals('foo', $model->field('title', array('body' => 'foo4')));
 	}
 
-/**
- * Tests that altering data in a beforeValidate callback will lead to saving those
- * values in database
- *
- * @return void
- */
+	/**
+	 * Tests that altering data in a beforeValidate callback will lead to saving those
+	 * values in database
+	 *
+	 * @return void
+	 */
 	public function testValidateFirstAssociatedWithBeforeValidate() {
 		$this->loadFixtures('Article', 'User');
 		$model = new CustomArticle();
@@ -2116,11 +2128,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals('foo', $model->field('title', array('body' => 'foo3')));
 	}
 
-/**
- * testValidateFirstWithDefaults method
- *
- * @return void
- */
+	/**
+	 * testValidateFirstWithDefaults method
+	 *
+	 * @return void
+	 */
 	public function testFirstWithDefaults() {
 		$this->loadFixtures('Article', 'Tag', 'Comment', 'User', 'ArticlesTag');
 		$TestModel = new Article();
@@ -2188,11 +2200,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertSame($set, $Validator->getField('other'));
 	}
 
-/**
- * Test that rules are parsed correctly when calling getField()
- *
- * @return void
- */
+	/**
+	 * Test that rules are parsed correctly when calling getField()
+	 *
+	 * @return void
+	 */
 	public function testValidator() {
 		$TestModel = new Article();
 		$Validator = $TestModel->validator();
@@ -2206,11 +2218,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertTrue($result instanceof CakeValidationSet);
 	}
 
-/**
- * Test that validator override works as expected
- *
- * @return void
- */
+	/**
+	 * Test that validator override works as expected
+	 *
+	 * @return void
+	 */
 	public function testValidatorOverride() {
 		$TestModel = new Article();
 		$ValidatorA = new ModelValidator($TestModel);
@@ -2223,13 +2235,13 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertNotSame($ValidatorA, $TestModel->validator());
 	}
 
-/**
- * Test that type hint exception is thrown
- *
- * @expectedException PHPUnit_Framework_Error
- * @return void
- * @throws PHPUnit_Framework_Error
- */
+	/**
+	 * Test that type hint exception is thrown
+	 *
+	 * @expectedException PHPUnit_Framework_Error
+	 * @return void
+	 * @throws PHPUnit_Framework_Error
+	 */
 	public function testValidatorTypehintException() {
 		try {
 			new ModelValidator('asdasds');
@@ -2239,12 +2251,12 @@ class ModelValidationTest extends BaseModelTest {
 		}
 	}
 
-/**
- * Tests that altering data in a beforeValidate callback will lead to saving those
- * values in database, this time with belongsTo associations
- *
- * @return void
- */
+	/**
+	 * Tests that altering data in a beforeValidate callback will lead to saving those
+	 * values in database, this time with belongsTo associations
+	 *
+	 * @return void
+	 */
 	public function testValidateFirstAssociatedWithBeforeValidate2() {
 		$this->loadFixtures('Article', 'User');
 		$model = new CustomArticle();
@@ -2269,12 +2281,12 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals('foo', $model->field('title', array('body' => 'a test')));
 	}
 
-/**
- * Testing you can dynamically add rules to a field, added this to dispel doubts
- * after a presentation made to show off this new feature
- *
- * @return void
- */
+	/**
+	 * Testing you can dynamically add rules to a field, added this to dispel doubts
+	 * after a presentation made to show off this new feature
+	 *
+	 * @return void
+	 */
 	public function testDynamicValidationRuleBuilding() {
 		$model = new Article;
 		$validator = $model->validator();
@@ -2288,11 +2300,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals('awesome', $rules['isAwesome']->rule);
 	}
 
-/**
- * Test to ensure custom validation methods work with CakeValidationSet
- *
- * @return void
- */
+	/**
+	 * Test to ensure custom validation methods work with CakeValidationSet
+	 *
+	 * @return void
+	 */
 	public function testCustomMethodsWithCakeValidationSet() {
 		$TestModel = new TestValidate();
 		$Validator = $TestModel->validator();
@@ -2332,22 +2344,24 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertFalse($model->validates());
 	}
 
-/**
- * Test validateAssociated with atomic=false & deep=true
- *
- * @return void
- */
+	/**
+	 * Test validateAssociated with atomic=false & deep=true
+	 *
+	 * @return void
+	 */
 	public function testValidateAssociatedAtomicFalseDeepTrueWithErrors() {
 		$this->loadFixtures('Comment', 'Article', 'User', 'Attachment');
 		$Attachment = ClassRegistry::init('Attachment');
 		$Attachment->Comment->validator()->add('comment', array(
 			array('rule' => 'notBlank')
 		));
-		$Attachment->Comment->User->bindModel(array(
-			'hasMany' => array(
-				'Article',
-				'Comment'
-			)),
+		$Attachment->Comment->User->bindModel(
+			array(
+				'hasMany' => array(
+					'Article',
+					'Comment'
+				)
+			),
 			false
 		);
 
@@ -2391,11 +2405,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test validateMany with atomic=false & deep=true
- *
- * @return void
- */
+	/**
+	 * Test validateMany with atomic=false & deep=true
+	 *
+	 * @return void
+	 */
 	public function testValidateManyAtomicFalseDeepTrueWithErrors() {
 		$this->loadFixtures('Comment', 'Article', 'User');
 		$Article = ClassRegistry::init('Article');
@@ -2452,11 +2466,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test the isUnique method when used as a validator for multiple fields.
- *
- * @return void
- */
+	/**
+	 * Test the isUnique method when used as a validator for multiple fields.
+	 *
+	 * @return void
+	 */
 	public function testIsUniqueValidator() {
 		$this->loadFixtures('Article');
 		$Article = ClassRegistry::init('Article');
@@ -2496,11 +2510,11 @@ class ModelValidationTest extends BaseModelTest {
 		$this->assertFalse($Article->validates(), 'Should fail, conditions are combined with or');
 	}
 
-/**
- * Test backward compatibility of the isUnique method when used as a validator for a single field.
- *
- * @return void
- */
+	/**
+	 * Test backward compatibility of the isUnique method when used as a validator for a single field.
+	 *
+	 * @return void
+	 */
 	public function testBackwardCompatIsUniqueValidator() {
 		$this->loadFixtures('Article');
 		$Article = ClassRegistry::init('Article');
@@ -2522,7 +2536,6 @@ class ModelValidationTest extends BaseModelTest {
 		$data = $Article->create($data);
 		$this->assertFalse($Article->validates(), 'Contains a dupe');
 	}
-
 }
 
 /**
@@ -2540,5 +2553,4 @@ class ValidationRuleBehavior extends ModelBehavior {
 			$Model->whitelist[] = $field;
 		}
 	}
-
 }

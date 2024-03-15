@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,10 +8,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         2.8
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @since		 2.8
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses("BaseShellHelper", "Console/Helper");
 
@@ -20,23 +21,23 @@ App::uses("BaseShellHelper", "Console/Helper");
  */
 class TableShellHelper extends BaseShellHelper {
 
-/**
- * Default config for this helper.
- *
- * @var array
- */
+	/**
+	 * Default config for this helper.
+	 *
+	 * @var array
+	 */
 	protected $_defaultConfig = array(
 		'headers' => true,
 		'rowSeparator' => false,
 		'headerStyle' => 'info',
 	);
 
-/**
- * Calculate the column widths
- *
- * @param array $rows The rows on which the columns width will be calculated on.
- * @return array
- */
+	/**
+	 * Calculate the column widths
+	 *
+	 * @param array $rows The rows on which the columns width will be calculated on.
+	 * @return array
+	 */
 	protected function _calculateWidths($rows) {
 		$widths = array();
 		foreach ($rows as $line) {
@@ -50,12 +51,12 @@ class TableShellHelper extends BaseShellHelper {
 		return $widths;
 	}
 
-/**
- * Output a row separator.
- *
- * @param array $widths The widths of each column to output.
- * @return void
- */
+	/**
+	 * Output a row separator.
+	 *
+	 * @param array $widths The widths of each column to output.
+	 * @return void
+	 */
 	protected function _rowSeparator($widths) {
 		$out = '';
 		foreach ($widths as $column) {
@@ -65,14 +66,14 @@ class TableShellHelper extends BaseShellHelper {
 		$this->_consoleOutput->write($out);
 	}
 
-/**
- * Output a row.
- *
- * @param array $row The row to output.
- * @param array $widths The widths of each column to output.
- * @param array $options Options to be passed.
- * @return void
- */
+	/**
+	 * Output a row.
+	 *
+	 * @param array $row The row to output.
+	 * @param array $widths The widths of each column to output.
+	 * @param array $options Options to be passed.
+	 * @return void
+	 */
 	protected function _render($row, $widths, $options = array()) {
 		$out = '';
 		foreach ($row as $i => $column) {
@@ -86,12 +87,12 @@ class TableShellHelper extends BaseShellHelper {
 		$this->_consoleOutput->write($out);
 	}
 
-/**
- * Output a table.
- *
- * @param array $rows The data to render out.
- * @return void
- */
+	/**
+	 * Output a table.
+	 *
+	 * @param array $rows The data to render out.
+	 * @return void
+	 */
 	public function output($rows) {
 		$config = $this->config();
 		$widths = $this->_calculateWidths($rows);
@@ -111,13 +112,13 @@ class TableShellHelper extends BaseShellHelper {
 		}
 	}
 
-/**
- * Add style tags
- *
- * @param string $text The text to be surrounded
- * @param string $style The style to be applied
- * @return string
- */
+	/**
+	 * Add style tags
+	 *
+	 * @param string $text The text to be surrounded
+	 * @param string $style The style to be applied
+	 * @return string
+	 */
 	protected function _addStyle($text, $style) {
 		return '<' . $style . '>' . $text . '</' . $style . '>';
 	}

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,11 +8,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Network
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Network
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('CakeResponse', 'Network');
@@ -20,35 +21,35 @@ App::uses('CakeRequest', 'Network');
 /**
  * CakeResponseTest
  *
- * @package       Cake.Test.Case.Network
+ * @package	   Cake.Test.Case.Network
  */
 class CakeResponseTest extends CakeTestCase {
 
-/**
- * Setup for tests
- *
- * @return void
- */
+	/**
+	 * Setup for tests
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		ob_start();
 	}
 
-/**
- * Cleanup after tests
- *
- * @return void
- */
+	/**
+	 * Cleanup after tests
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		ob_end_clean();
 	}
 
-/**
- * Tests the request object constructor
- *
- * @return void
- */
+	/**
+	 * Tests the request object constructor
+	 *
+	 * @return void
+	 */
 	public function testConstruct() {
 		$response = new CakeResponse();
 		$this->assertNull($response->body());
@@ -84,11 +85,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals($options['status'], $response->statusCode());
 	}
 
-/**
- * Tests the body method
- *
- * @return void
- */
+	/**
+	 * Tests the body method
+	 *
+	 * @return void
+	 */
 	public function testBody() {
 		$response = new CakeResponse();
 		$this->assertNull($response->body());
@@ -97,11 +98,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals('Changed Body', $response->body('Changed Body'));
 	}
 
-/**
- * Tests the charset method
- *
- * @return void
- */
+	/**
+	 * Tests the charset method
+	 *
+	 * @return void
+	 */
 	public function testCharset() {
 		$response = new CakeResponse();
 		$this->assertEquals('UTF-8', $response->charset());
@@ -110,12 +111,12 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals('UTF-16', $response->charset('UTF-16'));
 	}
 
-/**
- * Tests the statusCode method
- *
- * @expectedException CakeException
- * @return void
- */
+	/**
+	 * Tests the statusCode method
+	 *
+	 * @expectedException CakeException
+	 * @return void
+	 */
 	public function testStatusCode() {
 		$response = new CakeResponse();
 		$this->assertEquals(200, $response->statusCode());
@@ -127,11 +128,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->statusCode(1001);
 	}
 
-/**
- * Tests the type method
- *
- * @return void
- */
+	/**
+	 * Tests the type method
+	 *
+	 * @return void
+	 */
 	public function testType() {
 		$response = new CakeResponse();
 		$this->assertEquals('text/html', $response->type());
@@ -150,11 +151,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertFalse($response->type('wackytype'));
 	}
 
-/**
- * Tests the header method
- *
- * @return void
- */
+	/**
+	 * Tests the header method
+	 *
+	 * @return void
+	 */
 	public function testHeader() {
 		$response = new CakeResponse();
 		$headers = array();
@@ -203,11 +204,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals($headers, $response->header());
 	}
 
-/**
- * Tests the send method
- *
- * @return void
- */
+	/**
+	 * Tests the send method
+	 *
+	 * @return void
+	 */
 	public function testSend() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent', '_setCookies'));
 		$response->header(array(
@@ -235,11 +236,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Data provider for content type tests.
- *
- * @return array
- */
+	/**
+	 * Data provider for content type tests.
+	 *
+	 * @return array
+	 */
 	public static function charsetTypeProvider() {
 		return array(
 			array('mp3', 'audio/mpeg'),
@@ -250,12 +251,12 @@ class CakeResponseTest extends CakeTestCase {
 		);
 	}
 
-/**
- * Tests the send method and changing the content type
- *
- * @dataProvider charsetTypeProvider
- * @return void
- */
+	/**
+	 * Tests the send method and changing the content type
+	 *
+	 * @dataProvider charsetTypeProvider
+	 * @return void
+	 */
 	public function testSendChangingContentType($original, $expected) {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent', '_setCookies'));
 		$response->type($original);
@@ -271,11 +272,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests the send method and changing the content type to JS without adding the charset
- *
- * @return void
- */
+	/**
+	 * Tests the send method and changing the content type to JS without adding the charset
+	 *
+	 * @return void
+	 */
 	public function testSendChangingContentTypeWithoutCharset() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent', '_setCookies'));
 		$response->type('js');
@@ -293,11 +294,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests the send method and changing the content type
- *
- * @return void
- */
+	/**
+	 * Tests the send method and changing the content type
+	 *
+	 * @return void
+	 */
 	public function testSendWithLocation() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent', '_setCookies'));
 		$response->header('Location', 'http://www.example.com');
@@ -311,11 +312,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests the disableCache method
- *
- * @return void
- */
+	/**
+	 * Tests the disableCache method
+	 *
+	 * @return void
+	 */
 	public function testDisableCache() {
 		$response = new CakeResponse();
 		$expected = array(
@@ -327,11 +328,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals($expected, $response->header());
 	}
 
-/**
- * Tests the cache method
- *
- * @return void
- */
+	/**
+	 * Tests the cache method
+	 *
+	 * @return void
+	 */
 	public function testCache() {
 		$response = new CakeResponse();
 		$since = time();
@@ -371,11 +372,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals($expected, $response->header());
 	}
 
-/**
- * Tests the compress method
- *
- * @return void
- */
+	/**
+	 * Tests the compress method
+	 *
+	 * @return void
+	 */
 	public function testCompress() {
 		if (PHP_SAPI !== 'cli') {
 			$this->markTestSkipped('The response compression can only be tested in cli.');
@@ -399,12 +400,12 @@ class CakeResponseTest extends CakeTestCase {
 		ob_get_clean();
 	}
 
-/**
- * Tests the httpCodes method
- *
- * @expectedException CakeException
- * @return void
- */
+	/**
+	 * Tests the httpCodes method
+	 *
+	 * @expectedException CakeException
+	 * @return void
+	 */
 	public function testHttpCodes() {
 		$response = new CakeResponse();
 		$result = $response->httpCodes();
@@ -445,11 +446,11 @@ class CakeResponseTest extends CakeTestCase {
 		));
 	}
 
-/**
- * Tests the download method
- *
- * @return void
- */
+	/**
+	 * Tests the download method
+	 *
+	 * @return void
+	 */
 	public function testDownload() {
 		$response = new CakeResponse();
 		$expected = array(
@@ -459,11 +460,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals($expected, $response->header());
 	}
 
-/**
- * Tests the mapType method
- *
- * @return void
- */
+	/**
+	 * Tests the mapType method
+	 *
+	 * @return void
+	 */
 	public function testMapType() {
 		$response = new CakeResponse();
 		$this->assertEquals('wav', $response->mapType('audio/x-wav'));
@@ -476,11 +477,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Tests the outputCompressed method
- *
- * @return void
- */
+	/**
+	 * Tests the outputCompressed method
+	 *
+	 * @return void
+	 */
 	public function testOutputCompressed() {
 		$response = new CakeResponse();
 
@@ -514,11 +515,11 @@ class CakeResponseTest extends CakeTestCase {
 		}
 	}
 
-/**
- * Tests the send and setting of Content-Length
- *
- * @return void
- */
+	/**
+	 * Tests the send and setting of Content-Length
+	 *
+	 * @return void
+	 */
 	public function testSendContentLength() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$response->body('the response body');
@@ -558,7 +559,7 @@ class CakeResponseTest extends CakeTestCase {
 		$response->expects($this->never())->method('outputCompressed');
 		$response->expects($this->once())->method('_sendContent')->with($body);
 		$response->expects($this->at(1))
-				->method('_sendHeader')->with('Content-Length', 1);
+			->method('_sendHeader')->with('Content-Length', 1);
 		$response->send();
 
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
@@ -587,11 +588,11 @@ class CakeResponseTest extends CakeTestCase {
 		ob_end_clean();
 	}
 
-/**
- * Tests getting/setting the protocol
- *
- * @return void
- */
+	/**
+	 * Tests getting/setting the protocol
+	 *
+	 * @return void
+	 */
 	public function testProtocol() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$response->protocol('HTTP/1.0');
@@ -601,11 +602,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests getting/setting the Content-Length
- *
- * @return void
- */
+	/**
+	 * Tests getting/setting the Content-Length
+	 *
+	 * @return void
+	 */
 	public function testLength() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$response->length(100);
@@ -622,11 +623,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests that the response body is unset if the status code is 304 or 204
- *
- * @return void
- */
+	/**
+	 * Tests that the response body is unset if the status code is 304 or 204
+	 *
+	 * @return void
+	 */
 	public function testUnmodifiedContent() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$response->body('This is a body');
@@ -651,11 +652,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests setting the expiration date
- *
- * @return void
- */
+	/**
+	 * Tests setting the expiration date
+	 *
+	 * @return void
+	 */
 	public function testExpires() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$now = new DateTime('now', new DateTimeZone('America/Los_Angeles'));
@@ -683,11 +684,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests setting the modification date
- *
- * @return void
- */
+	/**
+	 * Tests setting the modification date
+	 *
+	 * @return void
+	 */
 	public function testModified() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$now = new DateTime('now', new DateTimeZone('America/Los_Angeles'));
@@ -715,11 +716,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests setting of public/private Cache-Control directives
- *
- * @return void
- */
+	/**
+	 * Tests setting of public/private Cache-Control directives
+	 *
+	 * @return void
+	 */
 	public function testSharable() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$this->assertNull($response->sharable());
@@ -764,11 +765,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests setting of max-age Cache-Control directive
- *
- * @return void
- */
+	/**
+	 * Tests setting of max-age Cache-Control directive
+	 *
+	 * @return void
+	 */
 	public function testMaxAge() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$this->assertNull($response->maxAge());
@@ -790,11 +791,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests setting of s-maxage Cache-Control directive
- *
- * @return void
- */
+	/**
+	 * Tests setting of s-maxage Cache-Control directive
+	 *
+	 * @return void
+	 */
 	public function testSharedMaxAge() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$this->assertNull($response->maxAge());
@@ -816,11 +817,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests setting of must-revalidate Cache-Control directive
- *
- * @return void
- */
+	/**
+	 * Tests setting of must-revalidate Cache-Control directive
+	 *
+	 * @return void
+	 */
 	public function testMustRevalidate() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$this->assertFalse($response->mustRevalidate());
@@ -844,11 +845,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests getting/setting the Vary header
- *
- * @return void
- */
+	/**
+	 * Tests getting/setting the Vary header
+	 *
+	 * @return void
+	 */
 	public function testVary() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$response->vary('Accept-encoding');
@@ -865,11 +866,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals(array('Accept-language', 'Accept-encoding'), $response->vary());
 	}
 
-/**
- * Tests getting/setting the Etag header
- *
- * @return void
- */
+	/**
+	 * Tests getting/setting the Etag header
+	 *
+	 * @return void
+	 */
 	public function testEtag() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$response->etag('something');
@@ -886,11 +887,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Tests that the response is able to be marked as not modified
- *
- * @return void
- */
+	/**
+	 * Tests that the response is able to be marked as not modified
+	 *
+	 * @return void
+	 */
 	public function testNotModified() {
 		$response = $this->getMock('CakeResponse', array('_sendHeader', '_sendContent'));
 		$response->body('something');
@@ -904,11 +905,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals(304, $response->statusCode());
 	}
 
-/**
- * Test checkNotModified method
- *
- * @return void
- */
+	/**
+	 * Test checkNotModified method
+	 *
+	 * @return void
+	 */
 	public function testCheckNotModifiedByEtagStar() {
 		$_SERVER['HTTP_IF_NONE_MATCH'] = '*';
 		$response = $this->getMock('CakeResponse', array('notModified'));
@@ -917,11 +918,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->checkNotModified(new CakeRequest);
 	}
 
-/**
- * Test checkNotModified method
- *
- * @return void
- */
+	/**
+	 * Test checkNotModified method
+	 *
+	 * @return void
+	 */
 	public function testCheckNotModifiedByEtagExact() {
 		$_SERVER['HTTP_IF_NONE_MATCH'] = 'W/"something", "other"';
 		$response = $this->getMock('CakeResponse', array('notModified'));
@@ -930,11 +931,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertTrue($response->checkNotModified(new CakeRequest));
 	}
 
-/**
- * Test checkNotModified method
- *
- * @return void
- */
+	/**
+	 * Test checkNotModified method
+	 *
+	 * @return void
+	 */
 	public function testCheckNotModifiedByEtagAndTime() {
 		$_SERVER['HTTP_IF_NONE_MATCH'] = 'W/"something", "other"';
 		$_SERVER['HTTP_IF_MODIFIED_SINCE'] = '2012-01-01 00:00:00';
@@ -945,11 +946,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertTrue($response->checkNotModified(new CakeRequest));
 	}
 
-/**
- * Test checkNotModified method
- *
- * @return void
- */
+	/**
+	 * Test checkNotModified method
+	 *
+	 * @return void
+	 */
 	public function testCheckNotModifiedByEtagAndTimeMismatch() {
 		$_SERVER['HTTP_IF_NONE_MATCH'] = 'W/"something", "other"';
 		$_SERVER['HTTP_IF_MODIFIED_SINCE'] = '2012-01-01 00:00:00';
@@ -960,11 +961,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertFalse($response->checkNotModified(new CakeRequest));
 	}
 
-/**
- * Test checkNotModified method
- *
- * @return void
- */
+	/**
+	 * Test checkNotModified method
+	 *
+	 * @return void
+	 */
 	public function testCheckNotModifiedByEtagMismatch() {
 		$_SERVER['HTTP_IF_NONE_MATCH'] = 'W/"something-else", "other"';
 		$_SERVER['HTTP_IF_MODIFIED_SINCE'] = '2012-01-01 00:00:00';
@@ -975,11 +976,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertFalse($response->checkNotModified(new CakeRequest));
 	}
 
-/**
- * Test checkNotModified method
- *
- * @return void
- */
+	/**
+	 * Test checkNotModified method
+	 *
+	 * @return void
+	 */
 	public function testCheckNotModifiedByTime() {
 		$_SERVER['HTTP_IF_MODIFIED_SINCE'] = '2012-01-01 00:00:00';
 		$response = $this->getMock('CakeResponse', array('notModified'));
@@ -988,11 +989,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertTrue($response->checkNotModified(new CakeRequest));
 	}
 
-/**
- * Test checkNotModified method
- *
- * @return void
- */
+	/**
+	 * Test checkNotModified method
+	 *
+	 * @return void
+	 */
 	public function testCheckNotModifiedNoHints() {
 		$_SERVER['HTTP_IF_NONE_MATCH'] = 'W/"something", "other"';
 		$_SERVER['HTTP_IF_MODIFIED_SINCE'] = '2012-01-01 00:00:00';
@@ -1001,11 +1002,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertFalse($response->checkNotModified(new CakeRequest));
 	}
 
-/**
- * Test cookie setting
- *
- * @return void
- */
+	/**
+	 * Test cookie setting
+	 *
+	 * @return void
+	 */
 	public function testCookieSettings() {
 		$response = new CakeResponse();
 		$cookie = array(
@@ -1019,7 +1020,8 @@ class CakeResponseTest extends CakeTestCase {
 			'path' => '/',
 			'domain' => '',
 			'secure' => false,
-			'httpOnly' => false);
+			'httpOnly' => false
+		);
 		$result = $response->cookie('CakeTestCookie[Testing]');
 		$this->assertEquals($expected, $result);
 
@@ -1083,20 +1085,20 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test CORS
- *
- * @dataProvider corsData
- * @param CakeRequest $request
- * @param string $origin
- * @param string|array $domains
- * @param string|array $methods
- * @param string|array $headers
- * @param string|bool $expectedOrigin
- * @param string|bool $expectedMethods
- * @param string|bool $expectedHeaders
- * @return void
- */
+	/**
+	 * Test CORS
+	 *
+	 * @dataProvider corsData
+	 * @param CakeRequest $request
+	 * @param string $origin
+	 * @param string|array $domains
+	 * @param string|array $methods
+	 * @param string|array $headers
+	 * @param string|bool $expectedOrigin
+	 * @param string|bool $expectedMethods
+	 * @param string|bool $expectedHeaders
+	 * @return void
+	 */
 	public function testCors($request, $origin, $domains, $methods, $headers, $expectedOrigin, $expectedMethods = false, $expectedHeaders = false) {
 		$_SERVER['HTTP_ORIGIN'] = $origin;
 
@@ -1121,11 +1123,11 @@ class CakeResponseTest extends CakeTestCase {
 		unset($_SERVER['HTTP_ORIGIN']);
 	}
 
-/**
- * Feed for testCors
- *
- * @return array
- */
+	/**
+	 * Feed for testCors
+	 *
+	 * @return array
+	 */
 	public function corsData() {
 		$fooRequest = new CakeRequest();
 
@@ -1159,59 +1161,59 @@ class CakeResponseTest extends CakeTestCase {
 		);
 	}
 
-/**
- * testFileNotFound
- *
- * @expectedException NotFoundException
- * @return void
- */
+	/**
+	 * testFileNotFound
+	 *
+	 * @expectedException NotFoundException
+	 * @return void
+	 */
 	public function testFileNotFound() {
 		$response = new CakeResponse();
 		$response->file('/some/missing/folder/file.jpg');
 	}
 
-/**
- * test file with ../
- *
- * @expectedException NotFoundException
- * @expectedExceptionMessage The requested file contains `..` and will not be read.
- * @return void
- */
+	/**
+	 * test file with ../
+	 *
+	 * @expectedException NotFoundException
+	 * @expectedExceptionMessage The requested file contains `..` and will not be read.
+	 * @return void
+	 */
 	public function testFileWithForwardSlashPathTraversal() {
 		$response = new CakeResponse();
 		$response->file('my/../cat.gif');
 	}
 
-/**
- * test file with ..\
- *
- * @expectedException NotFoundException
- * @expectedExceptionMessage The requested file contains `..` and will not be read.
- * @return void
- */
+	/**
+	 * test file with ..\
+	 *
+	 * @expectedException NotFoundException
+	 * @expectedExceptionMessage The requested file contains `..` and will not be read.
+	 * @return void
+	 */
 	public function testFileWithBackwardSlashPathTraversal() {
 		$response = new CakeResponse();
 		$response->file('my\..\cat.gif');
 	}
 
-/**
- * Although unlikely, a file may contain dots in its filename.
- * This should be allowed, as long as the dots doesn't specify a path (../ or ..\)
- *
- * @expectedException NotFoundException
- * @execptedExceptionMessageRegExp #The requested file .+my/Some..cat.gif was not found or not readable#
- * @return void
- */
+	/**
+	 * Although unlikely, a file may contain dots in its filename.
+	 * This should be allowed, as long as the dots doesn't specify a path (../ or ..\)
+	 *
+	 * @expectedException NotFoundException
+	 * @execptedExceptionMessageRegExp #The requested file .+my/Some..cat.gif was not found or not readable#
+	 * @return void
+	 */
 	public function testFileWithDotsInFilename() {
 		$response = new CakeResponse();
 		$response->file('my/Some..cat.gif');
 	}
 
-/**
- * testFile method
- *
- * @return void
- */
+	/**
+	 * testFile method
+	 *
+	 * @return void
+	 */
 	public function testFile() {
 		$response = $this->getMock('CakeResponse', array(
 			'header',
@@ -1252,11 +1254,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertNotSame(false, $result);
 	}
 
-/**
- * testFileWithUnknownFileTypeGeneric method
- *
- * @return void
- */
+	/**
+	 * testFileWithUnknownFileTypeGeneric method
+	 *
+	 * @return void
+	 */
 	public function testFileWithUnknownFileTypeGeneric() {
 		$currentUserAgent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null;
 		$_SERVER['HTTP_USER_AGENT'] = 'Some generic browser';
@@ -1312,11 +1314,11 @@ class CakeResponseTest extends CakeTestCase {
 		}
 	}
 
-/**
- * testFileWithUnknownFileTypeOpera method
- *
- * @return void
- */
+	/**
+	 * testFileWithUnknownFileTypeOpera method
+	 *
+	 * @return void
+	 */
 	public function testFileWithUnknownFileTypeOpera() {
 		$currentUserAgent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null;
 		$_SERVER['HTTP_USER_AGENT'] = 'Opera/9.80 (Windows NT 6.0; U; en) Presto/2.8.99 Version/11.10';
@@ -1376,11 +1378,11 @@ class CakeResponseTest extends CakeTestCase {
 		}
 	}
 
-/**
- * testFileWithUnknownFileTypeIE method
- *
- * @return void
- */
+	/**
+	 * testFileWithUnknownFileTypeIE method
+	 *
+	 * @return void
+	 */
 	public function testFileWithUnknownFileTypeIE() {
 		$currentUserAgent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null;
 		$_SERVER['HTTP_USER_AGENT'] = 'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.2; Trident/4.0; Media Center PC 4.0; SLCC1; .NET CLR 3.0.04320)';
@@ -1441,11 +1443,11 @@ class CakeResponseTest extends CakeTestCase {
 			$_SERVER['HTTP_USER_AGENT'] = $currentUserAgent;
 		}
 	}
-/**
- * testFileWithUnknownFileNoDownload method
- *
- * @return void
- */
+	/**
+	 * testFileWithUnknownFileNoDownload method
+	 *
+	 * @return void
+	 */
 	public function testFileWithUnknownFileNoDownload() {
 		$currentUserAgent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null;
 		$_SERVER['HTTP_USER_AGENT'] = 'Some generic browser';
@@ -1482,11 +1484,11 @@ class CakeResponseTest extends CakeTestCase {
 		}
 	}
 
-/**
- * testConnectionAbortedOnBuffering method
- *
- * @return void
- */
+	/**
+	 * testConnectionAbortedOnBuffering method
+	 *
+	 * @return void
+	 */
 	public function testConnectionAbortedOnBuffering() {
 		$response = $this->getMock('CakeResponse', array(
 			'header',
@@ -1517,11 +1519,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertNull($result);
 	}
 
-/**
- * Test downloading files with UPPERCASE extensions.
- *
- * @return void
- */
+	/**
+	 * Test downloading files with UPPERCASE extensions.
+	 *
+	 * @return void
+	 */
 	public function testFileUpperExtension() {
 		$response = $this->getMock('CakeResponse', array(
 			'header',
@@ -1546,11 +1548,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->file(CAKE . 'Test' . DS . 'test_app' . DS . 'Vendor' . DS . 'img' . DS . 'test_2.JPG');
 	}
 
-/**
- * Test downloading files with extension not explicitly set.
- *
- * @return void
- */
+	/**
+	 * Test downloading files with extension not explicitly set.
+	 *
+	 * @return void
+	 */
 	public function testFileExtensionNotSet() {
 		$response = $this->getMock('CakeResponse', array(
 			'header',
@@ -1575,11 +1577,11 @@ class CakeResponseTest extends CakeTestCase {
 		$response->file(CAKE . 'Test' . DS . 'test_app' . DS . 'Vendor' . DS . 'img' . DS . 'test_2.JPG');
 	}
 
-/**
- * A data provider for testing various ranges
- *
- * @return array
- */
+	/**
+	 * A data provider for testing various ranges
+	 *
+	 * @return array
+	 */
 	public static function rangeProvider() {
 		return array(
 			// suffix-byte-range
@@ -1599,12 +1601,12 @@ class CakeResponseTest extends CakeTestCase {
 		);
 	}
 
-/**
- * Test the various range offset types.
- *
- * @dataProvider rangeProvider
- * @return void
- */
+	/**
+	 * Test the various range offset types.
+	 *
+	 * @dataProvider rangeProvider
+	 * @return void
+	 */
 	public function testFileRangeOffsets($range, $length, $offsetResponse) {
 		$_SERVER['HTTP_RANGE'] = $range;
 		$response = $this->getMock('CakeResponse', array(
@@ -1649,11 +1651,11 @@ class CakeResponseTest extends CakeTestCase {
 		ob_get_clean();
 	}
 
-/**
- * Test fetching ranges from a file.
- *
- * @return void
- */
+	/**
+	 * Test fetching ranges from a file.
+	 *
+	 * @return void
+	 */
 	public function testFileRange() {
 		$_SERVER['HTTP_RANGE'] = 'bytes=8-25';
 		$response = $this->getMock('CakeResponse', array(
@@ -1709,11 +1711,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertNotSame(false, $result);
 	}
 
-/**
- * Provider for invalid range header values.
- *
- * @return array
- */
+	/**
+	 * Provider for invalid range header values.
+	 *
+	 * @return array
+	 */
 	public function invalidFileRangeProvider() {
 		return array(
 			// malformed range
@@ -1731,12 +1733,12 @@ class CakeResponseTest extends CakeTestCase {
 		);
 	}
 
-/**
- * Test invalid file ranges.
- *
- * @dataProvider invalidFileRangeProvider
- * @return void
- */
+	/**
+	 * Test invalid file ranges.
+	 *
+	 * @dataProvider invalidFileRangeProvider
+	 * @return void
+	 */
 	public function testFileRangeInvalid($range) {
 		$_SERVER['HTTP_RANGE'] = $range;
 		$response = $this->getMock('CakeResponse', array(
@@ -1759,11 +1761,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals($expected, $response->header());
 	}
 
-/**
- * Test backwards file range
- *
- * @return void
- */
+	/**
+	 * Test backwards file range
+	 *
+	 * @return void
+	 */
 	public function testFileRangeReversed() {
 		$_SERVER['HTTP_RANGE'] = 'bytes=30-5';
 		$response = $this->getMock('CakeResponse', array(
@@ -1786,12 +1788,12 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertEquals(416, $response->statusCode());
 	}
 
-/**
- * testFileRangeOffsetsNoDownload method
- *
- * @dataProvider rangeProvider
- * @return void
- */
+	/**
+	 * testFileRangeOffsetsNoDownload method
+	 *
+	 * @dataProvider rangeProvider
+	 * @return void
+	 */
 	public function testFileRangeOffsetsNoDownload($range, $length, $offsetResponse) {
 		$_SERVER['HTTP_RANGE'] = $range;
 		$response = $this->getMock('CakeResponse', array(
@@ -1828,11 +1830,11 @@ class CakeResponseTest extends CakeTestCase {
 		ob_get_clean();
 	}
 
-/**
- * testFileRangeNoDownload method
- *
- * @return void
- */
+	/**
+	 * testFileRangeNoDownload method
+	 *
+	 * @return void
+	 */
 	public function testFileRangeNoDownload() {
 		$_SERVER['HTTP_RANGE'] = 'bytes=8-25';
 		$response = $this->getMock('CakeResponse', array(
@@ -1880,11 +1882,11 @@ class CakeResponseTest extends CakeTestCase {
 		$this->assertNotSame(false, $result);
 	}
 
-/**
- * testFileRangeInvalidNoDownload method
- *
- * @return void
- */
+	/**
+	 * testFileRangeInvalidNoDownload method
+	 *
+	 * @return void
+	 */
 	public function testFileRangeInvalidNoDownload() {
 		$_SERVER['HTTP_RANGE'] = 'bytes=30-2';
 		$response = $this->getMock('CakeResponse', array(
@@ -1916,16 +1918,15 @@ class CakeResponseTest extends CakeTestCase {
 		$response->send();
 	}
 
-/**
- * Test the location method.
- *
- * @return void
- */
+	/**
+	 * Test the location method.
+	 *
+	 * @return void
+	 */
 	public function testLocation() {
 		$response = new CakeResponse();
 		$this->assertNull($response->location(), 'No header should be set.');
 		$this->assertNull($response->location('http://example.org'), 'Setting a location should return null');
 		$this->assertEquals('http://example.org', $response->location(), 'Reading a location should return the value.');
 	}
-
 }

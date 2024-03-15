@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DBConfigTask Test Case
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Console.Command.Task
- * @since         CakePHP(tm) v 1.3
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Console.Command.Task
+ * @since		 CakePHP(tm) v 1.3
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('ShellDispatcher', 'Console');
@@ -25,21 +26,22 @@ App::uses('DbConfigTask', 'Console/Command/Task');
 /**
  * DbConfigTest class
  *
- * @package       Cake.Test.Case.Console.Command.Task
+ * @package	   Cake.Test.Case.Console.Command.Task
  */
 class DbConfigTaskTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$out = $this->getMock('ConsoleOutput', array(), array(), '', false);
 		$in = $this->getMock('ConsoleInput', array(), array(), '', false);
 
-		$this->Task = $this->getMock('DbConfigTask',
+		$this->Task = $this->getMock(
+			'DbConfigTask',
 			array('in', 'out', 'err', 'hr', 'createFile', '_stop', '_checkUnitTest', '_verify'),
 			array($out, $out, $in)
 		);
@@ -47,21 +49,21 @@ class DbConfigTaskTest extends CakeTestCase {
 		$this->Task->path = CONFIG;
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->Task);
 	}
 
-/**
- * Test the getConfig method.
- *
- * @return void
- */
+	/**
+	 * Test the getConfig method.
+	 *
+	 * @return void
+	 */
 	public function testGetConfig() {
 		$this->Task->expects($this->any())
 			->method('in')
@@ -71,22 +73,22 @@ class DbConfigTaskTest extends CakeTestCase {
 		$this->assertEquals('test', $result);
 	}
 
-/**
- * test that initialize sets the path up.
- *
- * @return void
- */
+	/**
+	 * test that initialize sets the path up.
+	 *
+	 * @return void
+	 */
 	public function testInitialize() {
 		$this->Task->initialize();
 		$this->assertFalse(empty($this->Task->path));
 		$this->assertEquals(CONFIG, $this->Task->path);
 	}
 
-/**
- * test execute and by extension _interactive
- *
- * @return void
- */
+	/**
+	 * test execute and by extension _interactive
+	 *
+	 * @return void
+	 */
 	public function testExecuteIntoInteractive() {
 		$this->Task->initialize();
 
@@ -94,7 +96,8 @@ class DbConfigTaskTest extends CakeTestCase {
 		$in = $this->getMock('ConsoleInput', array(), array(), '', false);
 		$this->Task = $this->getMock(
 			'DbConfigTask',
-			array('in', '_stop', 'createFile', 'bake'), array($out, $out, $in)
+			array('in', '_stop', 'createFile', 'bake'),
+			array($out, $out, $in)
 		);
 
 		$this->Task->expects($this->once())->method('_stop');

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakeNumberTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.View.Helper
- * @since         CakePHP(tm) v 1.2.0.4206
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.View.Helper
+ * @since		 CakePHP(tm) v 1.2.0.4206
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('View', 'View');
@@ -22,35 +23,35 @@ App::uses('CakeNumber', 'Utility');
 /**
  * CakeNumberTest class
  *
- * @package       Cake.Test.Case.Utility
+ * @package	   Cake.Test.Case.Utility
  */
 class CakeNumberTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->Number = new CakeNumber();
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->Number);
 	}
 
-/**
- * testFormatAndCurrency method
- *
- * @return void
- */
+	/**
+	 * testFormatAndCurrency method
+	 *
+	 * @return void
+	 */
 	public function testFormat() {
 		$value = '100100100';
 
@@ -87,11 +88,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testFormatDelta method
- *
- * @return void
- */
+	/**
+	 * testFormatDelta method
+	 *
+	 * @return void
+	 */
 	public function testFormatDelta() {
 		$value = '100100100';
 
@@ -131,11 +132,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testMultibyteFormat
- *
- * @return void
- */
+	/**
+	 * testMultibyteFormat
+	 *
+	 * @return void
+	 */
 	public function testMultibyteFormat() {
 		$value = '5199100.0006';
 		$result = $this->Number->format($value, array(
@@ -179,11 +180,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test currency method.
- *
- * @return void
- */
+	/**
+	 * Test currency method.
+	 *
+	 * @return void
+	 */
 	public function testCurrency() {
 		$value = '100100100';
 
@@ -211,8 +212,10 @@ class CakeNumberTest extends CakeTestCase {
 		$expected = '£100,100,100.00';
 		$this->assertEquals($expected, $result);
 
-		$options = array('thousands' => ' ', 'wholeSymbol' => 'EUR ', 'wholePosition' => 'before',
-			'decimals' => ',', 'zero' => 'Gratuit');
+		$options = array(
+			'thousands' => ' ', 'wholeSymbol' => 'EUR ', 'wholePosition' => 'before',
+			'decimals' => ',', 'zero' => 'Gratuit'
+		);
 		$result = $this->Number->currency($value, '', $options);
 		$expected = 'EUR 100 100 100,00';
 		$this->assertEquals($expected, $result);
@@ -243,8 +246,10 @@ class CakeNumberTest extends CakeTestCase {
 		$expected = '20 cents';
 		$this->assertEquals($expected, $result);
 
-		$options = array('wholeSymbol' => '$', 'wholePosition' => 'after', 'fractionSymbol' => 'cents ',
-			'fractionPosition' => 'before');
+		$options = array(
+			'wholeSymbol' => '$', 'wholePosition' => 'after', 'fractionSymbol' => 'cents ',
+			'fractionPosition' => 'before'
+		);
 		$result = $this->Number->currency(0.2, null, $options);
 		$expected = 'cents 20';
 		$this->assertEquals($expected, $result);
@@ -257,14 +262,18 @@ class CakeNumberTest extends CakeTestCase {
 		$expected = '€0,20';
 		$this->assertEquals($expected, $result);
 
-		$options = array('wholeSymbol' => ' dollars', 'wholePosition' => 'after', 'fractionSymbol' => ' cents',
-			'fractionPosition' => 'after');
+		$options = array(
+			'wholeSymbol' => ' dollars', 'wholePosition' => 'after', 'fractionSymbol' => ' cents',
+			'fractionPosition' => 'after'
+		);
 		$result = $this->Number->currency(12, null, $options);
 		$expected = '12.00 dollars';
 		$this->assertEquals($expected, $result);
 
-		$options = array('wholeSymbol' => ' dollars', 'wholePosition' => 'after', 'fractionSymbol' => ' cents',
-			'fractionPosition' => 'after');
+		$options = array(
+			'wholeSymbol' => ' dollars', 'wholePosition' => 'after', 'fractionSymbol' => ' cents',
+			'fractionPosition' => 'after'
+		);
 		$result = $this->Number->currency(0.12, null, $options);
 		$expected = '12 cents';
 		$this->assertEquals($expected, $result);
@@ -299,12 +308,12 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test currency format with places and fraction exponents.
- * Places should only matter for non fraction values and vice versa.
- *
- * @return void
- */
+	/**
+	 * Test currency format with places and fraction exponents.
+	 * Places should only matter for non fraction values and vice versa.
+	 *
+	 * @return void
+	 */
 	public function testCurrencyWithFractionAndPlaces() {
 		$result = $this->Number->currency('1.23', 'GBP', array('places' => 3));
 		$expected = '£1.230';
@@ -318,8 +327,10 @@ class CakeNumberTest extends CakeTestCase {
 		$expected = '0p';
 		$this->assertEquals($expected, $result);
 
-		$this->Number->addFormat('BHD', array('before' => 'BD ', 'fractionSymbol' => ' fils',
-			'fractionExponent' => 3));
+		$this->Number->addFormat('BHD', array(
+			'before' => 'BD ', 'fractionSymbol' => ' fils',
+			'fractionExponent' => 3
+		));
 		$result = $this->Number->currency('1.234', 'BHD', array('places' => 2));
 		$expected = 'BD 1.23';
 		$this->assertEquals($expected, $result);
@@ -333,11 +344,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test that the default fraction handling does not cause issues.
- *
- * @return void
- */
+	/**
+	 * Test that the default fraction handling does not cause issues.
+	 *
+	 * @return void
+	 */
 	public function testCurrencyFractionSymbol() {
 		$result = $this->Number->currency(0.2, '', array(
 			'places' => 2,
@@ -346,11 +357,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals('0.2', $result);
 	}
 
-/**
- * Test adding currency format options to the number helper
- *
- * @return void
- */
+	/**
+	 * Test adding currency format options to the number helper
+	 *
+	 * @return void
+	 */
 	public function testCurrencyAddFormat() {
 		$this->Number->addFormat('NOK', array('before' => 'Kr. '));
 		$result = $this->Number->currency(1000, 'NOK');
@@ -372,11 +383,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test default currency
- *
- * @return void
- */
+	/**
+	 * Test default currency
+	 *
+	 * @return void
+	 */
 	public function testDefaultCurrency() {
 		$result = $this->Number->defaultCurrency();
 		$this->assertEquals('USD', $result);
@@ -405,11 +416,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->Number->defaultCurrency('USD');
 	}
 
-/**
- * testCurrencyPositive method
- *
- * @return void
- */
+	/**
+	 * testCurrencyPositive method
+	 *
+	 * @return void
+	 */
 	public function testCurrencyPositive() {
 		$value = '100100100';
 
@@ -438,11 +449,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testCurrencyNegative method
- *
- * @return void
- */
+	/**
+	 * testCurrencyNegative method
+	 *
+	 * @return void
+	 */
 	public function testCurrencyNegative() {
 		$value = '-100100100';
 
@@ -471,11 +482,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testCurrencyCentsPositive method
- *
- * @return void
- */
+	/**
+	 * testCurrencyCentsPositive method
+	 *
+	 * @return void
+	 */
 	public function testCurrencyCentsPositive() {
 		$value = '0.99';
 
@@ -492,11 +503,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testCurrencyCentsNegative method
- *
- * @return void
- */
+	/**
+	 * testCurrencyCentsNegative method
+	 *
+	 * @return void
+	 */
 	public function testCurrencyCentsNegative() {
 		$value = '-0.99';
 
@@ -525,11 +536,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testCurrencyZero method
- *
- * @return void
- */
+	/**
+	 * testCurrencyZero method
+	 *
+	 * @return void
+	 */
 	public function testCurrencyZero() {
 		$value = '0';
 
@@ -550,11 +561,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testCurrencyOptions method
- *
- * @return void
- */
+	/**
+	 * testCurrencyOptions method
+	 *
+	 * @return void
+	 */
 	public function testCurrencyOptions() {
 		$value = '1234567.89';
 
@@ -595,11 +606,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testToReadableSize method
- *
- * @return void
- */
+	/**
+	 * testToReadableSize method
+	 *
+	 * @return void
+	 */
 	public function testToReadableSize() {
 		$result = $this->Number->toReadableSize(0);
 		$expected = '0 Bytes';
@@ -658,11 +669,11 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * test toReadableSize() with locales
- *
- * @return void
- */
+	/**
+	 * test toReadableSize() with locales
+	 *
+	 * @return void
+	 */
 	public function testReadableSizeLocalized() {
 		$restore = setlocale(LC_NUMERIC, 0);
 
@@ -676,11 +687,11 @@ class CakeNumberTest extends CakeTestCase {
 		setlocale(LC_NUMERIC, $restore);
 	}
 
-/**
- * test precision() with locales
- *
- * @return void
- */
+	/**
+	 * test precision() with locales
+	 *
+	 * @return void
+	 */
 	public function testPrecisionLocalized() {
 		$restore = setlocale(LC_NUMERIC, 0);
 
@@ -691,11 +702,11 @@ class CakeNumberTest extends CakeTestCase {
 		setlocale(LC_NUMERIC, $restore);
 	}
 
-/**
- * testToPercentage method
- *
- * @return void
- */
+	/**
+	 * testToPercentage method
+	 *
+	 * @return void
+	 */
 	public function testToPercentage() {
 		$result = $this->Number->toPercentage(45, 0);
 		$expected = '45%';
@@ -738,32 +749,32 @@ class CakeNumberTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testFromReadableSize
- *
- * @dataProvider filesizes
- * @return void
- */
+	/**
+	 * testFromReadableSize
+	 *
+	 * @dataProvider filesizes
+	 * @return void
+	 */
 	public function testFromReadableSize($params, $expected) {
 		$result = $this->Number->fromReadableSize($params['size'], $params['default']);
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testFromReadableSize
- *
- * @expectedException CakeException
- * @return void
- */
+	/**
+	 * testFromReadableSize
+	 *
+	 * @expectedException CakeException
+	 * @return void
+	 */
 	public function testFromReadableSizeException() {
 		$this->Number->fromReadableSize('bogus', false);
 	}
 
-/**
- * filesizes dataprovider
- *
- * @return array
- */
+	/**
+	 * filesizes dataprovider
+	 *
+	 * @return array
+	 */
 	public function filesizes() {
 		return array(
 			array(array('size' => '512B', 'default' => false), 512),
@@ -785,5 +796,4 @@ class CakeNumberTest extends CakeTestCase {
 			array(array('size' => '2VB', 'default' => 'Unknown type'), 'Unknown type')
 		);
 	}
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Registry of loaded log engines
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Log
- * @since         CakePHP(tm) v 2.2
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Log
+ * @since		 CakePHP(tm) v 2.2
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('ObjectCollection', 'Utility');
@@ -21,18 +22,18 @@ App::uses('ObjectCollection', 'Utility');
 /**
  * Registry of loaded log engines
  *
- * @package       Cake.Log
+ * @package	   Cake.Log
  */
 class LogEngineCollection extends ObjectCollection {
 
-/**
- * Loads/constructs a Log engine.
- *
- * @param string $name instance identifier
- * @param array $options Setting for the Log Engine
- * @return BaseLog BaseLog engine instance
- * @throws CakeLogException when logger class does not implement a write method
- */
+	/**
+	 * Loads/constructs a Log engine.
+	 *
+	 * @param string $name instance identifier
+	 * @param array $options Setting for the Log Engine
+	 * @return BaseLog BaseLog engine instance
+	 * @throws CakeLogException when logger class does not implement a write method
+	 */
 	public function load($name, $options = array()) {
 		$enable = isset($options['enabled']) ? $options['enabled'] : true;
 		$loggerName = $options['engine'];
@@ -51,14 +52,14 @@ class LogEngineCollection extends ObjectCollection {
 		return $logger;
 	}
 
-/**
- * Attempts to import a logger class from the various paths it could be on.
- * Checks that the logger class implements a write method as well.
- *
- * @param string $loggerName the plugin.className of the logger class you want to build.
- * @return mixed boolean false on any failures, string of classname to use if search was successful.
- * @throws CakeLogException
- */
+	/**
+	 * Attempts to import a logger class from the various paths it could be on.
+	 * Checks that the logger class implements a write method as well.
+	 *
+	 * @param string $loggerName the plugin.className of the logger class you want to build.
+	 * @return mixed boolean false on any failures, string of classname to use if search was successful.
+	 * @throws CakeLogException
+	 */
 	protected static function _getLogger($loggerName) {
 		list($plugin, $loggerName) = pluginSplit($loggerName, true);
 		if (substr($loggerName, -3) !== 'Log') {
@@ -70,5 +71,4 @@ class LogEngineCollection extends ObjectCollection {
 		}
 		return $loggerName;
 	}
-
 }

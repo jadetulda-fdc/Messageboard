@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakeRequest Test case file.
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Routing.Route
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Routing.Route
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('RedirectRoute', 'Routing/Route');
@@ -23,26 +24,26 @@ App::uses('Router', 'Routing');
 /**
  * test case for RedirectRoute
  *
- * @package       Cake.Test.Case.Routing.Route
+ * @package	   Cake.Test.Case.Routing.Route
  */
 class RedirectRouteTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		Configure::write('Routing', array('admin' => null, 'prefixes' => array()));
 		Router::reload();
 	}
 
-/**
- * test the parsing of routes.
- *
- * @return void
- */
+	/**
+	 * test the parsing of routes.
+	 *
+	 * @return void
+	 */
 	public function testParsing() {
 		$route = new RedirectRoute('/home', array('controller' => 'posts'));
 		$route->stop = false;
@@ -118,5 +119,4 @@ class RedirectRouteTest extends CakeTestCase {
 		$header = $route->response->header();
 		$this->assertEquals(Router::url('/nl/preferred_controllers', true), $header['Location']);
 	}
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scaffold.
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Controller
- * @since         Cake v 0.10.0.1076
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Controller
+ * @since		 Cake v 0.10.0.1076
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
@@ -31,78 +32,78 @@
  */
 class Scaffold {
 
-/**
- * Controller object
- *
- * @var Controller
- */
+	/**
+	 * Controller object
+	 *
+	 * @var Controller
+	 */
 	public $controller = null;
 
-/**
- * Name of the controller to scaffold
- *
- * @var string
- */
+	/**
+	 * Name of the controller to scaffold
+	 *
+	 * @var string
+	 */
 	public $name = null;
 
-/**
- * Name of current model this view context is attached to
- *
- * @var string
- */
+	/**
+	 * Name of current model this view context is attached to
+	 *
+	 * @var string
+	 */
 	public $model = null;
 
-/**
- * Path to View.
- *
- * @var string
- */
+	/**
+	 * Path to View.
+	 *
+	 * @var string
+	 */
 	public $viewPath;
 
-/**
- * Name of layout to use with this View.
- *
- * @var string
- */
+	/**
+	 * Name of layout to use with this View.
+	 *
+	 * @var string
+	 */
 	public $layout = 'default';
 
-/**
- * Request object
- *
- * @var CakeRequest
- */
+	/**
+	 * Request object
+	 *
+	 * @var CakeRequest
+	 */
 	public $request;
 
-/**
- * Valid session.
- *
- * @var bool
- */
+	/**
+	 * Valid session.
+	 *
+	 * @var bool
+	 */
 	protected $_validSession = null;
 
-/**
- * List of variables to collect from the associated controller
- *
- * @var array
- */
+	/**
+	 * List of variables to collect from the associated controller
+	 *
+	 * @var array
+	 */
 	protected $_passedVars = array(
 		'layout', 'name', 'viewPath', 'request'
 	);
 
-/**
- * Title HTML element for current scaffolded view
- *
- * @var string
- */
+	/**
+	 * Title HTML element for current scaffolded view
+	 *
+	 * @var string
+	 */
 	public $scaffoldTitle = null;
 
-/**
- * Construct and set up given controller with given parameters.
- *
- * @param Controller $controller Controller to scaffold
- * @param CakeRequest $request Request parameters.
- * @throws MissingModelException
- */
+	/**
+	 * Construct and set up given controller with given parameters.
+	 *
+	 * @param Controller $controller Controller to scaffold
+	 * @param CakeRequest $request Request parameters.
+	 * @throws MissingModelException
+	 */
 	public function __construct(Controller $controller, CakeRequest $request) {
 		$this->controller = $controller;
 
@@ -136,8 +137,15 @@ class Scaffold {
 		$associations = $this->_associations();
 
 		$this->controller->set(compact(
-			'modelClass', 'primaryKey', 'displayField', 'singularVar', 'pluralVar',
-			'singularHumanName', 'pluralHumanName', 'scaffoldFields', 'associations'
+			'modelClass',
+			'primaryKey',
+			'displayField',
+			'singularVar',
+			'pluralVar',
+			'singularHumanName',
+			'pluralHumanName',
+			'scaffoldFields',
+			'associations'
 		));
 		$this->controller->set('title_for_layout', $title);
 
@@ -152,13 +160,13 @@ class Scaffold {
 		$this->_scaffold($request);
 	}
 
-/**
- * Renders a view action of scaffolded model.
- *
- * @param CakeRequest $request Request Object for scaffolding
- * @return mixed A rendered view of a row from Models database table
- * @throws NotFoundException
- */
+	/**
+	 * Renders a view action of scaffolded model.
+	 *
+	 * @param CakeRequest $request Request Object for scaffolding
+	 * @return mixed A rendered view of a row from Models database table
+	 * @throws NotFoundException
+	 */
 	protected function _scaffoldView(CakeRequest $request) {
 		if ($this->controller->beforeScaffold('view')) {
 			if (isset($request->params['pass'][0])) {
@@ -170,7 +178,8 @@ class Scaffold {
 			$this->ScaffoldModel->recursive = 1;
 			$this->controller->request->data = $this->ScaffoldModel->read();
 			$this->controller->set(
-				Inflector::variable($this->controller->modelClass), $this->request->data
+				Inflector::variable($this->controller->modelClass),
+				$this->request->data
 			);
 			$this->controller->render($this->request['action'], $this->layout);
 		} elseif ($this->controller->scaffoldError('view') === false) {
@@ -178,17 +187,18 @@ class Scaffold {
 		}
 	}
 
-/**
- * Renders index action of scaffolded model.
- *
- * @param array $params Parameters for scaffolding
- * @return mixed A rendered view listing rows from Models database table
- */
+	/**
+	 * Renders index action of scaffolded model.
+	 *
+	 * @param array $params Parameters for scaffolding
+	 * @return mixed A rendered view listing rows from Models database table
+	 */
 	protected function _scaffoldIndex($params) {
 		if ($this->controller->beforeScaffold('index')) {
 			$this->ScaffoldModel->recursive = 0;
 			$this->controller->set(
-				Inflector::variable($this->controller->name), $this->controller->paginate()
+				Inflector::variable($this->controller->name),
+				$this->controller->paginate()
 			);
 			$this->controller->render($this->request['action'], $this->layout);
 		} elseif ($this->controller->scaffoldError('index') === false) {
@@ -196,12 +206,12 @@ class Scaffold {
 		}
 	}
 
-/**
- * Renders an add or edit action for scaffolded model.
- *
- * @param string $action Action (add or edit)
- * @return void
- */
+	/**
+	 * Renders an add or edit action for scaffolded model.
+	 *
+	 * @param string $action Action (add or edit)
+	 * @return void
+	 */
 	protected function _scaffoldForm($action = 'edit') {
 		$this->controller->viewVars['scaffoldFields'] = array_merge(
 			$this->controller->viewVars['scaffoldFields'],
@@ -210,14 +220,14 @@ class Scaffold {
 		$this->controller->render($action, $this->layout);
 	}
 
-/**
- * Saves or updates the scaffolded model.
- *
- * @param CakeRequest $request Request Object for scaffolding
- * @param string $action add or edit
- * @return mixed Success on save/update, add/edit form if data is empty or error if save or update fails
- * @throws NotFoundException
- */
+	/**
+	 * Saves or updates the scaffolded model.
+	 *
+	 * @param CakeRequest $request Request Object for scaffolding
+	 * @param string $action add or edit
+	 * @return mixed Success on save/update, add/edit form if data is empty or error if save or update fails
+	 * @throws NotFoundException
+	 */
 	protected function _scaffoldSave(CakeRequest $request, $action = 'edit') {
 		$formAction = 'edit';
 		$success = __d('cake', 'updated');
@@ -243,7 +253,8 @@ class Scaffold {
 
 				if ($this->ScaffoldModel->save($request->data)) {
 					if ($this->controller->afterScaffoldSave($action)) {
-						$message = __d('cake',
+						$message = __d(
+							'cake',
 							'The %1$s has been %2$s',
 							Inflector::humanize($this->modelKey),
 							$success
@@ -282,14 +293,14 @@ class Scaffold {
 		}
 	}
 
-/**
- * Performs a delete on given scaffolded Model.
- *
- * @param CakeRequest $request Request for scaffolding
- * @return mixed Success on delete, error if delete fails
- * @throws MethodNotAllowedException When HTTP method is not a DELETE
- * @throws NotFoundException When id being deleted does not exist.
- */
+	/**
+	 * Performs a delete on given scaffolded Model.
+	 *
+	 * @param CakeRequest $request Request for scaffolding
+	 * @return mixed Success on delete, error if delete fails
+	 * @throws MethodNotAllowedException When HTTP method is not a DELETE
+	 * @throws NotFoundException When id being deleted does not exist.
+	 */
 	protected function _scaffoldDelete(CakeRequest $request) {
 		if ($this->controller->beforeScaffold('delete')) {
 			if (!$request->is('post')) {
@@ -307,7 +318,8 @@ class Scaffold {
 				$message = __d('cake', 'The %1$s with id: %2$s has been deleted.', Inflector::humanize($this->modelClass), $id);
 				return $this->_sendMessage($message, 'success');
 			}
-			$message = __d('cake',
+			$message = __d(
+				'cake',
 				'There was an error deleting the %1$s with id: %2$s',
 				Inflector::humanize($this->modelClass),
 				$id
@@ -318,14 +330,14 @@ class Scaffold {
 		}
 	}
 
-/**
- * Sends a message to the user. Either uses Sessions or flash messages depending
- * on the availability of a session
- *
- * @param string $message Message to display
- * @param string $element Flash template to use
- * @return CakeResponse|null
- */
+	/**
+	 * Sends a message to the user. Either uses Sessions or flash messages depending
+	 * on the availability of a session
+	 *
+	 * @param string $message Message to display
+	 * @param string $element Flash template to use
+	 * @return CakeResponse|null
+	 */
 	protected function _sendMessage($message, $element = 'default') {
 		if ($this->_validSession) {
 			$this->controller->Flash->set($message, compact('element'));
@@ -334,25 +346,25 @@ class Scaffold {
 		$this->controller->flash($message, $this->redirect);
 	}
 
-/**
- * Show a scaffold error
- *
- * @return mixed A rendered view showing the error
- */
+	/**
+	 * Show a scaffold error
+	 *
+	 * @return mixed A rendered view showing the error
+	 */
 	protected function _scaffoldError() {
 		return $this->controller->render('error', $this->layout);
 	}
 
-/**
- * When methods are now present in a controller
- * scaffoldView is used to call default Scaffold methods if:
- * `public $scaffold;` is placed in the controller's class definition.
- *
- * @param CakeRequest $request Request object for scaffolding
- * @return void
- * @throws MissingActionException When methods are not scaffolded.
- * @throws MissingDatabaseException When the database connection is undefined.
- */
+	/**
+	 * When methods are now present in a controller
+	 * scaffoldView is used to call default Scaffold methods if:
+	 * `public $scaffold;` is placed in the controller's class definition.
+	 *
+	 * @param CakeRequest $request Request object for scaffolding
+	 * @return void
+	 * @throws MissingActionException When methods are not scaffolded.
+	 * @throws MissingDatabaseException When the database connection is undefined.
+	 */
 	protected function _scaffold(CakeRequest $request) {
 		$db = ConnectionManager::getDataSource($this->ScaffoldModel->useDbConfig);
 		$prefixes = Configure::read('Routing.prefixes');
@@ -411,11 +423,11 @@ class Scaffold {
 		}
 	}
 
-/**
- * Returns associations for controllers models.
- *
- * @return array Associations for model
- */
+	/**
+	 * Returns associations for controllers models.
+	 *
+	 * @return array Associations for model
+	 */
 	protected function _associations() {
 		$keys = array('belongsTo', 'hasOne', 'hasMany', 'hasAndBelongsToMany');
 		$associations = array();
@@ -447,5 +459,4 @@ class Scaffold {
 		}
 		return $associations;
 	}
-
 }

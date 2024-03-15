@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,10 +8,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         CakePHP(tm) v 2.2
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @since		 CakePHP(tm) v 2.2
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('DispatcherFilter', 'Routing');
@@ -23,20 +24,20 @@ App::uses('DispatcherFilter', 'Routing');
  */
 class CacheDispatcher extends DispatcherFilter {
 
-/**
- * Default priority for all methods in this filter
- * This filter should run before the request gets parsed by router
- *
- * @var int
- */
+	/**
+	 * Default priority for all methods in this filter
+	 * This filter should run before the request gets parsed by router
+	 *
+	 * @var int
+	 */
 	public $priority = 9;
 
-/**
- * Checks whether the response was cached and set the body accordingly.
- *
- * @param CakeEvent $event containing the request and response object
- * @return CakeResponse with cached content if found, null otherwise
- */
+	/**
+	 * Checks whether the response was cached and set the body accordingly.
+	 *
+	 * @param CakeEvent $event containing the request and response object
+	 * @return CakeResponse with cached content if found, null otherwise
+	 */
 	public function beforeDispatch(CakeEvent $event) {
 		if (Configure::read('Cache.check') !== true) {
 			return null;
@@ -69,5 +70,4 @@ class CacheDispatcher extends DispatcherFilter {
 			}
 		}
 	}
-
 }

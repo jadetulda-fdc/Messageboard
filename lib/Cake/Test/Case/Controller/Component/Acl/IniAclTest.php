@@ -1,4 +1,5 @@
 <?php
+
 /**
  * IniAclTest file.
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Controller.Component.Acl
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Controller.Component.Acl
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('IniAcl', 'Controller/Component/Acl');
@@ -21,15 +22,15 @@ App::uses('IniAcl', 'Controller/Component/Acl');
 /**
  * Test case for the IniAcl implementation
  *
- * @package       Cake.Test.Case.Controller.Component.Acl
+ * @package	   Cake.Test.Case.Controller.Component.Acl
  */
 class IniAclTest extends CakeTestCase {
 
-/**
- * testIniCheck method
- *
- * @return void
- */
+	/**
+	 * testIniCheck method
+	 *
+	 * @return void
+	 */
 	public function testCheck() {
 		$iniFile = CAKE . 'Test' . DS . 'test_app' . DS . 'Config' . DS . 'acl.ini.php';
 
@@ -48,11 +49,11 @@ class IniAclTest extends CakeTestCase {
 		$this->assertFalse($Ini->check('nobody', 'comments'));
 	}
 
-/**
- * check should accept a user array.
- *
- * @return void
- */
+	/**
+	 * check should accept a user array.
+	 *
+	 * @return void
+	 */
 	public function testCheckArray() {
 		$iniFile = CAKE . 'Test' . DS . 'test_app' . DS . 'Config' . DS . 'acl.ini.php';
 

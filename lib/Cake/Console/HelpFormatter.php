@@ -1,4 +1,5 @@
 <?php
+
 /**
  * HelpFormatter
  *
@@ -9,9 +10,9 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('CakeText', 'Utility');
@@ -25,40 +26,40 @@ App::uses('CakeText', 'Utility');
  *
  * Xml output is useful for integration with other tools like IDE's or other build tools.
  *
- * @package       Cake.Console
+ * @package	   Cake.Console
  * @since  CakePHP(tm) v 2.0
  */
 class HelpFormatter {
 
-/**
- * The maximum number of arguments shown when generating usage.
- *
- * @var int
- */
+	/**
+	 * The maximum number of arguments shown when generating usage.
+	 *
+	 * @var int
+	 */
 	protected $_maxArgs = 6;
 
-/**
- * The maximum number of options shown when generating usage.
- *
- * @var int
- */
+	/**
+	 * The maximum number of options shown when generating usage.
+	 *
+	 * @var int
+	 */
 	protected $_maxOptions = 6;
 
-/**
- * Build the help formatter for an OptionParser
- *
- * @param ConsoleOptionParser $parser The option parser help is being generated for.
- */
+	/**
+	 * Build the help formatter for an OptionParser
+	 *
+	 * @param ConsoleOptionParser $parser The option parser help is being generated for.
+	 */
 	public function __construct(ConsoleOptionParser $parser) {
 		$this->_parser = $parser;
 	}
 
-/**
- * Get the help as formatted text suitable for output on the command line.
- *
- * @param int $width The width of the help output.
- * @return string
- */
+	/**
+	 * Get the help as formatted text suitable for output on the command line.
+	 *
+	 * @param int $width The width of the help output.
+	 * @return string
+	 */
 	public function text($width = 72) {
 		$parser = $this->_parser;
 		$out = array();
@@ -124,13 +125,13 @@ class HelpFormatter {
 		return implode("\n", $out);
 	}
 
-/**
- * Generate the usage for a shell based on its arguments and options.
- * Usage strings favor short options over the long ones. and optional args will
- * be indicated with []
- *
- * @return string
- */
+	/**
+	 * Generate the usage for a shell based on its arguments and options.
+	 * Usage strings favor short options over the long ones. and optional args will
+	 * be indicated with []
+	 *
+	 * @return string
+	 */
 	protected function _generateUsage() {
 		$usage = array('cake ' . $this->_parser->command());
 		$subcommands = $this->_parser->subcommands();
@@ -156,12 +157,12 @@ class HelpFormatter {
 		return implode(' ', $usage);
 	}
 
-/**
- * Iterate over a collection and find the longest named thing.
- *
- * @param array $collection The collection to find a max length of.
- * @return int
- */
+	/**
+	 * Iterate over a collection and find the longest named thing.
+	 *
+	 * @param array $collection The collection to find a max length of.
+	 * @return int
+	 */
 	protected function _getMaxLength($collection) {
 		$max = 0;
 		foreach ($collection as $item) {
@@ -170,12 +171,12 @@ class HelpFormatter {
 		return $max;
 	}
 
-/**
- * Get the help as an xml string.
- *
- * @param bool $string Return the SimpleXml object or a string. Defaults to true.
- * @return string|SimpleXmlElement See $string
- */
+	/**
+	 * Get the help as an xml string.
+	 *
+	 * @param bool $string Return the SimpleXml object or a string. Defaults to true.
+	 * @return string|SimpleXmlElement See $string
+	 */
 	public function xml($string = true) {
 		$parser = $this->_parser;
 		$xml = new SimpleXmlElement('<shell></shell>');
@@ -197,5 +198,4 @@ class HelpFormatter {
 		$xml->addChild('epilog', $parser->epilog());
 		return $string ? $xml->asXml() : $xml;
 	}
-
 }

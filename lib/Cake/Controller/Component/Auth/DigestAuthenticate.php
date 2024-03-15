@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,9 +8,9 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('BasicAuthenticate', 'Controller/Component/Auth');
@@ -50,29 +51,29 @@ App::uses('BasicAuthenticate', 'Controller/Component/Auth');
  * login methods. For example `User.digest_pass` could be used for a digest password, while `User.password` would
  * store the password hash for use with other methods like Basic or Form.
  *
- * @package       Cake.Controller.Component.Auth
+ * @package	   Cake.Controller.Component.Auth
  * @since 2.0
  */
 class DigestAuthenticate extends BasicAuthenticate {
 
-/**
- * Settings for this object.
- *
- * - `fields` The fields to use to identify a user by.
- * - `userModel` The model name of the User, defaults to User.
- * - `userFields` Array of fields to retrieve from User model, null to retrieve all. Defaults to null.
- * - `scope` Additional conditions to use when looking up and authenticating users,
- *    i.e. `array('User.is_active' => 1).`
- * - `recursive` The value of the recursive key passed to find(). Defaults to 0.
- * - `contain` Extra models to contain and store in session.
- * - `realm` The realm authentication is for, Defaults to the servername.
- * - `nonce` A nonce used for authentication. Defaults to `uniqid()`.
- * - `qop` Defaults to auth, no other values are supported at this time.
- * - `opaque` A string that must be returned unchanged by clients.
- *    Defaults to `md5($settings['realm'])`
- *
- * @var array
- */
+	/**
+	 * Settings for this object.
+	 *
+	 * - `fields` The fields to use to identify a user by.
+	 * - `userModel` The model name of the User, defaults to User.
+	 * - `userFields` Array of fields to retrieve from User model, null to retrieve all. Defaults to null.
+	 * - `scope` Additional conditions to use when looking up and authenticating users,
+	 *	i.e. `array('User.is_active' => 1).`
+	 * - `recursive` The value of the recursive key passed to find(). Defaults to 0.
+	 * - `contain` Extra models to contain and store in session.
+	 * - `realm` The realm authentication is for, Defaults to the servername.
+	 * - `nonce` A nonce used for authentication. Defaults to `uniqid()`.
+	 * - `qop` Defaults to auth, no other values are supported at this time.
+	 * - `opaque` A string that must be returned unchanged by clients.
+	 *	Defaults to `md5($settings['realm'])`
+	 *
+	 * @var array
+	 */
 	public $settings = array(
 		'fields' => array(
 			'username' => 'username',
@@ -90,12 +91,12 @@ class DigestAuthenticate extends BasicAuthenticate {
 		'passwordHasher' => 'Simple',
 	);
 
-/**
- * Constructor, completes configuration for digest authentication.
- *
- * @param ComponentCollection $collection The Component collection used on this request.
- * @param array $settings An array of settings.
- */
+	/**
+	 * Constructor, completes configuration for digest authentication.
+	 *
+	 * @param ComponentCollection $collection The Component collection used on this request.
+	 * @param array $settings An array of settings.
+	 */
 	public function __construct(ComponentCollection $collection, $settings) {
 		parent::__construct($collection, $settings);
 		if (empty($this->settings['nonce'])) {
@@ -106,12 +107,12 @@ class DigestAuthenticate extends BasicAuthenticate {
 		}
 	}
 
-/**
- * Get a user based on information in the request. Used by cookie-less auth for stateless clients.
- *
- * @param CakeRequest $request Request object.
- * @return mixed Either false or an array of user information
- */
+	/**
+	 * Get a user based on information in the request. Used by cookie-less auth for stateless clients.
+	 *
+	 * @param CakeRequest $request Request object.
+	 * @return mixed Either false or an array of user information
+	 */
 	public function getUser(CakeRequest $request) {
 		$digest = $this->_getDigest();
 		if (empty($digest)) {
@@ -133,11 +134,11 @@ class DigestAuthenticate extends BasicAuthenticate {
 		return false;
 	}
 
-/**
- * Gets the digest headers from the request/environment.
- *
- * @return array|bool|null Array of digest information.
- */
+	/**
+	 * Gets the digest headers from the request/environment.
+	 *
+	 * @return array|bool|null Array of digest information.
+	 */
 	protected function _getDigest() {
 		$digest = env('PHP_AUTH_DIGEST');
 		if (empty($digest) && function_exists('apache_request_headers')) {
@@ -152,12 +153,12 @@ class DigestAuthenticate extends BasicAuthenticate {
 		return $this->parseAuthData($digest);
 	}
 
-/**
- * Parse the digest authentication headers and split them up.
- *
- * @param string $digest The raw digest authentication headers.
- * @return array|null An array of digest authentication headers
- */
+	/**
+	 * Parse the digest authentication headers and split them up.
+	 *
+	 * @param string $digest The raw digest authentication headers.
+	 * @return array|null An array of digest authentication headers
+	 */
 	public function parseAuthData($digest) {
 		if (substr($digest, 0, 7) === 'Digest ') {
 			$digest = substr($digest, 7);
@@ -177,38 +178,38 @@ class DigestAuthenticate extends BasicAuthenticate {
 		return null;
 	}
 
-/**
- * Generate the response hash for a given digest array.
- *
- * @param array $digest Digest information containing data from DigestAuthenticate::parseAuthData().
- * @param string $password The digest hash password generated with DigestAuthenticate::password()
- * @return string Response hash
- */
+	/**
+	 * Generate the response hash for a given digest array.
+	 *
+	 * @param array $digest Digest information containing data from DigestAuthenticate::parseAuthData().
+	 * @param string $password The digest hash password generated with DigestAuthenticate::password()
+	 * @return string Response hash
+	 */
 	public function generateResponseHash($digest, $password) {
 		return md5(
 			$password .
-			':' . $digest['nonce'] . ':' . $digest['nc'] . ':' . $digest['cnonce'] . ':' . $digest['qop'] . ':' .
-			md5(env('REQUEST_METHOD') . ':' . $digest['uri'])
+				':' . $digest['nonce'] . ':' . $digest['nc'] . ':' . $digest['cnonce'] . ':' . $digest['qop'] . ':' .
+				md5(env('REQUEST_METHOD') . ':' . $digest['uri'])
 		);
 	}
 
-/**
- * Creates an auth digest password hash to store
- *
- * @param string $username The username to use in the digest hash.
- * @param string $password The unhashed password to make a digest hash for.
- * @param string $realm The realm the password is for.
- * @return string the hashed password that can later be used with Digest authentication.
- */
+	/**
+	 * Creates an auth digest password hash to store
+	 *
+	 * @param string $username The username to use in the digest hash.
+	 * @param string $password The unhashed password to make a digest hash for.
+	 * @param string $realm The realm the password is for.
+	 * @return string the hashed password that can later be used with Digest authentication.
+	 */
 	public static function password($username, $password, $realm) {
 		return md5($username . ':' . $realm . ':' . $password);
 	}
 
-/**
- * Generate the login headers
- *
- * @return string Headers for logging in.
- */
+	/**
+	 * Generate the login headers
+	 *
+	 * @return string Headers for logging in.
+	 */
 	public function loginHeaders() {
 		$options = array(
 			'realm' => $this->settings['realm'],
@@ -222,5 +223,4 @@ class DigestAuthenticate extends BasicAuthenticate {
 		}
 		return 'WWW-Authenticate: Digest ' . implode(',', $opts);
 	}
-
 }

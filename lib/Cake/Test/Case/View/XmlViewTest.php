@@ -1,4 +1,5 @@
 <?php
+
 /**
  * XmlViewTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.View
- * @since         CakePHP(tm) v 2.1.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.View
+ * @since		 CakePHP(tm) v 2.1.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Controller', 'Controller');
@@ -24,7 +25,7 @@ App::uses('XmlView', 'View');
 /**
  * XmlViewTest
  *
- * @package       Cake.Test.Case.View
+ * @package	   Cake.Test.Case.View
  */
 class XmlViewTest extends CakeTestCase {
 
@@ -33,11 +34,11 @@ class XmlViewTest extends CakeTestCase {
 		Configure::write('debug', 0);
 	}
 
-/**
- * testRenderWithoutView method
- *
- * @return void
- */
+	/**
+	 * testRenderWithoutView method
+	 *
+	 * @return void
+	 */
 	public function testRenderWithoutView() {
 		$Request = new CakeRequest();
 		$Response = new CakeResponse();
@@ -77,11 +78,11 @@ class XmlViewTest extends CakeTestCase {
 		$this->assertSame($expected, $output);
 	}
 
-/**
- * Test that rendering with _serialize does not load helpers
- *
- * @return void
- */
+	/**
+	 * Test that rendering with _serialize does not load helpers
+	 *
+	 * @return void
+	 */
 	public function testRenderSerializeNoHelpers() {
 		$Request = new CakeRequest();
 		$Response = new CakeResponse();
@@ -96,11 +97,11 @@ class XmlViewTest extends CakeTestCase {
 		$this->assertFalse(isset($View->Html), 'No helper loaded.');
 	}
 
-/**
- * Test that rendering with _serialize respects XML options.
- *
- * @return void
- */
+	/**
+	 * Test that rendering with _serialize respects XML options.
+	 *
+	 * @return void
+	 */
 	public function testRenderSerializeWithOptions() {
 		$Request = new CakeRequest();
 		$Response = new CakeResponse();
@@ -130,11 +131,11 @@ class XmlViewTest extends CakeTestCase {
 		$this->assertSame($expected, $result);
 	}
 
-/**
- * Test that rendering with _serialize can work with string setting.
- *
- * @return void
- */
+	/**
+	 * Test that rendering with _serialize can work with string setting.
+	 *
+	 * @return void
+	 */
 	public function testRenderSerializeWithString() {
 		$Request = new CakeRequest();
 		$Response = new CakeResponse();
@@ -166,11 +167,11 @@ class XmlViewTest extends CakeTestCase {
 		$this->assertSame($expected, $result);
 	}
 
-/**
- * Test render with an array in _serialize
- *
- * @return void
- */
+	/**
+	 * Test render with an array in _serialize
+	 *
+	 * @return void
+	 */
 	public function testRenderWithoutViewMultiple() {
 		$Request = new CakeRequest();
 		$Response = new CakeResponse();
@@ -195,11 +196,11 @@ class XmlViewTest extends CakeTestCase {
 		$this->assertSame(Xml::build($expected)->asXML(), $output);
 	}
 
-/**
- * Test render with an array in _serialize and alias
- *
- * @return void
- */
+	/**
+	 * Test render with an array in _serialize and alias
+	 *
+	 * @return void
+	 */
 	public function testRenderWithoutViewMultipleAndAlias() {
 		$Request = new CakeRequest();
 		$Response = new CakeResponse();
@@ -224,11 +225,11 @@ class XmlViewTest extends CakeTestCase {
 		$this->assertSame(Xml::build($expected)->asXML(), $output);
 	}
 
-/**
- * testRenderWithView method
- *
- * @return void
- */
+	/**
+	 * testRenderWithView method
+	 *
+	 * @return void
+	 */
 	public function testRenderWithView() {
 		App::build(array('View' => array(
 			CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS
@@ -262,5 +263,4 @@ class XmlViewTest extends CakeTestCase {
 		$this->assertSame('application/xml', $Response->type());
 		$this->assertInstanceOf('HelperCollection', $View->Helpers);
 	}
-
 }

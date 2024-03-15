@@ -2,9 +2,9 @@
 ;/**
 ; * ACL Configuration
 ; *
-; * @link          https://cakephp.org CakePHP(tm) Project
-; * @package       app.Config
-; * @since         CakePHP(tm) v 0.10.0.1076
+; * @link https://cakephp.org CakePHP(tm) Project
+; * @package app.Config
+; * @since CakePHP(tm) v 0.10.0.1076
 ; */
 
 ; acl.ini.php - CakePHP ACL Configuration

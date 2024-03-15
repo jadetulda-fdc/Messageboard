@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ControllerAuthorizeTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Controller.Component.Auth
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Controller.Component.Auth
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Controller', 'Controller');
@@ -24,15 +25,15 @@ App::uses('CakeResponse', 'Network');
 /**
  * ControllerAuthorizeTest
  *
- * @package       Cake.Test.Case.Controller.Component.Auth
+ * @package	   Cake.Test.Case.Controller.Component.Auth
  */
 class ControllerAuthorizeTest extends CakeTestCase {
 
-/**
- * setup
- *
- * @return void
- */
+	/**
+	 * setup
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->controller = $this->getMock('Controller', array('isAuthorized'), array(), '', false);
@@ -44,13 +45,13 @@ class ControllerAuthorizeTest extends CakeTestCase {
 		$this->auth = new ControllerAuthorize($this->components);
 	}
 
-/**
- * testControllerTypeError
- *
- * @expectedException PHPUnit_Framework_Error
- * @return void
- * @throws PHPUnit_Framework_Error
- */
+	/**
+	 * testControllerTypeError
+	 *
+	 * @expectedException PHPUnit_Framework_Error
+	 * @return void
+	 * @throws PHPUnit_Framework_Error
+	 */
 	public function testControllerTypeError() {
 		try {
 			$this->auth->controller(new StdClass());
@@ -60,32 +61,32 @@ class ControllerAuthorizeTest extends CakeTestCase {
 		}
 	}
 
-/**
- * testControllerErrorOnMissingMethod
- *
- * @expectedException CakeException
- * @return void
- */
+	/**
+	 * testControllerErrorOnMissingMethod
+	 *
+	 * @expectedException CakeException
+	 * @return void
+	 */
 	public function testControllerErrorOnMissingMethod() {
 		$this->auth->controller(new Controller());
 	}
 
-/**
- * test failure
- *
- * @return void
- */
+	/**
+	 * test failure
+	 *
+	 * @return void
+	 */
 	public function testAuthorizeFailure() {
 		$user = array();
 		$request = new CakeRequest('/posts/index', false);
 		$this->assertFalse($this->auth->authorize($user, $request));
 	}
 
-/**
- * test isAuthorized working.
- *
- * @return void
- */
+	/**
+	 * test isAuthorized working.
+	 *
+	 * @return void
+	 */
 	public function testAuthorizeSuccess() {
 		$user = array('User' => array('username' => 'mark'));
 		$request = new CakeRequest('/posts/index', false);
@@ -97,5 +98,4 @@ class ControllerAuthorizeTest extends CakeTestCase {
 
 		$this->assertTrue($this->auth->authorize($user, $request));
 	}
-
 }

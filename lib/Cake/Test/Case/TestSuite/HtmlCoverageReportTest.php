@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test case for HtmlCoverageReport
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.TestSuite
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.TestSuite
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('HtmlCoverageReport', 'TestSuite/Coverage');
@@ -24,15 +25,15 @@ App::uses('CakeBaseReporter', 'TestSuite/Reporter');
 /**
  * HtmlCoverageReportTest
  *
- * @package       Cake.Test.Case.TestSuite
+ * @package	   Cake.Test.Case.TestSuite
  */
 class HtmlCoverageReportTest extends CakeTestCase {
 
-/**
- * setUp
- *
- * @return void
- */
+	/**
+	 * setUp
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		App::build(array(
@@ -45,11 +46,11 @@ class HtmlCoverageReportTest extends CakeTestCase {
 		$this->Coverage = new HtmlCoverageReport($coverage, $reporter);
 	}
 
-/**
- * test getting the path filters.
- *
- * @return void
- */
+	/**
+	 * test getting the path filters.
+	 *
+	 * @return void
+	 */
 	public function testGetPathFilter() {
 		$this->Coverage->appTest = false;
 		$result = $this->Coverage->getPathFilter();
@@ -65,11 +66,11 @@ class HtmlCoverageReportTest extends CakeTestCase {
 		$this->assertEquals(CakePlugin::path('TestPlugin'), $result);
 	}
 
-/**
- * test filtering coverage data.
- *
- * @return void
- */
+	/**
+	 * test filtering coverage data.
+	 *
+	 * @return void
+	 */
 	public function testFilterCoverageDataByPathRemovingElements() {
 		$data = array(
 			CAKE . 'dispatcher.php' => array(
@@ -87,11 +88,11 @@ class HtmlCoverageReportTest extends CakeTestCase {
 		$this->assertFalse(isset($result[APP . 'app_model.php']));
 	}
 
-/**
- * test generating HTML reports from file arrays.
- *
- * @return void
- */
+	/**
+	 * test generating HTML reports from file arrays.
+	 *
+	 * @return void
+	 */
 	public function testGenerateDiff() {
 		$file = array(
 			'line 1',
@@ -134,11 +135,11 @@ class HtmlCoverageReportTest extends CakeTestCase {
 		}
 	}
 
-/**
- * Test that coverage works with phpunit 3.6 as the data formats from coverage are totally different.
- *
- * @return void
- */
+	/**
+	 * Test that coverage works with phpunit 3.6 as the data formats from coverage are totally different.
+	 *
+	 * @return void
+	 */
 	public function testPhpunit36Compatibility() {
 		$file = array(
 			'line 1',
@@ -182,11 +183,11 @@ class HtmlCoverageReportTest extends CakeTestCase {
 		}
 	}
 
-/**
- * test that covering methods show up as title attributes for lines.
- *
- * @return void
- */
+	/**
+	 * test that covering methods show up as title attributes for lines.
+	 *
+	 * @return void
+	 */
 	public function testCoveredLinesTitleAttributes() {
 		$file = array(
 			'line 1',
@@ -224,11 +225,11 @@ class HtmlCoverageReportTest extends CakeTestCase {
 		);
 	}
 
-/**
- * tearDown
- *
- * @return void
- */
+	/**
+	 * tearDown
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		CakePlugin::unload();
 		unset($this->Coverage);

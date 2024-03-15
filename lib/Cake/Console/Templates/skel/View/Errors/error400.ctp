@@ -1,8 +1,9 @@
 <?php
+
 /**
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       app.View.Errors
- * @since         CakePHP(tm) v 0.10.0.1076
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   app.View.Errors
+ * @since		 CakePHP(tm) v 0.10.0.1076
  */
 ?>
 <h2><?php echo $message; ?></h2>
@@ -14,6 +15,6 @@
 	); ?>
 </p>
 <?php
-if (Configure::read('debug') > 0):
+if (Configure::read('debug') > 0) :
 	echo $this->element('exception_stack_trace');
 endif;

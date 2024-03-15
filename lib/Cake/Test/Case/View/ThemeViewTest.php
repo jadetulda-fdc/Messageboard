@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ThemeViewTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.View
- * @since         CakePHP(tm) v 1.2.0.4206
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.View
+ * @since		 CakePHP(tm) v 1.2.0.4206
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('View', 'View');
@@ -23,24 +24,24 @@ App::uses('Controller', 'Controller');
 /**
  * ThemePosts2Controller class
  *
- * @package       Cake.Test.Case.View
+ * @package	   Cake.Test.Case.View
  */
 class ThemePosts2Controller extends Controller {
 
-/**
- * name property
- *
- * @var string
- */
+	/**
+	 * name property
+	 *
+	 * @var string
+	 */
 	public $name = 'ThemePosts';
 
 	public $theme = null;
 
-/**
- * index method
- *
- * @return void
- */
+	/**
+	 * index method
+	 *
+	 * @return void
+	 */
 	public function index() {
 		$this->set(array(
 			'testData' => 'Some test data',
@@ -48,61 +49,59 @@ class ThemePosts2Controller extends Controller {
 			'test3' => 'even more data',
 		));
 	}
-
 }
 
 /**
  * TestTheme2View class
  *
- * @package       Cake.Test.Case.View
+ * @package	   Cake.Test.Case.View
  */
 class TestTheme2View extends ThemeView {
 
-/**
- * renderElement method
- *
- * @param string $name
- * @param array $params
- * @return void
- */
+	/**
+	 * renderElement method
+	 *
+	 * @param string $name
+	 * @param array $params
+	 * @return void
+	 */
 	public function renderElement($name, $params = array()) {
 		return $name;
 	}
 
-/**
- * getViewFileName method
- *
- * @param string $name
- * @return void
- */
+	/**
+	 * getViewFileName method
+	 *
+	 * @param string $name
+	 * @return void
+	 */
 	public function getViewFileName($name = null) {
 		return $this->_getViewFileName($name);
 	}
 
-/**
- * getLayoutFileName method
- *
- * @param string $name
- * @return void
- */
+	/**
+	 * getLayoutFileName method
+	 *
+	 * @param string $name
+	 * @return void
+	 */
 	public function getLayoutFileName($name = null) {
 		return $this->_getLayoutFileName($name);
 	}
-
 }
 
 /**
  * ThemeViewTest class
  *
- * @package       Cake.Test.Case.View
+ * @package	   Cake.Test.Case.View
  */
 class ThemeViewTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$request = new CakeRequest('posts/index');
@@ -119,11 +118,11 @@ class ThemeViewTest extends CakeTestCase {
 		CakePlugin::load(array('TestPlugin'));
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->ThemeView);
@@ -132,11 +131,11 @@ class ThemeViewTest extends CakeTestCase {
 		CakePlugin::unload();
 	}
 
-/**
- * testPluginGetTemplate method
- *
- * @return void
- */
+	/**
+	 * testPluginGetTemplate method
+	 *
+	 * @return void
+	 */
 	public function testPluginThemedGetTemplate() {
 		$this->Controller->plugin = 'TestPlugin';
 		$this->Controller->name = 'TestPlugin';
@@ -158,11 +157,11 @@ class ThemeViewTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testGetTemplate method
- *
- * @return void
- */
+	/**
+	 * testGetTemplate method
+	 *
+	 * @return void
+	 */
 	public function testGetTemplate() {
 		$this->Controller->plugin = null;
 		$this->Controller->name = 'Pages';
@@ -195,11 +194,11 @@ class ThemeViewTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testMissingView method
- *
- * @return void
- */
+	/**
+	 * testMissingView method
+	 *
+	 * @return void
+	 */
 	public function testMissingView() {
 		$this->Controller->plugin = null;
 		$this->Controller->name = 'Pages';
@@ -219,11 +218,11 @@ class ThemeViewTest extends CakeTestCase {
 		}
 	}
 
-/**
- * testMissingLayout method
- *
- * @return void
- */
+	/**
+	 * testMissingLayout method
+	 *
+	 * @return void
+	 */
 	public function testMissingLayout() {
 		$this->Controller->plugin = null;
 		$this->Controller->name = 'Posts';
@@ -241,11 +240,11 @@ class ThemeViewTest extends CakeTestCase {
 		}
 	}
 
-/**
- * test memory leaks that existed in _paths at one point.
- *
- * @return void
- */
+	/**
+	 * test memory leaks that existed in _paths at one point.
+	 *
+	 * @return void
+	 */
 	public function testMemoryLeakInPaths() {
 		$this->Controller->plugin = null;
 		$this->Controller->name = 'Posts';

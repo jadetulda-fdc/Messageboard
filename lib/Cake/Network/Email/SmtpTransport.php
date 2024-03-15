@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Send mail using SMTP protocol
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Network.Email
- * @since         CakePHP(tm) v 2.0.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Network.Email
+ * @since		 CakePHP(tm) v 2.0.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AbstractTransport', 'Network/Email');
 App::uses('CakeSocket', 'Network');
@@ -21,67 +22,67 @@ App::uses('CakeSocket', 'Network');
 /**
  * Send mail using SMTP protocol
  *
- * @package       Cake.Network.Email
+ * @package	   Cake.Network.Email
  */
 class SmtpTransport extends AbstractTransport {
 
-/**
- * Socket to SMTP server
- *
- * @var CakeSocket
- */
+	/**
+	 * Socket to SMTP server
+	 *
+	 * @var CakeSocket
+	 */
 	protected $_socket;
 
-/**
- * Content of email to return
- *
- * @var string
- */
+	/**
+	 * Content of email to return
+	 *
+	 * @var string
+	 */
 	protected $_content;
 
-/**
- * The response of the last sent SMTP command.
- *
- * @var array
- */
+	/**
+	 * The response of the last sent SMTP command.
+	 *
+	 * @var array
+	 */
 	protected $_lastResponse = array();
 
-/**
- * Returns the response of the last sent SMTP command.
- *
- * A response consists of one or more lines containing a response
- * code and an optional response message text:
- * ```
- * array(
- *     array(
- *         'code' => '250',
- *         'message' => 'mail.example.com'
- *     ),
- *     array(
- *         'code' => '250',
- *         'message' => 'PIPELINING'
- *     ),
- *     array(
- *         'code' => '250',
- *         'message' => '8BITMIME'
- *     ),
- *     // etc...
- * )
- * ```
- *
- * @return array
- */
+	/**
+	 * Returns the response of the last sent SMTP command.
+	 *
+	 * A response consists of one or more lines containing a response
+	 * code and an optional response message text:
+	 * ```
+	 * array(
+	 *	 array(
+	 *		 'code' => '250',
+	 *		 'message' => 'mail.example.com'
+	 *	 ),
+	 *	 array(
+	 *		 'code' => '250',
+	 *		 'message' => 'PIPELINING'
+	 *	 ),
+	 *	 array(
+	 *		 'code' => '250',
+	 *		 'message' => '8BITMIME'
+	 *	 ),
+	 *	 // etc...
+	 * )
+	 * ```
+	 *
+	 * @return array
+	 */
 	public function getLastResponse() {
 		return $this->_lastResponse;
 	}
 
-/**
- * Send mail
- *
- * @param CakeEmail $email CakeEmail
- * @return array
- * @throws SocketException
- */
+	/**
+	 * Send mail
+	 *
+	 * @param CakeEmail $email CakeEmail
+	 * @return array
+	 * @throws SocketException
+	 */
 	public function send(CakeEmail $email) {
 		$this->_connect();
 		$this->_auth();
@@ -92,12 +93,12 @@ class SmtpTransport extends AbstractTransport {
 		return $this->_content;
 	}
 
-/**
- * Set the configuration
- *
- * @param array $config Configuration options.
- * @return array Returns configs
- */
+	/**
+	 * Set the configuration
+	 *
+	 * @param array $config Configuration options.
+	 * @return array Returns configs
+	 */
 	public function config($config = null) {
 		if ($config === null) {
 			return $this->_config;
@@ -116,12 +117,12 @@ class SmtpTransport extends AbstractTransport {
 		return $this->_config;
 	}
 
-/**
- * Parses and stores the reponse lines in `'code' => 'message'` format.
- *
- * @param array $responseLines Response lines to parse.
- * @return void
- */
+	/**
+	 * Parses and stores the reponse lines in `'code' => 'message'` format.
+	 *
+	 * @param array $responseLines Response lines to parse.
+	 * @return void
+	 */
 	protected function _bufferResponseLines(array $responseLines) {
 		$response = array();
 		foreach ($responseLines as $responseLine) {
@@ -135,12 +136,12 @@ class SmtpTransport extends AbstractTransport {
 		$this->_lastResponse = array_merge($this->_lastResponse, $response);
 	}
 
-/**
- * Connect to SMTP Server
- *
- * @return void
- * @throws SocketException
- */
+	/**
+	 * Connect to SMTP Server
+	 *
+	 * @return void
+	 * @throws SocketException
+	 */
 	protected function _connect() {
 		$this->_generateSocket();
 		if (!$this->_socket->connect()) {
@@ -175,12 +176,12 @@ class SmtpTransport extends AbstractTransport {
 		}
 	}
 
-/**
- * Send authentication
- *
- * @return void
- * @throws SocketException
- */
+	/**
+	 * Send authentication
+	 *
+	 * @return void
+	 * @throws SocketException
+	 */
 	protected function _auth() {
 		if (isset($this->_config['username']) && isset($this->_config['password'])) {
 			$replyCode = $this->_smtpSend('AUTH LOGIN', '334|500|502|504');
@@ -203,32 +204,32 @@ class SmtpTransport extends AbstractTransport {
 		}
 	}
 
-/**
- * Prepares the `MAIL FROM` SMTP command.
- *
- * @param string $email The email address to send with the command.
- * @return string
- */
+	/**
+	 * Prepares the `MAIL FROM` SMTP command.
+	 *
+	 * @param string $email The email address to send with the command.
+	 * @return string
+	 */
 	protected function _prepareFromCmd($email) {
 		return 'MAIL FROM:<' . $email . '>';
 	}
 
-/**
- * Prepares the `RCPT TO` SMTP command.
- *
- * @param string $email The email address to send with the command.
- * @return string
- */
+	/**
+	 * Prepares the `RCPT TO` SMTP command.
+	 *
+	 * @param string $email The email address to send with the command.
+	 * @return string
+	 */
 	protected function _prepareRcptCmd($email) {
 		return 'RCPT TO:<' . $email . '>';
 	}
 
-/**
- * Prepares the `from` email address.
- *
- * @param CakeEmail $email CakeEmail
- * @return array
- */
+	/**
+	 * Prepares the `from` email address.
+	 *
+	 * @param CakeEmail $email CakeEmail
+	 * @return array
+	 */
 	protected function _prepareFromAddress(CakeEmail $email) {
 		$from = $email->returnPath();
 		if (empty($from)) {
@@ -237,12 +238,12 @@ class SmtpTransport extends AbstractTransport {
 		return $from;
 	}
 
-/**
- * Prepares the recipient email addresses.
- *
- * @param CakeEmail $email CakeEmail
- * @return array
- */
+	/**
+	 * Prepares the recipient email addresses.
+	 *
+	 * @param CakeEmail $email CakeEmail
+	 * @return array
+	 */
 	protected function _prepareRecipientAddresses(CakeEmail $email) {
 		$to = $email->to();
 		$cc = $email->cc();
@@ -250,22 +251,22 @@ class SmtpTransport extends AbstractTransport {
 		return array_merge(array_keys($to), array_keys($cc), array_keys($bcc));
 	}
 
-/**
- * Prepares the message headers.
- *
- * @param CakeEmail $email CakeEmail
- * @return array
- */
+	/**
+	 * Prepares the message headers.
+	 *
+	 * @param CakeEmail $email CakeEmail
+	 * @return array
+	 */
 	protected function _prepareMessageHeaders(CakeEmail $email) {
 		return $email->getHeaders(array('from', 'sender', 'replyTo', 'readReceipt', 'to', 'cc', 'subject'));
 	}
 
-/**
- * Prepares the message body.
- *
- * @param CakeEmail $email CakeEmail
- * @return string
- */
+	/**
+	 * Prepares the message body.
+	 *
+	 * @param CakeEmail $email CakeEmail
+	 * @return string
+	 */
 	protected function _prepareMessage(CakeEmail $email) {
 		$lines = $email->message();
 		$messages = array();
@@ -279,13 +280,13 @@ class SmtpTransport extends AbstractTransport {
 		return implode("\r\n", $messages);
 	}
 
-/**
- * Send emails
- *
- * @param CakeEmail $email CakeEmail
- * @return void
- * @throws SocketException
- */
+	/**
+	 * Send emails
+	 *
+	 * @param CakeEmail $email CakeEmail
+	 * @return void
+	 * @throws SocketException
+	 */
 	protected function _sendRcpt(CakeEmail $email) {
 		$from = $this->_prepareFromAddress($email);
 		$this->_smtpSend($this->_prepareFromCmd(key($from)));
@@ -296,13 +297,13 @@ class SmtpTransport extends AbstractTransport {
 		}
 	}
 
-/**
- * Send Data
- *
- * @param CakeEmail $email CakeEmail
- * @return void
- * @throws SocketException
- */
+	/**
+	 * Send Data
+	 *
+	 * @param CakeEmail $email CakeEmail
+	 * @return void
+	 * @throws SocketException
+	 */
 	protected function _sendData(CakeEmail $email) {
 		$this->_smtpSend('DATA', '354');
 
@@ -313,35 +314,35 @@ class SmtpTransport extends AbstractTransport {
 		$this->_content = array('headers' => $headers, 'message' => $message);
 	}
 
-/**
- * Disconnect
- *
- * @return void
- * @throws SocketException
- */
+	/**
+	 * Disconnect
+	 *
+	 * @return void
+	 * @throws SocketException
+	 */
 	protected function _disconnect() {
 		$this->_smtpSend('QUIT', false);
 		$this->_socket->disconnect();
 	}
 
-/**
- * Helper method to generate socket
- *
- * @return void
- * @throws SocketException
- */
+	/**
+	 * Helper method to generate socket
+	 *
+	 * @return void
+	 * @throws SocketException
+	 */
 	protected function _generateSocket() {
 		$this->_socket = new CakeSocket($this->_config);
 	}
 
-/**
- * Protected method for sending data to SMTP connection
- *
- * @param string|null $data Data to be sent to SMTP server
- * @param string|bool $checkCode Code to check for in server response, false to skip
- * @return string|null The matched code, or null if nothing matched
- * @throws SocketException
- */
+	/**
+	 * Protected method for sending data to SMTP connection
+	 *
+	 * @param string|null $data Data to be sent to SMTP server
+	 * @param string|bool $checkCode Code to check for in server response, false to skip
+	 * @return string|null The matched code, or null if nothing matched
+	 * @throws SocketException
+	 */
 	protected function _smtpSend($data, $checkCode = '250') {
 		$this->_lastResponse = array();
 
@@ -375,5 +376,4 @@ class SmtpTransport extends AbstractTransport {
 			throw new SocketException(__d('cake_dev', 'SMTP Error: %s', $response));
 		}
 	}
-
 }

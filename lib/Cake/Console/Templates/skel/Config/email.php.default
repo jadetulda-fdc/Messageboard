@@ -4,9 +4,9 @@
  *
  * Use it to configure email transports of Cake.
  *
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       app.Config
- * @since         CakePHP(tm) v 2.0.0
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   app.Config
+ * @since		 CakePHP(tm) v 2.0.0
  */
 
 /**

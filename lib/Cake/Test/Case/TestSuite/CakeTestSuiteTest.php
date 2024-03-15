@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,25 +8,25 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP Project
- * @package       Cake.Test.Case.TestSuite
- * @since         CakePHP v 1.2.0.4487
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP Project
+ * @package	   Cake.Test.Case.TestSuite
+ * @since		 CakePHP v 1.2.0.4487
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
  * CakeTestSuiteTest
  *
- * @package       Cake.Test.Case.TestSuite
+ * @package	   Cake.Test.Case.TestSuite
  */
 class CakeTestSuiteTest extends CakeTestCase {
 
-/**
- * testAddTestDirectory
- *
- * @return void
- */
+	/**
+	 * testAddTestDirectory
+	 *
+	 * @return void
+	 */
 	public function testAddTestDirectory() {
 		$testFolder = CORE_TEST_CASES . DS . 'TestSuite';
 		$count = count(glob($testFolder . DS . '*Test.php'));
@@ -38,11 +39,11 @@ class CakeTestSuiteTest extends CakeTestCase {
 		$suite->addTestDirectory($testFolder);
 	}
 
-/**
- * testAddTestDirectoryRecursive
- *
- * @return void
- */
+	/**
+	 * testAddTestDirectoryRecursive
+	 *
+	 * @return void
+	 */
 	public function testAddTestDirectoryRecursive() {
 		$testFolder = CORE_TEST_CASES . DS . 'Cache';
 		$count = count(glob($testFolder . DS . '*Test.php'));
@@ -56,11 +57,11 @@ class CakeTestSuiteTest extends CakeTestCase {
 		$suite->addTestDirectoryRecursive($testFolder);
 	}
 
-/**
- * testAddTestDirectoryRecursiveWithHidden
- *
- * @return void
- */
+	/**
+	 * testAddTestDirectoryRecursiveWithHidden
+	 *
+	 * @return void
+	 */
 	public function testAddTestDirectoryRecursiveWithHidden() {
 		$this->skipIf(!is_writable(TMP), 'Cant addTestDirectoryRecursiveWithHidden unless the tmp folder is writable.');
 
@@ -80,11 +81,11 @@ class CakeTestSuiteTest extends CakeTestCase {
 		$Folder->delete();
 	}
 
-/**
- * testAddTestDirectoryRecursiveWithNonPhp
- *
- * @return void
- */
+	/**
+	 * testAddTestDirectoryRecursiveWithNonPhp
+	 *
+	 * @return void
+	 */
 	public function testAddTestDirectoryRecursiveWithNonPhp() {
 		$this->skipIf(!is_writable(TMP), 'Cant addTestDirectoryRecursiveWithNonPhp unless the tmp folder is writable.');
 

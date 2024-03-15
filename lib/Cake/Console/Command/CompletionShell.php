@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,11 +8,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP Project
- * @package       Cake.Console.Command
- * @since         CakePHP v 2.5
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP Project
+ * @package	   Cake.Console.Command
+ * @since		 CakePHP v 2.5
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('AppShell', 'Console/Command');
@@ -19,49 +20,49 @@ App::uses('AppShell', 'Console/Command');
 /**
  * Provide command completion shells such as bash.
  * 
- * @package       Cake.Console.Command
+ * @package	   Cake.Console.Command
  */
 class CompletionShell extends AppShell {
 
-/**
- * Contains tasks to load and instantiate
- *
- * @var array
- */
+	/**
+	 * Contains tasks to load and instantiate
+	 *
+	 * @var array
+	 */
 	public $tasks = array('Command');
 
-/**
- * Echo no header by overriding the startup method
- *
- * @return void
- */
+	/**
+	 * Echo no header by overriding the startup method
+	 *
+	 * @return void
+	 */
 	public function startup() {
 	}
 
-/**
- * Not called by the autocomplete shell - this is for curious users
- *
- * @return void
- */
+	/**
+	 * Not called by the autocomplete shell - this is for curious users
+	 *
+	 * @return void
+	 */
 	public function main() {
 		return $this->out($this->getOptionParser()->help());
 	}
 
-/**
- * list commands
- *
- * @return void
- */
+	/**
+	 * list commands
+	 *
+	 * @return void
+	 */
 	public function commands() {
 		$options = $this->Command->commands();
 		return $this->_output($options);
 	}
 
-/**
- * list options for the named command
- *
- * @return void
- */
+	/**
+	 * list options for the named command
+	 *
+	 * @return void
+	 */
 	public function options() {
 		$commandName = '';
 		if (!empty($this->args[0])) {
@@ -72,11 +73,11 @@ class CompletionShell extends AppShell {
 		return $this->_output($options);
 	}
 
-/**
- * list subcommands for the named command
- *
- * @return void
- */
+	/**
+	 * list subcommands for the named command
+	 *
+	 * @return void
+	 */
 	public function subCommands() {
 		if (!$this->args) {
 			return $this->_output();
@@ -86,20 +87,20 @@ class CompletionShell extends AppShell {
 		return $this->_output($options);
 	}
 
-/**
- * Guess autocomplete from the whole argument string
- * 
- * @return void
- */
+	/**
+	 * Guess autocomplete from the whole argument string
+	 * 
+	 * @return void
+	 */
 	public function fuzzy() {
 		return $this->_output();
 	}
 
-/**
- * Gets the option parser instance and configures it.
- *
- * @return ConsoleOptionParser
- */
+	/**
+	 * Gets the option parser instance and configures it.
+	 *
+	 * @return ConsoleOptionParser
+	 */
 	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
@@ -109,8 +110,7 @@ class CompletionShell extends AppShell {
 			'help' => __d('cake_console', 'Output a list of available commands'),
 			'parser' => array(
 				'description' => __d('cake_console', 'List all availables'),
-				'arguments' => array(
-				)
+				'arguments' => array()
 			)
 		))->addSubcommand('subcommands', array(
 			'help' => __d('cake_console', 'Output a list of available subcommands'),
@@ -141,12 +141,12 @@ class CompletionShell extends AppShell {
 		return $parser;
 	}
 
-/**
- * Emit results as a string, space delimited
- *
- * @param array $options The options to output
- * @return void
- */
+	/**
+	 * Emit results as a string, space delimited
+	 *
+	 * @param array $options The options to output
+	 * @return void
+	 */
 	protected function _output($options = array()) {
 		if ($options) {
 			return $this->out(implode($options, ' '));

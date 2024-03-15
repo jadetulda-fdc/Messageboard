@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PluginTask Test file
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP Project
- * @package       Cake.Test.Case.Console.Command.Task
- * @since         CakePHP v 1.3.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP Project
+ * @package	   Cake.Test.Case.Console.Command.Task
+ * @since		 CakePHP v 1.3.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('ShellDispatcher', 'Console');
@@ -30,21 +31,22 @@ App::uses('File', 'Utility');
 /**
  * PluginTaskPlugin class
  *
- * @package       Cake.Test.Case.Console.Command.Task
+ * @package	   Cake.Test.Case.Console.Command.Task
  */
 class PluginTaskTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->out = $this->getMock('ConsoleOutput', array(), array(), '', false);
 		$this->in = $this->getMock('ConsoleInput', array(), array(), '', false);
 
-		$this->Task = $this->getMock('PluginTask',
+		$this->Task = $this->getMock(
+			'PluginTask',
 			array('in', 'err', 'createFile', '_stop', 'clear'),
 			array($this->out, $this->out, $this->in)
 		);
@@ -62,11 +64,11 @@ class PluginTaskTest extends CakeTestCase {
 		App::build(array('plugins' => $paths));
 	}
 
-/**
- * tearDown()
- *
- * @return void
- */
+	/**
+	 * tearDown()
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		if (file_exists($this->Task->bootstrap)) {
 			unlink($this->Task->bootstrap);
@@ -74,11 +76,11 @@ class PluginTaskTest extends CakeTestCase {
 		parent::tearDown();
 	}
 
-/**
- * test bake()
- *
- * @return void
- */
+	/**
+	 * test bake()
+	 *
+	 * @return void
+	 */
 	public function testBakeFoldersAndFiles() {
 		$this->Task->expects($this->at(0))
 			->method('in')
@@ -134,11 +136,11 @@ class PluginTaskTest extends CakeTestCase {
 		$Folder->delete();
 	}
 
-/**
- * test execute with no args, flowing into interactive,
- *
- * @return void
- */
+	/**
+	 * test execute with no args, flowing into interactive,
+	 *
+	 * @return void
+	 */
 	public function testExecuteWithNoArgs() {
 		$this->Task->expects($this->at(0))->method('in')->will($this->returnValue('TestPlugin'));
 		$this->Task->expects($this->at(1))->method('in')->will($this->returnValue($this->_testPath));
@@ -161,11 +163,11 @@ class PluginTaskTest extends CakeTestCase {
 		$Folder->delete();
 	}
 
-/**
- * Test Execute
- *
- * @return void
- */
+	/**
+	 * Test Execute
+	 *
+	 * @return void
+	 */
 	public function testExecuteWithOneArg() {
 		$this->Task->expects($this->at(0))->method('in')
 			->will($this->returnValue($this->_testPath));
@@ -190,11 +192,11 @@ class PluginTaskTest extends CakeTestCase {
 		$Folder->delete();
 	}
 
-/**
- * Test that findPath ignores paths that don't exist.
- *
- * @return void
- */
+	/**
+	 * Test that findPath ignores paths that don't exist.
+	 *
+	 * @return void
+	 */
 	public function testFindPathNonExistant() {
 		$paths = App::path('plugins');
 		$last = count($paths);
@@ -202,7 +204,8 @@ class PluginTaskTest extends CakeTestCase {
 		array_unshift($paths, '/fake/path');
 		$paths[] = '/fake/path2';
 
-		$this->Task = $this->getMock('PluginTask',
+		$this->Task = $this->getMock(
+			'PluginTask',
 			array('in', 'out', 'err', 'createFile', '_stop'),
 			array($this->out, $this->out, $this->in)
 		);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,9 +8,9 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('View', 'View');
@@ -47,24 +48,24 @@ App::uses('View', 'View');
  * You can also enable JSONP support by setting parameter `_jsonp` to true or a string to specify
  * custom query string paramater name which will contain the callback function name.
  *
- * @package       Cake.View
- * @since         CakePHP(tm) v 2.1.0
+ * @package	   Cake.View
+ * @since		 CakePHP(tm) v 2.1.0
  */
 class JsonView extends View {
 
-/**
- * JSON views are always located in the 'json' sub directory for
- * controllers' views.
- *
- * @var string
- */
+	/**
+	 * JSON views are always located in the 'json' sub directory for
+	 * controllers' views.
+	 *
+	 * @var string
+	 */
 	public $subDir = 'json';
 
-/**
- * Constructor
- *
- * @param Controller $controller Controller instance.
- */
+	/**
+	 * Constructor
+	 *
+	 * @param Controller $controller Controller instance.
+	 */
 	public function __construct(Controller $controller = null) {
 		parent::__construct($controller);
 		if (isset($controller->response) && $controller->response instanceof CakeResponse) {
@@ -72,11 +73,11 @@ class JsonView extends View {
 		}
 	}
 
-/**
- * Skip loading helpers if this is a _serialize based view.
- *
- * @return void
- */
+	/**
+	 * Skip loading helpers if this is a _serialize based view.
+	 *
+	 * @return void
+	 */
 	public function loadHelpers() {
 		if (isset($this->viewVars['_serialize'])) {
 			return;
@@ -84,22 +85,22 @@ class JsonView extends View {
 		parent::loadHelpers();
 	}
 
-/**
- * Render a JSON view.
- *
- * ### Special parameters
- * `_serialize` To convert a set of view variables into a JSON response.
- *   Its value can be a string for single variable name or array for multiple names.
- *   You can omit the`_serialize` parameter, and use a normal view + layout as well.
- * `_jsonp` Enables JSONP support and wraps response in callback function provided in query string.
- *   - Setting it to true enables the default query string parameter "callback".
- *   - Setting it to a string value, uses the provided query string parameter for finding the
- *     JSONP callback name.
- *
- * @param string $view The view being rendered.
- * @param string $layout The layout being rendered.
- * @return string The rendered view.
- */
+	/**
+	 * Render a JSON view.
+	 *
+	 * ### Special parameters
+	 * `_serialize` To convert a set of view variables into a JSON response.
+	 *   Its value can be a string for single variable name or array for multiple names.
+	 *   You can omit the`_serialize` parameter, and use a normal view + layout as well.
+	 * `_jsonp` Enables JSONP support and wraps response in callback function provided in query string.
+	 *   - Setting it to true enables the default query string parameter "callback".
+	 *   - Setting it to a string value, uses the provided query string parameter for finding the
+	 *	 JSONP callback name.
+	 *
+	 * @param string $view The view being rendered.
+	 * @param string $layout The layout being rendered.
+	 * @return string The rendered view.
+	 */
 	public function render($view = null, $layout = null) {
 		$return = null;
 		if (isset($this->viewVars['_serialize'])) {
@@ -122,17 +123,17 @@ class JsonView extends View {
 		return $return;
 	}
 
-/**
- * Serialize view vars
- *
- * ### Special parameters
- * `_jsonOptions` You can set custom options for json_encode() this way,
- *   e.g. `JSON_HEX_TAG | JSON_HEX_APOS`.
- *
- * @param array $serialize The viewVars that need to be serialized
- * @throws CakeException
- * @return string The serialized data
- */
+	/**
+	 * Serialize view vars
+	 *
+	 * ### Special parameters
+	 * `_jsonOptions` You can set custom options for json_encode() this way,
+	 *   e.g. `JSON_HEX_TAG | JSON_HEX_APOS`.
+	 *
+	 * @param array $serialize The viewVars that need to be serialized
+	 * @throws CakeException
+	 * @return string The serialized data
+	 */
 	protected function _serialize($serialize) {
 		if (is_array($serialize)) {
 			$data = array();
@@ -171,5 +172,4 @@ class JsonView extends View {
 		}
 		return $json;
 	}
-
 }

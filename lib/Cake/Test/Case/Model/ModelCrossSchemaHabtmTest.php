@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tests cross database HABTM. Requires $test and $test2 to both be set in DATABASE_CONFIG
  * NOTE: When testing on MySQL, you must set 'persistent' => false on *both* database connections,
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Model
- * @since         CakePHP(tm) v 2.1
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Model
+ * @since		 CakePHP(tm) v 2.1
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
@@ -23,65 +24,65 @@ require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
 /**
  * ModelCrossSchemaHabtmTest
  *
- * @package       Cake.Test.Case.Model
+ * @package	   Cake.Test.Case.Model
  */
 class ModelCrossSchemaHabtmTest extends BaseModelTest {
 
-/**
- * Fixtures to be used
- *
- * @var array
- */
+	/**
+	 * Fixtures to be used
+	 *
+	 * @var array
+	 */
 	public $fixtures = array(
 		'core.player', 'core.guild', 'core.guilds_player',
 		'core.armor', 'core.armors_player',
 	);
 
-/**
- * Don't drop tables if they exist
- *
- * @var bool
- */
+	/**
+	 * Don't drop tables if they exist
+	 *
+	 * @var bool
+	 */
 	public $dropTables = false;
 
-/**
- * Don't auto load fixtures
- *
- * @var bool
- */
+	/**
+	 * Don't auto load fixtures
+	 *
+	 * @var bool
+	 */
 	public $autoFixtures = false;
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->_checkConfigs();
 	}
 
-/**
- * Check if primary and secondary test databases are configured.
- *
- * @return void
- */
+	/**
+	 * Check if primary and secondary test databases are configured.
+	 *
+	 * @return void
+	 */
 	protected function _checkConfigs() {
 		$config = ConnectionManager::enumConnectionObjects();
 		$this->skipIf($this->db instanceof Sqlite, 'This test is not compatible with Sqlite.');
 		$this->skipIf(
 			!isset($config['test']) || !isset($config['test2']),
 			'Primary and secondary test databases not configured, ' .
-			'skipping cross-database join tests.' .
-			' To run these tests, you must define $test and $test2 in your database configuration.'
+				'skipping cross-database join tests.' .
+				' To run these tests, you must define $test and $test2 in your database configuration.'
 		);
 	}
 
-/**
- * testModelDatasources method
- *
- * @return void
- */
+	/**
+	 * testModelDatasources method
+	 *
+	 * @return void
+	 */
 	public function testModelDatasources() {
 		$this->loadFixtures('Player', 'Guild', 'GuildsPlayer');
 
@@ -95,11 +96,11 @@ class ModelCrossSchemaHabtmTest extends BaseModelTest {
 		$this->assertEquals('test2', $Player->GuildsPlayer->getDataSource()->configKeyName);
 	}
 
-/**
- * testHabtmFind method
- *
- * @return void
- */
+	/**
+	 * testHabtmFind method
+	 *
+	 * @return void
+	 */
 	public function testHabtmFind() {
 		$this->loadFixtures('Player', 'Guild', 'GuildsPlayer');
 		$Player = ClassRegistry::init('Player');
@@ -129,11 +130,11 @@ class ModelCrossSchemaHabtmTest extends BaseModelTest {
 		$this->assertEquals(2, count($wizards));
 	}
 
-/**
- * testHabtmSave method
- *
- * @return void
- */
+	/**
+	 * testHabtmSave method
+	 *
+	 * @return void
+	 */
 	public function testHabtmSave() {
 		$this->loadFixtures('Player', 'Guild', 'GuildsPlayer');
 		$Player = ClassRegistry::init('Player');
@@ -172,18 +173,18 @@ class ModelCrossSchemaHabtmTest extends BaseModelTest {
 		$this->assertEquals(2, count($rangers));
 	}
 
-/**
- * testHabtmWithThreeDatabases method
- *
- * @return void
- */
+	/**
+	 * testHabtmWithThreeDatabases method
+	 *
+	 * @return void
+	 */
 	public function testHabtmWithThreeDatabases() {
 		$config = ConnectionManager::enumConnectionObjects();
 		$this->skipIf(
 			!isset($config['test']) || !isset($config['test2']) || !isset($config['test_database_three']),
 			'Primary, secondary, and tertiary test databases not configured,' .
-			' skipping test. To run these tests, you must define ' .
-			'$test, $test2, and $test_database_three in your database configuration.'
+				' skipping test. To run these tests, you must define ' .
+				'$test, $test2, and $test_database_three in your database configuration.'
 		);
 
 		$this->loadFixtures('Player', 'Guild', 'GuildsPlayer', 'Armor', 'ArmorsPlayer');

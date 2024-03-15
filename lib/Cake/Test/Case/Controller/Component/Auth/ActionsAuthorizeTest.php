@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ActionsAuthorizeTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Controller.Component.Auth
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Controller.Component.Auth
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('ActionsAuthorize', 'Controller/Component/Auth');
@@ -25,15 +26,15 @@ App::uses('CakeResponse', 'Network');
 /**
  * ActionsAuthorizeTest
  *
- * @package       Cake.Test.Case.Controller.Component.Auth
+ * @package	   Cake.Test.Case.Controller.Component.Auth
  */
 class ActionsAuthorizeTest extends CakeTestCase {
 
-/**
- * setUp
- *
- * @return void
- */
+	/**
+	 * setUp
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->controller = $this->getMock('Controller', array(), array(), '', false);
@@ -44,11 +45,11 @@ class ActionsAuthorizeTest extends CakeTestCase {
 		$this->auth->settings['actionPath'] = '/controllers';
 	}
 
-/**
- * setup the mock acl.
- *
- * @return void
- */
+	/**
+	 * setup the mock acl.
+	 *
+	 * @return void
+	 */
 	protected function _mockAcl() {
 		$this->Collection->expects($this->any())
 			->method('load')
@@ -56,11 +57,11 @@ class ActionsAuthorizeTest extends CakeTestCase {
 			->will($this->returnValue($this->Acl));
 	}
 
-/**
- * test failure
- *
- * @return void
- */
+	/**
+	 * test failure
+	 *
+	 * @return void
+	 */
 	public function testAuthorizeFailure() {
 		$user = array(
 			'User' => array(
@@ -85,11 +86,11 @@ class ActionsAuthorizeTest extends CakeTestCase {
 		$this->assertFalse($this->auth->authorize($user['User'], $request));
 	}
 
-/**
- * test isAuthorized working.
- *
- * @return void
- */
+	/**
+	 * test isAuthorized working.
+	 *
+	 * @return void
+	 */
 	public function testAuthorizeSuccess() {
 		$user = array(
 			'User' => array(
@@ -114,11 +115,11 @@ class ActionsAuthorizeTest extends CakeTestCase {
 		$this->assertTrue($this->auth->authorize($user['User'], $request));
 	}
 
-/**
- * testAuthorizeSettings
- *
- * @return void
- */
+	/**
+	 * testAuthorizeSettings
+	 *
+	 * @return void
+	 */
 	public function testAuthorizeSettings() {
 		$request = new CakeRequest('/posts/index', false);
 		$request->addParams(array(
@@ -144,11 +145,11 @@ class ActionsAuthorizeTest extends CakeTestCase {
 		$this->assertTrue($this->auth->authorize($user, $request));
 	}
 
-/**
- * test action()
- *
- * @return void
- */
+	/**
+	 * test action()
+	 *
+	 * @return void
+	 */
 	public function testActionMethod() {
 		$request = new CakeRequest('/posts/index', false);
 		$request->addParams(array(
@@ -161,11 +162,11 @@ class ActionsAuthorizeTest extends CakeTestCase {
 		$this->assertEquals('controllers/Posts/index', $result);
 	}
 
-/**
- * Make sure that action() doesn't create double slashes anywhere.
- *
- * @return void
- */
+	/**
+	 * Make sure that action() doesn't create double slashes anywhere.
+	 *
+	 * @return void
+	 */
 	public function testActionNoDoubleSlash() {
 		$this->auth->settings['actionPath'] = '/controllers/';
 		$request = new CakeRequest('/posts/index', false);
@@ -178,11 +179,11 @@ class ActionsAuthorizeTest extends CakeTestCase {
 		$this->assertEquals('controllers/Posts/index', $result);
 	}
 
-/**
- * test action() and plugins
- *
- * @return void
- */
+	/**
+	 * test action() and plugins
+	 *
+	 * @return void
+	 */
 	public function testActionWithPlugin() {
 		$request = new CakeRequest('/debug_kit/posts/index', false);
 		$request->addParams(array(

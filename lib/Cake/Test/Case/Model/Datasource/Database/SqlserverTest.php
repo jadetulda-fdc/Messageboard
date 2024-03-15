@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SqlserverTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Model.Datasource.Database
- * @since         CakePHP(tm) v 1.2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Model.Datasource.Database
+ * @since		 CakePHP(tm) v 1.2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Model', 'Model');
@@ -25,106 +26,105 @@ require_once dirname(dirname(dirname(__FILE__))) . DS . 'models.php';
 /**
  * SqlserverTestDb class
  *
- * @package       Cake.Test.Case.Model.Datasource.Database
+ * @package	   Cake.Test.Case.Model.Datasource.Database
  */
 class SqlserverTestDb extends Sqlserver {
 
-/**
- * simulated property
- *
- * @var array
- */
+	/**
+	 * simulated property
+	 *
+	 * @var array
+	 */
 	public $simulated = array();
 
-/**
- * execute results stack
- *
- * @var array
- */
+	/**
+	 * execute results stack
+	 *
+	 * @var array
+	 */
 	public $executeResultsStack = array();
 
-/**
- * execute method
- *
- * @param mixed $sql
- * @param mixed $params
- * @param mixed $prepareOptions
- * @return mixed
- */
+	/**
+	 * execute method
+	 *
+	 * @param mixed $sql
+	 * @param mixed $params
+	 * @param mixed $prepareOptions
+	 * @return mixed
+	 */
 	protected function _execute($sql, $params = array(), $prepareOptions = array()) {
 		$this->simulated[] = $sql;
 		return empty($this->executeResultsStack) ? null : array_pop($this->executeResultsStack);
 	}
 
-/**
- * fetchAll method
- *
- * @param mixed $sql
- * @return void
- */
+	/**
+	 * fetchAll method
+	 *
+	 * @param mixed $sql
+	 * @return void
+	 */
 	protected function _matchRecords(Model $model, $conditions = null) {
 		return $this->conditions(array('id' => array(1, 2)));
 	}
 
-/**
- * getLastQuery method
- *
- * @return string
- */
+	/**
+	 * getLastQuery method
+	 *
+	 * @return string
+	 */
 	public function getLastQuery() {
 		return $this->simulated[count($this->simulated) - 1];
 	}
 
-/**
- * getPrimaryKey method
- *
- * @param mixed $model
- * @return string
- */
+	/**
+	 * getPrimaryKey method
+	 *
+	 * @param mixed $model
+	 * @return string
+	 */
 	public function getPrimaryKey($model) {
 		return parent::_getPrimaryKey($model);
 	}
 
-/**
- * clearFieldMappings method
- *
- * @return void
- */
+	/**
+	 * clearFieldMappings method
+	 *
+	 * @return void
+	 */
 	public function clearFieldMappings() {
 		$this->_fieldMappings = array();
 	}
 
-/**
- * describe method
- *
- * @param Model $model
- * @return void
- */
+	/**
+	 * describe method
+	 *
+	 * @param Model $model
+	 * @return void
+	 */
 	public function describe($model) {
 		return empty($this->describe) ? parent::describe($model) : $this->describe;
 	}
-
 }
 
 /**
  * SqlserverTestModel class
  *
- * @package       Cake.Test.Case.Model.Datasource.Database
+ * @package	   Cake.Test.Case.Model.Datasource.Database
  */
 class SqlserverTestModel extends CakeTestModel {
 
-/**
- * useTable property
- *
- * @var bool
- */
+	/**
+	 * useTable property
+	 *
+	 * @var bool
+	 */
 	public $useTable = false;
 
-/**
- * _schema property
- *
- * @var array
- */
+	/**
+	 * _schema property
+	 *
+	 * @var array
+	 */
 	protected $_schema = array(
 		'id' => array('type' => 'integer', 'null' => '', 'default' => '', 'length' => '8', 'key' => 'primary'),
 		'client_id' => array('type' => 'integer', 'null' => '', 'default' => '0', 'length' => '11'),
@@ -146,51 +146,50 @@ class SqlserverTestModel extends CakeTestModel {
 		'updated' => array('type' => 'datetime', 'null' => '1', 'default' => '', 'length' => null)
 	);
 
-/**
- * belongsTo property
- *
- * @var array
- */
+	/**
+	 * belongsTo property
+	 *
+	 * @var array
+	 */
 	public $belongsTo = array(
 		'SqlserverClientTestModel' => array(
 			'foreignKey' => 'client_id'
 		)
 	);
 
-/**
- * find method
- *
- * @param mixed $conditions
- * @param mixed $fields
- * @param mixed $order
- * @param mixed $recursive
- * @return void
- */
+	/**
+	 * find method
+	 *
+	 * @param mixed $conditions
+	 * @param mixed $fields
+	 * @param mixed $order
+	 * @param mixed $recursive
+	 * @return void
+	 */
 	public function find($conditions = null, $fields = null, $order = null, $recursive = null) {
 		return $conditions;
 	}
-
 }
 
 /**
  * SqlserverClientTestModel class
  *
- * @package       Cake.Test.Case.Model.Datasource.Database
+ * @package	   Cake.Test.Case.Model.Datasource.Database
  */
 class SqlserverClientTestModel extends CakeTestModel {
 
-/**
- * useTable property
- *
- * @var bool
- */
+	/**
+	 * useTable property
+	 *
+	 * @var bool
+	 */
 	public $useTable = false;
 
-/**
- * _schema property
- *
- * @var array
- */
+	/**
+	 * _schema property
+	 *
+	 * @var array
+	 */
 	protected $_schema = array(
 		'id'		=> array('type' => 'integer', 'null' => '', 'default' => '', 'length' => '8', 'key' => 'primary'),
 		'name'		=> array('type' => 'string', 'null' => '', 'default' => '', 'length' => '255'),
@@ -203,23 +202,23 @@ class SqlserverClientTestModel extends CakeTestModel {
 /**
  * SqlserverTestResultIterator class
  *
- * @package       Cake.Test.Case.Model.Datasource.Database
+ * @package	   Cake.Test.Case.Model.Datasource.Database
  */
 class SqlserverTestResultIterator extends ArrayIterator {
 
-/**
- * closeCursor method
- *
- * @return void
- */
+	/**
+	 * closeCursor method
+	 *
+	 * @return void
+	 */
 	public function closeCursor() {
 	}
 
-/**
- * fetch method
- *
- * @return void
- */
+	/**
+	 * fetch method
+	 *
+	 * @return void
+	 */
 	public function fetch() {
 		if (!$this->valid()) {
 			return null;
@@ -228,42 +227,41 @@ class SqlserverTestResultIterator extends ArrayIterator {
 		$this->next();
 		return $current;
 	}
-
 }
 
 /**
  * SqlserverTest class
  *
- * @package       Cake.Test.Case.Model.Datasource.Database
+ * @package	   Cake.Test.Case.Model.Datasource.Database
  */
 class SqlserverTest extends CakeTestCase {
 
-/**
- * The Dbo instance to be tested
- *
- * @var DboSource
- */
+	/**
+	 * The Dbo instance to be tested
+	 *
+	 * @var DboSource
+	 */
 	public $db = null;
 
-/**
- * autoFixtures property
- *
- * @var bool
- */
+	/**
+	 * autoFixtures property
+	 *
+	 * @var bool
+	 */
 	public $autoFixtures = false;
 
-/**
- * fixtures property
- *
- * @var array
- */
+	/**
+	 * fixtures property
+	 *
+	 * @var array
+	 */
 	public $fixtures = array('core.user', 'core.category', 'core.author', 'core.post');
 
-/**
- * Sets up a Dbo class instance for testing
- *
- * @return void
- */
+	/**
+	 * Sets up a Dbo class instance for testing
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->Dbo = ConnectionManager::getDataSource('test');
@@ -274,22 +272,22 @@ class SqlserverTest extends CakeTestCase {
 		$this->model = new SqlserverTestModel();
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->Dbo);
 		unset($this->model);
 	}
 
-/**
- * testQuoting method
- *
- * @return void
- */
+	/**
+	 * testQuoting method
+	 *
+	 * @return void
+	 */
 	public function testQuoting() {
 		$expected = "1.2";
 		$result = $this->db->value(1.2, 'float');
@@ -316,11 +314,11 @@ class SqlserverTest extends CakeTestCase {
 		$this->assertSame($expected, $result);
 	}
 
-/**
- * testFields method
- *
- * @return void
- */
+	/**
+	 * testFields method
+	 *
+	 * @return void
+	 */
 	public function testFields() {
 		$fields = array(
 			'[SqlserverTestModel].[id] AS [SqlserverTestModel__id]',
@@ -356,7 +354,8 @@ class SqlserverTest extends CakeTestCase {
 		$result = $this->db->fields($this->model, null, array('*', 'AnotherModel.id', 'AnotherModel.name'));
 		$expected = array_merge($fields, array(
 			'[AnotherModel].[id] AS [AnotherModel__id]',
-			'[AnotherModel].[name] AS [AnotherModel__name]'));
+			'[AnotherModel].[name] AS [AnotherModel__name]'
+		));
 		$this->assertEquals($expected, $result);
 
 		$this->db->clearFieldMappings();
@@ -366,15 +365,16 @@ class SqlserverTest extends CakeTestCase {
 			'[SqlserverClientTestModel].[name] AS [SqlserverClientTestModel__name]',
 			'[SqlserverClientTestModel].[email] AS [SqlserverClientTestModel__email]',
 			'CONVERT(VARCHAR(20), [SqlserverClientTestModel].[created], 20) AS [SqlserverClientTestModel__created]',
-			'CONVERT(VARCHAR(20), [SqlserverClientTestModel].[updated], 20) AS [SqlserverClientTestModel__updated]'));
+			'CONVERT(VARCHAR(20), [SqlserverClientTestModel].[updated], 20) AS [SqlserverClientTestModel__updated]'
+		));
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testDistinctFields method
- *
- * @return void
- */
+	/**
+	 * testDistinctFields method
+	 *
+	 * @return void
+	 */
 	public function testDistinctFields() {
 		$result = $this->db->fields($this->model, null, array('DISTINCT Car.country_code'));
 		$expected = array('DISTINCT [Car].[country_code] AS [Car__country_code]');
@@ -389,11 +389,11 @@ class SqlserverTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testDistinctWithLimit method
- *
- * @return void
- */
+	/**
+	 * testDistinctWithLimit method
+	 *
+	 * @return void
+	 */
 	public function testDistinctWithLimit() {
 		$this->db->read($this->model, array(
 			'fields' => array('DISTINCT SqlserverTestModel.city', 'SqlserverTestModel.country'),
@@ -410,11 +410,11 @@ class SqlserverTest extends CakeTestCase {
 		$this->assertRegExp('/^SELECT DISTINCT TOP 5/', $result);
 	}
 
-/**
- * testDescribe method
- *
- * @return void
- */
+	/**
+	 * testDescribe method
+	 *
+	 * @return void
+	 */
 	public function testDescribe() {
 		$SqlserverTableDescription = new SqlserverTestResultIterator(array(
 			(object)array(
@@ -516,11 +516,11 @@ class SqlserverTest extends CakeTestCase {
 		$this->assertSame($expected['parent_id'], $result['parent_id']);
 	}
 
-/**
- * testBuildColumn
- *
- * @return void
- */
+	/**
+	 * testBuildColumn
+	 *
+	 * @return void
+	 */
 	public function testBuildColumn() {
 		$column = array('name' => 'id', 'type' => 'integer', 'null' => false, 'default' => '', 'length' => '8', 'key' => 'primary');
 		$result = $this->db->buildColumn($column);
@@ -607,11 +607,11 @@ class SqlserverTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testBuildIndex method
- *
- * @return void
- */
+	/**
+	 * testBuildIndex method
+	 *
+	 * @return void
+	 */
 	public function testBuildIndex() {
 		$indexes = array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
@@ -634,11 +634,11 @@ class SqlserverTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testUpdateAllSyntax method
- *
- * @return void
- */
+	/**
+	 * testUpdateAllSyntax method
+	 *
+	 * @return void
+	 */
 	public function testUpdateAllSyntax() {
 		$fields = array('SqlserverTestModel.client_id' => '[SqlserverTestModel].[client_id] + 1');
 		$conditions = array('SqlserverTestModel.updated <' => date('2009-01-01 00:00:00'));
@@ -650,11 +650,11 @@ class SqlserverTest extends CakeTestCase {
 		$this->assertRegExp('/SET \[client_id\] = \[client_id\] \+ 1/', $result);
 	}
 
-/**
- * testGetPrimaryKey method
- *
- * @return void
- */
+	/**
+	 * testGetPrimaryKey method
+	 *
+	 * @return void
+	 */
 	public function testGetPrimaryKey() {
 		$schema = $this->model->schema();
 
@@ -668,11 +668,11 @@ class SqlserverTest extends CakeTestCase {
 		$this->assertNull($result);
 	}
 
-/**
- * SQL server < 11 doesn't have proper limit/offset support, test that our hack works.
- *
- * @return void
- */
+	/**
+	 * SQL server < 11 doesn't have proper limit/offset support, test that our hack works.
+	 *
+	 * @return void
+	 */
 	public function testLimitOffsetHack() {
 		$this->loadFixtures('Author', 'Post', 'User');
 		$query = array(
@@ -701,11 +701,11 @@ class SqlserverTest extends CakeTestCase {
 		$this->assertEquals('nate', $results[1]['User']['user']);
 	}
 
-/**
- * Test that the return of stored procedures is honoured
- *
- * @return void
- */
+	/**
+	 * Test that the return of stored procedures is honoured
+	 *
+	 * @return void
+	 */
 	public function testStoredProcedureReturn() {
 		$sql = <<<SQL
 CREATE PROCEDURE cake_test_procedure
@@ -728,11 +728,11 @@ SQL;
 		$this->assertEquals(2, $result['value']);
 	}
 
-/**
- * Test build statement with having option
- *
- * @return void
- */
+	/**
+	 * Test build statement with having option
+	 *
+	 * @return void
+	 */
 	public function testBuildStatementWithHaving() {
 		$db = $this->getMock('SqlserverTestDb', array('getVersion'), array($this->Dbo->config));
 
@@ -759,11 +759,11 @@ SQL;
 		$this->assertEquals($expected, $sql);
 	}
 
-/**
- * Test build statement with lock option
- *
- * @return void
- */
+	/**
+	 * Test build statement with lock option
+	 *
+	 * @return void
+	 */
 	public function testBuildStatementWithLockingHint() {
 		$db = $this->getMock('SqlserverTestDb', array('getVersion'), array($this->Dbo->config));
 
@@ -789,11 +789,11 @@ SQL;
 		$this->assertEquals($expected, $sql);
 	}
 
-/**
- * Test build statement with having option for legacy version
- *
- * @return void
- */
+	/**
+	 * Test build statement with having option for legacy version
+	 *
+	 * @return void
+	 */
 	public function testBuildStatementWithHavingForLegacyVersion() {
 		$db = $this->getMock('SqlserverTestDb', array('getVersion'), array($this->Dbo->config));
 
@@ -827,11 +827,11 @@ SQL;
 		$this->assertEquals($expected, preg_replace('/^\s+|\s+$/m', '', $sql));
 	}
 
-/**
- * Test build statement with lock option for legacy version
- *
- * @return void
- */
+	/**
+	 * Test build statement with lock option for legacy version
+	 *
+	 * @return void
+	 */
 	public function testBuildStatementWithLockingHintForLegacyVersion() {
 		$db = $this->getMock('SqlserverTestDb', array('getVersion'), array($this->Dbo->config));
 

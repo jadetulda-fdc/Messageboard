@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakeFixtureManager file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP Project
- * @package       Cake.Test.Case.TestSuite.Fixture
- * @since         CakePHP v 2.5
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP Project
+ * @package	   Cake.Test.Case.TestSuite.Fixture
+ * @since		 CakePHP v 2.5
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('DboSource', 'Model/Datasource');
@@ -23,35 +24,35 @@ App::uses('UuidFixture', 'Test/Fixture');
 /**
  * Test Case for CakeFixtureManager class
  *
- * @package       Cake.Test.Case.TestSuite
+ * @package	   Cake.Test.Case.TestSuite
  */
 class CakeFixtureManagerTest extends CakeTestCase {
 
-/**
- * reset environment.
- *
- * @return void
- */
+	/**
+	 * reset environment.
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->fixtureManager = new CakeFixtureManager();
 	}
 
-/**
- * tearDown
- *
- * @return void
- */
+	/**
+	 * tearDown
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->fixtureManager);
 	}
 
-/**
- * testLoadTruncatesTable
- *
- * @return void
- */
+	/**
+	 * testLoadTruncatesTable
+	 *
+	 * @return void
+	 */
 	public function testLoadTruncatesTable() {
 		$MockFixture = $this->getMock('UuidFixture', array('truncate'));
 		$MockFixture
@@ -74,11 +75,11 @@ class CakeFixtureManagerTest extends CakeTestCase {
 		$fixtureManager->load($TestCase);
 	}
 
-/**
- * testLoadSingleTruncatesTable
- *
- * @return void
- */
+	/**
+	 * testLoadSingleTruncatesTable
+	 *
+	 * @return void
+	 */
 	public function testLoadSingleTruncatesTable() {
 		$MockFixture = $this->getMock('UuidFixture', array('truncate'));
 		$MockFixture

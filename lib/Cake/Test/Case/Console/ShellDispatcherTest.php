@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ShellDispatcherTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Console
- * @since         CakePHP(tm) v 1.2.0.5432
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Console
+ * @since		 CakePHP(tm) v 1.2.0.5432
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('ShellDispatcher', 'Console');
@@ -21,94 +22,93 @@ App::uses('ShellDispatcher', 'Console');
 /**
  * TestShellDispatcher class
  *
- * @package       Cake.Test.Case.Console
+ * @package	   Cake.Test.Case.Console
  */
 class TestShellDispatcher extends ShellDispatcher {
 
-/**
- * params property
- *
- * @var array
- */
+	/**
+	 * params property
+	 *
+	 * @var array
+	 */
 	public $params = array();
 
-/**
- * stopped property
- *
- * @var string
- */
+	/**
+	 * stopped property
+	 *
+	 * @var string
+	 */
 	public $stopped = null;
 
-/**
- * TestShell
- *
- * @var mixed
- */
+	/**
+	 * TestShell
+	 *
+	 * @var mixed
+	 */
 	public $TestShell;
 
-/**
- * _initEnvironment method
- *
- * @return void
- */
+	/**
+	 * _initEnvironment method
+	 *
+	 * @return void
+	 */
 	protected function _initEnvironment() {
 	}
 
-/**
- * clear method
- *
- * @return void
- */
+	/**
+	 * clear method
+	 *
+	 * @return void
+	 */
 	public function clear() {
 	}
 
-/**
- * _stop method
- *
- * @return void
- */
+	/**
+	 * _stop method
+	 *
+	 * @return void
+	 */
 	protected function _stop($status = 0) {
 		$this->stopped = 'Stopped with status: ' . $status;
 		return $status;
 	}
 
-/**
- * getShell
- *
- * @param string $shell
- * @return mixed
- */
+	/**
+	 * getShell
+	 *
+	 * @param string $shell
+	 * @return mixed
+	 */
 	public function getShell($shell) {
 		return $this->_getShell($shell);
 	}
 
-/**
- * _getShell
- *
- * @param string $plugin
- * @return mixed
- */
+	/**
+	 * _getShell
+	 *
+	 * @param string $plugin
+	 * @return mixed
+	 */
 	protected function _getShell($shell) {
 		if (isset($this->TestShell)) {
 			return $this->TestShell;
 		}
 		return parent::_getShell($shell);
 	}
-
 }
 
 /**
  * ShellDispatcherTest
  *
- * @package       Cake.Test.Case.Console
+ * @package	   Cake.Test.Case.Console
  */
 class ShellDispatcherTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		App::build(array(
@@ -122,21 +122,21 @@ class ShellDispatcherTest extends CakeTestCase {
 		CakePlugin::load('TestPlugin');
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		CakePlugin::unload();
 	}
 
-/**
- * testParseParams method
- *
- * @return void
- */
+	/**
+	 * testParseParams method
+	 *
+	 * @return void
+	 */
 	public function testParseParamsAppWorkingAbsolute() {
 		$Dispatcher = new TestShellDispatcher();
 		$params = array(
@@ -157,11 +157,11 @@ class ShellDispatcherTest extends CakeTestCase {
 		$this->assertEquals($expected, $Dispatcher->params);
 	}
 
-/**
- * testParseParams method
- *
- * @return void
- */
+	/**
+	 * testParseParams method
+	 *
+	 * @return void
+	 */
 	public function testParseParamsNone() {
 		$Dispatcher = new TestShellDispatcher();
 		$params = array('cake.php');
@@ -176,11 +176,11 @@ class ShellDispatcherTest extends CakeTestCase {
 		$this->assertEquals($expected, $Dispatcher->params);
 	}
 
-/**
- * testParseParams method
- *
- * @return void
- */
+	/**
+	 * testParseParams method
+	 *
+	 * @return void
+	 */
 	public function testParseParamsApp() {
 		$Dispatcher = new TestShellDispatcher();
 		$params = array(
@@ -199,11 +199,11 @@ class ShellDispatcherTest extends CakeTestCase {
 		$this->assertEquals($expected, $Dispatcher->params);
 	}
 
-/**
- * testParseParams method
- *
- * @return void
- */
+	/**
+	 * testParseParams method
+	 *
+	 * @return void
+	 */
 	public function testParseParamsAppWorkingRelative() {
 		$Dispatcher = new TestShellDispatcher();
 		$params = array(
@@ -225,11 +225,11 @@ class ShellDispatcherTest extends CakeTestCase {
 		$this->assertEquals($expected, $Dispatcher->params);
 	}
 
-/**
- * testParseParams method
- *
- * @return void
- */
+	/**
+	 * testParseParams method
+	 *
+	 * @return void
+	 */
 	public function testParseParams() {
 		$Dispatcher = new TestShellDispatcher();
 
@@ -434,11 +434,11 @@ class ShellDispatcherTest extends CakeTestCase {
 		}
 	}
 
-/**
- * Verify loading of (plugin-) shells
- *
- * @return void
- */
+	/**
+	 * Verify loading of (plugin-) shells
+	 *
+	 * @return void
+	 */
 	public function testGetShell() {
 		$this->skipIf(class_exists('SampleShell'), 'SampleShell Class already loaded.');
 		$this->skipIf(class_exists('ExampleShell'), 'ExampleShell Class already loaded.');
@@ -467,11 +467,11 @@ class ShellDispatcherTest extends CakeTestCase {
 		$this->assertInstanceOf('TestPluginShell', $result);
 	}
 
-/**
- * Verify correct dispatch of Shell subclasses with a main method
- *
- * @return void
- */
+	/**
+	 * Verify correct dispatch of Shell subclasses with a main method
+	 *
+	 * @return void
+	 */
 	public function testDispatchShellWithMain() {
 		$Dispatcher = new TestShellDispatcher();
 		$Shell = $this->getMock('Shell');
@@ -489,11 +489,11 @@ class ShellDispatcherTest extends CakeTestCase {
 		$this->assertEquals(array(), $Dispatcher->args);
 	}
 
-/**
- * Verify correct dispatch of Shell subclasses without a main method
- *
- * @return void
- */
+	/**
+	 * Verify correct dispatch of Shell subclasses without a main method
+	 *
+	 * @return void
+	 */
 	public function testDispatchShellWithoutMain() {
 		$Dispatcher = new TestShellDispatcher();
 		$Shell = $this->getMock('Shell');
@@ -510,11 +510,11 @@ class ShellDispatcherTest extends CakeTestCase {
 		$this->assertTrue($result);
 	}
 
-/**
- * Verify correct dispatch of custom classes with a main method
- *
- * @return void
- */
+	/**
+	 * Verify correct dispatch of custom classes with a main method
+	 *
+	 * @return void
+	 */
 	public function testDispatchNotAShellWithMain() {
 		$Dispatcher = new TestShellDispatcher();
 		$methods = get_class_methods('CakeObject');
@@ -541,11 +541,11 @@ class ShellDispatcherTest extends CakeTestCase {
 		$this->assertTrue($result);
 	}
 
-/**
- * Verify correct dispatch of custom classes without a main method
- *
- * @return void
- */
+	/**
+	 * Verify correct dispatch of custom classes without a main method
+	 *
+	 * @return void
+	 */
 	public function testDispatchNotAShellWithoutMain() {
 		$Dispatcher = new TestShellDispatcher();
 		$methods = get_class_methods('CakeObject');
@@ -572,11 +572,11 @@ class ShellDispatcherTest extends CakeTestCase {
 		$this->assertTrue($result);
 	}
 
-/**
- * Verify shifting of arguments
- *
- * @return void
- */
+	/**
+	 * Verify shifting of arguments
+	 *
+	 * @return void
+	 */
 	public function testShiftArgs() {
 		$Dispatcher = new TestShellDispatcher();
 
@@ -600,5 +600,4 @@ class ShellDispatcherTest extends CakeTestCase {
 		$this->assertNull($Dispatcher->shiftArgs());
 		$this->assertSame(array(), $Dispatcher->args);
 	}
-
 }

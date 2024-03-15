@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,10 +8,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         2.8
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @since		 2.8
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses("BaseShellHelper", "Console/Helper");
 
@@ -19,41 +20,41 @@ App::uses("BaseShellHelper", "Console/Helper");
  */
 class ProgressShellHelper extends BaseShellHelper {
 
-/**
- * The current progress.
- *
- * @var int
- */
+	/**
+	 * The current progress.
+	 *
+	 * @var int
+	 */
 	protected $_progress = 0;
 
-/**
- * The total number of 'items' to progress through.
- *
- * @var int
- */
+	/**
+	 * The total number of 'items' to progress through.
+	 *
+	 * @var int
+	 */
 	protected $_total = 0;
 
-/**
- * The width of the bar.
- *
- * @var int
- */
+	/**
+	 * The width of the bar.
+	 *
+	 * @var int
+	 */
 	protected $_width = 0;
 
-/**
- * Output a progress bar.
- *
- * Takes a number of options to customize the behavior:
- *
- * - `total` The total number of items in the progress bar. Defaults
- *   to 100.
- * - `width` The width of the progress bar. Defaults to 80.
- * - `callback` The callback that will be called in a loop to advance the progress bar.
- *
- * @param array $args The arguments/options to use when outputing the progress bar.
- * @return void
- * @throws RuntimeException
- */
+	/**
+	 * Output a progress bar.
+	 *
+	 * Takes a number of options to customize the behavior:
+	 *
+	 * - `total` The total number of items in the progress bar. Defaults
+	 *   to 100.
+	 * - `width` The width of the progress bar. Defaults to 80.
+	 * - `callback` The callback that will be called in a loop to advance the progress bar.
+	 *
+	 * @param array $args The arguments/options to use when outputing the progress bar.
+	 * @return void
+	 * @throws RuntimeException
+	 */
 	public function output($args) {
 		$args += array('callback' => null);
 		if (isset($args[0])) {
@@ -71,16 +72,16 @@ class ProgressShellHelper extends BaseShellHelper {
 		$this->_consoleOutput->write('');
 	}
 
-/**
- * Initialize the progress bar for use.
- *
- * - `total` The total number of items in the progress bar. Defaults
- *   to 100.
- * - `width` The width of the progress bar. Defaults to 80.
- *
- * @param array $args The initialization data.
- * @return void
- */
+	/**
+	 * Initialize the progress bar for use.
+	 *
+	 * - `total` The total number of items in the progress bar. Defaults
+	 *   to 100.
+	 * - `width` The width of the progress bar. Defaults to 80.
+	 *
+	 * @param array $args The initialization data.
+	 * @return void
+	 */
 	public function init(array $args = array()) {
 		$args += array('total' => 100, 'width' => 80);
 		$this->_progress = 0;
@@ -88,21 +89,21 @@ class ProgressShellHelper extends BaseShellHelper {
 		$this->_total = $args['total'];
 	}
 
-/**
- * Increment the progress bar.
- *
- * @param int $num The amount of progress to advance by.
- * @return void
- */
+	/**
+	 * Increment the progress bar.
+	 *
+	 * @param int $num The amount of progress to advance by.
+	 * @return void
+	 */
 	public function increment($num = 1) {
 		$this->_progress = min(max(0, $this->_progress + $num), $this->_total);
 	}
 
-/**
- * Render the progress bar based on the current state.
- *
- * @return void
- */
+	/**
+	 * Render the progress bar based on the current state.
+	 *
+	 * @return void
+	 */
 	public function draw() {
 		$numberLen = strlen(' 100%');
 		$complete = round($this->_progress / $this->_total, 2);

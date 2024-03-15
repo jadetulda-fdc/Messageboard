@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ControllerTestCase file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.TestSuite
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.TestSuite
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Dispatcher', 'Routing');
@@ -27,31 +28,31 @@ App::uses('CakeEvent', 'Event');
 /**
  * ControllerTestDispatcher class
  *
- * @package       Cake.TestSuite
+ * @package	   Cake.TestSuite
  */
 class ControllerTestDispatcher extends Dispatcher {
 
-/**
- * The controller to use in the dispatch process
- *
- * @var Controller
- */
+	/**
+	 * The controller to use in the dispatch process
+	 *
+	 * @var Controller
+	 */
 	public $testController = null;
 
-/**
- * Use custom routes during tests
- *
- * @var bool
- */
+	/**
+	 * Use custom routes during tests
+	 *
+	 * @var bool
+	 */
 	public $loadRoutes = true;
 
-/**
- * Returns the test controller
- *
- * @param CakeRequest $request The request instance.
- * @param CakeResponse $response The response instance.
- * @return Controller
- */
+	/**
+	 * Returns the test controller
+	 *
+	 * @param CakeRequest $request The request instance.
+	 * @param CakeResponse $response The response instance.
+	 * @return Controller
+	 */
 	protected function _getController($request, $response) {
 		if ($this->testController === null) {
 			$this->testController = parent::_getController($request, $response);
@@ -71,129 +72,127 @@ class ControllerTestDispatcher extends Dispatcher {
 		return $this->testController;
 	}
 
-/**
- * Loads routes and resets if the test case dictates it should
- *
- * @return void
- */
+	/**
+	 * Loads routes and resets if the test case dictates it should
+	 *
+	 * @return void
+	 */
 	protected function _loadRoutes() {
 		parent::_loadRoutes();
 		if (!$this->loadRoutes) {
 			Router::reload();
 		}
 	}
-
 }
 
 /**
  * InterceptContentHelper class
  *
- * @package       Cake.TestSuite
+ * @package	   Cake.TestSuite
  */
 class InterceptContentHelper extends Helper {
 
-/**
- * Intercepts and stores the contents of the view before the layout is rendered
- *
- * @param string $viewFile The view file
- * @return void
- */
+	/**
+	 * Intercepts and stores the contents of the view before the layout is rendered
+	 *
+	 * @param string $viewFile The view file
+	 * @return void
+	 */
 	public function afterRender($viewFile) {
 		$this->_View->assign('__view_no_layout__', $this->_View->fetch('content'));
 		$this->_View->Helpers->unload('InterceptContent');
 	}
-
 }
 
 /**
  * ControllerTestCase class
  *
- * @package       Cake.TestSuite
- * @method        mixed testAction() testAction($url, $options = array())  Lets you do functional tests of a controller action.
+ * @package	   Cake.TestSuite
+ * @method		mixed testAction() testAction($url, $options = array())  Lets you do functional tests of a controller action.
  */
 abstract class ControllerTestCase extends CakeTestCase {
 
-/**
- * The controller to test in testAction
- *
- * @var Controller
- */
+	/**
+	 * The controller to test in testAction
+	 *
+	 * @var Controller
+	 */
 	public $controller = null;
 
-/**
- * Automatically mock controllers that aren't mocked
- *
- * @var bool
- */
+	/**
+	 * Automatically mock controllers that aren't mocked
+	 *
+	 * @var bool
+	 */
 	public $autoMock = true;
 
-/**
- * Use custom routes during tests
- *
- * @var bool
- */
+	/**
+	 * Use custom routes during tests
+	 *
+	 * @var bool
+	 */
 	public $loadRoutes = true;
 
-/**
- * The resulting view vars of the last testAction call
- *
- * @var array
- */
+	/**
+	 * The resulting view vars of the last testAction call
+	 *
+	 * @var array
+	 */
 	public $vars = null;
 
-/**
- * The resulting rendered view of the last testAction call
- *
- * @var string
- */
+	/**
+	 * The resulting rendered view of the last testAction call
+	 *
+	 * @var string
+	 */
 	public $view = null;
 
-/**
- * The resulting rendered layout+view of the last testAction call
- *
- * @var string
- */
+	/**
+	 * The resulting rendered layout+view of the last testAction call
+	 *
+	 * @var string
+	 */
 	public $contents = null;
 
-/**
- * The returned result of the dispatch (requestAction), if any
- *
- * @var string
- */
+	/**
+	 * The returned result of the dispatch (requestAction), if any
+	 *
+	 * @var string
+	 */
 	public $result = null;
 
-/**
- * The headers that would have been sent by the action
- *
- * @var string
- */
+	/**
+	 * The headers that would have been sent by the action
+	 *
+	 * @var string
+	 */
 	public $headers = null;
 
-/**
- * Flag for checking if the controller instance is dirty.
- * Once a test has been run on a controller it should be rebuilt
- * to clean up properties.
- *
- * @var bool
- */
+	/**
+	 * Flag for checking if the controller instance is dirty.
+	 * Once a test has been run on a controller it should be rebuilt
+	 * to clean up properties.
+	 *
+	 * @var bool
+	 */
 	protected $_dirtyController = false;
 
-/**
- * The class name to use for mocking the response object.
- *
- * @var string
- */
+	/**
+	 * The class name to use for mocking the response object.
+	 *
+	 * @var string
+	 */
 	protected $_responseClass = 'CakeResponse';
 
-/**
- * Used to enable calling ControllerTestCase::testAction() without the testing
- * framework thinking that it's a test case
- *
- * @param string $name The name of the function
- * @param array $arguments Array of arguments
- * @return mixed The return of _testAction.
- * @throws BadMethodCallException when you call methods that don't exist.
- */
+	/**
+	 * Used to enable calling ControllerTestCase::testAction() without the testing
+	 * framework thinking that it's a test case
+	 *
+	 * @param string $name The name of the function
+	 * @param array $arguments Array of arguments
+	 * @return mixed The return of _testAction.
+	 * @throws BadMethodCallException when you call methods that don't exist.
+	 */
 	public function __call($name, $arguments) {
 		if ($name === 'testAction') {
 			return call_user_func_array(array($this, '_testAction'), $arguments);
@@ -201,28 +200,28 @@ abstract class ControllerTestCase extends CakeTestCase {
 		throw new BadMethodCallException("Method '{$name}' does not exist.");
 	}
 
-/**
- * Lets you do functional tests of a controller action.
- *
- * ### Options:
- *
- * - `data` Will be used as the request data. If the `method` is GET,
- *   data will be used a GET params. If the `method` is POST, it will be used
- *   as POST data. By setting `$options['data']` to a string, you can simulate XML or JSON
- *   payloads to your controllers allowing you to test REST webservices.
- * - `method` POST or GET. Defaults to POST.
- * - `return` Specify the return type you want. Choose from:
- *     - `vars` Get the set view variables.
- *     - `view` Get the rendered view, without a layout.
- *     - `contents` Get the rendered view including the layout.
- *     - `result` Get the return value of the controller action. Useful
- *       for testing requestAction methods.
- *
- * @param string|array $url The URL to test.
- * @param array $options See options
- * @return mixed The specified return type.
- * @triggers ControllerTestCase $Dispatch, array('request' => $request)
- */
+	/**
+	 * Lets you do functional tests of a controller action.
+	 *
+	 * ### Options:
+	 *
+	 * - `data` Will be used as the request data. If the `method` is GET,
+	 *   data will be used a GET params. If the `method` is POST, it will be used
+	 *   as POST data. By setting `$options['data']` to a string, you can simulate XML or JSON
+	 *   payloads to your controllers allowing you to test REST webservices.
+	 * - `method` POST or GET. Defaults to POST.
+	 * - `return` Specify the return type you want. Choose from:
+	 *	 - `vars` Get the set view variables.
+	 *	 - `view` Get the rendered view, without a layout.
+	 *	 - `contents` Get the rendered view including the layout.
+	 *	 - `result` Get the return value of the controller action. Useful
+	 *	   for testing requestAction methods.
+	 *
+	 * @param string|array $url The URL to test.
+	 * @param array $options See options
+	 * @return mixed The specified return type.
+	 * @triggers ControllerTestCase $Dispatch, array('request' => $request)
+	 */
 	protected function _testAction($url, $options = array()) {
 		$this->vars = $this->result = $this->view = $this->contents = $this->headers = null;
 
@@ -315,27 +314,27 @@ abstract class ControllerTestCase extends CakeTestCase {
 		return $this->{$options['return']};
 	}
 
-/**
- * Generates a mocked controller and mocks any classes passed to `$mocks`. By
- * default, `_stop()` is stubbed as is sending the response headers, so to not
- * interfere with testing.
- *
- * ### Mocks:
- *
- * - `methods` Methods to mock on the controller. `_stop()` is mocked by default
- * - `models` Models to mock. Models are added to the ClassRegistry so any
- *   time they are instantiated the mock will be created. Pass as key value pairs
- *   with the value being specific methods on the model to mock. If `true` or
- *   no value is passed, the entire model will be mocked.
- * - `components` Components to mock. Components are only mocked on this controller
- *   and not within each other (i.e., components on components)
- *
- * @param string $controller Controller name
- * @param array $mocks List of classes and methods to mock
- * @return Controller Mocked controller
- * @throws MissingControllerException When controllers could not be created.
- * @throws MissingComponentException When components could not be created.
- */
+	/**
+	 * Generates a mocked controller and mocks any classes passed to `$mocks`. By
+	 * default, `_stop()` is stubbed as is sending the response headers, so to not
+	 * interfere with testing.
+	 *
+	 * ### Mocks:
+	 *
+	 * - `methods` Methods to mock on the controller. `_stop()` is mocked by default
+	 * - `models` Models to mock. Models are added to the ClassRegistry so any
+	 *   time they are instantiated the mock will be created. Pass as key value pairs
+	 *   with the value being specific methods on the model to mock. If `true` or
+	 *   no value is passed, the entire model will be mocked.
+	 * - `components` Components to mock. Components are only mocked on this controller
+	 *   and not within each other (i.e., components on components)
+	 *
+	 * @param string $controller Controller name
+	 * @param array $mocks List of classes and methods to mock
+	 * @return Controller Mocked controller
+	 * @throws MissingControllerException When controllers could not be created.
+	 * @throws MissingComponentException When components could not be created.
+	 */
 	public function generate($controller, $mocks = array()) {
 		list($plugin, $controller) = pluginSplit($controller);
 		if ($plugin) {
@@ -418,11 +417,11 @@ abstract class ControllerTestCase extends CakeTestCase {
 		return $this->controller;
 	}
 
-/**
- * Unsets some properties to free memory.
- *
- * @return void
- */
+	/**
+	 * Unsets some properties to free memory.
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset(

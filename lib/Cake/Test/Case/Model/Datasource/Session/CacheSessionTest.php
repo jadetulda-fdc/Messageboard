@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CacheSessionTest
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Model.Datasource.Session
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Model.Datasource.Session
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('CakeSession', 'Model/Datasource');
@@ -23,17 +24,17 @@ class_exists('CakeSession');
 /**
  * CacheSessionTest
  *
- * @package       Cake.Test.Case.Model.Datasource.Session
+ * @package	   Cake.Test.Case.Model.Datasource.Session
  */
 class CacheSessionTest extends CakeTestCase {
 
 	protected static $_sessionBackup;
 
-/**
- * test case startup
- *
- * @return void
- */
+	/**
+	 * test case startup
+	 *
+	 * @return void
+	 */
 	public static function setupBeforeClass() {
 		Cache::config('session_test', array(
 			'engine' => 'File',
@@ -44,11 +45,11 @@ class CacheSessionTest extends CakeTestCase {
 		Configure::write('Session.handler.config', 'session_test');
 	}
 
-/**
- * cleanup after test case.
- *
- * @return void
- */
+	/**
+	 * cleanup after test case.
+	 *
+	 * @return void
+	 */
 	public static function teardownAfterClass() {
 		Cache::clear(false, 'session_test');
 		Cache::drop('session_test');
@@ -56,51 +57,51 @@ class CacheSessionTest extends CakeTestCase {
 		Configure::write('Session', static::$_sessionBackup);
 	}
 
-/**
- * setup
- *
- * @return void
- */
+	/**
+	 * setup
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->storage = new CacheSession();
 	}
 
-/**
- * tearDown
- *
- * @return void
- */
+	/**
+	 * tearDown
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->storage);
 	}
 
-/**
- * test open
- *
- * @return void
- */
+	/**
+	 * test open
+	 *
+	 * @return void
+	 */
 	public function testOpen() {
 		$this->assertTrue($this->storage->open());
 	}
 
-/**
- * test write()
- *
- * @return void
- */
+	/**
+	 * test write()
+	 *
+	 * @return void
+	 */
 	public function testWrite() {
 		$this->storage->write('abc', 'Some value');
 		$this->assertEquals('Some value', Cache::read('abc', 'session_test'), 'Value was not written.');
 		$this->assertFalse(Cache::read('abc', 'default'), 'Cache should only write to the given config.');
 	}
 
-/**
- * test reading.
- *
- * @return void
- */
+	/**
+	 * test reading.
+	 *
+	 * @return void
+	 */
 	public function testRead() {
 		$this->storage->write('test_one', 'Some other value');
 		$this->assertEquals('Some other value', $this->storage->read('test_one'), 'Incorrect value.');
@@ -108,16 +109,15 @@ class CacheSessionTest extends CakeTestCase {
 		$this->assertEquals(0, $this->storage->read('test_two'));
 	}
 
-/**
- * test destroy
- *
- * @return void
- */
+	/**
+	 * test destroy
+	 *
+	 * @return void
+	 */
 	public function testDestroy() {
 		$this->storage->write('test_one', 'Some other value');
 		$this->assertTrue($this->storage->destroy('test_one'), 'Value was not deleted.');
 
 		$this->assertFalse(Cache::read('test_one', 'session_test'), 'Value stuck around.');
 	}
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CacheHelperTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.View.Helper
- * @since         CakePHP(tm) v 1.2.0.4206
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.View.Helper
+ * @since		 CakePHP(tm) v 1.2.0.4206
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Controller', 'Controller');
@@ -24,22 +25,22 @@ App::uses('CacheHelper', 'View/Helper');
 /**
  * CacheTestController class
  *
- * @package       Cake.Test.Case.View.Helper
+ * @package	   Cake.Test.Case.View.Helper
  */
 class CacheTestController extends Controller {
 
-/**
- * helpers property
- *
- * @var array
- */
+	/**
+	 * helpers property
+	 *
+	 * @var array
+	 */
 	public $helpers = array('Html', 'Cache');
 
-/**
- * cache_parsing method
- *
- * @return void
- */
+	/**
+	 * cache_parsing method
+	 *
+	 * @return void
+	 */
 	public function cache_parsing() {
 		$this->viewPath = 'Posts';
 		$this->layout = 'cache_layout';
@@ -48,32 +49,31 @@ class CacheTestController extends Controller {
 		$this->set('batman', 'bruce wayne');
 		$this->set('spiderman', 'peter parker');
 	}
-
 }
 
 /**
  * CacheHelperTest class
  *
- * @package       Cake.Test.Case.View.Helper
+ * @package	   Cake.Test.Case.View.Helper
  */
 class CacheHelperTest extends CakeTestCase {
 
-/**
- * Checks if TMP/views is writable, and skips the case if it is not.
- *
- * @return void
- */
+	/**
+	 * Checks if TMP/views is writable, and skips the case if it is not.
+	 *
+	 * @return void
+	 */
 	public function skip() {
 		if (!is_writable(TMP . 'cache' . DS . 'views' . DS)) {
 			$this->markTestSkipped('TMP/views is not writable %s');
 		}
 	}
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$_GET = array();
@@ -88,22 +88,22 @@ class CacheHelperTest extends CakeTestCase {
 		), App::RESET);
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		clearCache();
 		unset($this->Cache);
 		parent::tearDown();
 	}
 
-/**
- * test cache parsing with no cake:nocache tags in view file.
- *
- * @return void
- */
+	/**
+	 * test cache parsing with no cake:nocache tags in view file.
+	 *
+	 * @return void
+	 */
 	public function testLayoutCacheParsingNoTagsInView() {
 		$this->Controller->cache_parsing();
 		$this->Controller->request->addParams(array(
@@ -132,11 +132,11 @@ class CacheHelperTest extends CakeTestCase {
 		unlink($filename);
 	}
 
-/**
- * test cache parsing with non-latin characters in current route
- *
- * @return void
- */
+	/**
+	 * test cache parsing with non-latin characters in current route
+	 *
+	 * @return void
+	 */
 	public function testCacheNonLatinCharactersInRoute() {
 		$this->Controller->cache_parsing();
 		$this->Controller->request->addParams(array(
@@ -158,11 +158,11 @@ class CacheHelperTest extends CakeTestCase {
 		unlink($filename);
 	}
 
-/**
- * Test cache parsing with cake:nocache tags in view file.
- *
- * @return void
- */
+	/**
+	 * Test cache parsing with cake:nocache tags in view file.
+	 *
+	 * @return void
+	 */
 	public function testLayoutCacheParsingWithTagsInView() {
 		$this->Controller->cache_parsing();
 		$this->Controller->request->addParams(array(
@@ -192,11 +192,11 @@ class CacheHelperTest extends CakeTestCase {
 		unlink($filename);
 	}
 
-/**
- * test that multiple <!--nocache--> tags function with multiple nocache tags in the layout.
- *
- * @return void
- */
+	/**
+	 * test that multiple <!--nocache--> tags function with multiple nocache tags in the layout.
+	 *
+	 * @return void
+	 */
 	public function testMultipleNoCacheTagsInViewfile() {
 		$this->Controller->cache_parsing();
 		$this->Controller->request->addParams(array(
@@ -223,11 +223,11 @@ class CacheHelperTest extends CakeTestCase {
 		unlink($filename);
 	}
 
-/**
- * testComplexNoCache method
- *
- * @return void
- */
+	/**
+	 * testComplexNoCache method
+	 *
+	 * @return void
+	 */
 	public function testComplexNoCache() {
 		$this->Controller->cache_parsing();
 		$this->Controller->request->addParams(array(
@@ -283,11 +283,11 @@ class CacheHelperTest extends CakeTestCase {
 		$this->assertRegExp('/7\. layout after content and after element with no cache tags/', $contents);
 	}
 
-/**
- * test cache of view vars
- *
- * @return void
- */
+	/**
+	 * test cache of view vars
+	 *
+	 * @return void
+	 */
 	public function testCacheViewVars() {
 		$this->Controller->cache_parsing();
 		$this->Controller->request->addParams(array(
@@ -315,11 +315,11 @@ class CacheHelperTest extends CakeTestCase {
 		unlink($filename);
 	}
 
-/**
- * Test that callback code is generated correctly.
- *
- * @return void
- */
+	/**
+	 * Test that callback code is generated correctly.
+	 *
+	 * @return void
+	 */
 	public function testCacheCallbacks() {
 		$this->Controller->request->addParams(array(
 			'controller' => 'cache_test',
@@ -349,11 +349,11 @@ class CacheHelperTest extends CakeTestCase {
 		unlink($filename);
 	}
 
-/**
- * test cacheAction set to a boolean
- *
- * @return void
- */
+	/**
+	 * test cacheAction set to a boolean
+	 *
+	 * @return void
+	 */
 	public function testCacheActionArray() {
 		$this->Controller->request->addParams(array(
 			'controller' => 'cache_test',
@@ -379,11 +379,11 @@ class CacheHelperTest extends CakeTestCase {
 		unlink($filename);
 	}
 
-/**
- * Test that cacheAction works with camelcased controller names.
- *
- * @return void
- */
+	/**
+	 * Test that cacheAction works with camelcased controller names.
+	 *
+	 * @return void
+	 */
 	public function testCacheActionArrayCamelCase() {
 		$this->Controller->request->addParams(array(
 			'controller' => 'cache_test',
@@ -408,11 +408,11 @@ class CacheHelperTest extends CakeTestCase {
 		unlink($filename);
 	}
 
-/**
- * test with named and pass args.
- *
- * @return void
- */
+	/**
+	 * test with named and pass args.
+	 *
+	 * @return void
+	 */
 	public function testCacheWithNamedAndPassedArgs() {
 		Router::reload();
 
@@ -442,11 +442,11 @@ class CacheHelperTest extends CakeTestCase {
 		unlink($filename);
 	}
 
-/**
- * Test that query string parameters are included in the cache filename.
- *
- * @return void
- */
+	/**
+	 * Test that query string parameters are included in the cache filename.
+	 *
+	 * @return void
+	 */
 	public function testCacheWithQueryStringParams() {
 		Router::reload();
 
@@ -474,11 +474,11 @@ class CacheHelperTest extends CakeTestCase {
 		unlink($filename);
 	}
 
-/**
- * test that custom routes are respected when generating cache files.
- *
- * @return void
- */
+	/**
+	 * test that custom routes are respected when generating cache files.
+	 *
+	 * @return void
+	 */
 	public function testCacheWithCustomRoutes() {
 		Router::reload();
 		Router::connect('/:lang/:controller/:action/*', array(), array('lang' => '[a-z]{3}'));
@@ -508,15 +508,15 @@ class CacheHelperTest extends CakeTestCase {
 		unlink($filename);
 	}
 
-/**
- * test ControllerName contains AppName
- *
- * This test verifies view cache is created correctly when the app name is contained in part of the controller name.
- * (webapp Name) base name is 'cache' controller is 'cacheTest' action is 'cache_name'
- * apps URL would look something like http://localhost/cache/cacheTest/cache_name
- *
- * @return void
- */
+	/**
+	 * test ControllerName contains AppName
+	 *
+	 * This test verifies view cache is created correctly when the app name is contained in part of the controller name.
+	 * (webapp Name) base name is 'cache' controller is 'cacheTest' action is 'cache_name'
+	 * apps URL would look something like http://localhost/cache/cacheTest/cache_name
+	 *
+	 * @return void
+	 */
 	public function testCacheBaseNameControllerName() {
 		$this->Controller->cache_parsing();
 		$this->Controller->cacheAction = array(
@@ -543,11 +543,11 @@ class CacheHelperTest extends CakeTestCase {
 		unlink($filename);
 	}
 
-/**
- * test that afterRender checks the conditions correctly.
- *
- * @return void
- */
+	/**
+	 * test that afterRender checks the conditions correctly.
+	 *
+	 * @return void
+	 */
 	public function testAfterRenderConditions() {
 		Configure::write('Cache.check', true);
 		$View = new View($this->Controller);
@@ -570,11 +570,11 @@ class CacheHelperTest extends CakeTestCase {
 		$Cache->afterRender('posts/index');
 	}
 
-/**
- * test that afterRender checks the conditions correctly.
- *
- * @return void
- */
+	/**
+	 * test that afterRender checks the conditions correctly.
+	 *
+	 * @return void
+	 */
 	public function testAfterLayoutConditions() {
 		Configure::write('Cache.check', true);
 		$View = new View($this->Controller);
@@ -597,13 +597,13 @@ class CacheHelperTest extends CakeTestCase {
 		$Cache->afterLayout('posts/index');
 	}
 
-/**
- * testCacheEmptySections method
- *
- * This test must be uncommented/fixed in next release (1.2+)
- *
- * @return void
- */
+	/**
+	 * testCacheEmptySections method
+	 *
+	 * This test must be uncommented/fixed in next release (1.2+)
+	 *
+	 * @return void
+	 */
 	public function testCacheEmptySections() {
 		$this->Controller->cache_parsing();
 		$this->Controller->params = array(
@@ -624,10 +624,12 @@ class CacheHelperTest extends CakeTestCase {
 		$this->assertNotRegExp('/php echo/', $result);
 		$this->assertRegExp(
 			'@</title>\s*</head>\s*' .
-			'<body>\s*' .
-			'View Content\s*' .
-			'cached count is: 3\s*' .
-			'</body>@', $result);
+				'<body>\s*' .
+				'View Content\s*' .
+				'cached count is: 3\s*' .
+				'</body>@',
+			$result
+		);
 
 		$filename = CACHE . 'views' . DS . 'cachetest_cache_empty_sections.php';
 		$this->assertTrue(file_exists($filename));
@@ -635,15 +637,17 @@ class CacheHelperTest extends CakeTestCase {
 		$this->assertNotRegExp('/nocache/', $contents);
 		$this->assertRegExp(
 			'@<head>\s*<title>Posts</title>\s*' .
-			'<\?php \$x \= 1; \?>\s*' .
-			'</head>\s*' .
-			'<body>\s*' .
-			'<\?php \$x\+\+; \?>\s*' .
-			'<\?php \$x\+\+; \?>\s*' .
-			'View Content\s*' .
-			'<\?php \$y = 1; \?>\s*' .
-			'<\?php echo \'cached count is: \' . \$x; \?>\s*' .
-			'@', $contents);
+				'<\?php \$x \= 1; \?>\s*' .
+				'</head>\s*' .
+				'<body>\s*' .
+				'<\?php \$x\+\+; \?>\s*' .
+				'<\?php \$x\+\+; \?>\s*' .
+				'View Content\s*' .
+				'<\?php \$y = 1; \?>\s*' .
+				'<\?php echo \'cached count is: \' . \$x; \?>\s*' .
+				'@',
+			$contents
+		);
 		unlink($filename);
 	}
 }

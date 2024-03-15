@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FlashComponentTest file
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Controller.Component
- * @since         CakePHP(tm) v 2.7.0-dev
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Controller.Component
+ * @since		 CakePHP(tm) v 2.7.0-dev
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('FlashComponent', 'Controller/Component');
@@ -28,32 +29,32 @@ App::uses('ComponentCollection', 'Controller');
  */
 class FlashComponentTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->Components = new ComponentCollection();
 		$this->Flash = new FlashComponent($this->Components);
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		CakeSession::destroy();
 	}
 
-/**
- * testSet method
- *
- * @return void
- */
+	/**
+	 * testSet method
+	 *
+	 * @return void
+	 */
 	public function testSet() {
 		$this->assertNull(CakeSession::read('Message.flash'));
 
@@ -147,11 +148,11 @@ class FlashComponentTest extends CakeTestCase {
 		CakeSession::delete('Message.flash');
 	}
 
-/**
- * testSetWithException method
- *
- * @return void
- */
+	/**
+	 * testSetWithException method
+	 *
+	 * @return void
+	 */
 	public function testSetWithException() {
 		$this->assertNull(CakeSession::read('Message.flash'));
 
@@ -169,11 +170,11 @@ class FlashComponentTest extends CakeTestCase {
 		CakeSession::delete('Message.flash');
 	}
 
-/**
- * testSetWithComponentConfiguration method
- *
- * @return void
- */
+	/**
+	 * testSetWithComponentConfiguration method
+	 *
+	 * @return void
+	 */
 	public function testSetWithComponentConfiguration() {
 		$this->assertNull(CakeSession::read('Message.flash'));
 
@@ -192,11 +193,11 @@ class FlashComponentTest extends CakeTestCase {
 		CakeSession::delete('Message.flash');
 	}
 
-/**
- * Test magic call method.
- *
- * @return void
- */
+	/**
+	 * Test magic call method.
+	 *
+	 * @return void
+	 */
 	public function testCall() {
 		$this->assertNull(CakeSession::read('Message.flash'));
 

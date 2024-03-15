@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The DbConfig Task handles creating and updating the database.php
  *
@@ -9,10 +10,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         CakePHP(tm) v 1.2
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @since		 CakePHP(tm) v 1.2
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('AppShell', 'Console/Command');
@@ -20,22 +21,22 @@ App::uses('AppShell', 'Console/Command');
 /**
  * Task class for creating and updating the database configuration file.
  *
- * @package       Cake.Console.Command.Task
+ * @package	   Cake.Console.Command.Task
  */
 class DbConfigTask extends AppShell {
 
-/**
- * path to CONFIG directory
- *
- * @var string
- */
+	/**
+	 * path to CONFIG directory
+	 *
+	 * @var string
+	 */
 	public $path = null;
 
-/**
- * Default configuration settings to use
- *
- * @var array
- */
+	/**
+	 * Default configuration settings to use
+	 *
+	 * @var array
+	 */
 	protected $_defaultConfig = array(
 		'name' => 'default',
 		'datasource' => 'Database/Mysql',
@@ -50,28 +51,28 @@ class DbConfigTask extends AppShell {
 		'port' => null
 	);
 
-/**
- * String name of the database config class name.
- * Used for testing.
- *
- * @var string
- */
+	/**
+	 * String name of the database config class name.
+	 * Used for testing.
+	 *
+	 * @var string
+	 */
 	public $databaseClassName = 'DATABASE_CONFIG';
 
-/**
- * initialization callback
- *
- * @return void
- */
+	/**
+	 * initialization callback
+	 *
+	 * @return void
+	 */
 	public function initialize() {
 		$this->path = CONFIG;
 	}
 
-/**
- * Execution method always used for tasks
- *
- * @return void
- */
+	/**
+	 * Execution method always used for tasks
+	 *
+	 * @return void
+	 */
 	public function execute() {
 		if (empty($this->args)) {
 			$this->_interactive();
@@ -79,11 +80,11 @@ class DbConfigTask extends AppShell {
 		}
 	}
 
-/**
- * Interactive interface
- *
- * @return void
- */
+	/**
+	 * Interactive interface
+	 *
+	 * @return void
+	 */
 	protected function _interactive() {
 		$this->hr();
 		$this->out(__d('cake_console', 'Database Configuration:'));
@@ -196,12 +197,12 @@ class DbConfigTask extends AppShell {
 		return true;
 	}
 
-/**
- * Output verification message and bake if it looks good
- *
- * @param array $config The config data.
- * @return bool True if user says it looks good, false otherwise
- */
+	/**
+	 * Output verification message and bake if it looks good
+	 *
+	 * @param array $config The config data.
+	 * @return bool True if user says it looks good, false otherwise
+	 */
 	protected function _verify($config) {
 		$config += $this->_defaultConfig;
 		extract($config);
@@ -209,29 +210,29 @@ class DbConfigTask extends AppShell {
 		$this->hr();
 		$this->out(__d('cake_console', 'The following database configuration will be created:'));
 		$this->hr();
-		$this->out(__d('cake_console', "Name:         %s", $name));
+		$this->out(__d('cake_console', "Name:		 %s", $name));
 		$this->out(__d('cake_console', "Datasource:   %s", $datasource));
 		$this->out(__d('cake_console', "Persistent:   %s", $persistent));
-		$this->out(__d('cake_console', "Host:         %s", $host));
+		$this->out(__d('cake_console', "Host:		 %s", $host));
 
 		if ($port) {
-			$this->out(__d('cake_console', "Port:         %s", $port));
+			$this->out(__d('cake_console', "Port:		 %s", $port));
 		}
 
-		$this->out(__d('cake_console', "User:         %s", $login));
-		$this->out(__d('cake_console', "Pass:         %s", str_repeat('*', strlen($password))));
-		$this->out(__d('cake_console', "Database:     %s", $database));
+		$this->out(__d('cake_console', "User:		 %s", $login));
+		$this->out(__d('cake_console', "Pass:		 %s", str_repeat('*', strlen($password))));
+		$this->out(__d('cake_console', "Database:	 %s", $database));
 
 		if ($prefix) {
 			$this->out(__d('cake_console', "Table prefix: %s", $prefix));
 		}
 
 		if ($schema) {
-			$this->out(__d('cake_console', "Schema:       %s", $schema));
+			$this->out(__d('cake_console', "Schema:	   %s", $schema));
 		}
 
 		if ($encoding) {
-			$this->out(__d('cake_console', "Encoding:     %s", $encoding));
+			$this->out(__d('cake_console', "Encoding:	 %s", $encoding));
 		}
 
 		$this->hr();
@@ -243,12 +244,12 @@ class DbConfigTask extends AppShell {
 		return false;
 	}
 
-/**
- * Assembles and writes database.php
- *
- * @param array $configs Configuration settings to use
- * @return bool Success
- */
+	/**
+	 * Assembles and writes database.php
+	 *
+	 * @param array $configs Configuration settings to use
+	 * @return bool Success
+	 */
 	public function bake($configs) {
 		if (!is_dir($this->path)) {
 			$this->err(__d('cake_console', '%s not found', $this->path));
@@ -346,11 +347,11 @@ class DbConfigTask extends AppShell {
 		return $this->createFile($filename, $out);
 	}
 
-/**
- * Get a user specified Connection name
- *
- * @return void
- */
+	/**
+	 * Get a user specified Connection name
+	 *
+	 * @return void
+	 */
 	public function getConfig() {
 		App::uses('ConnectionManager', 'Model');
 		$configs = ConnectionManager::enumConnectionObjects();
@@ -367,11 +368,11 @@ class DbConfigTask extends AppShell {
 		return $useDbConfig;
 	}
 
-/**
- * Gets the option parser instance and configures it.
- *
- * @return ConsoleOptionParser
- */
+	/**
+	 * Gets the option parser instance and configures it.
+	 *
+	 * @return ConsoleOptionParser
+	 */
 	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
@@ -381,5 +382,4 @@ class DbConfigTask extends AppShell {
 
 		return $parser;
 	}
-
 }

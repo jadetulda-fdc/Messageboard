@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PrototypeEngine TestCase
  *
@@ -9,10 +10,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP Project
- * @package       Cake.Test.Case.View.Helper
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP Project
+ * @package	   Cake.Test.Case.View.Helper
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('View', 'View');
@@ -23,15 +24,15 @@ App::uses('PrototypeEngineHelper', 'View/Helper');
 /**
  * PrototypeEngineHelperTest
  *
- * @package       Cake.Test.Case.View.Helper
+ * @package	   Cake.Test.Case.View.Helper
  */
 class PrototypeEngineHelperTest extends CakeTestCase {
 
-/**
- * setUp
- *
- * @return void
- */
+	/**
+	 * setUp
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$controller = null;
@@ -39,21 +40,21 @@ class PrototypeEngineHelperTest extends CakeTestCase {
 		$this->Proto = new PrototypeEngineHelper($this->View);
 	}
 
-/**
- * tearDown
- *
- * @return void
- */
+	/**
+	 * tearDown
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->Proto);
 	}
 
-/**
- * test selector method
- *
- * @return void
- */
+	/**
+	 * test selector method
+	 *
+	 * @return void
+	 */
 	public function testSelector() {
 		$result = $this->Proto->get('#content');
 		$this->assertEquals($this->Proto, $result);
@@ -80,11 +81,11 @@ class PrototypeEngineHelperTest extends CakeTestCase {
 		$this->assertEquals($this->Proto->selection, '$$("#some_long-id.class")');
 	}
 
-/**
- * test event binding
- *
- * @return void
- */
+	/**
+	 * test event binding
+	 *
+	 * @return void
+	 */
 	public function testEvent() {
 		$this->Proto->get('#myLink');
 		$result = $this->Proto->event('click', 'doClick', array('wrap' => false));
@@ -100,22 +101,22 @@ class PrototypeEngineHelperTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * test dom ready event creation
- *
- * @return void
- */
+	/**
+	 * test dom ready event creation
+	 *
+	 * @return void
+	 */
 	public function testDomReady() {
 		$result = $this->Proto->domReady('foo.name = "bar";');
 		$expected = 'document.observe("dom:loaded", function (event) {foo.name = "bar";});';
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * test Each method
- *
- * @return void
- */
+	/**
+	 * test Each method
+	 *
+	 * @return void
+	 */
 	public function testEach() {
 		$this->Proto->get('#foo li');
 		$result = $this->Proto->each('item.hide();');
@@ -123,11 +124,11 @@ class PrototypeEngineHelperTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * test Effect generation
- *
- * @return void
- */
+	/**
+	 * test Effect generation
+	 *
+	 * @return void
+	 */
 	public function testEffect() {
 		$this->Proto->get('#foo');
 		$result = $this->Proto->effect('show');
@@ -179,11 +180,11 @@ class PrototypeEngineHelperTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * Test Request Generation
- *
- * @return void
- */
+	/**
+	 * Test Request Generation
+	 *
+	 * @return void
+	 */
 	public function testRequest() {
 		$result = $this->Proto->request(array('controller' => 'posts', 'action' => 'view', 1));
 		$expected = 'var jsRequest = new Ajax.Request("/posts/view/1");';
@@ -270,11 +271,11 @@ class PrototypeEngineHelperTest extends CakeTestCase {
 		$this->assertFalse(strpos($result, 'parameters:function () {$($("submit").form).serialize()}') > 0);
 	}
 
-/**
- * test sortable list generation
- *
- * @return void
- */
+	/**
+	 * test sortable list generation
+	 *
+	 * @return void
+	 */
 	public function testSortable() {
 		$this->Proto->get('#myList');
 		$result = $this->Proto->sortable(array(
@@ -286,12 +287,12 @@ class PrototypeEngineHelperTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * test drag() method. Scriptaculous lacks the ability to take an Array of Elements
- * in new Drag() when selection is a multiple type. Iterate over the array.
- *
- * @return void
- */
+	/**
+	 * test drag() method. Scriptaculous lacks the ability to take an Array of Elements
+	 * in new Drag() when selection is a multiple type. Iterate over the array.
+	 *
+	 * @return void
+	 */
 	public function testDrag() {
 		$this->Proto->get('#element');
 		$result = $this->Proto->drag(array(
@@ -316,11 +317,11 @@ class PrototypeEngineHelperTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * test drop() method
- *
- * @return void
- */
+	/**
+	 * test drop() method
+	 *
+	 * @return void
+	 */
 	public function testDrop() {
 		$this->Proto->get('#element');
 		$result = $this->Proto->drop(array(
@@ -333,11 +334,11 @@ class PrototypeEngineHelperTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * ensure that slider() method behaves properly
- *
- * @return void
- */
+	/**
+	 * ensure that slider() method behaves properly
+	 *
+	 * @return void
+	 */
 	public function testSlider() {
 		$this->Proto->get('#element');
 		$result = $this->Proto->slider(array(
@@ -364,11 +365,11 @@ class PrototypeEngineHelperTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * test the serializeForm implementation.
- *
- * @return void
- */
+	/**
+	 * test the serializeForm implementation.
+	 *
+	 * @return void
+	 */
 	public function testSerializeForm() {
 		$this->Proto->get('#element');
 		$result = $this->Proto->serializeForm(array('isForm' => true));

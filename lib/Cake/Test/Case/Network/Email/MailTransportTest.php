@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MailTransportTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Network.Email
- * @since         CakePHP(tm) v 2.0.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Network.Email
+ * @since		 CakePHP(tm) v 2.0.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('CakeEmail', 'Network/Email');
@@ -25,22 +26,22 @@ App::uses('MailTransport', 'Network/Email');
  */
 class MailTransportTest extends CakeTestCase {
 
-/**
- * Setup
- *
- * @return void
- */
+	/**
+	 * Setup
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->MailTransport = $this->getMock('MailTransport', array('_mail'));
 		$this->MailTransport->config(array('additionalParameters' => '-f'));
 	}
 
-/**
- * testSend method
- *
- * @return void
- */
+	/**
+	 * testSend method
+	 *
+	 * @return void
+	 */
 	public function testSendData() {
 		$email = $this->getMock('CakeEmail', array('message'), array());
 		$email->from('noreply@cakephp.org', 'CakePHP Test');
@@ -89,5 +90,4 @@ class MailTransportTest extends CakeTestCase {
 		$this->assertContains('Subject: ', $result['headers']);
 		$this->assertContains('To: ', $result['headers']);
 	}
-
 }

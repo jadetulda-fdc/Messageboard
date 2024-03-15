@@ -110,9 +110,9 @@ $flashMessage = $this->Flash->render('message_sent');
                     } else {
                         $('#pagination').html(
                             `<hr />
-                            <div class="text-center font-italic toAdd">
-                                No more messages to load.
-                            </div>`
+							<div class="text-center font-italic toAdd">
+								No more messages to load.
+							</div>`
                         );
                     }
                 },

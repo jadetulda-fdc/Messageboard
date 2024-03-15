@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApiShellTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP Project
- * @package       Cake.Test.Case.Console.Command
- * @since         CakePHP v 1.2.0.7726
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP Project
+ * @package	   Cake.Test.Case.Console.Command
+ * @since		 CakePHP v 1.2.0.7726
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('ConsoleOutput', 'Console');
@@ -25,15 +26,15 @@ App::uses('ApiShell', 'Console/Command');
 /**
  * ApiShellTest class
  *
- * @package       Cake.Test.Case.Console.Command
+ * @package	   Cake.Test.Case.Console.Command
  */
 class ApiShellTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$out = $this->getMock('ConsoleOutput', array(), array(), '', false);
@@ -46,11 +47,11 @@ class ApiShellTest extends CakeTestCase {
 		);
 	}
 
-/**
- * Test that method names are detected properly including those with no arguments.
- *
- * @return void
- */
+	/**
+	 * Test that method names are detected properly including those with no arguments.
+	 *
+	 * @return void
+	 */
 	public function testMethodNameDetection() {
 		$this->Shell->expects($this->any())->method('in')->will($this->returnValue('q'));
 		$this->Shell->expects($this->at(0))->method('out')->with('Controller');

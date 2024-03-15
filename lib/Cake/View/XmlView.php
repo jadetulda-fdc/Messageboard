@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,9 +8,9 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('View', 'View');
@@ -48,23 +49,23 @@ App::uses('Hash', 'Utility');
  * If you don't use the `_serialize` key, you will need a view. You can use extended
  * views to provide layout like functionality.
  *
- * @package       Cake.View
- * @since         CakePHP(tm) v 2.1.0
+ * @package	   Cake.View
+ * @since		 CakePHP(tm) v 2.1.0
  */
 class XmlView extends View {
 
-/**
- * The subdirectory. XML views are always in xml.
- *
- * @var string
- */
+	/**
+	 * The subdirectory. XML views are always in xml.
+	 *
+	 * @var string
+	 */
 	public $subDir = 'xml';
 
-/**
- * Constructor
- *
- * @param Controller $controller Controller instance.
- */
+	/**
+	 * Constructor
+	 *
+	 * @param Controller $controller Controller instance.
+	 */
 	public function __construct(Controller $controller = null) {
 		parent::__construct($controller);
 
@@ -73,11 +74,11 @@ class XmlView extends View {
 		}
 	}
 
-/**
- * Skip loading helpers if this is a _serialize based view.
- *
- * @return void
- */
+	/**
+	 * Skip loading helpers if this is a _serialize based view.
+	 *
+	 * @return void
+	 */
 	public function loadHelpers() {
 		if (isset($this->viewVars['_serialize'])) {
 			return;
@@ -85,18 +86,18 @@ class XmlView extends View {
 		parent::loadHelpers();
 	}
 
-/**
- * Render a XML view.
- *
- * Uses the special '_serialize' parameter to convert a set of
- * view variables into a XML response. Makes generating simple
- * XML responses very easy. You can omit the '_serialize' parameter,
- * and use a normal view + layout as well.
- *
- * @param string $view The view being rendered.
- * @param string $layout The layout being rendered.
- * @return string The rendered view.
- */
+	/**
+	 * Render a XML view.
+	 *
+	 * Uses the special '_serialize' parameter to convert a set of
+	 * view variables into a XML response. Makes generating simple
+	 * XML responses very easy. You can omit the '_serialize' parameter,
+	 * and use a normal view + layout as well.
+	 *
+	 * @param string $view The view being rendered.
+	 * @param string $layout The layout being rendered.
+	 * @return string The rendered view.
+	 */
 	public function render($view = null, $layout = null) {
 		if (isset($this->viewVars['_serialize'])) {
 			return $this->_serialize($this->viewVars['_serialize']);
@@ -106,16 +107,16 @@ class XmlView extends View {
 		}
 	}
 
-/**
- * Serialize view vars.
- *
- * ### Special parameters
- * `_xmlOptions` You can set an array of custom options for Xml::fromArray() this way, e.g.
- *   'format' as 'attributes' instead of 'tags'.
- *
- * @param array $serialize The viewVars that need to be serialized.
- * @return string The serialized data
- */
+	/**
+	 * Serialize view vars.
+	 *
+	 * ### Special parameters
+	 * `_xmlOptions` You can set an array of custom options for Xml::fromArray() this way, e.g.
+	 *   'format' as 'attributes' instead of 'tags'.
+	 *
+	 * @param array $serialize The viewVars that need to be serialized.
+	 * @return string The serialized data
+	 */
 	protected function _serialize($serialize) {
 		$rootNode = isset($this->viewVars['_rootNode']) ? $this->viewVars['_rootNode'] : 'response';
 
@@ -147,5 +148,4 @@ class XmlView extends View {
 		}
 		return Xml::fromArray($data, $options)->asXML();
 	}
-
 }

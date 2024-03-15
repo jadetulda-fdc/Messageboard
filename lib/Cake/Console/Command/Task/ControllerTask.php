@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The ControllerTask handles creating and updating controller files.
  *
@@ -9,10 +10,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         CakePHP(tm) v 1.2
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @since		 CakePHP(tm) v 1.2
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('AppShell', 'Console/Command');
@@ -22,38 +23,38 @@ App::uses('AppModel', 'Model');
 /**
  * Task class for creating and updating controller files.
  *
- * @package       Cake.Console.Command.Task
+ * @package	   Cake.Console.Command.Task
  */
 class ControllerTask extends BakeTask {
 
-/**
- * Tasks to be loaded by this Task
- *
- * @var array
- */
+	/**
+	 * Tasks to be loaded by this Task
+	 *
+	 * @var array
+	 */
 	public $tasks = array('Model', 'Test', 'Template', 'DbConfig', 'Project');
 
-/**
- * path to Controller directory
- *
- * @var array
- */
+	/**
+	 * path to Controller directory
+	 *
+	 * @var array
+	 */
 	public $path = null;
 
-/**
- * Override initialize
- *
- * @return void
- */
+	/**
+	 * Override initialize
+	 *
+	 * @return void
+	 */
 	public function initialize() {
 		$this->path = current(App::path('Controller'));
 	}
 
-/**
- * Execution method always used for tasks
- *
- * @return void
- */
+	/**
+	 * Execution method always used for tasks
+	 *
+	 * @return void
+	 */
 	public function execute() {
 		parent::execute();
 		if (empty($this->args)) {
@@ -94,11 +95,11 @@ class ControllerTask extends BakeTask {
 		}
 	}
 
-/**
- * Bake All the controllers at once. Will only bake controllers for models that exist.
- *
- * @return void
- */
+	/**
+	 * Bake All the controllers at once. Will only bake controllers for models that exist.
+	 *
+	 * @return void
+	 */
 	public function all() {
 		$this->interactive = false;
 		$this->listAll($this->connection, false);
@@ -133,11 +134,11 @@ class ControllerTask extends BakeTask {
 		}
 	}
 
-/**
- * Interactive
- *
- * @return void
- */
+	/**
+	 * Interactive
+	 *
+	 * @return void
+	 */
 	protected function _interactive() {
 		$this->interactive = true;
 		$this->hr();
@@ -169,7 +170,9 @@ class ControllerTask extends BakeTask {
 		if (strtolower($doItInteractive) === 'y') {
 			$this->interactive = true;
 			$useDynamicScaffold = $this->in(
-				__d('cake_console', "Would you like to use dynamic scaffolding?"), array('y', 'n'), 'n'
+				__d('cake_console', "Would you like to use dynamic scaffolding?"),
+				array('y', 'n'),
+				'n'
 			);
 
 			if (strtolower($useDynamicScaffold) === 'y') {
@@ -182,7 +185,9 @@ class ControllerTask extends BakeTask {
 				$components = $this->doComponents();
 
 				$wannaUseSession = $this->in(
-					__d('cake_console', "Would you like to use the FlashComponent to display flash messages?"), array('y', 'n'), 'y'
+					__d('cake_console', "Would you like to use the FlashComponent to display flash messages?"),
+					array('y', 'n'),
+					'y'
 				);
 
 				if (strtolower($wannaUseSession) === 'y') {
@@ -222,15 +227,15 @@ class ControllerTask extends BakeTask {
 		return $baked;
 	}
 
-/**
- * Confirm a to be baked controller with the user
- *
- * @param string $controllerName The name of the controller.
- * @param string $useDynamicScaffold Whether or not to use dynamic scaffolds.
- * @param array $helpers The list of helpers to include.
- * @param array $components The list of components to include.
- * @return void
- */
+	/**
+	 * Confirm a to be baked controller with the user
+	 *
+	 * @param string $controllerName The name of the controller.
+	 * @param string $useDynamicScaffold Whether or not to use dynamic scaffolds.
+	 * @param array $helpers The list of helpers to include.
+	 * @param array $components The list of components to include.
+	 * @return void
+	 */
 	public function confirmController($controllerName, $useDynamicScaffold, $helpers, $components) {
 		$this->out();
 		$this->hr();
@@ -264,31 +269,33 @@ class ControllerTask extends BakeTask {
 		$this->hr();
 	}
 
-/**
- * Interact with the user and ask about which methods (admin or regular they want to bake)
- *
- * @return array Array containing (bakeRegular, bakeAdmin) answers
- */
+	/**
+	 * Interact with the user and ask about which methods (admin or regular they want to bake)
+	 *
+	 * @return array Array containing (bakeRegular, bakeAdmin) answers
+	 */
 	protected function _askAboutMethods() {
 		$wannaBakeCrud = $this->in(
 			__d('cake_console', "Would you like to create some basic class methods \n(index(), add(), view(), edit())?"),
-			array('y', 'n'), 'n'
+			array('y', 'n'),
+			'n'
 		);
 		$wannaBakeAdminCrud = $this->in(
 			__d('cake_console', "Would you like to create the basic class methods for admin routing?"),
-			array('y', 'n'), 'n'
+			array('y', 'n'),
+			'n'
 		);
 		return array($wannaBakeCrud, $wannaBakeAdminCrud);
 	}
 
-/**
- * Bake scaffold actions
- *
- * @param string $controllerName Controller name
- * @param string $admin Admin route to use
- * @param bool $wannaUseSession Set to true to use sessions, false otherwise
- * @return string Baked actions
- */
+	/**
+	 * Bake scaffold actions
+	 *
+	 * @param string $controllerName Controller name
+	 * @param string $admin Admin route to use
+	 * @param bool $wannaUseSession Set to true to use sessions, false otherwise
+	 * @return string Baked actions
+	 */
 	public function bakeActions($controllerName, $admin = null, $wannaUseSession = true) {
 		$currentModelName = $modelImport = $this->_modelName($controllerName);
 		$plugin = $this->plugin;
@@ -311,23 +318,32 @@ class ControllerTask extends BakeTask {
 		$primaryKey = $modelObj->primaryKey;
 
 		$this->Template->set(compact(
-			'plugin', 'admin', 'controllerPath', 'pluralName', 'singularName',
-			'singularHumanName', 'pluralHumanName', 'modelObj', 'wannaUseSession', 'currentModelName',
-			'displayField', 'primaryKey'
+			'plugin',
+			'admin',
+			'controllerPath',
+			'pluralName',
+			'singularName',
+			'singularHumanName',
+			'pluralHumanName',
+			'modelObj',
+			'wannaUseSession',
+			'currentModelName',
+			'displayField',
+			'primaryKey'
 		));
 		$actions = $this->Template->generate('actions', 'controller_actions');
 		return $actions;
 	}
 
-/**
- * Assembles and writes a Controller file
- *
- * @param string $controllerName Controller name already pluralized and correctly cased.
- * @param string $actions Actions to add, or set the whole controller to use $scaffold (set $actions to 'scaffold')
- * @param array $helpers Helpers to use in controller
- * @param array $components Components to use in controller
- * @return string Baked controller
- */
+	/**
+	 * Assembles and writes a Controller file
+	 *
+	 * @param string $controllerName Controller name already pluralized and correctly cased.
+	 * @param string $actions Actions to add, or set the whole controller to use $scaffold (set $actions to 'scaffold')
+	 * @param array $helpers Helpers to use in controller
+	 * @param array $components Components to use in controller
+	 * @return string Baked controller
+	 */
 	public function bake($controllerName, $actions = '', $helpers = null, $components = null) {
 		$this->out("\n" . __d('cake_console', 'Baking controller class for %s...', $controllerName), 1, Shell::QUIET);
 
@@ -359,12 +375,12 @@ class ControllerTask extends BakeTask {
 		return false;
 	}
 
-/**
- * Assembles and writes a unit test file
- *
- * @param string $className Controller class name
- * @return string Baked test
- */
+	/**
+	 * Assembles and writes a unit test file
+	 *
+	 * @param string $className Controller class name
+	 * @return string Baked test
+	 */
 	public function bakeTest($className) {
 		$this->Test->plugin = $this->plugin;
 		$this->Test->connection = $this->connection;
@@ -372,11 +388,11 @@ class ControllerTask extends BakeTask {
 		return $this->Test->bake('Controller', $className);
 	}
 
-/**
- * Interact with the user and get a list of additional helpers
- *
- * @return array Helpers that the user wants to use.
- */
+	/**
+	 * Interact with the user and get a list of additional helpers
+	 *
+	 * @return array Helpers that the user wants to use.
+	 */
 	public function doHelpers() {
 		return $this->_doPropertyChoices(
 			__d('cake_console', "Would you like this controller to use other helpers\nbesides HtmlHelper and FormHelper?"),
@@ -384,11 +400,11 @@ class ControllerTask extends BakeTask {
 		);
 	}
 
-/**
- * Interact with the user and get a list of additional components
- *
- * @return array Components the user wants to use.
- */
+	/**
+	 * Interact with the user and get a list of additional components
+	 *
+	 * @return array Components the user wants to use.
+	 */
 	public function doComponents() {
 		$components = array('Paginator');
 		return array_merge($components, $this->_doPropertyChoices(
@@ -397,13 +413,13 @@ class ControllerTask extends BakeTask {
 		));
 	}
 
-/**
- * Common code for property choice handling.
- *
- * @param string $prompt A yes/no question to precede the list
- * @param string $example A question for a comma separated list, with examples.
- * @return array Array of values for property.
- */
+	/**
+	 * Common code for property choice handling.
+	 *
+	 * @param string $prompt A yes/no question to precede the list
+	 * @param string $example A question for a comma separated list, with examples.
+	 * @return array Array of values for property.
+	 */
 	protected function _doPropertyChoices($prompt, $example) {
 		$proceed = $this->in($prompt, array('y', 'n'), 'n');
 		$property = array();
@@ -415,12 +431,12 @@ class ControllerTask extends BakeTask {
 		return array_filter($property);
 	}
 
-/**
- * Outputs and gets the list of possible controllers from database
- *
- * @param string $useDbConfig Database configuration name
- * @return array Set of controllers
- */
+	/**
+	 * Outputs and gets the list of possible controllers from database
+	 *
+	 * @param string $useDbConfig Database configuration name
+	 * @return array Set of controllers
+	 */
 	public function listAll($useDbConfig = null) {
 		if ($useDbConfig === null) {
 			$useDbConfig = $this->connection;
@@ -441,12 +457,12 @@ class ControllerTask extends BakeTask {
 		return $this->__tables;
 	}
 
-/**
- * Forces the user to specify the controller he wants to bake, and returns the selected controller name.
- *
- * @param string $useDbConfig Connection name to get a controller name for.
- * @return string Controller name
- */
+	/**
+	 * Forces the user to specify the controller he wants to bake, and returns the selected controller name.
+	 *
+	 * @param string $useDbConfig Connection name to get a controller name for.
+	 * @return string Controller name
+	 */
 	public function getName($useDbConfig = null) {
 		$controllers = $this->listAll($useDbConfig);
 		$enteredController = '';
@@ -472,17 +488,20 @@ class ControllerTask extends BakeTask {
 		return $controllerName;
 	}
 
-/**
- * Gets the option parser instance and configures it.
- *
- * @return ConsoleOptionParser
- */
+	/**
+	 * Gets the option parser instance and configures it.
+	 *
+	 * @return ConsoleOptionParser
+	 */
 	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$parser->description(
-			__d('cake_console', 'Bake a controller for a model. Using options you can bake public, admin or both.'
-		))->addArgument('name', array(
+			__d(
+				'cake_console',
+				'Bake a controller for a model. Using options you can bake public, admin or both.'
+			)
+		)->addArgument('name', array(
 			'help' => __d('cake_console', 'Name of the controller to bake. Can use Plugin.name to bake controllers into plugins.')
 		))->addOption('public', array(
 			'help' => __d('cake_console', 'Bake a controller with basic crud actions (index, view, add, edit, delete).'),
@@ -510,5 +529,4 @@ class ControllerTask extends BakeTask {
 
 		return $parser;
 	}
-
 }

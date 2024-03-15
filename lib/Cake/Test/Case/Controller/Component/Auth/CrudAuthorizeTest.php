@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CrudAuthorizeTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Controller.Component.Auth
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Controller.Component.Auth
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('CrudAuthorize', 'Controller/Component/Auth');
@@ -25,15 +26,15 @@ App::uses('CakeResponse', 'Network');
 /**
  * CrudAuthorizeTest
  *
- * @package       Cake.Test.Case.Controller.Component.Auth
+ * @package	   Cake.Test.Case.Controller.Component.Auth
  */
 class CrudAuthorizeTest extends CakeTestCase {
 
-/**
- * setup
- *
- * @return void
- */
+	/**
+	 * setup
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		Configure::write('Routing.prefixes', array());
@@ -45,11 +46,11 @@ class CrudAuthorizeTest extends CakeTestCase {
 		$this->auth = new CrudAuthorize($this->Components);
 	}
 
-/**
- * setup the mock acl.
- *
- * @return void
- */
+	/**
+	 * setup the mock acl.
+	 *
+	 * @return void
+	 */
 	protected function _mockAcl() {
 		$this->Components->expects($this->any())
 			->method('load')
@@ -57,12 +58,12 @@ class CrudAuthorizeTest extends CakeTestCase {
 			->will($this->returnValue($this->Acl));
 	}
 
-/**
- * test authorize() without a mapped action, ensure an error is generated.
- *
- * @expectedException PHPUnit_Framework_Error_Warning
- * @return void
- */
+	/**
+	 * test authorize() without a mapped action, ensure an error is generated.
+	 *
+	 * @expectedException PHPUnit_Framework_Error_Warning
+	 * @return void
+	 */
 	public function testAuthorizeNoMappedAction() {
 		$request = new CakeRequest('/posts/foobar', false);
 		$request->addParams(array(
@@ -74,11 +75,11 @@ class CrudAuthorizeTest extends CakeTestCase {
 		$this->auth->authorize($user, $request);
 	}
 
-/**
- * test check() passing
- *
- * @return void
- */
+	/**
+	 * test check() passing
+	 *
+	 * @return void
+	 */
 	public function testAuthorizeCheckSuccess() {
 		$request = new CakeRequest('posts/index', false);
 		$request->addParams(array(
@@ -96,11 +97,11 @@ class CrudAuthorizeTest extends CakeTestCase {
 		$this->assertTrue($this->auth->authorize($user['User'], $request));
 	}
 
-/**
- * test check() failing
- *
- * @return void
- */
+	/**
+	 * test check() failing
+	 *
+	 * @return void
+	 */
 	public function testAuthorizeCheckFailure() {
 		$request = new CakeRequest('posts/index', false);
 		$request->addParams(array(
@@ -118,11 +119,11 @@ class CrudAuthorizeTest extends CakeTestCase {
 		$this->assertFalse($this->auth->authorize($user['User'], $request));
 	}
 
-/**
- * test getting actionMap
- *
- * @return void
- */
+	/**
+	 * test getting actionMap
+	 *
+	 * @return void
+	 */
 	public function testMapActionsGet() {
 		$result = $this->auth->mapActions();
 		$expected = array(
@@ -139,11 +140,11 @@ class CrudAuthorizeTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * test adding into mapActions
- *
- * @return void
- */
+	/**
+	 * test adding into mapActions
+	 *
+	 * @return void
+	 */
 	public function testMapActionsSet() {
 		$map = array(
 			'create' => array('generate'),
@@ -173,11 +174,11 @@ class CrudAuthorizeTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * test prefix routes getting auto mapped.
- *
- * @return void
- */
+	/**
+	 * test prefix routes getting auto mapped.
+	 *
+	 * @return void
+	 */
 	public function testAutoPrefixMapActions() {
 		Configure::write('Routing.prefixes', array('admin', 'manager'));
 		Router::reload();
@@ -185,5 +186,4 @@ class CrudAuthorizeTest extends CakeTestCase {
 		$auth = new CrudAuthorize($this->Components);
 		$this->assertTrue(isset($auth->settings['actionMap']['admin_index']));
 	}
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,10 +8,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         CakePHP(tm) v 2.5
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @since		 CakePHP(tm) v 2.5
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('AppShell', 'Console/Command');
@@ -18,15 +19,15 @@ App::uses('AppShell', 'Console/Command');
 /**
  * Base class for Shell Command reflection.
  *
- * @package       Cake.Console.Command.Task
+ * @package	   Cake.Console.Command.Task
  */
 class CommandTask extends AppShell {
 
-/**
- * Gets the shell command listing.
- *
- * @return array
- */
+	/**
+	 * Gets the shell command listing.
+	 *
+	 * @return array
+	 */
 	public function getShellList() {
 		$skipFiles = array('AppShell');
 
@@ -50,25 +51,25 @@ class CommandTask extends AppShell {
 		return array_filter($shellList);
 	}
 
-/**
- * Scan the provided paths for shells, and append them into $shellList
- *
- * @param string $type The type of object.
- * @param array $shells The shell name.
- * @param array &$shellList List of shells.
- * @return void
- */
+	/**
+	 * Scan the provided paths for shells, and append them into $shellList
+	 *
+	 * @param string $type The type of object.
+	 * @param array $shells The shell name.
+	 * @param array &$shellList List of shells.
+	 * @return void
+	 */
 	protected function _appendShells($type, $shells, &$shellList) {
 		foreach ($shells as $shell) {
 			$shellList[$type][] = Inflector::underscore(str_replace('Shell', '', $shell));
 		}
 	}
 
-/**
- * Return a list of all commands
- *
- * @return array
- */
+	/**
+	 * Return a list of all commands
+	 *
+	 * @return array
+	 */
 	public function commands() {
 		$shellList = $this->getShellList();
 
@@ -87,12 +88,12 @@ class CommandTask extends AppShell {
 		return $options;
 	}
 
-/**
- * Return a list of subcommands for a given command
- *
- * @param string $commandName The command you want subcommands from.
- * @return array
- */
+	/**
+	 * Return a list of subcommands for a given command
+	 *
+	 * @param string $commandName The command you want subcommands from.
+	 * @return array
+	 */
 	public function subCommands($commandName) {
 		$Shell = $this->getShell($commandName);
 
@@ -124,12 +125,12 @@ class CommandTask extends AppShell {
 		return $return;
 	}
 
-/**
- * Get Shell instance for the given command
- *
- * @param mixed $commandName The command you want.
- * @return mixed
- */
+	/**
+	 * Get Shell instance for the given command
+	 *
+	 * @param mixed $commandName The command you want.
+	 * @return mixed
+	 */
 	public function getShell($commandName) {
 		list($pluginDot, $name) = pluginSplit($commandName, true);
 
@@ -154,12 +155,12 @@ class CommandTask extends AppShell {
 		return $Shell;
 	}
 
-/**
- * Get Shell instance for the given command
- *
- * @param mixed $commandName The command to get options for.
- * @return array
- */
+	/**
+	 * Get Shell instance for the given command
+	 *
+	 * @param mixed $commandName The command to get options for.
+	 * @return array
+	 */
 	public function options($commandName) {
 		$Shell = $this->getShell($commandName);
 		if (!$Shell) {
@@ -179,5 +180,4 @@ class CommandTask extends AppShell {
 		}
 		return $options;
 	}
-
 }

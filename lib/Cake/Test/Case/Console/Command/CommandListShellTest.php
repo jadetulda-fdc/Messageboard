@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CommandListShellTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP Project
- * @package       Cake.Test.Case.Console.Command
- * @since         CakePHP v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP Project
+ * @package	   Cake.Test.Case.Console.Command
+ * @since		 CakePHP v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('CommandListShell', 'Console/Command');
@@ -25,7 +26,7 @@ App::uses('CommandTask', 'Console/Command/Task');
 /**
  * TestStringOutput
  *
- * @package       Cake.Test.Case.Console.Command
+ * @package	   Cake.Test.Case.Console.Command
  */
 class TestStringOutput extends ConsoleOutput {
 
@@ -34,21 +35,20 @@ class TestStringOutput extends ConsoleOutput {
 	protected function _write($message) {
 		$this->output .= $message;
 	}
-
 }
 
 /**
  * CommandListShellTest
  *
- * @package       Cake.Test.Case.Console.Command
+ * @package	   Cake.Test.Case.Console.Command
  */
 class CommandListShellTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		App::build(array(
@@ -77,22 +77,22 @@ class CommandListShellTest extends CakeTestCase {
 		);
 	}
 
-/**
- * tearDown
- *
- * @return void
- */
+	/**
+	 * tearDown
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->Shell);
 		CakePlugin::unload();
 	}
 
-/**
- * test that main finds core shells.
- *
- * @return void
- */
+	/**
+	 * test that main finds core shells.
+	 *
+	 * @return void
+	 */
 	public function testMain() {
 		$this->Shell->main();
 		$output = $this->Shell->stdout->output;
@@ -110,11 +110,11 @@ class CommandListShellTest extends CakeTestCase {
 		$this->assertRegExp($expected, $output);
 	}
 
-/**
- * test xml output.
- *
- * @return void
- */
+	/**
+	 * test xml output.
+	 *
+	 * @return void
+	 */
 	public function testMainXml() {
 		$this->Shell->params['xml'] = true;
 		$this->Shell->main();

@@ -1,8 +1,8 @@
 <?php
 /**
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       app.Config
- * @since         CakePHP(tm) v 0.2.9
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   app.Config
+ * @since		 CakePHP(tm) v 0.2.9
  */
 
 /**

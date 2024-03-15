@@ -1,4 +1,5 @@
 <?php
+
 /**
  * L10nTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.I18n
- * @since         CakePHP(tm) v 1.2.0.5432
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.I18n
+ * @since		 CakePHP(tm) v 1.2.0.5432
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('L10n', 'I18n');
@@ -21,25 +22,25 @@ App::uses('L10n', 'I18n');
 /**
  * L10nTest class
  *
- * @package       Cake.Test.Case.I18n
+ * @package	   Cake.Test.Case.I18n
  */
 class L10nTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		Configure::delete('Config.language');
 	}
 
-/**
- * testGet method
- *
- * @return void
- */
+	/**
+	 * testGet method
+	 *
+	 * @return void
+	 */
 	public function testGet() {
 		$localize = new L10n();
 
@@ -79,11 +80,11 @@ class L10nTest extends CakeTestCase {
 		$this->assertEquals('en-us', $localize->lang);
 	}
 
-/**
- * testGetAutoLanguage method
- *
- * @return void
- */
+	/**
+	 * testGetAutoLanguage method
+	 *
+	 * @return void
+	 */
 	public function testGetAutoLanguage() {
 		$serverBackup = $_SERVER;
 		$_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'inexistent,en-ca';
@@ -119,11 +120,11 @@ class L10nTest extends CakeTestCase {
 		$_SERVER = $serverBackup;
 	}
 
-/**
- * testGet method with deprecated constant DEFAULT_LANGUAGE
- *
- * @return void
- */
+	/**
+	 * testGet method with deprecated constant DEFAULT_LANGUAGE
+	 *
+	 * @return void
+	 */
 	public function testGetWithDeprecatedConstant() {
 		$this->skipIf(defined('DEFAULT_LANGUAGE'), 'Cannot re-define already defined constant.');
 
@@ -147,11 +148,11 @@ class L10nTest extends CakeTestCase {
 		$this->assertEquals('en_us', $localize->locale);
 	}
 
-/**
- * testMap method
- *
- * @return void
- */
+	/**
+	 * testMap method
+	 *
+	 * @return void
+	 */
 	public function testMap() {
 		$localize = new L10n();
 
@@ -484,11 +485,11 @@ class L10nTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 	}
 
-/**
- * testCatalog method
- *
- * @return void
- */
+	/**
+	 * testCatalog method
+	 *
+	 * @return void
+	 */
 	public function testCatalog() {
 		$localize = new L10n();
 
@@ -498,8 +499,10 @@ class L10nTest extends CakeTestCase {
 		);
 		$this->assertEquals($expected, $result);
 
-		$result = $localize->catalog(array('ar', 'ar-ae', 'ar-bh', 'ar-dz', 'ar-eg', 'ar-iq', 'ar-jo', 'ar-kw', 'ar-lb', 'ar-ly', 'ar-ma',
-			'ar-om', 'ar-qa', 'ar-sa', 'ar-sy', 'ar-tn', 'ar-ye'));
+		$result = $localize->catalog(array(
+			'ar', 'ar-ae', 'ar-bh', 'ar-dz', 'ar-eg', 'ar-iq', 'ar-jo', 'ar-kw', 'ar-lb', 'ar-ly', 'ar-ma',
+			'ar-om', 'ar-qa', 'ar-sa', 'ar-sy', 'ar-tn', 'ar-ye'
+		));
 		$expected = array(
 			'ar' => array('language' => 'Arabic', 'locale' => 'ara', 'localeFallback' => 'ara', 'charset' => 'utf-8', 'direction' => 'rtl'),
 			'ar-ae' => array('language' => 'Arabic (U.A.E.)', 'locale' => 'ar_ae', 'localeFallback' => 'ara', 'charset' => 'utf-8', 'direction' => 'rtl'),
@@ -590,8 +593,10 @@ class L10nTest extends CakeTestCase {
 		);
 		$this->assertEquals($expected, $result);
 
-		$result = $localize->catalog(array('es', 'es-ar', 'es-bo', 'es-cl', 'es-co', 'es-cr', 'es-do', 'es-ec', 'es-es', 'es-gt', 'es-hn',
-			'es-mx', 'es-ni', 'es-pa', 'es-pe', 'es-pr', 'es-py', 'es-sv', 'es-uy', 'es-ve'));
+		$result = $localize->catalog(array(
+			'es', 'es-ar', 'es-bo', 'es-cl', 'es-co', 'es-cr', 'es-do', 'es-ec', 'es-es', 'es-gt', 'es-hn',
+			'es-mx', 'es-ni', 'es-pa', 'es-pe', 'es-pr', 'es-py', 'es-sv', 'es-uy', 'es-ve'
+		));
 		$expected = array(
 			'es' => array('language' => 'Spanish (Spain - Traditional)', 'locale' => 'spa', 'localeFallback' => 'spa', 'charset' => 'utf-8', 'direction' => 'ltr'),
 			'es-ar' => array('language' => 'Spanish (Argentina)', 'locale' => 'es_ar', 'localeFallback' => 'spa', 'charset' => 'utf-8', 'direction' => 'ltr'),
@@ -935,8 +940,10 @@ class L10nTest extends CakeTestCase {
 
 		$result = $localize->catalog(array('cy'));
 		$expected = array(
-			'cy' => array('language' => 'Welsh', 'locale' => 'cym', 'localeFallback' => 'cym', 'charset' => 'utf-8',
-			'direction' => 'ltr')
+			'cy' => array(
+				'language' => 'Welsh', 'locale' => 'cym', 'localeFallback' => 'cym', 'charset' => 'utf-8',
+				'direction' => 'ltr'
+			)
 		);
 		$this->assertEquals($expected, $result);
 

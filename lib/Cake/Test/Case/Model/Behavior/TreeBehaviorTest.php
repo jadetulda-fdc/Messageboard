@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tree Behavior test file - runs all the tree behavior tests
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Model.Behavior
- * @since         CakePHP(tm) v 2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Model.Behavior
+ * @since		 CakePHP(tm) v 2.0
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
@@ -21,15 +22,15 @@
  *
  * A test group to run all the component parts
  *
- * @package       Cake.Test.Case.Model.Behavior
+ * @package	   Cake.Test.Case.Model.Behavior
  */
 class TreeBehaviorTest extends PHPUnit_Framework_TestSuite {
 
-/**
- * suite method, defines tests for this suite.
- *
- * @return void
- */
+	/**
+	 * suite method, defines tests for this suite.
+	 *
+	 * @return void
+	 */
 	public static function suite() {
 		$suite = new CakeTestSuite('TreeBehavior tests');
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,10 +8,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         CakePHP(tm) v 1.2.0.5012
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @since		 CakePHP(tm) v 1.2.0.5012
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('AppShell', 'Console/Command');
@@ -18,46 +19,46 @@ App::uses('AppShell', 'Console/Command');
 /**
  * Provides a very basic 'interactive' console for CakePHP apps.
  *
- * @package       Cake.Console.Command
+ * @package	   Cake.Console.Command
  * @deprecated 3.0.0 Deprecated since version 2.4, will be removed in 3.0
  */
 class ConsoleShell extends AppShell {
 
-/**
- * Available binding types
- *
- * @var array
- */
+	/**
+	 * Available binding types
+	 *
+	 * @var array
+	 */
 	public $associations = array('hasOne', 'hasMany', 'belongsTo', 'hasAndBelongsToMany');
 
-/**
- * Chars that describe invalid commands
- *
- * @var array
- */
+	/**
+	 * Chars that describe invalid commands
+	 *
+	 * @var array
+	 */
 	public $badCommandChars = array('$', ';');
 
-/**
- * Available models
- *
- * @var array
- */
+	/**
+	 * Available models
+	 *
+	 * @var array
+	 */
 	public $models = array();
 
-/**
- * _finished
- *
- * This shell is perpetual, setting this property to true exits the process
- *
- * @var mixed
- */
+	/**
+	 * _finished
+	 *
+	 * This shell is perpetual, setting this property to true exits the process
+	 *
+	 * @var mixed
+	 */
 	protected $_finished = false;
 
-/**
- * _methodPatterns
- *
- * @var array
- */
+	/**
+	 * _methodPatterns
+	 *
+	 * @var array
+	 */
 	protected $_methodPatterns = array(
 		'help' => '/^(help|\?)/',
 		'_exit' => '/^(quit|exit)/',
@@ -73,11 +74,11 @@ class ConsoleShell extends AppShell {
 		'_routeToArray' => '/^route\s+(.*)$/i',
 	);
 
-/**
- * Override startup of the Shell
- *
- * @return void
- */
+	/**
+	 * Override startup of the Shell
+	 *
+	 * @return void
+	 */
 	public function startup() {
 		App::uses('Dispatcher', 'Routing');
 		$this->Dispatcher = new Dispatcher();
@@ -104,11 +105,11 @@ class ConsoleShell extends AppShell {
 		}
 	}
 
-/**
- * Gets the option parser instance and configures it.
- *
- * @return ConsoleOptionParser
- */
+	/**
+	 * Gets the option parser instance and configures it.
+	 *
+	 * @return ConsoleOptionParser
+	 */
 	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
@@ -180,22 +181,22 @@ class ConsoleShell extends AppShell {
 
 		return $parser;
 	}
-/**
- * Prints the help message
- *
- * @return void
- */
+	/**
+	 * Prints the help message
+	 *
+	 * @return void
+	 */
 	public function help() {
 		$optionParser = $this->getOptionParser();
 		$this->out($optionParser->epilog());
 	}
 
-/**
- * Override main() to handle action
- *
- * @param string $command The command to run.
- * @return void
- */
+	/**
+	 * Override main() to handle action
+	 *
+	 * @param string $command The command to run.
+	 * @return void
+	 */
 	public function main($command = null) {
 		$this->_finished = false;
 		while (!$this->_finished) {
@@ -215,12 +216,12 @@ class ConsoleShell extends AppShell {
 		}
 	}
 
-/**
- * Determine the method to process the current command
- *
- * @param string $command The command to run.
- * @return string or false
- */
+	/**
+	 * Determine the method to process the current command
+	 *
+	 * @param string $command The command to run.
+	 * @return string or false
+	 */
 	protected function _method($command) {
 		foreach ($this->_methodPatterns as $method => $pattern) {
 			if (preg_match($pattern, $command)) {
@@ -231,20 +232,20 @@ class ConsoleShell extends AppShell {
 		return false;
 	}
 
-/**
- * Set the finiished property so that the loop in main method ends
- *
- * @return void
- */
+	/**
+	 * Set the finiished property so that the loop in main method ends
+	 *
+	 * @return void
+	 */
 	protected function _exit() {
 		$this->_finished = true;
 	}
 
-/**
- * List all models
- *
- * @return void
- */
+	/**
+	 * List all models
+	 *
+	 * @return void
+	 */
 	protected function _models() {
 		$this->out(__d('cake_console', 'Model classes:'));
 		$this->hr();
@@ -253,12 +254,12 @@ class ConsoleShell extends AppShell {
 		}
 	}
 
-/**
- * Bind an association
- *
- * @param mixed $command The command to run.
- * @return void
- */
+	/**
+	 * Bind an association
+	 *
+	 * @param mixed $command The command to run.
+	 * @return void
+	 */
 	protected function _bind($command) {
 		preg_match($this->_methodPatterns[__FUNCTION__], $command, $tmp);
 
@@ -273,19 +274,24 @@ class ConsoleShell extends AppShell {
 
 		if ($this->_isValidModel($modelA) && $this->_isValidModel($modelB) && in_array($association, $this->associations)) {
 			$this->{$modelA}->bindModel(array($association => array($modelB => array('className' => $modelB))), false);
-			$this->out(__d('cake_console', "Created %s association between %s and %s",
-				$association, $modelA, $modelB));
+			$this->out(__d(
+				'cake_console',
+				"Created %s association between %s and %s",
+				$association,
+				$modelA,
+				$modelB
+			));
 		} else {
 			$this->out(__d('cake_console', "Please verify you are using valid models and association types"));
 		}
 	}
 
-/**
- * Unbind an association
- *
- * @param mixed $command The command to run.
- * @return void
- */
+	/**
+	 * Unbind an association
+	 *
+	 * @param mixed $command The command to run.
+	 * @return void
+	 */
 	protected function _unbind($command) {
 		preg_match($this->_methodPatterns[__FUNCTION__], $command, $tmp);
 
@@ -310,19 +316,24 @@ class ConsoleShell extends AppShell {
 
 		if ($this->_isValidModel($modelA) && $this->_isValidModel($modelB) && in_array($association, $this->associations) && $validCurrentAssociation) {
 			$this->{$modelA}->unbindModel(array($association => array($modelB)));
-			$this->out(__d('cake_console', "Removed %s association between %s and %s",
-				$association, $modelA, $modelB));
+			$this->out(__d(
+				'cake_console',
+				"Removed %s association between %s and %s",
+				$association,
+				$modelA,
+				$modelB
+			));
 		} else {
 			$this->out(__d('cake_console', "Please verify you are using valid models, valid current association, and valid association types"));
 		}
 	}
 
-/**
- * Perform a find
- *
- * @param mixed $command The command to run.
- * @return void
- */
+	/**
+	 * Perform a find
+	 *
+	 * @param mixed $command The command to run.
+	 * @return void
+	 */
 	protected function _find($command) {
 		$command = strip_tags($command);
 		$command = str_replace($this->badCommandChars, "", $command);
@@ -379,12 +390,12 @@ class ConsoleShell extends AppShell {
 		}
 	}
 
-/**
- * Save a record
- *
- * @param mixed $command The command to run.
- * @return void
- */
+	/**
+	 * Save a record
+	 *
+	 * @param mixed $command The command to run.
+	 * @return void
+	 */
 	protected function _save($command) {
 		// Validate the model we're trying to save here
 		$command = strip_tags($command);
@@ -403,12 +414,12 @@ class ConsoleShell extends AppShell {
 		}
 	}
 
-/**
- * Show the columns for a model
- *
- * @param mixed $command The command to run.
- * @return void
- */
+	/**
+	 * Show the columns for a model
+	 *
+	 * @param mixed $command The command to run.
+	 * @return void
+	 */
 	protected function _columns($command) {
 		preg_match($this->_methodPatterns[__FUNCTION__], $command, $tmp);
 
@@ -431,11 +442,11 @@ class ConsoleShell extends AppShell {
 		}
 	}
 
-/**
- * Reload route definitions
- *
- * @return void
- */
+	/**
+	 * Reload route definitions
+	 *
+	 * @return void
+	 */
 	protected function _routesReload() {
 		if (!$this->_loadRoutes()) {
 			return $this->err(__d('cake_console', "There was an error loading the routes config. Please check that the file exists and is free of parse errors."));
@@ -443,21 +454,21 @@ class ConsoleShell extends AppShell {
 		$this->out(__d('cake_console', "Routes configuration reloaded, %d routes connected", count(Router::$routes)));
 	}
 
-/**
- * Show all routes
- *
- * @return void
- */
+	/**
+	 * Show all routes
+	 *
+	 * @return void
+	 */
 	protected function _routesShow() {
 		$this->out(print_r(Hash::combine(Router::$routes, '{n}.template', '{n}.defaults'), true));
 	}
 
-/**
- * Parse an array URL and show the equivalent URL as a string
- *
- * @param mixed $command The command to run.
- * @return void
- */
+	/**
+	 * Parse an array URL and show the equivalent URL as a string
+	 *
+	 * @param mixed $command The command to run.
+	 * @return void
+	 */
 	protected function _routeToString($command) {
 		preg_match($this->_methodPatterns[__FUNCTION__], $command, $tmp);
 
@@ -468,34 +479,34 @@ class ConsoleShell extends AppShell {
 		}
 	}
 
-/**
- * Parse a string URL and show as an array
- *
- * @param mixed $command The command to run.
- * @return void
- */
+	/**
+	 * Parse a string URL and show as an array
+	 *
+	 * @param mixed $command The command to run.
+	 * @return void
+	 */
 	protected function _routeToArray($command) {
 		preg_match($this->_methodPatterns[__FUNCTION__], $command, $tmp);
 
 		$this->out(var_export(Router::parse($tmp[1]), true));
 	}
 
-/**
- * Tells if the specified model is included in the list of available models
- *
- * @param string $modelToCheck The model to check.
- * @return bool true if is an available model, false otherwise
- */
+	/**
+	 * Tells if the specified model is included in the list of available models
+	 *
+	 * @param string $modelToCheck The model to check.
+	 * @return bool true if is an available model, false otherwise
+	 */
 	protected function _isValidModel($modelToCheck) {
 		return in_array($modelToCheck, $this->models);
 	}
 
-/**
- * Reloads the routes configuration from app/Config/routes.php, and compiles
- * all routes found
- *
- * @return bool True if config reload was a success, otherwise false
- */
+	/**
+	 * Reloads the routes configuration from app/Config/routes.php, and compiles
+	 * all routes found
+	 *
+	 * @return bool True if config reload was a success, otherwise false
+	 */
 	protected function _loadRoutes() {
 		Router::reload();
 		extract(Router::getNamedExpressions());
@@ -510,5 +521,4 @@ class ConsoleShell extends AppShell {
 		Router::parse('/');
 		return true;
 	}
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakeTestSuiteDispatcher controls dispatching TestSuite web based requests.
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.TestSuite
- * @since         CakePHP(tm) v 1.3
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.TestSuite
+ * @since		 CakePHP(tm) v 1.3
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
@@ -40,15 +41,15 @@ App::uses('CakeTestSuiteCommand', 'TestSuite');
 /**
  * CakeTestSuiteDispatcher handles web requests to the test suite and runs the correct action.
  *
- * @package       Cake.TestSuite
+ * @package	   Cake.TestSuite
  */
 class CakeTestSuiteDispatcher {
 
-/**
- * 'Request' parameters
- *
- * @var array
- */
+	/**
+	 * 'Request' parameters
+	 *
+	 * @var array
+	 */
 	public $params = array(
 		'codeCoverage' => false,
 		'case' => null,
@@ -62,48 +63,48 @@ class CakeTestSuiteDispatcher {
 		'fixture' => null
 	);
 
-/**
- * Baseurl for the request
- *
- * @var string
- */
+	/**
+	 * Baseurl for the request
+	 *
+	 * @var string
+	 */
 	protected $_baseUrl;
 
-/**
- * Base dir of the request. Used for accessing assets.
- *
- * @var string
- */
+	/**
+	 * Base dir of the request. Used for accessing assets.
+	 *
+	 * @var string
+	 */
 	protected $_baseDir;
 
-/**
- * boolean to set auto parsing of params.
- *
- * @var bool
- */
+	/**
+	 * boolean to set auto parsing of params.
+	 *
+	 * @var bool
+	 */
 	protected $_paramsParsed = false;
 
-/**
- * reporter instance used for the request
- *
- * @var CakeBaseReporter
- */
+	/**
+	 * reporter instance used for the request
+	 *
+	 * @var CakeBaseReporter
+	 */
 	protected static $_Reporter = null;
 
-/**
- * Constructor
- */
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		$this->_baseUrl = $_SERVER['PHP_SELF'];
 		$dir = rtrim(dirname($this->_baseUrl), '\\');
 		$this->_baseDir = ($dir === '/') ? $dir : $dir . '/';
 	}
 
-/**
- * Runs the actions required by the URL parameters.
- *
- * @return void
- */
+	/**
+	 * Runs the actions required by the URL parameters.
+	 *
+	 * @return void
+	 */
 	public function dispatch() {
 		$this->_checkPHPUnit();
 		$this->_parseParams();
@@ -119,21 +120,21 @@ class CakeTestSuiteDispatcher {
 		return $value;
 	}
 
-/**
- * Static method to initialize the test runner, keeps global space clean
- *
- * @return void
- */
+	/**
+	 * Static method to initialize the test runner, keeps global space clean
+	 *
+	 * @return void
+	 */
 	public static function run() {
 		$dispatcher = new CakeTestSuiteDispatcher();
 		$dispatcher->dispatch();
 	}
 
-/**
- * Checks that PHPUnit is installed. Will exit if it doesn't
- *
- * @return void
- */
+	/**
+	 * Checks that PHPUnit is installed. Will exit if it doesn't
+	 *
+	 * @return void
+	 */
 	protected function _checkPHPUnit() {
 		$found = $this->loadTestFramework();
 		if (!$found) {
@@ -143,11 +144,11 @@ class CakeTestSuiteDispatcher {
 		}
 	}
 
-/**
- * Checks for the existence of the test framework files
- *
- * @return bool true if found, false otherwise
- */
+	/**
+	 * Checks for the existence of the test framework files
+	 *
+	 * @return bool true if found, false otherwise
+	 */
 	public function loadTestFramework() {
 		if (class_exists('PHPUnit_Framework_TestCase')) {
 			return true;
@@ -179,12 +180,12 @@ class CakeTestSuiteDispatcher {
 		return class_exists('PHPUnit_Framework_TestCase');
 	}
 
-/**
- * Checks for the xdebug extension required to do code coverage. Displays an error
- * if xdebug isn't installed.
- *
- * @return void
- */
+	/**
+	 * Checks for the xdebug extension required to do code coverage. Displays an error
+	 * if xdebug isn't installed.
+	 *
+	 * @return void
+	 */
 	protected function _checkXdebug() {
 		if (!extension_loaded('xdebug')) {
 			$baseDir = $this->_baseDir;
@@ -193,11 +194,11 @@ class CakeTestSuiteDispatcher {
 		}
 	}
 
-/**
- * Generates a page containing the a list of test cases that could be run.
- *
- * @return void
- */
+	/**
+	 * Generates a page containing the a list of test cases that could be run.
+	 *
+	 * @return void
+	 */
 	protected function _testCaseList() {
 		$command = new CakeTestSuiteCommand('', $this->params);
 		$Reporter = $command->handleReporter($this->params['output']);
@@ -207,22 +208,22 @@ class CakeTestSuiteDispatcher {
 		$Reporter->paintDocumentEnd();
 	}
 
-/**
- * Sets the params, calling this will bypass the auto parameter parsing.
- *
- * @param array $params Array of parameters for the dispatcher
- * @return void
- */
+	/**
+	 * Sets the params, calling this will bypass the auto parameter parsing.
+	 *
+	 * @param array $params Array of parameters for the dispatcher
+	 * @return void
+	 */
 	public function setParams($params) {
 		$this->params = $params;
 		$this->_paramsParsed = true;
 	}
 
-/**
- * Parse URL params into a 'request'
- *
- * @return void
- */
+	/**
+	 * Parse URL params into a 'request'
+	 *
+	 * @return void
+	 */
 	protected function _parseParams() {
 		if (!$this->_paramsParsed) {
 			if (!isset($_SERVER['SERVER_NAME'])) {
@@ -245,11 +246,11 @@ class CakeTestSuiteDispatcher {
 		$this->params['baseDir'] = $this->_baseDir;
 	}
 
-/**
- * Runs a test case file.
- *
- * @return void
- */
+	/**
+	 * Runs a test case file.
+	 *
+	 * @return void
+	 */
 	protected function _runTestCase() {
 		$commandArgs = array(
 			'case' => $this->params['case'],
@@ -281,12 +282,12 @@ class CakeTestSuiteDispatcher {
 		}
 	}
 
-/**
- * Sets a static timestamp
- *
- * @param bool $reset to set new static timestamp.
- * @return int timestamp
- */
+	/**
+	 * Sets a static timestamp
+	 *
+	 * @param bool $reset to set new static timestamp.
+	 * @return int timestamp
+	 */
 	public static function time($reset = false) {
 		static $now;
 		if ($reset || !$now) {
@@ -295,15 +296,14 @@ class CakeTestSuiteDispatcher {
 		return $now;
 	}
 
-/**
- * Returns formatted date string using static time
- * This method is being used as formatter for created, modified and updated fields in Model::save()
- *
- * @param string $format format to be used.
- * @return string formatted date
- */
+	/**
+	 * Returns formatted date string using static time
+	 * This method is being used as formatter for created, modified and updated fields in Model::save()
+	 *
+	 * @param string $format format to be used.
+	 * @return string formatted date
+	 */
 	public static function date($format) {
 		return date($format, static::time());
 	}
-
 }

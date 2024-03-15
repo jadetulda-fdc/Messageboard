@@ -1,4 +1,5 @@
 <?php
+
 /**
  * API shell to get CakePHP core method signatures.
  *
@@ -11,10 +12,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         CakePHP(tm) v 1.2.0.5012
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @since		 CakePHP(tm) v 1.2.0.5012
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('AppShell', 'Console/Command');
@@ -25,22 +26,22 @@ App::uses('File', 'Utility');
  *
  * Implementation of a Cake Shell to show CakePHP core method signatures.
  *
- * @package       Cake.Console.Command
+ * @package	   Cake.Console.Command
  */
 class ApiShell extends AppShell {
 
-/**
- * Map between short name for paths and real paths.
- *
- * @var array
- */
+	/**
+	 * Map between short name for paths and real paths.
+	 *
+	 * @var array
+	 */
 	public $paths = array();
 
-/**
- * Override initialize of the Shell
- *
- * @return void
- */
+	/**
+	 * Override initialize of the Shell
+	 *
+	 * @return void
+	 */
 	public function initialize() {
 		$this->paths = array_merge($this->paths, array(
 			'behavior' => CAKE . 'Model' . DS . 'Behavior' . DS,
@@ -54,11 +55,11 @@ class ApiShell extends AppShell {
 		));
 	}
 
-/**
- * Override main() to handle action
- *
- * @return void
- */
+	/**
+	 * Override main() to handle action
+	 *
+	 * @return void
+	 */
 	public function main() {
 		if (empty($this->args)) {
 			return $this->out($this->OptionParser->help());
@@ -87,7 +88,6 @@ class ApiShell extends AppShell {
 					$class .= Inflector::camelize($type);
 				}
 			}
-
 		} else {
 			$this->error(__d('cake_console', '%s not found', $class));
 		}
@@ -136,11 +136,11 @@ class ApiShell extends AppShell {
 		}
 	}
 
-/**
- * Gets the option parser instance and configures it.
- *
- * @return ConsoleOptionParser
- */
+	/**
+	 * Gets the option parser instance and configures it.
+	 *
+	 * @return ConsoleOptionParser
+	 */
 	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
@@ -158,11 +158,11 @@ class ApiShell extends AppShell {
 		return $parser;
 	}
 
-/**
- * Show help for this shell.
- *
- * @return void
- */
+	/**
+	 * Show help for this shell.
+	 *
+	 * @return void
+	 */
 	public function help() {
 		$head = "Usage: cake api [<type>] <className> [-m <method>]\n";
 		$head .= "-----------------------------------------------\n";
@@ -195,14 +195,14 @@ class ApiShell extends AppShell {
 		}
 	}
 
-/**
- * Parse a given class (located on given file) and get public methods and their
- * signatures.
- *
- * @param string $path File path
- * @param string $class Class name
- * @return array Methods and signatures indexed by method name
- */
+	/**
+	 * Parse a given class (located on given file) and get public methods and their
+	 * signatures.
+	 *
+	 * @param string $path File path
+	 * @param string $class Class name
+	 * @return array Methods and signatures indexed by method name
+	 */
 	protected function _parseClass($path, $class) {
 		$parsed = array();
 
@@ -238,5 +238,4 @@ class ApiShell extends AppShell {
 		ksort($parsed);
 		return $parsed;
 	}
-
 }

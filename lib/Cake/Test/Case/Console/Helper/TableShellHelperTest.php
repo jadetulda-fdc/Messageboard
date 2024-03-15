@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,10 +8,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         2.8
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @since		 2.8
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 App::uses("TableShellHelper", "Console/Helper");
 App::uses("ConsoleOutputStub", "TestSuite/Stub");
@@ -22,11 +23,11 @@ App::uses("ConsoleOutputStub", "TestSuite/Stub");
  */
 class TableShellHelperTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 
@@ -34,11 +35,11 @@ class TableShellHelperTest extends CakeTestCase {
 		$this->helper = new TableShellHelper($this->consoleOutput);
 	}
 
-/**
- * Test output
- *
- * @return void
- */
+	/**
+	 * Test output
+	 *
+	 * @return void
+	 */
 	public function testDefaultOutput() {
 		$data = array(
 			array('Header 1', 'Header', 'Long Header'),
@@ -48,20 +49,20 @@ class TableShellHelperTest extends CakeTestCase {
 		$this->helper->output($data);
 		$expected = array(
 			'+--------------+---------------+---------------+',
-			'| <info>Header 1</info>     | <info>Header</info>        | <info>Long Header</info>   |',
+			'| <info>Header 1</info>	 | <info>Header</info>		| <info>Long Header</info>   |',
 			'+--------------+---------------+---------------+',
-			'| short        | Longish thing | short         |',
-			'| Longer thing | short         | Longest Value |',
+			'| short		| Longish thing | short		 |',
+			'| Longer thing | short		 | Longest Value |',
 			'+--------------+---------------+---------------+',
 		);
 		$this->assertEquals($expected, $this->consoleOutput->messages());
 	}
 
-/**
- * Test output with multibyte characters
- *
- * @return void
- */
+	/**
+	 * Test output with multibyte characters
+	 *
+	 * @return void
+	 */
 	public function testOutputUtf8() {
 		$data = array(
 			array('Header 1', 'Head', 'Long Header'),
@@ -71,20 +72,20 @@ class TableShellHelperTest extends CakeTestCase {
 		$this->helper->output($data);
 		$expected = array(
 			'+--------------+-----------+---------------+',
-			'| <info>Header 1</info>     | <info>Head</info>      | <info>Long Header</info>   |',
+			'| <info>Header 1</info>	 | <info>Head</info>	  | <info>Long Header</info>   |',
 			'+--------------+-----------+---------------+',
-			'| short        | ÄÄÄÜÜÜ    | short         |',
+			'| short		| ÄÄÄÜÜÜ	| short		 |',
 			'| Longer thing | longerish | Longest Value |',
 			'+--------------+-----------+---------------+',
 		);
 		$this->assertEquals($expected, $this->consoleOutput->messages());
 	}
 
-/**
- * Test output without headers
- *
- * @return void
- */
+	/**
+	 * Test output without headers
+	 *
+	 * @return void
+	 */
 	public function testOutputWithoutHeaderStyle() {
 		$data = array(
 			array('Header 1', 'Header', 'Long Header'),
@@ -95,20 +96,20 @@ class TableShellHelperTest extends CakeTestCase {
 		$this->helper->output($data);
 		$expected = array(
 			'+--------------+---------------+---------------+',
-			'| Header 1     | Header        | Long Header   |',
+			'| Header 1	 | Header		| Long Header   |',
 			'+--------------+---------------+---------------+',
-			'| short        | Longish thing | short         |',
-			'| Longer thing | short         | Longest Value |',
+			'| short		| Longish thing | short		 |',
+			'| Longer thing | short		 | Longest Value |',
 			'+--------------+---------------+---------------+',
 		);
 		$this->assertEquals($expected, $this->consoleOutput->messages());
 	}
 
-/**
- * Test output with different header style
- *
- * @return void
- */
+	/**
+	 * Test output with different header style
+	 *
+	 * @return void
+	 */
 	public function testOutputWithDifferentHeaderStyle() {
 		$data = array(
 			array('Header 1', 'Header', 'Long Header'),
@@ -119,20 +120,20 @@ class TableShellHelperTest extends CakeTestCase {
 		$this->helper->output($data);
 		$expected = array(
 			'+--------------+---------------+---------------+',
-			'| <error>Header 1</error>     | <error>Header</error>        | <error>Long Header</error>   |',
+			'| <error>Header 1</error>	 | <error>Header</error>		| <error>Long Header</error>   |',
 			'+--------------+---------------+---------------+',
-			'| short        | Longish thing | short         |',
-			'| Longer thing | short         | Longest Value |',
+			'| short		| Longish thing | short		 |',
+			'| Longer thing | short		 | Longest Value |',
 			'+--------------+---------------+---------------+',
 		);
 		$this->assertEquals($expected, $this->consoleOutput->messages());
 	}
 
-/**
- * Test output without table headers
- *
- * @return void
- */
+	/**
+	 * Test output without table headers
+	 *
+	 * @return void
+	 */
 	public function testOutputWithoutHeaders() {
 		$data = array(
 			array('short', 'Longish thing', 'short'),
@@ -142,18 +143,18 @@ class TableShellHelperTest extends CakeTestCase {
 		$this->helper->output($data);
 		$expected = array(
 			'+--------------+---------------+---------------+',
-			'| short        | Longish thing | short         |',
-			'| Longer thing | short         | Longest Value |',
+			'| short		| Longish thing | short		 |',
+			'| Longer thing | short		 | Longest Value |',
 			'+--------------+---------------+---------------+',
 		);
 		$this->assertEquals($expected, $this->consoleOutput->messages());
 	}
 
-/**
- * Test output with row separator
- *
- * @return void
- */
+	/**
+	 * Test output with row separator
+	 *
+	 * @return void
+	 */
 	public function testOutputWithRowSeparator() {
 		$data = array(
 			array('Header 1', 'Header', 'Long Header'),
@@ -164,21 +165,21 @@ class TableShellHelperTest extends CakeTestCase {
 		$this->helper->output($data);
 		$expected = array(
 			'+--------------+---------------+---------------+',
-			'| <info>Header 1</info>     | <info>Header</info>        | <info>Long Header</info>   |',
+			'| <info>Header 1</info>	 | <info>Header</info>		| <info>Long Header</info>   |',
 			'+--------------+---------------+---------------+',
-			'| short        | Longish thing | short         |',
+			'| short		| Longish thing | short		 |',
 			'+--------------+---------------+---------------+',
-			'| Longer thing | short         | Longest Value |',
+			'| Longer thing | short		 | Longest Value |',
 			'+--------------+---------------+---------------+',
 		);
 		$this->assertEquals($expected, $this->consoleOutput->messages());
 	}
 
-/**
- * Test output with row separator and no headers
- *
- * @return void
- */
+	/**
+	 * Test output with row separator and no headers
+	 *
+	 * @return void
+	 */
 	public function testOutputWithRowSeparatorAndHeaders() {
 		$data = array(
 			array('Header 1', 'Header', 'Long Header'),
@@ -189,11 +190,11 @@ class TableShellHelperTest extends CakeTestCase {
 		$this->helper->output($data);
 		$expected = array(
 			'+--------------+---------------+---------------+',
-			'| <info>Header 1</info>     | <info>Header</info>        | <info>Long Header</info>   |',
+			'| <info>Header 1</info>	 | <info>Header</info>		| <info>Long Header</info>   |',
 			'+--------------+---------------+---------------+',
-			'| short        | Longish thing | short         |',
+			'| short		| Longish thing | short		 |',
 			'+--------------+---------------+---------------+',
-			'| Longer thing | short         | Longest Value |',
+			'| Longer thing | short		 | Longest Value |',
 			'+--------------+---------------+---------------+',
 		);
 		$this->assertEquals($expected, $this->consoleOutput->messages());

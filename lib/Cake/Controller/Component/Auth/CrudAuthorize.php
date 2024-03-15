@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -7,9 +8,9 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('BaseAuthorize', 'Controller/Component/Auth');
@@ -25,29 +26,29 @@ App::uses('Router', 'Routing');
  * to create permission systems that focus more on what is being done to resources, rather than the specific actions
  * being visited.
  *
- * @package       Cake.Controller.Component.Auth
+ * @package	   Cake.Controller.Component.Auth
  * @since 2.0
  * @see AuthComponent::$authenticate
  * @see AclComponent::check()
  */
 class CrudAuthorize extends BaseAuthorize {
 
-/**
- * Sets up additional actionMap values that match the configured `Routing.prefixes`.
- *
- * @param ComponentCollection $collection The component collection from the controller.
- * @param string $settings An array of settings. This class does not use any settings.
- */
+	/**
+	 * Sets up additional actionMap values that match the configured `Routing.prefixes`.
+	 *
+	 * @param ComponentCollection $collection The component collection from the controller.
+	 * @param string $settings An array of settings. This class does not use any settings.
+	 */
 	public function __construct(ComponentCollection $collection, $settings = array()) {
 		parent::__construct($collection, $settings);
 		$this->_setPrefixMappings();
 	}
 
-/**
- * sets the crud mappings for prefix routes.
- *
- * @return void
- */
+	/**
+	 * sets the crud mappings for prefix routes.
+	 *
+	 * @return void
+	 */
 	protected function _setPrefixMappings() {
 		$crud = array('create', 'read', 'update', 'delete');
 		$map = array_combine($crud, $crud);
@@ -71,19 +72,21 @@ class CrudAuthorize extends BaseAuthorize {
 		$this->mapActions($map);
 	}
 
-/**
- * Authorize a user using the mapped actions and the AclComponent.
- *
- * @param array $user The user to authorize
- * @param CakeRequest $request The request needing authorization.
- * @return bool
- */
+	/**
+	 * Authorize a user using the mapped actions and the AclComponent.
+	 *
+	 * @param array $user The user to authorize
+	 * @param CakeRequest $request The request needing authorization.
+	 * @return bool
+	 */
 	public function authorize($user, CakeRequest $request) {
 		if (!isset($this->settings['actionMap'][$request->params['action']])) {
-			trigger_error(__d('cake_dev',
-				'CrudAuthorize::authorize() - Attempted access of un-mapped action "%1$s" in controller "%2$s"',
-				$request->action,
-				$request->controller
+			trigger_error(
+				__d(
+					'cake_dev',
+					'CrudAuthorize::authorize() - Attempted access of un-mapped action "%1$s" in controller "%2$s"',
+					$request->action,
+					$request->controller
 				),
 				E_USER_WARNING
 			);
@@ -97,5 +100,4 @@ class CrudAuthorize extends BaseAuthorize {
 			$this->settings['actionMap'][$request->params['action']]
 		);
 	}
-
 }

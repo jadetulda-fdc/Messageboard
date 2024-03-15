@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FlashHelperTest file
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.View.Helper
- * @since         CakePHP(tm) v 2.7.0-dev
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.View.Helper
+ * @since		 CakePHP(tm) v 2.7.0-dev
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('FlashHelper', 'View/Helper');
@@ -29,22 +30,22 @@ App::uses('CakePlugin', 'Core');
  */
 class FlashHelperTest extends CakeTestCase {
 
-/**
- * setupBeforeClass method
- *
- * @return void
- */
+	/**
+	 * setupBeforeClass method
+	 *
+	 * @return void
+	 */
 	public static function setupBeforeClass() {
 		App::build(array(
 			'View' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS)
 		));
 	}
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$controller = null;
@@ -101,22 +102,22 @@ class FlashHelperTest extends CakeTestCase {
 		));
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->View, $this->Flash);
 		CakeSession::destroy();
 	}
 
-/**
- * testFlash method
- *
- * @return void
- */
+	/**
+	 * testFlash method
+	 *
+	 * @return void
+	 */
 	public function testFlash() {
 		$result = $this->Flash->render();
 		$expected = '<div class="message">This is the first Message</div><div class="message">This is the second Message</div>';
@@ -133,21 +134,21 @@ class FlashHelperTest extends CakeTestCase {
 		$this->assertNull($this->Flash->render('non-existent'));
 	}
 
-/**
- * testFlashThrowsException
- *
- * @expectedException UnexpectedValueException
- */
+	/**
+	 * testFlashThrowsException
+	 *
+	 * @expectedException UnexpectedValueException
+	 */
 	public function testFlashThrowsException() {
 		CakeSession::write('Message.foo', 'bar');
 		$this->Flash->render('foo');
 	}
 
-/**
- * test setting the element from the attrs.
- *
- * @return void
- */
+	/**
+	 * test setting the element from the attrs.
+	 *
+	 * @return void
+	 */
 	public function testFlashElementInAttrs() {
 		$result = $this->Flash->render('notification', array(
 			'element' => 'flash_helper',
@@ -159,11 +160,11 @@ class FlashHelperTest extends CakeTestCase {
 		$this->assertContains($expected, $result);
 	}
 
-/**
- * test using elements in plugins.
- *
- * @return void
- */
+	/**
+	 * test using elements in plugins.
+	 *
+	 * @return void
+	 */
 	public function testFlashWithPluginElement() {
 		App::build(array(
 			'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
@@ -175,9 +176,9 @@ class FlashHelperTest extends CakeTestCase {
 		$this->assertContains($expected, $result);
 	}
 
-/**
- * Test that the default element fallbacks to the Flash/default element.
- */
+	/**
+	 * Test that the default element fallbacks to the Flash/default element.
+	 */
 	public function testFlashFallback() {
 		$result = $this->Flash->render('default');
 		$expected = '<div class="message">Default</div>';

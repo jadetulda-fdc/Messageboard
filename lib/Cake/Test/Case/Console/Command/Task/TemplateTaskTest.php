@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TemplateTask file
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Console.Command.Task
- * @since         CakePHP(tm) v 1.3
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Console.Command.Task
+ * @since		 CakePHP(tm) v 1.3
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('ShellDispatcher', 'Console');
@@ -27,41 +28,42 @@ App::uses('TemplateTask', 'Console/Command/Task');
 /**
  * TemplateTaskTest class
  *
- * @package       Cake.Test.Case.Console.Command.Task
+ * @package	   Cake.Test.Case.Console.Command.Task
  */
 class TemplateTaskTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$out = $this->getMock('ConsoleOutput', array(), array(), '', false);
 		$in = $this->getMock('ConsoleInput', array(), array(), '', false);
 
-		$this->Task = $this->getMock('TemplateTask',
+		$this->Task = $this->getMock(
+			'TemplateTask',
 			array('in', 'err', 'createFile', '_stop', 'clear'),
 			array($out, $out, $in)
 		);
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->Task);
 	}
 
-/**
- * test that set sets variables
- *
- * @return void
- */
+	/**
+	 * test that set sets variables
+	 *
+	 * @return void
+	 */
 	public function testSet() {
 		$this->Task->set('one', 'two');
 		$this->assertTrue(isset($this->Task->templateVars['one']));
@@ -80,23 +82,23 @@ class TemplateTaskTest extends CakeTestCase {
 		$this->assertEquals($expected, $this->Task->templateVars);
 	}
 
-/**
- * test finding themes installed in
- *
- * @return void
- */
+	/**
+	 * test finding themes installed in
+	 *
+	 * @return void
+	 */
 	public function testFindingInstalledThemesForBake() {
 		$consoleLibs = CAKE . 'Console' . DS;
 		$this->Task->initialize();
 		$this->assertEquals($this->Task->templatePaths['default'], $consoleLibs . 'Templates' . DS . 'default' . DS);
 	}
 
-/**
- * test getting the correct theme name. Ensure that with only one theme, or a theme param
- * that the user is not bugged. If there are more, find and return the correct theme name
- *
- * @return void
- */
+	/**
+	 * test getting the correct theme name. Ensure that with only one theme, or a theme param
+	 * that the user is not bugged. If there are more, find and return the correct theme name
+	 *
+	 * @return void
+	 */
 	public function testGetThemePath() {
 		$defaultTheme = CAKE . 'Console' . DS . 'Templates' . DS . 'default' . DS;
 		$this->Task->templatePaths = array('default' => $defaultTheme);
@@ -117,11 +119,11 @@ class TemplateTaskTest extends CakeTestCase {
 		$this->assertEquals('other', $this->Task->params['theme']);
 	}
 
-/**
- * test generate
- *
- * @return void
- */
+	/**
+	 * test generate
+	 *
+	 * @return void
+	 */
 	public function testGenerate() {
 		App::build(array(
 			'Console' => array(
@@ -136,12 +138,12 @@ class TemplateTaskTest extends CakeTestCase {
 		$this->assertTextEquals($expected, $result);
 	}
 
-/**
- * test generate with a missing template in the chosen theme.
- * ensure fallback to default works.
- *
- * @return void
- */
+	/**
+	 * test generate with a missing template in the chosen theme.
+	 * ensure fallback to default works.
+	 *
+	 * @return void
+	 */
 	public function testGenerateWithTemplateFallbacks() {
 		App::build(array(
 			'Console' => array(

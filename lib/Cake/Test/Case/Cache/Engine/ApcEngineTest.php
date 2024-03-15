@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApcEngineTest file
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Case.Cache.Engine
- * @since         CakePHP(tm) v 1.2.0.5434
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Case.Cache.Engine
+ * @since		 CakePHP(tm) v 1.2.0.5434
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Cache', 'Cache');
@@ -21,22 +22,22 @@ App::uses('Cache', 'Cache');
 /**
  * ApcEngineTest class
  *
- * @package       Cake.Test.Case.Cache.Engine
+ * @package	   Cake.Test.Case.Cache.Engine
  */
 class ApcEngineTest extends CakeTestCase {
 
-/**
- * APC extension to be used
- *
- * @var string
- */
+	/**
+	 * APC extension to be used
+	 *
+	 * @var string
+	 */
 	protected $_apcExtension = 'apc';
 
-/**
- * setUp method
- *
- * @return void
- */
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$hasApc = extension_loaded('apc') || extension_loaded('apcu');
@@ -55,11 +56,11 @@ class ApcEngineTest extends CakeTestCase {
 		Cache::config('apc', array('engine' => 'Apc', 'prefix' => 'cake_'));
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		Configure::write('Cache.disable', $this->_cacheDisable);
@@ -68,11 +69,11 @@ class ApcEngineTest extends CakeTestCase {
 		Cache::config('default');
 	}
 
-/**
- * testReadAndWriteCache method
- *
- * @return void
- */
+	/**
+	 * testReadAndWriteCache method
+	 *
+	 * @return void
+	 */
 	public function testReadAndWriteCache() {
 		Cache::set(array('duration' => 1), 'apc');
 
@@ -91,11 +92,11 @@ class ApcEngineTest extends CakeTestCase {
 		Cache::delete('test', 'apc');
 	}
 
-/**
- * Writing cache entries with duration = 0 (forever) should work.
- *
- * @return void
- */
+	/**
+	 * Writing cache entries with duration = 0 (forever) should work.
+	 *
+	 * @return void
+	 */
 	public function testReadWriteDurationZero() {
 		Cache::config('apc', array('engine' => 'Apc', 'duration' => 0, 'prefix' => 'cake_'));
 		Cache::write('zero', 'Should save', 'apc');
@@ -105,11 +106,11 @@ class ApcEngineTest extends CakeTestCase {
 		$this->assertEquals('Should save', $result);
 	}
 
-/**
- * testExpiry method
- *
- * @return void
- */
+	/**
+	 * testExpiry method
+	 *
+	 * @return void
+	 */
 	public function testExpiry() {
 		Cache::set(array('duration' => 1), 'apc');
 
@@ -139,11 +140,11 @@ class ApcEngineTest extends CakeTestCase {
 		$this->assertFalse($result);
 	}
 
-/**
- * testDeleteCache method
- *
- * @return void
- */
+	/**
+	 * testDeleteCache method
+	 *
+	 * @return void
+	 */
 	public function testDeleteCache() {
 		$data = 'this is a test of the emergency broadcasting system';
 		$result = Cache::write('delete_test', $data, 'apc');
@@ -153,11 +154,11 @@ class ApcEngineTest extends CakeTestCase {
 		$this->assertTrue($result);
 	}
 
-/**
- * testDecrement method
- *
- * @return void
- */
+	/**
+	 * testDecrement method
+	 *
+	 * @return void
+	 */
 	public function testDecrement() {
 		$hasSupport = function_exists('apc_dec') || function_exists('apcu_dec');
 		$this->skipIf(!$hasSupport, 'No apc_dec()/apcu_dec() function, cannot test decrement().');
@@ -178,11 +179,11 @@ class ApcEngineTest extends CakeTestCase {
 		$this->assertEquals(2, $result);
 	}
 
-/**
- * testIncrement method
- *
- * @return void
- */
+	/**
+	 * testIncrement method
+	 *
+	 * @return void
+	 */
 	public function testIncrement() {
 		$hasSupport = function_exists('apc_inc') || function_exists('apcu_inc');
 		$this->skipIf(!function_exists('apc_inc'), 'No apc_inc()/apcu_inc() function, cannot test increment().');
@@ -203,11 +204,11 @@ class ApcEngineTest extends CakeTestCase {
 		$this->assertEquals(8, $result);
 	}
 
-/**
- * test the clearing of cache keys
- *
- * @return void
- */
+	/**
+	 * test the clearing of cache keys
+	 *
+	 * @return void
+	 */
 	public function testClear() {
 		$storeFunc = $this->_apcExtension . '_store';
 		$fetchFunc = $this->_apcExtension . '_fetch';
@@ -223,13 +224,13 @@ class ApcEngineTest extends CakeTestCase {
 		$deleteFunc('not_cake');
 	}
 
-/**
- * Tests that configuring groups for stored keys return the correct values when read/written
- * Shows that altering the group value is equivalent to deleting all keys under the same
- * group
- *
- * @return void
- */
+	/**
+	 * Tests that configuring groups for stored keys return the correct values when read/written
+	 * Shows that altering the group value is equivalent to deleting all keys under the same
+	 * group
+	 *
+	 * @return void
+	 */
 	public function testGroupsReadWrite() {
 		$incFunc = $this->_apcExtension . '_inc';
 		Cache::config('apc_groups', array(
@@ -252,11 +253,11 @@ class ApcEngineTest extends CakeTestCase {
 		$this->assertEquals('value3', Cache::read('test_groups', 'apc_groups'));
 	}
 
-/**
- * Tests that deleteing from a groups-enabled config is possible
- *
- * @return void
- */
+	/**
+	 * Tests that deleteing from a groups-enabled config is possible
+	 *
+	 * @return void
+	 */
 	public function testGroupDelete() {
 		Cache::config('apc_groups', array(
 			'engine' => 'Apc',
@@ -271,11 +272,11 @@ class ApcEngineTest extends CakeTestCase {
 		$this->assertFalse(Cache::read('test_groups', 'apc_groups'));
 	}
 
-/**
- * Test clearing a cache group
- *
- * @return void
- */
+	/**
+	 * Test clearing a cache group
+	 *
+	 * @return void
+	 */
 	public function testGroupClear() {
 		Cache::config('apc_groups', array(
 			'engine' => 'Apc',
@@ -293,11 +294,11 @@ class ApcEngineTest extends CakeTestCase {
 		$this->assertFalse(Cache::read('test_groups', 'apc_groups'));
 	}
 
-/**
- * Test add method.
- *
- * @return void
- */
+	/**
+	 * Test add method.
+	 *
+	 * @return void
+	 */
 	public function testAdd() {
 		Cache::delete('test_add_key', 'apc');
 

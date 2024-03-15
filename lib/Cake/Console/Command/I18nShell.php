@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Internationalization Management Shell
  *
@@ -9,10 +10,10 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         CakePHP(tm) v 1.2.0.5669
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @since		 CakePHP(tm) v 1.2.0.5669
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('AppShell', 'Console/Command');
@@ -20,29 +21,29 @@ App::uses('AppShell', 'Console/Command');
 /**
  * Shell for I18N management.
  *
- * @package       Cake.Console.Command
+ * @package	   Cake.Console.Command
  */
 class I18nShell extends AppShell {
 
-/**
- * Contains database source to use
- *
- * @var string
- */
+	/**
+	 * Contains database source to use
+	 *
+	 * @var string
+	 */
 	public $dataSource = 'default';
 
-/**
- * Contains tasks to load and instantiate
- *
- * @var array
- */
+	/**
+	 * Contains tasks to load and instantiate
+	 *
+	 * @var array
+	 */
 	public $tasks = array('DbConfig', 'Extract');
 
-/**
- * Override startup of the Shell
- *
- * @return mixed
- */
+	/**
+	 * Override startup of the Shell
+	 *
+	 * @return mixed
+	 */
 	public function startup() {
 		$this->_welcome();
 		if (isset($this->params['datasource'])) {
@@ -57,11 +58,11 @@ class I18nShell extends AppShell {
 		}
 	}
 
-/**
- * Override main() for help message hook
- *
- * @return void
- */
+	/**
+	 * Override main() for help message hook
+	 *
+	 * @return void
+	 */
 	public function main() {
 		$this->out(__d('cake_console', '<info>I18n Shell</info>'));
 		$this->hr();
@@ -90,20 +91,20 @@ class I18nShell extends AppShell {
 		$this->main();
 	}
 
-/**
- * Initialize I18N database.
- *
- * @return void
- */
+	/**
+	 * Initialize I18N database.
+	 *
+	 * @return void
+	 */
 	public function initdb() {
 		$this->dispatchShell('schema create i18n');
 	}
 
-/**
- * Gets the option parser instance and configures it.
- *
- * @return ConsoleOptionParser
- */
+	/**
+	 * Gets the option parser instance and configures it.
+	 *
+	 * @return ConsoleOptionParser
+	 */
 	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
@@ -118,5 +119,4 @@ class I18nShell extends AppShell {
 
 		return $parser;
 	}
-
 }

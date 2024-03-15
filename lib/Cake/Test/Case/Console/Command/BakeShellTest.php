@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BakeShell Test Case
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Case.Console.Command
- * @since         CakePHP(tm) v 1.3
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Case.Console.Command
+ * @since		 CakePHP(tm) v 1.3
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('ConsoleOutput', 'Console');
@@ -33,18 +34,18 @@ if (!class_exists('UsersController')) {
 
 class BakeShellTest extends CakeTestCase {
 
-/**
- * fixtures
- *
- * @var array
- */
+	/**
+	 * fixtures
+	 *
+	 * @var array
+	 */
 	public $fixtures = array('core.user');
 
-/**
- * setup test
- *
- * @return void
- */
+	/**
+	 * setup test
+	 *
+	 * @return void
+	 */
 	public function setUp() {
 		parent::setUp();
 		$out = $this->getMock('ConsoleOutput', array(), array(), '', false);
@@ -57,21 +58,21 @@ class BakeShellTest extends CakeTestCase {
 		);
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
 	public function tearDown() {
 		parent::tearDown();
 		unset($this->Dispatch, $this->Shell);
 	}
 
-/**
- * test bake all
- *
- * @return void
- */
+	/**
+	 * test bake all
+	 *
+	 * @return void
+	 */
 	public function testAllWithModelName() {
 		App::uses('User', 'Model');
 		$userExists = class_exists('User');
