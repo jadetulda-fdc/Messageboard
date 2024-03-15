@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Short description for file.
  *
@@ -11,31 +12,31 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Fixture
- * @since         CakePHP(tm) v 1.2.0.5669
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Fixture
+ * @since		 CakePHP(tm) v 1.2.0.5669
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 /**
  * TranslateWithPrefixFixture
  *
- * @package       Cake.Test.Fixture
+ * @package	   Cake.Test.Fixture
  */
 class TranslateWithPrefixFixture extends CakeTestFixture {
 
-/**
- * table property
- *
- * @var string
- */
+	/**
+	 * table property
+	 *
+	 * @var string
+	 */
 	public $table = 'i18n_translate_with_prefixes';
 
-/**
- * fields property
- *
- * @var array
- */
+	/**
+	 * fields property
+	 *
+	 * @var array
+	 */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'key' => 'primary'),
 		'locale' => array('type' => 'string', 'length' => 6, 'null' => false),
@@ -45,11 +46,11 @@ class TranslateWithPrefixFixture extends CakeTestFixture {
 		'content' => array('type' => 'text')
 	);
 
-/**
- * records property
- *
- * @var array
- */
+	/**
+	 * records property
+	 *
+	 * @var array
+	 */
 	public $records = array(
 		array('id' => 1, 'locale' => 'eng', 'model' => 'TranslatedItem', 'foreign_key' => 1, 'field' => 'title', 'content' => 'Title #1'),
 		array('id' => 2, 'locale' => 'eng', 'model' => 'TranslatedItem', 'foreign_key' => 1, 'field' => 'content', 'content' => 'Content #1'),

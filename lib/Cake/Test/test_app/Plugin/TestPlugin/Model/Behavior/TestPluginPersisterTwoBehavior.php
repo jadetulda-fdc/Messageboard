@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Behavior for binding management.
  *
@@ -11,18 +12,18 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.TestApp.Plugin.TestPlugin.Model.Behavior
- * @since         CakePHP(tm) v 1.2.0.5669
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.TestApp.Plugin.TestPlugin.Model.Behavior
+ * @since		 CakePHP(tm) v 1.2.0.5669
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
  * Behavior to allow for dynamic and atomic manipulation of a Model's associations used for a find call. Most useful for limiting
  * the amount of associations and data returned.
  *
- * @package       Cake.Test.TestApp.Plugin.TestPlugin.Model.Behavior
+ * @package	   Cake.Test.TestApp.Plugin.TestPlugin.Model.Behavior
  */
 class TestPluginPersisterTwoBehavior extends ModelBehavior {
 }

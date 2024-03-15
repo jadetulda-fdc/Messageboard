@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Static content controller.
  *
@@ -11,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Controller
- * @since         CakePHP(tm) v 0.2.9
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Controller
+ * @since		 CakePHP(tm) v 0.2.9
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('AppController', 'Controller');
@@ -25,33 +26,33 @@ App::uses('AppController', 'Controller');
  *
  * Override this controller by placing a copy in controllers directory of an application
  *
- * @package       Cake.Controller
+ * @package	   Cake.Controller
  * @link https://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
 class PagesController extends AppController {
 
-/**
- * Default helper
- *
- * @var array
- */
+	/**
+	 * Default helper
+	 *
+	 * @var array
+	 */
 	public $helpers = array('Html', 'Session');
 
-/**
- * This controller does not use a model
- *
- * @var array
- */
+	/**
+	 * This controller does not use a model
+	 *
+	 * @var array
+	 */
 	public $uses = array();
 
-/**
- * Displays a view
- *
- * @param mixed What page to display
- * @return void
- * @throws NotFoundException When the view file could not be found
- *	or MissingViewException in debug mode.
- */
+	/**
+	 * Displays a view
+	 *
+	 * @param mixed What page to display
+	 * @return void
+	 * @throws NotFoundException When the view file could not be found
+	 *	or MissingViewException in debug mode.
+	 */
 	public function display() {
 		$path = func_get_args();
 
@@ -85,5 +86,4 @@ class PagesController extends AppController {
 			throw new NotFoundException();
 		}
 	}
-
 }

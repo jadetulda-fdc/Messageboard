@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test App Extract Model
  *
@@ -9,11 +10,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP Project
- * @package       Cake.Test.TestApp.Model
- * @since         CakePHP v 2.4
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP Project
+ * @package	   Cake.Test.TestApp.Model
+ * @since		 CakePHP v 2.4
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
@@ -21,7 +22,7 @@
  *
  * For testing Console i18n validation message extraction with quotes
  *
- * @package       Cake.Test.TestApp.Model
+ * @package	   Cake.Test.TestApp.Model
  */
 class Extract extends AppModel {
 
@@ -41,5 +42,4 @@ class Extract extends AppModel {
 			)
 		),
 	);
-
 }

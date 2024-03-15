@@ -7,22 +7,22 @@ $flashMessage = $this->Flash->render('positive');
 ?>
 
 <?php if (isset($flashMessage)) { ?>
-    <div class="alert alert-success text-left" role="alert">
-        <?php echo $flashMessage; ?>
-    </div>
+	<div class="alert alert-success text-left" role="alert">
+		<?php echo $flashMessage; ?>
+	</div>
 <?php } ?>
 <?php echo $this->element('Profiles/view', compact('profileData', 'userData')); ?>
 <div class="mt-4">
-    <?php
-    echo $this->Html->link(
-        'Update Profile',
-        array(
-            'controller' => 'profiles',
-            'action' => 'update'
-        ),
-        array(
-            'class' => 'btn btn-primary'
-        )
-    );
-    ?>
+	<?php
+	echo $this->Html->link(
+		'Update Profile',
+		array(
+			'controller' => 'profiles',
+			'action' => 'update'
+		),
+		array(
+			'class' => 'btn btn-primary'
+		)
+	);
+	?>
 </div>

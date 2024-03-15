@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test App Comment Model
  *
@@ -9,17 +10,17 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP Project
- * @package       Cake.Test.TestApp.Model
- * @since         CakePHP v 1.2.0.7726
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP Project
+ * @package	   Cake.Test.TestApp.Model
+ * @since		 CakePHP v 1.2.0.7726
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
  * PersisterTwo
  *
- * @package       Cake.Test.TestApp.Model
+ * @package	   Cake.Test.TestApp.Model
  */
 class PersisterTwo extends AppModel {
 
@@ -28,5 +29,4 @@ class PersisterTwo extends AppModel {
 	public $actsAs = array('PersisterOneBehavior', 'TestPlugin.TestPluginPersisterOne');
 
 	public $hasMany = array('Comment', 'TestPlugin.TestPluginComment');
-
 }

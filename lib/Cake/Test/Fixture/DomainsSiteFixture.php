@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Short description for file.
  *
@@ -9,25 +10,25 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Fixture
- * @since         CakePHP(tm) v 2.1
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Fixture
+ * @since		 CakePHP(tm) v 2.1
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
  * Short description for class.
  *
- * @package       Cake.Test.Fixture
+ * @package	   Cake.Test.Fixture
  */
 class DomainsSiteFixture extends CakeTestFixture {
 
-/**
- * fields property
- *
- * @var array
- */
+	/**
+	 * fields property
+	 *
+	 * @var array
+	 */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'key' => 'primary'),
 		'domain_id' => array('type' => 'integer', 'null' => false),
@@ -37,11 +38,11 @@ class DomainsSiteFixture extends CakeTestFixture {
 		'updated' => 'datetime',
 	);
 
-/**
- * records property
- *
- * @var array
- */
+	/**
+	 * records property
+	 *
+	 * @var array
+	 */
 	public $records = array(
 		array('site_id' => 1, 'domain_id' => 1, 'active' => true, 'created' => '2007-03-17 01:16:23', 'updated' => '2007-03-17 01:18:31'),
 		array('site_id' => 1, 'domain_id' => 2, 'active' => true, 'created' => '2007-03-17 01:16:23', 'updated' => '2007-03-17 01:18:31'),

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Short description for file.
  *
@@ -9,25 +10,25 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       Cake.Test.Fixture
- * @since         CakePHP(tm) v 1.2.0.7026
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   Cake.Test.Fixture
+ * @since		 CakePHP(tm) v 1.2.0.7026
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
  * Short description for class.
  *
- * @package       Cake.Test.Fixture
+ * @package	   Cake.Test.Fixture
  */
 class DatatypeFixture extends CakeTestFixture {
 
-/**
- * Fields property
- *
- * @var array
- */
+	/**
+	 * Fields property
+	 *
+	 * @var array
+	 */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => 0, 'key' => 'primary'),
 		'float_field' => array('type' => 'float', 'length' => '5,2', 'null' => false, 'default' => null),
@@ -39,11 +40,11 @@ class DatatypeFixture extends CakeTestFixture {
 		'bool' => array('type' => 'boolean', 'null' => false, 'default' => false),
 	);
 
-/**
- * Records property
- *
- * @var array
- */
+	/**
+	 * Records property
+	 *
+	 * @var array
+	 */
 	public $records = array(
 		array(
 			'id' => 1,

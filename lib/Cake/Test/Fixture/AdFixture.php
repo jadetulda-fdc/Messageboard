@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Short description for ad_fixture.php
  *
@@ -10,25 +11,25 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          http://www.cakephp.org
- * @package       Cake.Test.Fixture
- * @since         1.2
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  http://www.cakephp.org
+ * @package	   Cake.Test.Fixture
+ * @since		 1.2
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
  * AdFixture class
  *
- * @package       Cake.Test.Fixture
+ * @package	   Cake.Test.Fixture
  */
 class AdFixture extends CakeTestFixture {
 
-/**
- * fields property
- *
- * @var array
- */
+	/**
+	 * fields property
+	 *
+	 * @var array
+	 */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'key' => 'primary'),
 		'campaign_id' => array('type' => 'integer'),
@@ -38,11 +39,11 @@ class AdFixture extends CakeTestFixture {
 		'name' => array('type' => 'string', 'length' => 255, 'null' => false)
 	);
 
-/**
- * records property
- *
- * @var array
- */
+	/**
+	 * records property
+	 *
+	 * @var array
+	 */
 	public $records = array(
 		array('parent_id' => null, 'lft' => 1, 'rght' => 2, 'campaign_id' => 1, 'name' => 'Nordover'),
 		array('parent_id' => null, 'lft' => 3, 'rght' => 4, 'campaign_id' => 1, 'name' => 'Statbergen'),

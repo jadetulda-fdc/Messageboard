@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Short description for file.
  *
@@ -9,25 +10,25 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
- * @package       Cake.Test.Fixture
- * @since         CakePHP(tm) v 1.2.0.6700
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
+ * @package	   Cake.Test.Fixture
+ * @since		 CakePHP(tm) v 1.2.0.6700
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
  * Short description for class.
  *
- * @package       Cake.Test.Fixture
+ * @package	   Cake.Test.Fixture
  */
 class DataTestFixture extends CakeTestFixture {
 
-/**
- * Fields property
- *
- * @var array
- */
+	/**
+	 * Fields property
+	 *
+	 * @var array
+	 */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'key' => 'primary'),
 		'count' => array('type' => 'integer', 'default' => 0),
@@ -36,11 +37,11 @@ class DataTestFixture extends CakeTestFixture {
 		'updated' => array('type' => 'datetime', 'default' => null)
 	);
 
-/**
- * Records property
- *
- * @var array
- */
+	/**
+	 * Records property
+	 *
+	 * @var array
+	 */
 	public $records = array(
 		array(
 			'count' => 2,
