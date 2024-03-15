@@ -22,12 +22,31 @@ $flashMessage = $this->Flash->render('message_sent');
     );
     ?>
 </div>
-<div class="d-flex flex-column gap-3 mb-3" id="message-list">
+<div id="search-thread">
     <?php
-    echo $this->element('Messages/threadDetail');
+    echo $this->Form->create('Message', array(
+        'url' => array(
+            'controller' => 'messages',
+            'action' => 'search'
+        ),
+        'class' => 'd-flex mb-3 gap-2'
+    ));
+    echo $this->Form->input('search-item', array(
+        'placeholder' => 'Search name',
+        'class' => 'form-control',
+        'label' => false,
+        'div' => false,
+        'error' => false
+    ));
+    ?>
+    <button type="submit" class="btn btn-primary" style="border-radius: 50%;"><i class="fa-solid fa-search"></i></button>
+    <?php
+    echo $this->Form->end()
     ?>
 </div>
-<?php echo $this->element('paginator'); ?>
+<div id="thread">
+    <?php echo $this->element('Messages/main') ?>
+</div>
 <script>
     $(function() {
 
@@ -58,7 +77,7 @@ $flashMessage = $this->Flash->render('message_sent');
         // End Truncate message
 
         // Load More
-        $('body #pagination').on('click', '#load-more a', function(e) {
+        $('body').on('click', '#pagination #load-more a', function(e) {
             e.preventDefault();
             $('#please-wait').removeClass('d-none');
             $('#load-more').addClass('d-none');
@@ -140,6 +159,25 @@ $flashMessage = $this->Flash->render('message_sent');
             } else {
                 console.log('cancelled');
             }
+        });
+
+        // Search Message
+        $('#MessageSearchForm').on('submit', function(e) {
+            e.preventDefault();
+            const form = $(this)
+
+            $.ajax({
+                url: form.prop('action'),
+                method: form.prop('method'),
+                data: form.serialize(),
+                success: function(result) {
+                    $('#thread').html(result);
+                    form[0].reset();
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
         });
     });
 </script>

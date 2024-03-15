@@ -25,7 +25,7 @@ class MessagesController extends AppController {
         $options = array();
 
         $this->paginate = array(
-            'limit' => 2,
+            'limit' => 1,
             'order' => array('Message.modified_at' => 'DESC'),
             'conditions' => array(
                 'Message.deleted_at IS NULL',
@@ -110,6 +110,53 @@ class MessagesController extends AppController {
                 $this->Flash->success('Message Sent!', array('key' => 'message_sent'));
                 return $this->redirect(array('action' => 'index'));
             }
+        }
+    }
+
+    public function search() {
+        if ($this->request->is('ajax')) {
+            $this->Message->bindModel(
+                array('hasMany' => array(
+                    'ThreadDetail' => array(
+                        'className' => 'MessageDetail',
+                        'foreignKey' => 'message_id',
+                        'conditions' => array('ThreadDetail.deleted_at IS NULL'),
+                        'order' => array('ThreadDetail.created_at' => 'DESC'),
+                        'limit' => 1
+                    ),
+                )),
+            );
+
+            $this->Message->unbindModel(
+                array('hasMany' => array('MessageDetail'))
+            );
+
+            $options = array();
+            $search_string = $this->request->data['Message']['search-item'];
+
+            $this->paginate = array(
+                'limit' => 1,
+                'order' => array('Message.modified_at' => 'DESC'),
+                'conditions' => array(
+                    'Message.deleted_at IS NULL',
+                    'OR' => array(
+                        "first_user_id_in_thread = " . $this->Auth->user('id'),
+                        "second_user_id_in_thread = " . $this->Auth->user('id'),
+                    ),
+                    'OR' => array(
+                        'Profile1.name LIKE ' => "%$search_string%",
+                        'Profile2.name LIKE ' => "%$search_string%"
+                    )
+                ),
+                'group' => array('Message.id')
+            );
+
+            $this->Paginator->settings = $this->paginate;
+
+            $messageThreads = $this->Paginator->paginate('Message', $options);
+            $paginate = $this->params['paging']['Message'];
+
+            $this->set(compact('messageThreads', 'paginate'));
         }
     }
 
