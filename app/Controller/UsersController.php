@@ -81,7 +81,8 @@ class UsersController extends AppController {
             $this->Flash->success('Thank you for registering!', array(
                 'key' => 'register'
             ));
-            $this->Auth->login($this->request->data['User']);
+            $user = $this->User->findById($this->User->id);
+            $this->Auth->login($user);
             $this->render('register_success');
         }
     }
