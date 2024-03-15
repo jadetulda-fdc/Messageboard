@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 14, 2024 at 11:00 AM
+-- Generation Time: Mar 15, 2024 at 05:52 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.29
 
@@ -42,10 +42,10 @@ CREATE TABLE `messages` (
 
 INSERT INTO `messages` (`id`, `first_user_id_in_thread`, `second_user_id_in_thread`, `created_at`, `modified_at`, `deleted_at`) VALUES
 (1, 2, 1, '2024-03-12 14:50:07', '2024-03-13 07:43:41', NULL),
-(2, 3, 2, '2024-03-12 14:54:06', '2024-03-14 09:06:55', NULL),
+(2, 3, 2, '2024-03-12 14:54:06', '2024-03-15 04:41:02', NULL),
 (5, 1, 3, '2024-03-12 15:12:19', '2024-03-12 15:12:19', NULL),
 (9, 3, 5, '2024-03-12 17:42:51', '2024-03-14 09:44:17', '2024-03-14 09:44:13'),
-(13, 2, 4, '2024-03-13 03:33:30', '2024-03-14 08:27:19', NULL),
+(13, 2, 4, '2024-03-13 03:33:30', '2024-03-15 04:44:07', '2024-03-15 04:44:07'),
 (14, 2, 5, '2024-03-14 08:28:59', '2024-03-14 09:46:41', NULL);
 
 -- --------------------------------------------------------
@@ -90,7 +90,7 @@ INSERT INTO `message_details` (`id`, `message_id`, `message`, `sender_id`, `reci
 (21, 2, 'adsfadsfasdf', 2, 3, '2024-03-13 03:08:47', '2024-03-13 03:08:47', NULL),
 (22, 2, 'hi three!', 2, 3, '2024-03-13 03:12:26', '2024-03-13 03:12:26', NULL),
 (23, 2, 'Hi two!', 3, 2, '2024-03-13 03:15:33', '2024-03-13 03:15:33', NULL),
-(24, 13, 'hi four!', 2, 4, '2024-03-13 03:33:30', '2024-03-13 03:33:30', NULL),
+(24, 13, 'hi four!', 2, 4, '2024-03-13 03:33:30', '2024-03-15 04:44:07', '2024-03-15 04:44:07'),
 (25, 2, 'dsfsdf', 2, 3, '2024-03-13 05:04:59', '2024-03-13 05:04:59', NULL),
 (26, 2, 'asdfadf', 2, 3, '2024-03-13 05:06:22', '2024-03-13 05:06:22', NULL),
 (27, 2, 'gasdfasdf', 2, 3, '2024-03-13 05:06:25', '2024-03-13 05:06:25', NULL),
@@ -120,21 +120,22 @@ INSERT INTO `message_details` (`id`, `message_id`, `message`, `sender_id`, `reci
 (121, 2, 'testalskjfno asjdfljnasodi jfnoasjnd ofjnaldsjnfo;asjdo; fjnaos;djn fo;iasjndof adsojfoiasjdiofnuaosdfjoasjdfjaoisdjfioasdj;ofja;sdlfjl;asjdf;kajkl;dsjf;adsf klanhsdofhasdfoiasdofuoaidsufoasuodfuao pfidsfoj auso;idfuiaosdfoajdsofj asdflajdsl;fjal;sdjf;lasid nfasiduhfiasduhfsndfai usdhfil ', 2, 3, '2024-03-14 07:36:19', '2024-03-14 07:36:19', NULL),
 (122, 2, 'testalskjfno asjdfljnasodi jfnoasjnd ofjnaldsjnfo;asjdo; fjnaos;djn fo;iasjndof adsojfoiasjdiofnuaosdfjoasjdfjaoisdjfioasdj;ofja;sdlfjl;asjdf;kajkl;dsjf;adsf klanhsdofhasdfoiasdofuoaidsufoasuodfuao pfidsfoj auso;idfuiaosdfoajdsofj asdflajdsl;fjal;sdjf;lasid nfasiduhfiasduhfsndfai usdhfil \r\n', 2, 3, '2024-03-14 07:37:44', '2024-03-14 07:37:44', NULL),
 (123, 2, 'fasdf', 2, 3, '2024-03-14 07:38:05', '2024-03-14 08:57:37', '2024-03-14 08:57:37'),
-(132, 13, 'asdfasdf', 2, 4, '2024-03-14 08:25:16', '2024-03-14 08:25:16', NULL),
-(133, 13, 'gadfasd', 2, 4, '2024-03-14 08:27:19', '2024-03-14 08:27:19', NULL),
+(132, 13, 'asdfasdf', 2, 4, '2024-03-14 08:25:16', '2024-03-15 04:44:07', '2024-03-15 04:44:07'),
+(133, 13, 'gadfasd', 2, 4, '2024-03-14 08:27:19', '2024-03-15 04:44:07', '2024-03-15 04:44:07'),
 (138, 14, 'asdf', 2, 5, '2024-03-14 09:00:02', '2024-03-14 09:07:33', '2024-03-14 09:07:33'),
 (139, 14, 'test', 2, 5, '2024-03-14 09:00:13', '2024-03-14 09:07:29', '2024-03-14 09:07:29'),
 (140, 14, 'test', 2, 5, '2024-03-14 09:00:21', '2024-03-14 09:07:29', '2024-03-14 09:07:29'),
 (141, 14, 'asdfadf', 2, 5, '2024-03-14 09:00:28', '2024-03-14 09:07:27', '2024-03-14 09:07:27'),
 (142, 14, 'test', 2, 5, '2024-03-14 09:01:03', '2024-03-14 09:07:27', '2024-03-14 09:07:27'),
-(143, 2, 'test', 2, 3, '2024-03-14 09:01:54', '2024-03-14 09:01:54', NULL),
-(144, 2, 'test', 2, 3, '2024-03-14 09:02:17', '2024-03-14 09:02:17', NULL),
-(145, 2, 'tstsss', 2, 3, '2024-03-14 09:05:27', '2024-03-14 09:05:27', NULL),
+(143, 2, 'test', 2, 3, '2024-03-14 09:01:54', '2024-03-15 04:37:02', '2024-03-15 04:37:02'),
+(144, 2, 'test', 2, 3, '2024-03-14 09:02:17', '2024-03-15 04:37:01', '2024-03-15 04:37:01'),
+(145, 2, 'tstsss', 2, 3, '2024-03-14 09:05:27', '2024-03-15 04:37:00', '2024-03-15 04:37:00'),
 (146, 14, 'dfasdf', 2, 5, '2024-03-14 09:05:33', '2024-03-14 09:07:25', '2024-03-14 09:07:25'),
-(147, 2, 'new again', 2, 3, '2024-03-14 09:06:55', '2024-03-14 09:06:55', NULL),
+(147, 2, 'new again', 2, 3, '2024-03-14 09:06:55', '2024-03-15 04:36:58', '2024-03-15 04:36:58'),
 (148, 14, 'five', 2, 5, '2024-03-14 09:07:09', '2024-03-14 09:07:24', '2024-03-14 09:07:24'),
 (149, 14, 'hi two!', 5, 2, '2024-03-14 09:29:49', '2024-03-14 09:29:49', NULL),
-(150, 14, 'hi fice', 2, 5, '2024-03-14 09:46:41', '2024-03-14 09:46:41', NULL);
+(150, 14, 'hi fice', 2, 5, '2024-03-14 09:46:41', '2024-03-14 09:46:41', NULL),
+(151, 2, 'got it', 2, 3, '2024-03-15 04:40:40', '2024-03-15 04:41:02', '2024-03-15 04:41:02');
 
 -- --------------------------------------------------------
 
@@ -186,8 +187,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `last_login_time`, `created_at`, `modified_at`) VALUES
 (1, 'jadetest@test.com', '$2a$10$S4qqxo2GuNpHDqqIXvS.Ge5D2EawIDflHCQuxYB1JS22KmApF0F/G', NULL, '2024-03-12 05:06:44', '2024-03-12 05:06:44'),
-(2, 'jadetest2@test.com', '$2a$10$IgqIs0z58HhexCEVjXlVnOci/OFq4eSiLRg/tGnFZn2XGCKT/VOBC', '2024-03-14 17:09:36', '2024-03-12 05:56:27', '2024-03-14 09:09:36'),
-(3, 'jadetest3@test.com', '$2a$10$Vfti7otH4pFxlUV1dnRxyO/sRNdaHPsk614Gqv9l9PPNa8OxjoCqq', '2024-03-13 13:06:44', '2024-03-12 09:02:42', '2024-03-13 05:06:44'),
+(2, 'jadetest2@test.com', '$2a$10$IgqIs0z58HhexCEVjXlVnOci/OFq4eSiLRg/tGnFZn2XGCKT/VOBC', '2024-03-15 12:46:03', '2024-03-12 05:56:27', '2024-03-15 04:46:03'),
+(3, 'jadetest3@test.com', '$2a$10$Vfti7otH4pFxlUV1dnRxyO/sRNdaHPsk614Gqv9l9PPNa8OxjoCqq', '2024-03-15 09:43:31', '2024-03-12 09:02:42', '2024-03-15 01:43:31'),
 (4, 'jadetest4@test.com', '$2a$10$UhxK25G6nu9ladnXvd/a1O4eyMkXSEpamGWaX87sqBba/p8rJLdkq', '2024-03-13 11:33:45', '2024-03-12 17:32:56', '2024-03-13 03:33:45'),
 (5, 'jadetest5@test.com', '$2a$10$FnvCOC.4Hp8nyGoFzmWK7.L21ZC8/7NS8fnS9czmKyGkI//00om1C', '2024-03-14 17:20:38', '2024-03-12 17:38:04', '2024-03-14 09:20:38');
 
@@ -235,7 +236,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `message_details`
 --
 ALTER TABLE `message_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
 -- AUTO_INCREMENT for table `profiles`
