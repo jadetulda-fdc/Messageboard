@@ -4,6 +4,7 @@
 /app/Controller/MessageBoardController.php
 /app/tmp
 /app/webroot/img/profile
+/app/CodeCompletion.php
 /lib/Cake/Console/Templates/skel/tmp/
 /lib/Cake/Utility/ObjectCollection.php
 /lib/Cake/View/Helper/FormHelper.php

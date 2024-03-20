@@ -112,3 +112,5 @@ CakeLog::config('error', array(
 ));
 
 date_default_timezone_set('Asia/Manila');
+
+CakePlugin::loadAll();
