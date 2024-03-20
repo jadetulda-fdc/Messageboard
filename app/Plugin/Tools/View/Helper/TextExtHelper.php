@@ -23,168 +23,168 @@ App::uses('View', 'View');
 class TextExtHelper extends TextHelper {
 
 	/**
-	 * Constructor
-	 *
-	 * ### Settings:
-	 *
-	 * - `engine` Class name to use to replace String functionality.
-	 *            The class needs to be placed in the `Utility` directory.
-	 *
-	 * @param View $View the view object the helper is attached to.
-	 * @param array $settings Settings array Settings array
-	 * @throws CakeException when the engine class could not be found.
-	 */
-	public function __construct(View $View, $settings = []) {
-		$settings = Hash::merge(['engine' => 'Tools.TextLib'], $settings);
-		parent::__construct($View, $settings);
-	}
+	Constructor
+	
+	### Settings:
+	
+	- `engine` Class name to use to replace String functionality.
+			The class needs to be placed in the `Utility` directory.
+	
+	@param View $View the view object the helper is attached to.
+	@param array $settings Settings array Settings array
+	@throws CakeException when the engine class could not be found.
+	
+	lic function __construct(View $View, $settings = []) {
+		ngs = Hash::merge(['engine' => 'Tools.TextLib'], $settings);
+		::__construct($View, $settings);
+	
 
-	/**
-	 * Convert all links and email adresses to HTML links.
-	 *
-	 * @param string $text Text
-	 * @param array $options Array of HTML options.
-	 * @return string The text with links
-	 * @link http://book.cakephp.org/view/1469/Text#autoLink-1620
-	 */
-	public function autoLink($text, $options = [], $htmlOptions = []) {
-		if (!isset($options['escape']) || $options['escape'] !== false) {
-			$text = h($text);
-			$options['escape'] = false;
-		}
-		return $this->autoLinkEmails($this->autoLinkUrls($text, $options, $htmlOptions), $options, $htmlOptions);
-	}
+	
+	Convert all links and email adresses to HTML links.
+	
+	@param string $text Text
+	@param array $options Array of HTML options.
+	@return string The text with links
+	@link http://book.cakephp.org/view/1469/Text#autoLink-1620
+	
+	lic function autoLink($text, $options = [], $htmlOptions = []) {
+		sset ($options['escape']) || $options['escape'] !== false) {
+			($text);
+			'escape'] = false;
+		
+		 $this->autoLinkEmails($this->autoLinkUrls($text, $options, $htmlOptions), $options, $htmlOptions);
+	
 
-	/**
-	 * Fix to allow obfuscation of email (js, img?)
-	 *
-	 * @param string $text
-	 * @param htmlOptions (additionally - not yet supported by core):
-	 * - obfuscate: true/false (defaults to false)
-	 * @param array $options
-	 * - escape (defaults to true)
-	 * @return string html
-	 * @override
-	 */
-	public function autoLinkEmails($text, $options = [], $htmlOptions = []) {
-		if (!isset($options['escape']) || $options['escape'] !== false) {
-			$text = h($text);
-		}
+	
+	Fix to allow obfuscation of email (js, img?)
+	
+	@param string $text
+	@param htmlOptions (additionally - not yet supported by core):
+	- obfuscate: true/false (defaults to false)
+	@param array $options
+	- escape (defaults to true)
+	@return string html
+	@override
+	
+	lic function autoLinkEmails($text, $options = [], $htmlOptions = []) {
+		sset ($options['escape']) || $options['escape'] !== false) {
+			($text);
+		
 
-		$linkOptions = 'array(';
-		foreach ($htmlOptions as $option => $value) {
-			$value = var_export($value, true);
-			$linkOptions .= "'$option' => $value, ";
-		}
-		$linkOptions .= ')';
+		ptions = 'array(';
+		h ($htmlOptions as $option => $value) {
+			var_export($value, true);
+			ons .= "'$option' => $value, ";
+		
+		ptions .= ')';
 
-		$customOptions = 'array(';
-		foreach ($options as $option => $value) {
-			$value = var_export($value, true);
-			$customOptions .= "'$option' => $value, ";
-		}
-		$customOptions .= ')';
+		mOptions = 'array(';
+		h ($options as $option => $value) {
+			var_export($value, true);
+			tions .= "'$option' => $value, ";
+		
+		mOptions .= ')';
 
-		$atom = '[\p{L}0-9!#$%&\'*+\/=?^_`{|}~-]';
-		return preg_replace_callback('/(' . $atom . '+(?:\.' . $atom . '+)*@[\p{L}0-9-]+(?:\.[a-z0-9-]+)+)/iu',
-			create_function('$matches', 'return TextExtHelper::prepareEmail($matches[0],' . $linkOptions . ',' . $customOptions . ');'), $text);
-	}
+		= '[\p{L}0-9!#$%&\'*+\/=?^_`{|}~-]';
+		 preg_replace_callback('/(' . $atom . '+(?:\.' . $atom . '+)*@[\p{L}0-9-]+(?:\.[a-z0-9-]+)+)/iu',
+			nction('$matches', 'return TextExtHelper::prepareEmail($matches[0],' . $linkOptions . ',' . $customOptions . ');'), $text);
+	
 
-	/**
-	 * @param string $email
-	 * @param options:
-	 * - obfuscate: true/false (defaults to false)
-	 * @return string html
-	 */
-	public static function prepareEmail($email, $options = [], $customOptions = []) {
-		$obfuscate = false;
-		if (isset($options['obfuscate'])) {
-			$obfuscate = $options['obfuscate'];
-			unset($options['obfuscate']);
-		}
+	
+	@param string $email
+	@param options:
+	- obfuscate: true/false (defaults to false)
+	@return string html
+	
+	lic static function prepareEmail($email, $options = [], $customOptions = []) {
+		cate = false;
+		set ($options['obfuscate'])) {
+			e = $options['obfuscate'];
+			tions['obfuscate']);
+		
 
-		if (!isset($customOptions['escape']) || $customOptions['escape'] !== false) {
-			$email = hDec($email);
-		}
+		sset ($customOptions['escape']) || $customOptions['escape'] !== false) {
+			hDec($email);
+		
 
-		$Html = new HtmlHelper(new View(null));
-		if (!$obfuscate) {
-			return $Html->link($email, "mailto:" . $email, $options);
-		}
+		= new HtmlHelper(new View(null));
+		obfuscate) {
+			tml->link($email, "mailto:" . $email, $options);
+		
 
-		$class = __CLASS__;
-		$Common = new $class();
-		$Common->Html = $Html;
-		return $Common->encodeEmailUrl($email, null, [], $options);
-	}
+		 = __CLASS__;
+		n = new $class();
+		n->Html = $Html;
+		 $Common->encodeEmailUrl($email, null, [], $options);
+	
 
-	/**
-	 * Helper Function to Obfuscate Email by inserting a span tag (not more! not very secure on its own...)
-	 * each part of this mail now does not make sense anymore on its own
-	 * (striptags will not work either)
-	 *
-	 * @param string email: necessary (and valid - containing one @)
-	 * @return string html
-	 */
-	public function encodeEmail($mail) {
-		list($mail1, $mail2) = explode('@', $mail);
-		$encMail = $this->encodeText($mail1) . '<span>@</span>' . $this->encodeText($mail2);
-		return $encMail;
-	}
+	
+	Helper Function to Obfuscate Email by inserting a span tag (not more! not very secure on its own...)
+	each part of this mail now does not make sense anymore on its own
+	(striptags will not work either)
+	
+	@param string email: necessary (and valid - containing one @)
+	@return string html
+	
+	lic function encodeEmail($mail) {
+		mail1, $mail2) = explode('@', $mail);
+		il = $this->encodeText($mail1) . '<span>@</span>' . $this->encodeText($mail2);
+		 $encMail;
+	
 
-	/**
-	 * Obfuscates Email (works without JS!) to avoid lowlevel spam bots to get it
-	 *
-	 * @param string mail: email to encode
-	 * @param string text: optional (if none is given, email will be text as well)
-	 * @param array attributes: html tag attributes
-	 * @param array params: ?subject=y&body=y to be attached to "mailto:xyz"
-	 * @return string html with js generated link around email (and non js fallback)
-	 */
-	public function encodeEmailUrl($mail, $text = null, $params = [], $attr = []) {
-		if (empty($class)) {
-			$class = 'email';
-		}
+	
+	Obfuscates Email (works without JS!) to avoid lowlevel spam bots to get it
+	
+	@param string mail: email to encode
+	@param string text: optional (if none is given, email will be text as well)
+	@param array attributes: html tag attributes
+	@param array params: ?subject=y&body=y to be attached to "mailto:xyz"
+	@return string html with js generated link around email (and non js fallback)
+	
+	lic function encodeEmailUrl($mail, $text = null, $params = [], $attr = []) {
+		pty ($class)) {
+			'email';
+		
 
-		$defaults = [
-			'title' => __d('tools', 'for use in an external mail client'),
-			'class' => 'email',
-			'escape' => false
-		];
+		lts = [
+			> __d('tools', 'for use in an external mail client'),
+			> 'email',
+			=> false
+		
 
-		if (empty($text)) {
-			$text = $this->encodeEmail($mail);
-		}
+		pty ($text)) {
+			this->encodeEmail($mail);
+		
 
-		$encMail = 'mailto:' . $mail;
-		//$encMail = $this->encodeText($encMail); # not possible
-		// additionally there could be a span tag in between: email<span syle="display:none"></span>@web.de
+		il = 'mailto:' . $mail;
+		Mail = $this->encodeText($encMail); # not possible
+		itionally there could be a span tag in between: email<span syle="display:none"></span>@web.de
 
-		$querystring = '';
-		foreach ($params as $key => $val) {
-			if ($querystring) {
-				$querystring .= "&$key=" . rawurlencode($val);
-			} else {
-				$querystring = "?$key=" . rawurlencode($val);
-			}
-		}
+		string = '';
+		h ($params as $key => $val) {
+			ystring) {
+				 .= "&$key=" . rawurlencode($val);
+			
+				 = "?$key=" . rawurlencode($val);
+			
+		
 
-		$attr = array_merge($defaults, $attr);
+		= array_merge($defaults, $attr);
 
-		$xmail = $this->Html->link('', $encMail . $querystring, $attr);
-		$xmail1 = mb_substr($xmail, 0, count($xmail) - 5);
-		$xmail2 = mb_substr($xmail, -4, 4);
+		 = $this->Html->link('', $encMail . $querystring, $attr);
+		1 = mb_substr($xmail, 0, count($xmail) - 5);
+		2 = mb_substr($xmail, -4, 4);
 
-		$len = mb_strlen($xmail1);
-		$i = 0;
-		while ($i < $len) {
-			$c = mt_rand(2, 6);
-			$par[] = (mb_substr($xmail1, $i, $c));
-			$i += $c;
-		}
-		$join = implode('\'+\'', $par);
+		 mb_strlen($xmail1);
+		;
+		($i < $len) {
+			and(2, 6);
+			(mb_substr($xmail1, $i, $c));
+			
+		
+		= implode('\'+\'', $par);
 
-		return '<script language=javascript><!--
+		 '<script language=javascript><!--
 		document.write(\'' . $join . '\');
 		//--></script>
 			' . $text . '
@@ -192,184 +192,184 @@ class TextExtHelper extends TextHelper {
 		document.write(\'' . $xmail2 . '\');
 		//--></script>';
 
-		//return '<a class="'.$class.'" title="'.$title.'" href="'.$encmail.$querystring.'">'.$encText.'</a>';
-	}
+		rn '<a class="'.$class.'" title="'.$title.'" href="'.$encmail.$querystring.'">'.$encText.'</a>';
+	
 
-	/**
-	 * Encodes Piece of Text (without usage of JS!) to avoid lowlevel spam bots to get it
-	 *
-	 * @param STRING text to encode
-	 * @return string html (randomly encoded)
-	 */
-	public static function encodeText($text) {
-		$encmail = '';
-		$length = mb_strlen($text);
-		for ($i = 0; $i < $length; $i++) {
-			$encMod = mt_rand(0, 2);
-			switch ($encMod) {
-				case 0: // None
-					$encmail .= mb_substr($text, $i, 1);
-					break;
-				case 1: // Decimal
-					$encmail .= "&#" . ord(mb_substr($text, $i, 1)) . ';';
-					break;
-				case 2: // Hexadecimal
-					$encmail .= "&#x" . dechex(ord(mb_substr($text, $i, 1))) . ';';
-					break;
-			}
-		}
-		return $encmail;
-	}
+	
+	Encodes Piece of Text (without usage of JS!) to avoid lowlevel spam bots to get it
+	
+	@param STRING text to encode
+	@return string html (randomly encoded)
+	
+	lic static function encodeText($text) {
+		il = '';
+		h = mb_strlen($text);
+		i = 0; $i < $length; $i++) {
+			 mt_rand(0, 2);
+			encMod) {
+				one
+					substr($text, $i, 1);
+					
+				ecimal
+					" . ord(mb_substr($text, $i, 1)) . ';';
+					
+				exadecimal
+					x" . dechex(ord(mb_substr($text, $i, 1))) . ';';
+					
+			
+		
+		 $encmail;
+	
 
-	/**
-	 * Fix to allow shortened urls that do not break layout etc
-	 *
-	 * @param string $text
-	 * @param options (additionally - not yet supported by core):
-	 * - stripProtocol: bool (defaults to true)
-	 * - maxLength: int (defaults no none)
-	 * @param htmlOptions
-	 * - escape etc
-	 * @return string html
-	 * @override
-	 */
-	public function autoLinkUrls($text, $options = [], $htmlOptions = []) {
-		if (!isset($options['escape']) || $options['escape'] !== false) {
-			$text = h($text);
-			$matchString = 'hDec($matches[0])';
-		} else {
-			$matchString = '$matches[0]';
-		}
+	
+	Fix to allow shortened urls that do not break layout etc
+	
+	@param string $text
+	@param options (additionally - not yet supported by core):
+	- stripProtocol: bool (defaults to true)
+	- maxLength: int (defaults no none)
+	@param htmlOptions
+	- escape etc
+	@return string html
+	@override
+	
+	lic function autoLinkUrls($text, $options = [], $htmlOptions = []) {
+		sset ($options['escape']) || $options['escape'] !== false) {
+			($text);
+			ing = 'hDec($matches[0])';
+		 {
+			ing = '$matches[0]';
+		
 
-		if (isset($htmlOptions['escape'])) {
-			$options['escape'] = $htmlOptions['escape'];
-		}
-		//$htmlOptions['escape'] = false;
+		set ($htmlOptions['escape'])) {
+			'escape'] = $htmlOptions['escape'];
+		
+		lOptions['escape'] = false;
 
-		$htmlOptions = var_export($htmlOptions, true);
-		$customOptions = var_export($options, true);
+		ptions = var_export($htmlOptions, true);
+		mOptions = var_export($options, true);
 
-		$text = preg_replace_callback('#(?<!href="|">)((?:https?|ftp|nntp)://[^\s<>()]+)#i', create_function('$matches',
-			'$Html = new HtmlHelper(new View(null)); return $Html->link(TextExtHelper::prepareLinkName(hDec($matches[0]), ' . $customOptions . '), hDec($matches[0]),' . $htmlOptions . ');'), $text);
+		= preg_replace_callback('#(?<!href="|">)((?:https?|ftp|nntp)://[^\s<>()]+)#i', create_function('$matches',
+			new HtmlHelper(new View(null)); return $Html->link(TextExtHelper::prepareLinkName(hDec($matches[0]), ' . $customOptions . '), hDec($matches[0]),' . $htmlOptions . ');'), $text);
 
-		return preg_replace_callback('#(?<!href="|">)(?<!http://|https://|ftp://|nntp://)(www\.[^\n\%\ <]+[^<\n\%\,\.\ <])(?<!\))#i',
-			create_function('$matches', '$Html = new HtmlHelper(new View(null)); return $Html->link(TextExtHelper::prepareLinkName(hDec($matches[0]), ' . $customOptions . '), "http://" . hDec($matches[0]),' . $htmlOptions . ');'), $text);
-	}
+		 preg_replace_callback('#(?<!href="|">)(?<!http://|https://|ftp://|nntp://)(www\.[^\n\%\ <]+[^<\n\%\,\.\ <])(?<!\))#i',
+			nction('$matches', '$Html = new HtmlHelper(new View(null)); return $Html->link(TextExtHelper::prepareLinkName(hDec($matches[0]), ' . $customOptions . '), "http://" . hDec($matches[0]),' . $htmlOptions . ');'), $text);
+	
 
-	/**
-	 * @param string $link
-	 * @param options:
-	 * - stripProtocol: bool (defaults to true)
-	 * - maxLength: int (defaults to 50)
-	 * - escape (defaults to false, true needed for hellip to work)
-	 * @return string html/$plain
-	 */
-	public static function prepareLinkName($link, $options = []) {
-		// strip protocol if desired (default)
-		if (!isset($options['stripProtocol']) || $options['stripProtocol'] !== false) {
-			$link = static::stripProtocol($link);
-		}
-		if (!isset($options['maxLength'])) {
-			$options['maxLength'] = 50; # should be long enough for most cases
-		}
-		// shorten display name if desired (default)
-		if (!empty($options['maxLength']) && mb_strlen($link) > $options['maxLength']) {
-			$link = mb_substr($link, 0, $options['maxLength']);
-			// problematic with autoLink()
-			if (!empty($options['html']) && isset($options['escape']) && $options['escape'] === false) {
-				$link .= '&hellip;'; # only possible with escape => false!
-			} else {
-				$link .= '...';
-			}
-		}
-		return $link;
-	}
+	
+	@param string $link
+	@param options:
+	- stripProtocol: bool (defaults to true)
+	- maxLength: int (defaults to 50)
+	- escape (defaults to false, true needed for hellip to work)
+	@return string html/$plain
+	
+	lic static function prepareLinkName($link, $options = []) {
+		ip protocol if desired (default)
+		sset ($options['stripProtocol']) || $options['stripProtocol'] !== false) {
+			tatic::stripProtocol($link);
+		
+		sset ($options['maxLength'])) {
+			'maxLength'] = 50; # should be long enough for most cases
+		
+		rten display name if desired (default)
+		mpty ($options['maxLength']) && mb_strlen($link) > $options['maxLength']) {
+			b_substr($link, 0, $options['maxLength']);
+			matic with autoLink()
+			y ($options['html']) && isset ($options['escape']) && $options['escape'] === false) {
+				ellip;'; # only possible with escape => false!
+			
+				.';
+			
+		
+		 $link;
+	
 
-	/**
-	 * Remove http:// or other protocols from the link
-	 *
-	 * @param string $url
-	 * @return string strippedUrl
-	 */
-	public static function stripProtocol($url) {
-		$pieces = parse_url($url);
-		if (empty($pieces['scheme'])) {
-			return $url; # already stripped
-		}
-		return mb_substr($url, mb_strlen($pieces['scheme']) + 3); # +3 <=> :// # can only be 4 with "file" (file:///)...
-	}
+	
+	Remove http:// or other protocols from the link
+	
+	@param string $url
+	@return string strippedUrl
+	
+	lic static function stripProtocol($url) {
+		s = parse_url($url);
+		pty ($pieces['scheme'])) {
+			rl; # already stripped
+		
+		 mb_substr($url, mb_strlen($pieces['scheme']) + 3); # +3 <=> :// # can only be 4 with "file" (file:///)...
+	
 
-	/**
-	 * Minimizes the given url to a maximum length
-	 *
-	 * @param string $url the url
-	 * @param int $max the maximum length
-	 * @param array $options
-	 * - placeholder
-	 * @return string the manipulated url (+ eventuell ...)
-	 */
-	public function minimizeUrl($url = null, $max = null, $options = []) {
-		// check if there is nothing to do
-		if (empty($url) || mb_strlen($url) <= (int)$max) {
-			return (string)$url;
-		}
-		// http:// has not to be displayed, so
-		if (mb_substr($url, 0, 7) === 'http://') {
-			$url = mb_substr($url, 7);
-		}
-		// cut the parameters
-		if (mb_strpos($url, '/') !== false) {
-			$url = strtok($url, '/');
-		}
-		// return if the url is short enough
-		if (mb_strlen($url) <= (int)$max) {
-			return $url;
-		}
-		// otherwise cut a part in the middle (but only if long enough!!!)
-		// TODO: more dynamically
-		$placeholder = CHAR_HELLIP;
-		if (!empty($options['placeholder'])) {
-			$placeholder = $options['placeholder'];
-		}
+	
+	Minimizes the given url to a maximum length
+	
+	@param string $url the url
+	@param int $max the maximum length
+	@param array $options
+	- placeholder
+	@return string the manipulated url (+ eventuell ...)
+	
+	lic function minimizeUrl($url = null, $max = null, $options = []) {
+		ck if there is nothing to do
+		pty ($url) || mb_strlen($url) <= (int) $max) {
+			tring) $url;
+		
+		p:// has not to be displayed, so
+		_substr($url, 0, 7) === 'http://') {
+			_substr($url, 7);
+		
+		 the parameters
+		_strpos($url, '/') !== false) {
+			rtok($url, '/');
+		
+		urn if the url is short enough
+		_strlen($url) <= (int) $max) {
+			rl;
+		
+		erwise cut a part in the middle (but only if long enough!!!)
+		O: more dynamically
+		holder = CHAR_HELLIP;
+		mpty ($options['placeholder'])) {
+			der = $options['placeholder'];
+		
 
-		$end = mb_substr($url, -5, 5);
-		$front = mb_substr($url, 0, (int)$max - 8);
-		return $front . $placeholder . $end;
-	}
+		 mb_substr($url, -5, 5);
+		 = mb_substr($url, 0, (int) $max - 8);
+		 $front . $placeholder . $end;
+	
 
-	/**
-	 * Transforming int values into ordinal numbers (1st, 3rd, ...).
-	 * When using HTML, you can use <sup>, as well.
-	 *
-	 * @param $num (INT) - the number to be suffixed.
-	 * @param $sup (BOOL) - whether to wrap the suffix in a superscript (<sup>) tag on output.
-	 * @return string ordinal
-	 */
-	public static function ordinalNumber($num = 0, $sup = false) {
-		$ordinal = NumberLib::ordinal($num);
-		return ($sup) ? $num . '<sup>' . $ordinal . '</sup>' : $num . $ordinal;
-	}
+	
+	Transforming int values into ordinal numbers (1st, 3rd, ...).
+	When using HTML, you can use <sup>, as well.
+	
+	@param $num (INT) - the number to be suffixed.
+	@param $sup (BOOL) - whether to wrap the suffix in a superscript (<sup>) tag on output.
+	@return string ordinal
+	
+	lic static function ordinalNumber($num = 0, $sup = false) {
+		al = NumberLib::ordinal($num);
+		 ($sup) ? $num . '<sup>' . $ordinal . '</sup>' : $num . $ordinal;
+	
 
-	/**
-	 * Syntax highlighting using php internal highlighting
-	 *
-	 * @param string $filename
-	 * @param bool $return (else echo directly)
-	 * @return string
-	 */
-	public static function highlightFile($file, $return = true) {
-		return highlight_file($file, $return);
-	}
+	
+	Syntax highlighting using php internal highlighting
+	
+	@param string $filename
+	@param bool $return (else echo directly)
+	@return string
+	
+	lic static function highlightFile($file, $return = true) {
+		 highlight_file($file, $return);
+	
 
-	/**
-	 * Syntax highlighting using php internal highlighting
-	 *
-	 * @param string $contentstring
-	 * @param bool $return (else echo directly)
-	 * @return string
-	 */
-	public static function highlightString($string, $return = true) {
-		return highlight_string($string, $return);
-	}
+	
+	Syntax highlighting using php internal highlighting
+	
+	@param string $contentstring
+	@param bool $return (else echo directly)
+	@return string
+	
+	lic static function highlightString($string, $return = true) {
+		 highlight_string($string, $return);
+	
 
 }

@@ -24,7 +24,7 @@ class MessagesController extends AppController {
 
 		$options = array();
 
-		$search_string = isset($this->request->data['search_string']) ? $this->request->data['search_string'] : null;
+		$search_string = isset ($this->request->data['search_string']) ? $this->request->data['search_string'] : null;
 
 		$this->paginate = array(
 			'limit' => 2,

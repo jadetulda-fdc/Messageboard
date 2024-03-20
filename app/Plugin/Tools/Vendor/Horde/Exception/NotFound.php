@@ -10,19 +10,17 @@
  * @category Horde
  * @package  Exception
  */
-class Horde_Exception_NotFound extends Horde_Exception
-{
+class Horde_Exception_NotFound extends Horde_Exception {
     /**
      * Constructor.
      *
      * @see Horde_Exception::__construct()
      *
-     * @param mixed $message           The exception message, a PEAR_Error
-     *                                 object, or an Exception object.
-     * @param integer $code            A numeric error code.
+     * @param mixed $message		   The exception message, a PEAR_Error
+     *								 object, or an Exception object.
+     * @param integer $code			A numeric error code.
      */
-    public function __construct($message = null, $code = null)
-    {
+    public function __construct($message = null, $code = null) {
         if (is_null($message)) {
             $message = Horde_Exception_Translation::t("Not Found");
         }

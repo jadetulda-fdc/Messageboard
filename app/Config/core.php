@@ -12,11 +12,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       app.Config
- * @since         CakePHP(tm) v 0.2.9
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright	 Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link		  https://cakephp.org CakePHP(tm) Project
+ * @package	   app.Config
+ * @since		 CakePHP(tm) v 0.2.9
+ * @license	   https://opensource.org/licenses/mit-license.php MIT License
  */
 
 //setLocale(LC_ALL, 'deu');
@@ -53,9 +53,9 @@ Configure::write('debug', 2);
  * @see ErrorHandler for more information on error handling and configuration.
  */
 Configure::write('Error', array(
-	'handler' => 'ErrorHandler::handleError',
-	'level' => E_ALL & ~E_DEPRECATED,
-	'trace' => true
+    'handler' => 'ErrorHandler::handleError',
+    'level' => E_ALL & ~E_DEPRECATED,
+    'trace' => true
 ));
 
 /**
@@ -81,9 +81,9 @@ Configure::write('Error', array(
  * @see ErrorHandler for more information on exception handling and configuration.
  */
 Configure::write('Exception', array(
-	'handler' => 'ErrorHandler::handleException',
-	'renderer' => 'ExceptionRenderer',
-	'log' => true
+    'handler' => 'ErrorHandler::handleException',
+    'renderer' => 'ExceptionRenderer',
+    'log' => true
 ));
 
 /**
@@ -202,14 +202,14 @@ Configure::write('App.encoding', 'UTF-8');
  * - `Session.useForwardsCompatibleTimeout` - Whether or not to make timeout 3.x compatible.
  * - `Session.cookieTimeout` - The number of minutes you want session cookies to live for.
  * - `Session.checkAgent` - Do you want the user agent to be checked when starting sessions? You might want to set the
- *    value to false, when dealing with older versions of IE, Chrome Frame or certain web-browsing devices and AJAX
+ *	value to false, when dealing with older versions of IE, Chrome Frame or certain web-browsing devices and AJAX
  * - `Session.defaults` - The default configuration set to use as a basis for your session.
- *    There are four builtins: php, cake, cache, database.
+ *	There are four builtins: php, cake, cache, database.
  * - `Session.handler` - Can be used to enable a custom session handler. Expects an array of callables,
- *    that can be used with `session_save_handler`. Using this option will automatically add `session.save_handler`
- *    to the ini array.
+ *	that can be used with `session_save_handler`. Using this option will automatically add `session.save_handler`
+ *	to the ini array.
  * - `Session.autoRegenerate` - Enabling this setting, turns on automatic renewal of sessions, and
- *    sessionids that change frequently. See CakeSession::$requestCountdown.
+ *	sessionids that change frequently. See CakeSession::$requestCountdown.
  * - `Session.cacheLimiter` - Configure the cache control headers used for the session cookie.
  *   See http://php.net/session_cache_limiter for accepted values.
  * - `Session.ini` - An associative array of additional ini values to set.
@@ -228,7 +228,7 @@ Configure::write('App.encoding', 'UTF-8');
  * the cake shell command: cake schema create Sessions
  */
 Configure::write('Session', array(
-	'defaults' => 'php'
+    'defaults' => 'php'
 ));
 
 /**
@@ -359,15 +359,15 @@ Configure::write('Acl.database', 'default');
  * By default File is used, but for improved performance you should use APC.
  *
  * Note: 'default' and other application caches should be configured in app/Config/bootstrap.php.
- *       Please check the comments in bootstrap.php for more info on the cache engines available
- *       and their settings.
+ *	   Please check the comments in bootstrap.php for more info on the cache engines available
+ *	   and their settings.
  */
 $engine = 'File';
 
 // In development mode, caches should expire quickly.
 $duration = '+999 days';
 if (Configure::read('debug') > 0) {
-	$duration = '+10 seconds';
+    $duration = '+10 seconds';
 }
 
 // Prefix each application on the same server with a different string, to avoid Memcache and APC conflicts.
@@ -378,11 +378,11 @@ $prefix = 'myapp_';
  * object listings, and translation cache files are stored with this configuration.
  */
 Cache::config('_cake_core_', array(
-	'engine' => $engine,
-	'prefix' => $prefix . 'cake_core_',
-	'path' => CACHE . 'persistent' . DS,
-	'serialize' => ($engine === 'File'),
-	'duration' => $duration
+    'engine' => $engine,
+    'prefix' => $prefix . 'cake_core_',
+    'path' => CACHE . 'persistent' . DS,
+    'serialize' => ($engine === 'File'),
+    'duration' => $duration
 ));
 
 /**
@@ -390,9 +390,9 @@ Cache::config('_cake_core_', array(
  * is used to store schema descriptions, and table listings in connections.
  */
 Cache::config('_cake_model_', array(
-	'engine' => $engine,
-	'prefix' => $prefix . 'cake_model_',
-	'path' => CACHE . 'models' . DS,
-	'serialize' => ($engine === 'File'),
-	'duration' => $duration
+    'engine' => $engine,
+    'prefix' => $prefix . 'cake_model_',
+    'path' => CACHE . 'models' . DS,
+    'serialize' => ($engine === 'File'),
+    'duration' => $duration
 ));

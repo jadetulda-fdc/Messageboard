@@ -11,8 +11,7 @@
  * @category Horde
  * @package  Exception
  */
-class Horde_Exception_LastError extends Horde_Exception
-{
+class Horde_Exception_LastError extends Horde_Exception {
     /**
      * Exception constructor
      *
@@ -21,13 +20,12 @@ class Horde_Exception_LastError extends Horde_Exception
      * line parameters match that of the array, and any message in the array
      * will be appended to $message.
      *
-     * @param mixed $message             The exception message, a PEAR_Error
-     *                                   object, or an Exception object.
+     * @param mixed $message			 The exception message, a PEAR_Error
+     *								   object, or an Exception object.
      * @param mixed $code_or_lasterror   Either a numeric error code, or
-     *                                   an array from error_get_last().
+     *								   an array from error_get_last().
      */
-    public function __construct($message = null, $code_or_lasterror = null)
-    {
+    public function __construct($message = null, $code_or_lasterror = null) {
         if (is_array($code_or_lasterror)) {
             if ($message) {
                 $message .= $code_or_lasterror['message'];

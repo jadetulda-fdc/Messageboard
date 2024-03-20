@@ -10,17 +10,15 @@
  * @category Horde
  * @package  Autoloader
  */
-class Horde_Autoloader
-{
+class Horde_Autoloader {
     private $_mappers = [];
     private $_callbacks = [];
 
-    public function loadClass($className)
-    {
+    public function loadClass($className) {
         if ($path = $this->mapToPath($className)) {
             if ($this->_include($path)) {
                 $className = strtolower($className);
-                if (isset($this->_callbacks[$className])) {
+                if (isset ($this->_callbacks[$className])) {
                     call_user_func($this->_callbacks[$className]);
                 }
                 return true;
@@ -30,8 +28,7 @@ class Horde_Autoloader
         return false;
     }
 
-    public function addClassPathMapper(Horde_Autoloader_ClassPathMapper $mapper)
-    {
+    public function addClassPathMapper(Horde_Autoloader_ClassPathMapper $mapper) {
         array_unshift($this->_mappers, $mapper);
         return $this;
     }
@@ -39,16 +36,14 @@ class Horde_Autoloader
     /**
      * Add a callback to run when a class is loaded through loadClass().
      *
-     * @param string $class    The classname.
+     * @param string $class	The classname.
      * @param mixed $callback  The callback to run when the class is loaded.
      */
-    public function addCallback($class, $callback)
-    {
+    public function addCallback($class, $callback) {
         $this->_callbacks[strtolower($class)] = $callback;
     }
 
-    public function registerAutoloader()
-    {
+    public function registerAutoloader() {
         // Register the autoloader in a way to play well with as many
         // configurations as possible.
         spl_autoload_register([$this, 'loadClass']);
@@ -60,8 +55,7 @@ class Horde_Autoloader
     /**
      * Search registered mappers in LIFO order.
      */
-    public function mapToPath($className)
-    {
+    public function mapToPath($className) {
         foreach ($this->_mappers as $mapper) {
             if ($path = $mapper->mapToPath($className)) {
                 if ($this->_fileExists($path)) {
@@ -71,13 +65,11 @@ class Horde_Autoloader
         }
     }
 
-    protected function _include($path)
-    {
-        return (bool)include $path;
+    protected function _include($path) {
+        return (bool) include $path;
     }
 
-    protected function _fileExists($path)
-    {
+    protected function _fileExists($path) {
         return file_exists($path);
     }
 }

@@ -27,11 +27,11 @@ Help us keep CakePHP open and inclusive. Please read and follow our [Code of Con
 - Create a topic branch from where you want to base your work.
   - This is usually the master branch.
   - Only target release branches if you are certain your fix must be on that
-    branch.
+	branch.
   - To quickly create a topic branch based on master; `git branch
 master/my_contribution master` then checkout the new branch with `git
 checkout master/my_contribution`. Better avoid working directly on the
-    `master` branch, to avoid conflicts if you pull in updates from origin.
+	`master` branch, to avoid conflicts if you pull in updates from origin.
 - Make commits of logical units.
 - Check for unnecessary whitespace with `git diff --check` before committing.
 - Use descriptive commit messages and reference the #issue number.
@@ -58,11 +58,11 @@ checkout master/my_contribution`. Better avoid working directly on the
 CakePHP tests requires [PHPUnit](https://phpunit.de/manual/current/en/installation.html)
 3.7, version 4 is not compatible. To run the test cases locally use the following command:
 
-    ./lib/Cake/Console/cake test core AllTests --stderr
+	./lib/Cake/Console/cake test core AllTests --stderr
 
 To run the sniffs for CakePHP coding standards:
 
-    phpcs -p --extensions=php --standard=CakePHP ./lib/Cake
+	phpcs -p --extensions=php --standard=CakePHP ./lib/Cake
 
 Check the [cakephp-codesniffer](https://github.com/cakephp/cakephp-codesniffer)
 repository to setup the CakePHP standard. The [README](https://github.com/cakephp/cakephp-codesniffer/blob/master/README.md) contains installation info
