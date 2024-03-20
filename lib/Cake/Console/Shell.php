@@ -212,7 +212,7 @@ class Shell extends CakeObject {
 		if ($this->tasks !== null && $this->tasks !== false) {
 			$this->_mergeVars(array('tasks'), $parent, true);
 		}
-		if (!empty($this->uses)) {
+		if (!empty ($this->uses)) {
 			$this->_mergeVars(array('uses'), $parent, false);
 		}
 	}
@@ -303,13 +303,13 @@ class Shell extends CakeObject {
 			$modelClass = $this->modelClass;
 		}
 
-		$this->uses = ($this->uses) ? (array)$this->uses : array();
+		$this->uses = ($this->uses) ? (array) $this->uses : array();
 		if (!in_array($modelClass, $this->uses)) {
 			$this->uses[] = $modelClass;
 		}
 
 		list($plugin, $modelClass) = pluginSplit($modelClass, true);
-		if (!isset($this->modelClass)) {
+		if (!isset ($this->modelClass)) {
 			$this->modelClass = $modelClass;
 		}
 
@@ -328,10 +328,10 @@ class Shell extends CakeObject {
 	 * @return bool
 	 */
 	public function loadTasks() {
-		if ($this->tasks === true || empty($this->tasks) || empty($this->Tasks)) {
+		if ($this->tasks === true || empty ($this->tasks) || empty ($this->Tasks)) {
 			return true;
 		}
-		$this->_taskMap = TaskCollection::normalizeObjectArray((array)$this->tasks);
+		$this->_taskMap = TaskCollection::normalizeObjectArray((array) $this->tasks);
 		$this->taskNames = array_merge($this->taskNames, array_keys($this->_taskMap));
 		return true;
 	}
@@ -344,7 +344,7 @@ class Shell extends CakeObject {
 	 * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::hasTask
 	 */
 	public function hasTask($task) {
-		return isset($this->_taskMap[Inflector::camelize($task)]);
+		return isset ($this->_taskMap[Inflector::camelize($task)]);
 	}
 
 	/**
@@ -364,7 +364,9 @@ class Shell extends CakeObject {
 				return false;
 			}
 			return true;
-		} catch (ReflectionException $e) {
+		} catch (ReflectionException $e) { //unable to catch ReflectionException
+			return false;
+		} catch (\Throwable $e) {
 			return false;
 		}
 	}
@@ -437,14 +439,14 @@ class Shell extends CakeObject {
 			return false;
 		}
 
-		if (!empty($this->params['quiet'])) {
+		if (!empty ($this->params['quiet'])) {
 			$this->_useLogger(false);
 		}
-		if (!empty($this->params['plugin'])) {
+		if (!empty ($this->params['plugin'])) {
 			CakePlugin::load($this->params['plugin']);
 		}
 		$this->command = $command;
-		if (!empty($this->params['help'])) {
+		if (!empty ($this->params['help'])) {
 			return $this->_displayHelp($command);
 		}
 
@@ -474,7 +476,7 @@ class Shell extends CakeObject {
 	 */
 	protected function _displayHelp($command) {
 		$format = 'text';
-		if (!empty($this->args[0]) && $this->args[0] === 'xml') {
+		if (!empty ($this->args[0]) && $this->args[0] === 'xml') {
 			$format = 'xml';
 			$this->stdout->outputAs(ConsoleOutput::RAW);
 		} else {
@@ -504,7 +506,7 @@ class Shell extends CakeObject {
 	 * @return Shell Object of Task
 	 */
 	public function __get($name) {
-		if (empty($this->{$name}) && in_array($name, $this->taskNames)) {
+		if (empty ($this->{$name}) && in_array($name, $this->taskNames)) {
 			$properties = $this->_taskMap[$name];
 			$this->{$name} = $this->Tasks->load($properties['class'], $properties['settings']);
 			$this->{$name}->args = &$this->args;
@@ -522,7 +524,7 @@ class Shell extends CakeObject {
 	 * @return string|bool|null Value. Will return null if it doesn't exist.
 	 */
 	public function param($name) {
-		if (!isset($this->params[$name])) {
+		if (!isset ($this->params[$name])) {
 			return null;
 		}
 		return $this->params[$name];
@@ -639,10 +641,10 @@ class Shell extends CakeObject {
 	 */
 	public function out($message = null, $newlines = 1, $level = Shell::NORMAL) {
 		$currentLevel = Shell::NORMAL;
-		if (!empty($this->params['verbose'])) {
+		if (!empty ($this->params['verbose'])) {
 			$currentLevel = Shell::VERBOSE;
 		}
-		if (!empty($this->params['quiet'])) {
+		if (!empty ($this->params['quiet'])) {
 			$currentLevel = Shell::QUIET;
 		}
 		if ($level <= $currentLevel) {
@@ -733,7 +735,7 @@ class Shell extends CakeObject {
 	public function error($title, $message = null) {
 		$this->err(__d('cake_console', '<error>Error:</error> %s', $title));
 
-		if (!empty($message)) {
+		if (!empty ($message)) {
 			$this->err($message);
 		}
 		$this->_stop(self::CODE_ERROR);
@@ -747,7 +749,7 @@ class Shell extends CakeObject {
 	 * @link https://book.cakephp.org/2.0/en/console-and-shells.html#Shell::clear
 	 */
 	public function clear() {
-		if (empty($this->params['noclear'])) {
+		if (empty ($this->params['noclear'])) {
 			if (DS === '/') {
 				passthru('clear');
 			} else {
@@ -767,7 +769,7 @@ class Shell extends CakeObject {
 	public function createFile($path, $contents) {
 		$this->out();
 
-		if (is_file($path) && empty($this->params['force']) && $this->interactive === true) {
+		if (is_file($path) && empty ($this->params['force']) && $this->interactive === true) {
 			$this->out(__d('cake_console', '<warning>File `%s` exists</warning>', $path));
 			$key = $this->in(__d('cake_console', 'Do you want to overwrite?'), array('y', 'n', 'q'), 'n');
 
@@ -803,7 +805,7 @@ class Shell extends CakeObject {
 	 * @throws RuntimeException If invalid class name is provided
 	 */
 	public function helper($name) {
-		if (isset($this->_helpers[$name])) {
+		if (isset ($this->_helpers[$name])) {
 			return $this->_helpers[$name];
 		}
 		list($plugin, $helperClassName) = pluginSplit($name, true);

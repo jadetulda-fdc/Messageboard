@@ -155,10 +155,10 @@ class ConsoleOptionParser {
 				'help' => __d('cake_console', 'Enable verbose output.'),
 				'boolean' => true
 			))->addOption('quiet', array(
-				'short' => 'q',
-				'help' => __d('cake_console', 'Enable quiet output.'),
-				'boolean' => true
-			));
+						'short' => 'q',
+						'help' => __d('cake_console', 'Enable quiet output.'),
+						'boolean' => true
+					));
 		}
 	}
 
@@ -197,19 +197,19 @@ class ConsoleOptionParser {
 	 */
 	public static function buildFromArray($spec) {
 		$parser = new ConsoleOptionParser($spec['command']);
-		if (!empty($spec['arguments'])) {
+		if (!empty ($spec['arguments'])) {
 			$parser->addArguments($spec['arguments']);
 		}
-		if (!empty($spec['options'])) {
+		if (!empty ($spec['options'])) {
 			$parser->addOptions($spec['options']);
 		}
-		if (!empty($spec['subcommands'])) {
+		if (!empty ($spec['subcommands'])) {
 			$parser->addSubcommands($spec['subcommands']);
 		}
-		if (!empty($spec['description'])) {
+		if (!empty ($spec['description'])) {
 			$parser->description($spec['description']);
 		}
-		if (!empty($spec['epilog'])) {
+		if (!empty ($spec['epilog'])) {
 			$parser->epilog($spec['epilog']);
 		}
 		return $parser;
@@ -474,7 +474,7 @@ class ConsoleOptionParser {
 	 * @throws ConsoleException When an invalid parameter is encountered.
 	 */
 	public function parse($argv, $command = null) {
-		if (isset($this->_subcommands[$command]) && $this->_subcommands[$command]->parser()) {
+		if (isset ($this->_subcommands[$command]) && $this->_subcommands[$command]->parser()) {
 			return $this->_subcommands[$command]->parser()->parse($argv);
 		}
 		$params = $args = array();
@@ -489,7 +489,7 @@ class ConsoleOptionParser {
 			}
 		}
 		foreach ($this->_args as $i => $arg) {
-			if ($arg->isRequired() && !isset($args[$i]) && empty($params['help'])) {
+			if ($arg->isRequired() && !isset ($args[$i]) && empty ($params['help'])) {
 				throw new ConsoleException(
 					__d('cake_console', 'Missing required arguments. %s is required.', $arg->name())
 				);
@@ -500,10 +500,10 @@ class ConsoleOptionParser {
 			$isBoolean = $option->isBoolean();
 			$default = $option->defaultValue();
 
-			if ($default !== null && !isset($params[$name]) && !$isBoolean) {
+			if ($default !== null && !isset ($params[$name]) && !$isBoolean) {
 				$params[$name] = $default;
 			}
-			if ($isBoolean && !isset($params[$name])) {
+			if ($isBoolean && !isset ($params[$name])) {
 				$params[$name] = false;
 			}
 		}
@@ -523,7 +523,7 @@ class ConsoleOptionParser {
 	 */
 	public function help($subcommand = null, $format = 'text', $width = 72) {
 		if (
-			isset($this->_subcommands[$subcommand]) &&
+			isset ($this->_subcommands[$subcommand]) &&
 			$this->_subcommands[$subcommand]->parser() instanceof self
 		) {
 			$subparser = $this->_subcommands[$subcommand]->parser();
@@ -574,7 +574,7 @@ class ConsoleOptionParser {
 				array_unshift($this->_tokens, '-' . $flags[$i]);
 			}
 		}
-		if (!isset($this->_shortOptions[$key])) {
+		if (!isset ($this->_shortOptions[$key])) {
 			throw new ConsoleException(__d('cake_console', 'Unknown short option `%s`', $key));
 		}
 		$name = $this->_shortOptions[$key];
@@ -590,13 +590,13 @@ class ConsoleOptionParser {
 	 * @throws ConsoleException
 	 */
 	protected function _parseOption($name, $params) {
-		if (!isset($this->_options[$name])) {
+		if (!isset ($this->_options[$name])) {
 			throw new ConsoleException(__d('cake_console', 'Unknown option `%s`', $name));
 		}
 		$option = $this->_options[$name];
 		$isBoolean = $option->isBoolean();
 		$nextValue = $this->_nextToken();
-		$emptyNextValue = (empty($nextValue) && $nextValue !== '0');
+		$emptyNextValue = (empty ($nextValue) && $nextValue !== '0');
 		if (!$isBoolean && !$emptyNextValue && !$this->_optionExists($nextValue)) {
 			array_shift($this->_tokens);
 			$value = $nextValue;
@@ -620,13 +620,10 @@ class ConsoleOptionParser {
 	 */
 	protected function _optionExists($name) {
 		if (substr($name, 0, 2) === '--') {
-			return isset($this->_options[substr($name, 2)]);
+			return isset ($this->_options[substr($name, 2)]);
 		}
-		if ($name{
-		0} === '-' && $name{
-		1} !== '-') {
-			return isset($this->_shortOptions[$name{
-			1}]);
+		if ($name[0] === '-' && $name[1] !== '-') {
+			return isset ($this->_shortOptions[$name[1]]);
 		}
 		return false;
 	}
@@ -641,12 +638,12 @@ class ConsoleOptionParser {
 	 * @throws ConsoleException
 	 */
 	protected function _parseArg($argument, $args) {
-		if (empty($this->_args)) {
+		if (empty ($this->_args)) {
 			$args[] = $argument;
 			return $args;
 		}
 		$next = count($args);
-		if (!isset($this->_args[$next])) {
+		if (!isset ($this->_args[$next])) {
 			throw new ConsoleException(__d('cake_console', 'Too many arguments.'));
 		}
 
@@ -662,6 +659,6 @@ class ConsoleOptionParser {
 	 * @return string next token or ''
 	 */
 	protected function _nextToken() {
-		return isset($this->_tokens[0]) ? $this->_tokens[0] : '';
+		return isset ($this->_tokens[0]) ? $this->_tokens[0] : '';
 	}
 }

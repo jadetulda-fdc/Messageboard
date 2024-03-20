@@ -64,7 +64,7 @@ class ContainableBehavior extends ModelBehavior {
 	 * @return void
 	 */
 	public function setup(Model $Model, $settings = array()) {
-		if (!isset($this->settings[$Model->alias])) {
+		if (!isset ($this->settings[$Model->alias])) {
 			$this->settings[$Model->alias] = array('recursive' => true, 'notices' => true, 'autoFields' => true);
 		}
 		$this->settings[$Model->alias] = array_merge($this->settings[$Model->alias], $settings);
@@ -92,31 +92,31 @@ class ContainableBehavior extends ModelBehavior {
 	 * @return array
 	 */
 	public function beforeFind(Model $Model, $query) {
-		$reset = (isset($query['reset']) ? $query['reset'] : true);
+		$reset = (isset ($query['reset']) ? $query['reset'] : true);
 		$noContain = false;
 		$contain = array();
 
-		if (isset($this->runtime[$Model->alias]['contain'])) {
-			$noContain = empty($this->runtime[$Model->alias]['contain']);
+		if (isset ($this->runtime[$Model->alias]['contain'])) {
+			$noContain = empty ($this->runtime[$Model->alias]['contain']);
 			$contain = $this->runtime[$Model->alias]['contain'];
 			unset($this->runtime[$Model->alias]['contain']);
 		}
 
-		if (isset($query['contain'])) {
-			$noContain = $noContain || empty($query['contain']);
+		if (isset ($query['contain'])) {
+			$noContain = $noContain || empty ($query['contain']);
 			if ($query['contain'] !== false) {
-				$contain = array_merge($contain, (array)$query['contain']);
+				$contain = array_merge($contain, (array) $query['contain']);
 			}
 		}
-		$noContain = $noContain && empty($contain);
+		$noContain = $noContain && empty ($contain);
 
-		if ($noContain || empty($contain)) {
+		if ($noContain || empty ($contain)) {
 			if ($noContain) {
 				$query['recursive'] = -1;
 			}
 			return $query;
 		}
-		if ((isset($contain[0]) && is_bool($contain[0])) || is_bool(end($contain))) {
+		if ((isset ($contain[0]) && is_bool($contain[0])) || is_bool(end($contain))) {
 			$reset = is_bool(end($contain))
 				? array_pop($contain)
 				: array_shift($contain);
@@ -128,13 +128,13 @@ class ContainableBehavior extends ModelBehavior {
 		foreach ($containments['models'] as $model) {
 			$instance = $model['instance'];
 			$needed = $this->fieldDependencies($instance, $map, false);
-			if (!empty($needed)) {
+			if (!empty ($needed)) {
 				$mandatory = array_merge($mandatory, $needed);
 			}
 			if ($contain) {
 				$backupBindings = array();
 				foreach ($this->types as $relation) {
-					if (!empty($instance->__backAssociation[$relation])) {
+					if (!empty ($instance->__backAssociation[$relation])) {
 						$backupBindings[$relation] = $instance->__backAssociation[$relation];
 					} else {
 						$backupBindings[$relation] = $instance->{$relation};
@@ -143,22 +143,22 @@ class ContainableBehavior extends ModelBehavior {
 				foreach ($this->types as $type) {
 					$unbind = array();
 					foreach ($instance->{$type} as $assoc => $options) {
-						if (!isset($model['keep'][$assoc])) {
+						if (!isset ($model['keep'][$assoc])) {
 							$unbind[] = $assoc;
 						}
 					}
-					if (!empty($unbind)) {
-						if (!$reset && empty($instance->__backOriginalAssociation)) {
+					if (!empty ($unbind)) {
+						if (!$reset && empty ($instance->__backOriginalAssociation)) {
 							$instance->__backOriginalAssociation = $backupBindings;
 						}
 						$instance->unbindModel(array($type => $unbind), $reset);
 					}
 					foreach ($instance->{$type} as $assoc => $options) {
-						if (isset($model['keep'][$assoc]) && !empty($model['keep'][$assoc])) {
-							if (isset($model['keep'][$assoc]['fields'])) {
+						if (isset ($model['keep'][$assoc]) && !empty ($model['keep'][$assoc])) {
+							if (isset ($model['keep'][$assoc]['fields'])) {
 								$model['keep'][$assoc]['fields'] = $this->fieldDependencies($containments['models'][$assoc]['instance'], $map, $model['keep'][$assoc]['fields']);
 							}
-							if (!$reset && empty($instance->__backOriginalAssociation)) {
+							if (!$reset && empty ($instance->__backOriginalAssociation)) {
 								$instance->__backOriginalAssociation = $backupBindings;
 							} elseif ($reset) {
 								$instance->__backAssociation[$type] = $backupBindings[$type];
@@ -174,23 +174,23 @@ class ContainableBehavior extends ModelBehavior {
 		}
 
 		if ($this->settings[$Model->alias]['recursive']) {
-			$query['recursive'] = (isset($query['recursive'])) ? max($query['recursive'], $containments['depth']) : $containments['depth'];
+			$query['recursive'] = (isset ($query['recursive'])) ? max($query['recursive'], $containments['depth']) : $containments['depth'];
 		}
 
 		$autoFields = ($this->settings[$Model->alias]['autoFields']
 			&& !in_array($Model->findQueryType, array('list', 'count'))
-			&& !empty($query['fields']));
+			&& !empty ($query['fields']));
 
 		if (!$autoFields) {
 			return $query;
 		}
 
-		$query['fields'] = (array)$query['fields'];
+		$query['fields'] = (array) $query['fields'];
 		foreach (array('hasOne', 'belongsTo') as $type) {
-			if (!empty($Model->{$type})) {
+			if (!empty ($Model->{$type})) {
 				foreach ($Model->{$type} as $assoc => $data) {
-					if ($Model->useDbConfig === $Model->{$assoc}->useDbConfig && !empty($data['fields'])) {
-						foreach ((array)$data['fields'] as $field) {
+					if ($Model->useDbConfig === $Model->{$assoc}->useDbConfig && !empty ($data['fields'])) {
+						foreach ((array) $data['fields'] as $field) {
 							$query['fields'][] = (strpos($field, '.') === false ? $assoc . '.' : '') . $field;
 						}
 					}
@@ -198,7 +198,7 @@ class ContainableBehavior extends ModelBehavior {
 			}
 		}
 
-		if (!empty($mandatory[$Model->alias])) {
+		if (!empty ($mandatory[$Model->alias])) {
 			foreach ($mandatory[$Model->alias] as $field) {
 				if ($field === '--primaryKey--') {
 					$field = $Model->primaryKey;
@@ -244,12 +244,12 @@ class ContainableBehavior extends ModelBehavior {
 	 * @return void
 	 */
 	public function resetBindings(Model $Model) {
-		if (!empty($Model->__backOriginalAssociation)) {
+		if (!empty ($Model->__backOriginalAssociation)) {
 			$Model->__backAssociation = $Model->__backOriginalAssociation;
 			unset($Model->__backOriginalAssociation);
 		}
 		$Model->resetAssociations();
-		if (!empty($Model->__backInnerAssociation)) {
+		if (!empty ($Model->__backInnerAssociation)) {
 			$assocs = $Model->__backInnerAssociation;
 			$Model->__backInnerAssociation = array();
 			foreach ($assocs as $currentModel) {
@@ -271,9 +271,9 @@ class ContainableBehavior extends ModelBehavior {
 		$options = array('className', 'joinTable', 'with', 'foreignKey', 'associationForeignKey', 'conditions', 'fields', 'order', 'limit', 'offset', 'unique', 'finderQuery');
 		$keep = array();
 		if ($throwErrors === null) {
-			$throwErrors = (empty($this->settings[$Model->alias]) ? true : $this->settings[$Model->alias]['notices']);
+			$throwErrors = (empty ($this->settings[$Model->alias]) ? true : $this->settings[$Model->alias]['notices']);
 		}
-		foreach ((array)$contain as $name => $children) {
+		foreach ((array) $contain as $name => $children) {
 			if (is_numeric($name)) {
 				$name = $children;
 				$children = array();
@@ -287,15 +287,15 @@ class ContainableBehavior extends ModelBehavior {
 				$children = array(implode('.', $chain) => $children);
 			}
 
-			$children = (array)$children;
+			$children = (array) $children;
 			foreach ($children as $key => $val) {
 				if (is_string($key) && is_string($val) && !in_array($key, $options, true)) {
-					$children[$key] = (array)$val;
+					$children[$key] = (array) $val;
 				}
 			}
 
 			$keys = array_keys($children);
-			if ($keys && isset($children[0])) {
+			if ($keys && isset ($children[0])) {
 				$keys = array_merge(array_values($children), $keys);
 			}
 
@@ -304,11 +304,10 @@ class ContainableBehavior extends ModelBehavior {
 					continue;
 				}
 				$optionKey = in_array($key, $options, true);
-				if (!$optionKey && is_string($key) && preg_match('/^[a-z(]/', $key) && (!isset($Model->{$key}) || !is_object($Model->{$key}))) {
+				if (!$optionKey && is_string($key) && preg_match('/^[a-z(]/', $key) && (!isset ($Model->{$key}) || !is_object($Model->{$key}))) {
 					$option = 'fields';
 					$val = array($key);
-					if ($key{
-					0} === '(') {
+					if ($key[0] === '(') {
 						$val = preg_split('/\s*,\s*/', substr($key, 1, -1));
 					} elseif (preg_match('/ASC|DESC$/', $key)) {
 						$option = 'order';
@@ -319,19 +318,19 @@ class ContainableBehavior extends ModelBehavior {
 					}
 					$children[$option] = is_array($val) ? $val : array($val);
 					$newChildren = null;
-					if (!empty($name) && !empty($children[$key])) {
+					if (!empty ($name) && !empty ($children[$key])) {
 						$newChildren = $children[$key];
 					}
 					unset($children[$key], $children[$i]);
 					$key = $option;
 					$optionKey = true;
-					if (!empty($newChildren)) {
+					if (!empty ($newChildren)) {
 						$children = Hash::merge($children, $newChildren);
 					}
 				}
-				if ($optionKey && isset($children[$key])) {
-					if (!empty($keep[$name][$key]) && is_array($keep[$name][$key])) {
-						$keep[$name][$key] = array_merge((isset($keep[$name][$key]) ? $keep[$name][$key] : array()), (array)$children[$key]);
+				if ($optionKey && isset ($children[$key])) {
+					if (!empty ($keep[$name][$key]) && is_array($keep[$name][$key])) {
+						$keep[$name][$key] = array_merge((isset ($keep[$name][$key]) ? $keep[$name][$key] : array()), (array) $children[$key]);
 					} else {
 						$keep[$name][$key] = $children[$key];
 					}
@@ -339,7 +338,7 @@ class ContainableBehavior extends ModelBehavior {
 				}
 			}
 
-			if (!isset($Model->{$name}) || !is_object($Model->{$name})) {
+			if (!isset ($Model->{$name}) || !is_object($Model->{$name})) {
 				if ($throwErrors) {
 					trigger_error(__d('cake_dev', 'Model "%s" is not associated with model "%s"', $Model->alias, $name), E_USER_WARNING);
 				}
@@ -348,17 +347,17 @@ class ContainableBehavior extends ModelBehavior {
 
 			$containments = $this->containments($Model->{$name}, $children, $containments);
 			$depths[] = $containments['depth'] + 1;
-			if (!isset($keep[$name])) {
+			if (!isset ($keep[$name])) {
 				$keep[$name] = array();
 			}
 		}
 
-		if (!isset($containments['models'][$Model->alias])) {
+		if (!isset ($containments['models'][$Model->alias])) {
 			$containments['models'][$Model->alias] = array('keep' => array(), 'instance' => &$Model);
 		}
 
 		$containments['models'][$Model->alias]['keep'] = array_merge($containments['models'][$Model->alias]['keep'], $keep);
-		$containments['depth'] = empty($depths) ? 0 : max($depths);
+		$containments['depth'] = empty ($depths) ? 0 : max($depths);
 		return $containments;
 	}
 
@@ -385,7 +384,7 @@ class ContainableBehavior extends ModelBehavior {
 			}
 			return $fields;
 		}
-		if (empty($map[$Model->alias])) {
+		if (empty ($map[$Model->alias])) {
 			return $fields;
 		}
 		foreach ($map[$Model->alias] as $type => $bindings) {
@@ -401,7 +400,7 @@ class ContainableBehavior extends ModelBehavior {
 						$fields[] = $Model->primaryKey;
 						break;
 				}
-				if (!empty($innerFields) && !empty($Model->{$type}[$dependency]['fields'])) {
+				if (!empty ($innerFields) && !empty ($Model->{$type}[$dependency]['fields'])) {
 					$Model->{$type}[$dependency]['fields'] = array_unique(array_merge($Model->{$type}[$dependency]['fields'], $innerFields));
 				}
 			}
@@ -421,8 +420,8 @@ class ContainableBehavior extends ModelBehavior {
 			$instance = $model['instance'];
 			foreach ($this->types as $type) {
 				foreach ($instance->{$type} as $assoc => $options) {
-					if (isset($model['keep'][$assoc])) {
-						$map[$name][$type] = isset($map[$name][$type]) ? array_merge($map[$name][$type], (array)$assoc) : (array)$assoc;
+					if (isset ($model['keep'][$assoc])) {
+						$map[$name][$type] = isset ($map[$name][$type]) ? array_merge($map[$name][$type], (array) $assoc) : (array) $assoc;
 					}
 				}
 			}
