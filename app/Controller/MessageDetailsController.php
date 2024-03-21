@@ -2,6 +2,8 @@
 
 class MessageDetailsController extends AppController {
 
+	private $toCommit = true;
+
 	public $components = array('RequestHandler');
 
 	public function send_message() {
