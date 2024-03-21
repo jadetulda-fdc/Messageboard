@@ -30,6 +30,11 @@ App::uses('Controller', 'Controller');
  *
  * @package		app.Controller
  * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
+ * 
+ * @property Message $Message
+ * @property MessageDetail $MessageDetail
+ * @property User $User
+ * @property Profile $Profile
  */
 class AppController extends Controller {
 	public $components = array(

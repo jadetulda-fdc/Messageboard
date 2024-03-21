@@ -6,7 +6,7 @@ $userData = $profile['User'];
 $flashMessage = $this->Flash->render('positive');
 ?>
 
-<?php if (isset($flashMessage)) { ?>
+<?php if (isset ($flashMessage)) { ?>
 	<div class="alert alert-success text-left" role="alert">
 		<?php echo $flashMessage; ?>
 	</div>

@@ -87,11 +87,13 @@ class ProfilesController extends AppController {
 			// save to DB
 			$this->Profile->save($this->request->data, array('validate' => false));
 			$this->User->save($this->request->data, array('validate' => false));
-
-			$this->Session->write('Auth', $this->User->read(null, $this->Auth->user()['id']));
+			$user = $this->User->read(null, $this->Auth->user()['id']);
+			$user['User']['Profile'] = $user['Profile'];
+			unset($user['User']['password']);
+			$this->Session->write('Auth', $user);
 
 			// upload file if there's an attachment of form submit
-			if (isset($newFileName)) {
+			if (isset ($newFileName)) {
 				move_uploaded_file(
 					$file['tmp_name'],
 					WWW_ROOT . 'img/profile/' . $newFileName . strchr($file['name'], ".")
