@@ -10,7 +10,8 @@
  * @package Text_Diff
  * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
  */
-class Horde_Text_Diff_ThreeWay {
+class Horde_Text_Diff_ThreeWay
+{
     /**
      * Array of changes.
      *
@@ -28,11 +29,12 @@ class Horde_Text_Diff_ThreeWay {
     /**
      * Computes diff between 3 sequences of strings.
      *
-     * @param array $orig	The original lines to use.
+     * @param array $orig    The original lines to use.
      * @param array $final1  The first version to compare to.
      * @param array $final2  The second version to compare to.
      */
-    public function __construct($orig, $final1, $final2) {
+    public function __construct($orig, $final1, $final2)
+    {
         if (extension_loaded('xdiff')) {
             $engine = new Horde_Text_Diff_Engine_Xdiff();
         } else {
@@ -40,22 +42,23 @@ class Horde_Text_Diff_ThreeWay {
         }
 
         $this->_edits = $this->_diff3($engine->diff($orig, $final1),
-            $engine->diff($orig, $final2));
+                                      $engine->diff($orig, $final2));
     }
 
     /**
      */
-    public function mergedOutput($label1 = false, $label2 = false) {
+    public function mergedOutput($label1 = false, $label2 = false)
+    {
         $lines = [];
         foreach ($this->_edits as $edit) {
             if ($edit->isConflict()) {
                 /* FIXME: this should probably be moved somewhere else. */
                 $lines = array_merge($lines,
-                    ['<<<<<<<' . ($label1 ? ' ' . $label1 : '')],
-                    $edit->final1,
-                    ["======="],
-                    $edit->final2,
-                    ['>>>>>>>' . ($label2 ? ' ' . $label2 : '')]);
+                                     ['<<<<<<<' . ($label1 ? ' ' . $label1 : '')],
+                                     $edit->final1,
+                                     ["======="],
+                                     $edit->final2,
+                                     ['>>>>>>>' . ($label2 ? ' ' . $label2 : '')]);
                 $this->_conflictingBlocks++;
             } else {
                 $lines = array_merge($lines, $edit->merged());
@@ -67,7 +70,8 @@ class Horde_Text_Diff_ThreeWay {
 
     /**
      */
-    protected function _diff3($edits1, $edits2) {
+    protected function _diff3($edits1, $edits2)
+    {
         $edits = [];
         $bb = new Horde_Text_Diff_ThreeWay_BlockBuilder();
 
@@ -119,11 +123,11 @@ class Horde_Text_Diff_ThreeWay {
                     }
                 }
 
-                if ($e1 && !$e1->orig) {
+                if ($e1 && ! $e1->orig) {
                     $bb->out1($e1->final);
                     $e1 = next($edits1);
                 }
-                if ($e2 && !$e2->orig) {
+                if ($e2 && ! $e2->orig) {
                     $bb->out2($e2->final);
                     $e2 = next($edits2);
                 }

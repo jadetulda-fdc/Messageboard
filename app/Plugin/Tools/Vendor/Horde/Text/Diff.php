@@ -15,7 +15,8 @@
  * @package Text_Diff
  * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
  */
-class Horde_Text_Diff {
+class Horde_Text_Diff
+{
     /**
      * Array of changes.
      *
@@ -26,13 +27,14 @@ class Horde_Text_Diff {
     /**
      * Computes diffs between sequences of strings.
      *
-     * @param string $engine	 Name of the diffing engine to use.  'auto'
-     *						   will automatically select the best.
-     * @param array $params	  Parameters to pass to the diffing engine.
-     *						   Normally an array of two arrays, each
-     *						   containing the lines from a file.
+     * @param string $engine     Name of the diffing engine to use.  'auto'
+     *                           will automatically select the best.
+     * @param array $params      Parameters to pass to the diffing engine.
+     *                           Normally an array of two arrays, each
+     *                           containing the lines from a file.
      */
-    public function __construct($engine, $params) {
+    public function __construct($engine, $params)
+    {
         if ($engine == 'auto') {
             $engine = extension_loaded('xdiff') ? 'Xdiff' : 'Native';
         } else {
@@ -48,7 +50,8 @@ class Horde_Text_Diff {
     /**
      * Returns the array of differences.
      */
-    public function getDiff() {
+    public function getDiff()
+    {
         return $this->_edits;
     }
 
@@ -57,7 +60,8 @@ class Horde_Text_Diff {
      *
      * @return integer The number of new lines
      */
-    public function countAddedLines() {
+    public function countAddedLines()
+    {
         $count = 0;
         foreach ($this->_edits as $edit) {
             if ($edit instanceof Horde_Text_Diff_Op_Add ||
@@ -73,7 +77,8 @@ class Horde_Text_Diff {
      *
      * @return integer The number of deleted lines
      */
-    public function countDeletedLines() {
+    public function countDeletedLines()
+    {
         $count = 0;
         foreach ($this->_edits as $edit) {
             if ($edit instanceof Horde_Text_Diff_Op_Delete ||
@@ -94,13 +99,14 @@ class Horde_Text_Diff {
      * </code>
      *
      * @return Horde_Text_Diff  A Diff object representing the inverse of the
-     *					original diff.  Note that we purposely don't return a
-     *					reference here, since this essentially is a clone()
-     *					method.
+     *                    original diff.  Note that we purposely don't return a
+     *                    reference here, since this essentially is a clone()
+     *                    method.
      */
-    public function reverse() {
+    public function reverse()
+    {
         if (version_compare(zend_version(), '2', '>')) {
-            $rev = clone ($this);
+            $rev = clone($this);
         } else {
             $rev = $this;
         }
@@ -116,7 +122,8 @@ class Horde_Text_Diff {
      *
      * @return boolean  True if two sequences were identical.
      */
-    public function isEmpty() {
+    public function isEmpty()
+    {
         foreach ($this->_edits as $edit) {
             if (!($edit instanceof Horde_Text_Diff_Op_Copy)) {
                 return false;
@@ -132,7 +139,8 @@ class Horde_Text_Diff {
      *
      * @return integer  The length of the LCS.
      */
-    public function lcs() {
+    public function lcs()
+    {
         $lcs = 0;
         foreach ($this->_edits as $edit) {
             if ($edit instanceof Horde_Text_Diff_Op_Copy) {
@@ -149,7 +157,8 @@ class Horde_Text_Diff {
      *
      * @return array  The original sequence of strings.
      */
-    public function getOriginal() {
+    public function getOriginal()
+    {
         $lines = [];
         foreach ($this->_edits as $edit) {
             if ($edit->orig) {
@@ -166,7 +175,8 @@ class Horde_Text_Diff {
      *
      * @return array  The sequence of strings.
      */
-    public function getFinal() {
+    public function getFinal()
+    {
         $lines = [];
         foreach ($this->_edits as $edit) {
             if ($edit->final) {
@@ -183,7 +193,8 @@ class Horde_Text_Diff {
      * @param string $line  The line to trim.
      * @param integer $key  The index of the line in the array. Not used.
      */
-    static public function trimNewlines(&$line, $key) {
+    static public function trimNewlines(&$line, $key)
+    {
         $line = str_replace(["\n", "\r"], '', $line);
     }
 
@@ -192,7 +203,8 @@ class Horde_Text_Diff {
      *
      * This is here only for debugging purposes.
      */
-    protected function _check($from_lines, $to_lines) {
+    protected function _check($from_lines, $to_lines)
+    {
         if (serialize($from_lines) != serialize($this->getOriginal())) {
             trigger_error("Reconstructed original doesn't match", E_USER_ERROR);
         }

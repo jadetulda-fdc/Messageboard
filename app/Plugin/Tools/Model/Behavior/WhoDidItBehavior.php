@@ -66,27 +66,48 @@ class WhoDidItBehavior extends ModelBehavior {
 		// Handles model binding to the User model according to the auto_bind settings (default true).
 		if ($config['auto_bind']) {
 			if ($config['has_created_by']) {
-				$commonBelongsTo = [
-					'CreatedBy' => [
-						'className' => $config['user_model'],
-						'foreignKey' => $config['created_by_field']]];
-				$Model->bindModel(['belongsTo' => $commonBelongsTo], false);
+				$createdByOptions = [
+					'className' => $config['user_model'],
+					'foreignKey' => $config['created_by_field'],
+				];
+				if (method_exists($Model, 'belongsTo')) {
+					$Model->belongsTo('CreatedBy', $createdByOptions);
+				} else {
+					$commonBelongsTo = [
+						'CreatedBy' => $createdByOptions,
+					];
+					$Model->bindModel(['belongsTo' => $commonBelongsTo], false);
+				}
 			}
 
 			if ($config['has_modified_by']) {
-				$commonBelongsTo = [
-					'ModifiedBy' => [
-						'className' => $config['user_model'],
-						'foreignKey' => $config['modified_by_field']]];
-				$Model->bindModel(['belongsTo' => $commonBelongsTo], false);
+				$modifiedByOptions = [
+					'className' => $config['user_model'],
+					'foreignKey' => $config['modified_by_field'],
+				];
+				if (method_exists($Model, 'belongsTo')) {
+					$Model->belongsTo('ModifiedBy', $modifiedByOptions);
+				} else {
+					$commonBelongsTo = [
+						'ModifiedBy' => $modifiedByOptions,
+					];
+					$Model->bindModel(['belongsTo' => $commonBelongsTo], false);
+				}
 			}
 
 			if ($config['has_confirmed_by']) {
-				$commonBelongsTo = [
-					'ConfirmedBy' => [
-						'className' => $config['user_model'],
-						'foreignKey' => $config['confirmed_by_field']]];
-				$Model->bindModel(['belongsTo' => $commonBelongsTo], false);
+				$confirmedByOptions = [
+					'className' => $config['user_model'],
+					'foreignKey' => $config['confirmed_by_field'],
+				];
+				if (method_exists($Model, 'belongsTo')) {
+					$Model->belongsTo('ConfirmedBy', $confirmedByOptions);
+				} else {
+					$commonBelongsTo = [
+						'ConfirmedBy' => $confirmedByOptions,
+					];
+					$Model->bindModel(['belongsTo' => $commonBelongsTo], false);
+				}
 			}
 		}
 
@@ -118,7 +139,7 @@ class WhoDidItBehavior extends ModelBehavior {
 		list(, $userSession) = pluginSplit($config['user_model']);
 
 		$userId = AuthComponent::user('id');
-		if (empty($userId)) {
+		if (empty ($userId)) {
 			$userId = CakeSession::read($authSession . '.' . $userSession . '.id');
 		}
 
@@ -129,7 +150,7 @@ class WhoDidItBehavior extends ModelBehavior {
 		$data = [];
 		$modifiedByField = $config['modified_by_field'];
 
-		if (!isset($Model->data[$Model->alias][$modifiedByField]) || $config['force_modified']) {
+		if (!isset ($Model->data[$Model->alias][$modifiedByField]) || $config['force_modified']) {
 			$data[$config['modified_by_field']] = $userId;
 		} else {
 			$pos = strpos($config['modified_by_field'], '_');
@@ -137,7 +158,7 @@ class WhoDidItBehavior extends ModelBehavior {
 			$data[$field] = false;
 		}
 
-		if (!$Model->exists()) {
+		if (!$Model->exists($Model->getID())) {
 			$data[$config['created_by_field']] = $userId;
 		}
 		if ($data) {

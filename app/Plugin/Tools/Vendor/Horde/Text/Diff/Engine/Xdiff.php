@@ -13,10 +13,12 @@
  * @author  Jon Parise <jon@horde.org>
  * @package Text_Diff
  */
-class Horde_Text_Diff_Engine_Xdiff {
+class Horde_Text_Diff_Engine_Xdiff
+{
     /**
      */
-    public function diff($from_lines, $to_lines) {
+    public function diff($from_lines, $to_lines)
+    {
         if (!extension_loaded('xdiff')) {
             throw new Horde_Text_Diff_Exception('The xdiff extension is required for this diff engine');
         }
@@ -46,17 +48,17 @@ class Horde_Text_Diff_Engine_Xdiff {
                 continue;
             }
             switch ($line[0]) {
-                case ' ':
-                    $edits[] = new Horde_Text_Diff_Op_Copy([substr($line, 1)]);
-                    break;
+            case ' ':
+                $edits[] = new Horde_Text_Diff_Op_Copy([substr($line, 1)]);
+                break;
 
-                case '+':
-                    $edits[] = new Horde_Text_Diff_Op_Add([substr($line, 1)]);
-                    break;
+            case '+':
+                $edits[] = new Horde_Text_Diff_Op_Add([substr($line, 1)]);
+                break;
 
-                case '-':
-                    $edits[] = new Horde_Text_Diff_Op_Delete([substr($line, 1)]);
-                    break;
+            case '-':
+                $edits[] = new Horde_Text_Diff_Op_Delete([substr($line, 1)]);
+                break;
             }
         }
 

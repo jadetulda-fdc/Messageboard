@@ -101,8 +101,8 @@ XPF:(\D+) $(\1: franc Pacifique, francs Pacifique, de francs Pacifique, centime,
 "(GNF|LBP|VUV) ([-−]?\d+0{6,})" $2 $(\1:ud)
 "(GNF|LBP|VUV) ([-−]?\d+[.,]\d+)" $2 $(\1:up)
 
-"([A-Z]{3}) ([-−]?1)([.,]00?)?" $2$(\1:mf) $(\1:us)			  # un/une
-"([A-Z]{3}) ([-−]?\d*[02-9]1)([.,]00?)?" $2$(\1:mf) $(\1:up)	 # cent un/une mais pas cent onze
+"([A-Z]{3}) ([-−]?1)([.,]00?)?" $2$(\1:mf) $(\1:us)              # un/une
+"([A-Z]{3}) ([-−]?\d*[02-9]1)([.,]00?)?" $2$(\1:mf) $(\1:up)     # cent un/une mais pas cent onze
 "([A-Z]{3}) ([-−]?[0])([.,]00?)?" $2 $(\1:us)
 "([A-Z]{3}) ([-−]?\d+0{6,})([.,]00?)?" $2 $(\1:ud)
 "([A-Z]{3}) ([-−]?\d+)([.,]00?)?" $2 $(\1:up)
